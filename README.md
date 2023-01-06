@@ -17,35 +17,21 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 
 ### 特性
 
-- 🚀 特性1
+- 🚀 支持 Ber,Der 编码规则
 
-- 🚀 特性2
+- 🚀 支持 Sequence，Set，Tagged 构造类型
 
-- 💪 特性3
+- 💪 支持 Boolean，Enumerated，Integer，Null，ObjectIdentifier，PrimitiveValue<T> 原始类型数据
 
-- 🛠️ 特性4
-
-- 🌍 特性5
-
-- 💡 特性6
+- 🛠️ 支持 BitString，Octet String，String 字符串类型
 
 ### 路线
 
 <p align="center">
 <img src="./doc/assets/milestone.png" width="100%" >
 </p>
-路线图roadmap在 doc/framework-roadmap-logo.pptx 中有源文件。
-
 
 ## <img alt="" src="./doc/assets/readme-icon-framework.png" style="display: inline-block;" width=3%/> 软件架构
-
-### 架构图
-
-<p align="center">
-<img src="./doc/assets/framework.png" width="60%" >
-</p>
-
-架构图文字说明，包括模块说明、架构层次等详细说明。
 
 ### 源码目录
 
