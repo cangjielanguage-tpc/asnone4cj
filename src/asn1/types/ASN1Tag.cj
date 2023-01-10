@@ -1,0 +1,42 @@
+package asn1.types;
+
+from std import collection.*
+
+public abstract class ASN1Tag<T> where T <: ASN1Object<T> {
+    private var tag: Int64 = 0
+    private static var tags: HashMap<Int8, ASN1Tag<T>> =  HashMap<Int8, ASN1Tag<T>>();
+    
+    private var asn1TagClass: ASN1TagClass
+    private var supportedEncodings: HashSet<ASN1Encoding> = HashSet<ASN1Encoding>()
+    private var asn1Encoding: ASN1Encoding
+
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>) {
+        if (supportedEncodings.contains(ASN1Encoding.PRIMITIVE(0x0))) {
+            this.asn1Encoding = ASN1Encoding.PRIMITIVE(0x0)
+        }
+        this.asn1TagClass = asn1TagClass;
+        this.tag = tag;
+        this.supportedEncodings = supportedEncodings;
+        this.asn1Encoding = ASN1Encoding.CONSTRUCTED(0x20);     
+    }
+
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
+        this(asn1TagClass, tag, asn1Encoding, HashSet<ASN1Encoding>([asn1Encoding]));
+    }
+
+    private init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, supportedEncodings: HashSet<ASN1Encoding>) {
+        this.asn1TagClass = asn1TagClass;
+        this.tag = tag;
+        this.supportedEncodings = supportedEncodings;
+        this.asn1Encoding = asn1Encoding;
+    }
+
+    public func getTag(): Int64 {
+        return tag;
+    }
+
+}
+
+func withClaim(name: String, predicate: (Int16, Int16) -> Bool): Int16 {
+    return 1
+}

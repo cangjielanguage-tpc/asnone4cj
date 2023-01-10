@@ -1,0 +1,19 @@
+{
+  "cjc_version": "0.36.4",
+  "organization": "cangjie",
+  "name": "asn1",
+  "description": "nothing here",
+  "version": "0.0.1",
+  "requires": {},
+  "package_requires": {
+    "path_option": [],
+    "package_option": {}
+  },
+  "foreign_requires": {},
+  "output_type": "dynamic",
+  "command_option": "",
+  "condition_option": {},
+  "link_option": "",
+  "cross_compile_configuration": {},
+  "package_configuration": {}
+}
