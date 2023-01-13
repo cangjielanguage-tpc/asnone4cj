@@ -7,7 +7,7 @@ import asn1.types.ASN1Tag
 import asn1.types.ASN1Object
 
 public open class BERDecoder<T> <: ASN1Decoder<T> where T <: ASN1Object<T> {
-    public override func readTag(inputStream: InputStream): ASN1Tag<T> {
+    public override func readTag(inputStream: InputStream): ASN1Tag {
         throw Exception("Could not parse ASN.1 Tag Class (should be impossible)");
     }
 

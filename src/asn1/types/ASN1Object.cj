@@ -1,14 +1,14 @@
 package asn1.types
 
-public abstract class ASN1Object<T> where T <: ASN1Object<T>  {
+public abstract class ASN1Object<T> {
 
-    protected var tag: ASN1Tag<T>
+    protected var tag: ASN1Tag
 
-    protected init(tag: ASN1Tag<T>) {
+    protected init(tag: ASN1Tag) {
         this.tag = tag;
     }
 
-    public func getValue(): T;
+    public func getValue(): Any;
 
     public func equals(o: Object): Bool {
         if ( refEq(this, o) ) {
@@ -33,7 +33,7 @@ public abstract class ASN1Object<T> where T <: ASN1Object<T>  {
         return ""
     }
 
-    public func getTag(): ASN1Tag<T> {
-        return tag;
+    public func getTag(): ASN1Tag {
+        return tag
     }
 }

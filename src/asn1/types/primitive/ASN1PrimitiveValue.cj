@@ -8,12 +8,12 @@ import asn1.types.ASN1Tag
 public abstract class ASN1PrimitiveValue<T> <: ASN1Object<T> & ASN1Primitive where T <: ASN1Object<T> {
     protected var valueBytes: Array<Byte>
 
-    public init(tag: ASN1Tag<T>) {
+    public init(tag: ASN1Tag) {
         super(tag);
         valueBytes = []
     }
 
-    public init(tag: ASN1Tag<T>, valueBytes: Array<Byte>) {
+    public init(tag: ASN1Tag, valueBytes: Array<Byte>) {
         super(tag);
         this.valueBytes = valueBytes
     }

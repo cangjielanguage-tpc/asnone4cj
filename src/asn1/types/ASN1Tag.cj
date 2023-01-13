@@ -2,9 +2,9 @@ package asn1.types;
 
 from std import collection.*
 
-public abstract class ASN1Tag<T> where T <: ASN1Object<T> {
+public abstract class ASN1Tag {
     private var tag: Int64 = 0
-    private static var tags: HashMap<Int8, ASN1Tag<T>> =  HashMap<Int8, ASN1Tag<T>>();
+    private static var tags: HashMap<Int8, ASN1Tag> =  HashMap<Int8, ASN1Tag>();
     
     private var asn1TagClass: ASN1TagClass
     private var supportedEncodings: HashSet<ASN1Encoding> = HashSet<ASN1Encoding>()
@@ -35,8 +35,12 @@ public abstract class ASN1Tag<T> where T <: ASN1Object<T> {
         return tag;
     }
 
+    public static let SEQUENCE: ASN1Tag  = ASN1SequenceTag(ASN1TagClass.UNIVERSAL(0), 0x10, ASN1Encoding.CONSTRUCTED(0x20))
+
 }
 
-func withClaim(name: String, predicate: (Int16, Int16) -> Bool): Int16 {
-    return 1
-}
+public class ASN1SequenceTag <: ASN1Tag{
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding){
+        super(asn1TagClass, tag, asn1Encoding)
+    }
+};
