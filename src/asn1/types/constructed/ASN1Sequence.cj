@@ -40,7 +40,7 @@ public class ASN1Sequence<T> <: ASN1Object<T> & Iterable<ASN1Object<T>> {
 
 class SeqParser<T> <: ASN1Parser<T> where T <: ASN1Object<T> {
 
-    public init(decoder: ASN1Decoder<T>) {
+    public init(decoder: ASN1Decoder) {
         super(decoder)
     }
 
