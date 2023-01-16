@@ -12,5 +12,5 @@ public abstract class ASN1Parser<T> where T <: ASN1Object<T> {
         this.decoder = decoder
     }
 
-    public func parse(asn1Tag: ASN1Tag<T>, value: Array<Byte>): T
+    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object<T>
 }
