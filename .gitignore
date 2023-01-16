@@ -2,5 +2,11 @@
 .gitee/
 .vscode/
 build/
-ci_test/
 module-resolve.json
+*.cjo
+ci_test/
+ci_lib/
+bin/
+*.gcda
+*.gcno
+output/
