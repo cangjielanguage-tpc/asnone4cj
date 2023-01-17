@@ -1,13 +1,12 @@
 package asn1.types.primitive
 
-from std import io.*
-from std import collection.*
+from std import io.ByteArrayStream
+from std import collection.StringBuilder
 import asn1.ASN1Parser
 import asn1.ASN1Serializer
 import asn1.ASN1OutputStream
 import asn1.types.ASN1Tag
-import asn1.types.ASN1TagClass
-import asn1.types.ASN1Encoding
+import asn1.types.ASN1Object
 import asn1.encodingrules.ASN1Decoder
 import asn1.encodingrules.ASN1Encoder
 import asn1.util.Checks
@@ -40,7 +39,11 @@ public class IdentifierParserObject<T> <: ASN1Parser<T> where T <: ASN1Object<T>
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object<T> {
-        Checks.checkArgument(value.size > 0, "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value", value)
+        Checks.checkArgument(
+            value.size > 0,
+            "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value",
+            Array<Any>()
+        )
 
         var byteArrayStream: ByteArrayStream = ByteArrayStream()
 
@@ -62,11 +65,11 @@ public class IdentifierParserObject<T> <: ASN1Parser<T> where T <: ASN1Object<T>
             } else {
                 // TODO
                 var v: Int64 = 0x7f
-                stringBuilder.append('.').append(v);
+                stringBuilder.append('.').append(v)
             }
         }
         byteArrayStream.clear()
-        return ASN1ObjectIdentifier<T>(stringBuilder.toString(), value);
+        return ASN1ObjectIdentifier<T>(stringBuilder.toString(), value)
     }
 }
 
@@ -78,20 +81,22 @@ public class ObjectIdentifierSerializer<T> <: ASN1Serializer<T> where T <: ASN1O
     public override func serializedLength(asn1Object: T): Int64 {
         var object = (asn1Object as ASN1ObjectIdentifier<T>).getOrThrow()
         if (object.valueBytes.isEmpty()) {
-            calculateBytes(object);
+            calculateBytes(object)
         }
-        return object.valueBytes.size;
+        return object.valueBytes.size
     }
 
     public override func serialize(asn1Object: T, stream: ASN1OutputStream): Unit {
         var object = (asn1Object as ASN1ObjectIdentifier<T>).getOrThrow()
         if (object.valueBytes.isEmpty()) {
-            calculateBytes(object);
+            calculateBytes(object)
         }
-        stream.write(object.valueBytes);
+        stream.write(object.valueBytes)
     }
 
     public func calculateBytes(asn1Object: ASN1ObjectIdentifier<T>): Unit {
         // TODO
+        var oid: String = asn1Object.oid
+        var byteArrayStream: ByteArrayStream = ByteArrayStream()
     }
 }

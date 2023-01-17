@@ -5,7 +5,6 @@ import asn1.ASN1Serializer
 import asn1.ASN1OutputStream
 import asn1.types.ASN1Tag
 import asn1.types.ASN1Object
-import asn1.types.ASN1Primitive
 import asn1.encodingrules.ASN1Decoder
 import asn1.encodingrules.ASN1Encoder
 import asn1.util.Checks
@@ -19,7 +18,7 @@ public class ASN1Boolean<T> <: ASN1PrimitiveValue<T> {
     }
 
     public init(value: Bool, valueBytes: Array<Byte>) {
-        super(ASN1Tag.ASN1_BOOLEAN,valueBytes)
+        super(ASN1Tag.ASN1_BOOLEAN, valueBytes)
         this.value = value
     }
 
@@ -42,7 +41,8 @@ public class BooleanParser<T> <: ASN1Parser<T> where T <: ASN1Object<T> {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object<T> {
-        Checks.checkState(value.size == 1, "ASN.1 NULL can not have a value", value)
+        let list: Array<Any> = [value.size]
+        Checks.checkState(value.size == 1, "ASN.1 NULL can not have a value", list)
         return ASN1Boolean<T>(value[0] != 0x0, value)
     }
 }
