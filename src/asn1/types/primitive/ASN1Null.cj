@@ -4,22 +4,20 @@ import asn1.ASN1Parser
 import asn1.ASN1Serializer
 import asn1.ASN1OutputStream
 import asn1.types.ASN1Tag
-import asn1.types.ASN1TagClass
-import asn1.types.ASN1Encoding
+import asn1.types.ASN1Object
 import asn1.encodingrules.ASN1Decoder
 import asn1.encodingrules.ASN1Encoder
 import asn1.util.Checks
 
 public class ASN1Null<T> <: ASN1PrimitiveValue<T> {
-    private let NULL_BYTES:Array<Byte> = []
+    private let NULL_BYTES: Array<Byte> = []
 
     public init() {
-        super(ASN1Tag.ASN1_NULL_TAG,NULL_BYTES)
+        super(ASN1Tag.ASN1_NULL_TAG, NULL_BYTES)
     }
 
     public override func getValue(): Any {
-        // TODO
-        return ""
+        return ()
     }
 
     protected func valueHash(): Int64 {
@@ -33,7 +31,7 @@ public class ParserNull<T> <: ASN1Parser<T> where T <: ASN1Object<T> {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object<T> {
-        Checks.checkState(value.size == 0, "ASN.1 NULL can not have a value", value)
+        Checks.checkState(value.size == 0, "ASN.1 NULL can not have a value", Array<Any>())
         return ASN1Null<T>()
     }
 }
