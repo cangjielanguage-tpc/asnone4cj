@@ -44,7 +44,6 @@ public class IdentifierParserObject<T> <: ASN1Parser<T> where T <: ASN1Object<T>
             "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value",
             Array<Any>()
         )
-
         var byteArrayStream: ByteArrayStream = ByteArrayStream()
 
         // 将 buffer 中的数据写入到输出流中，当数据全部成功写入则函数返回
@@ -52,19 +51,18 @@ public class IdentifierParserObject<T> <: ASN1Parser<T> where T <: ASN1Object<T>
 
         // 返回当前缓冲区总容量
         var firstTwo: Int64 = byteArrayStream.length
-
         var stringBuilder: StringBuilder = StringBuilder()
-
         stringBuilder.append(firstTwo / 40)
         stringBuilder.append('.').append(firstTwo % 40)
-
         while (byteArrayStream.isEmpty()) {
             var x: Int64 = byteArrayStream.capacity()
             if (x < 127) {
                 stringBuilder.append('.').append(x)
             } else {
-                // TODO
-                var v: Int64 = 0x7f
+                var v: Int64 = x & 0x7f
+                do {
+                    // TODO
+                } while (x > 127)
                 stringBuilder.append('.').append(v)
             }
         }
