@@ -29,7 +29,7 @@ public abstract class ASN1Object<T> {
         return ""
     }
 
-    protected func valueString(): String { 
+    protected open func valueString(): String { 
         return ""
     }
 

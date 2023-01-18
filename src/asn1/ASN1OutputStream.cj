@@ -1,11 +1,15 @@
 package asn1
 
 from std import io.OutputStream
+import asn1.encodingrules.ASN1Encoder
+import asn1.types.ASN1Object
+import asn1.types.ASN1Tag
 
 public class ASN1OutputStream <: OutputStream {
     private var encoder: ASN1Encoder
 
     public init(encoder: ASN1Encoder, out: OutputStream) {
+        // TODO
         this.encoder = encoder
     }
 
@@ -21,7 +25,7 @@ public class ASN1OutputStream <: OutputStream {
         // TODO
     }
 
-    private func writeLength(length: Int64): Unit {   
+    private func writeLength(length: Int64): Unit {
         // TODO
     }
 
