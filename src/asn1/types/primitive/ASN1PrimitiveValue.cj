@@ -1,8 +1,6 @@
 package asn1.types.primitive
 
-import asn1.types.ASN1Object
 import asn1.types.ASN1Primitive
-import asn1.types.ASN1Tag
 
 public abstract class ASN1PrimitiveValue<T> <: ASN1Object<T> & ASN1Primitive & Hashable {
     protected var valueBytes: Array<Byte> = Array<Byte>()

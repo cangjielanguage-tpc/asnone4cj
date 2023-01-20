@@ -2,14 +2,6 @@ package asn1.types.primitive
 
 from std import io.ByteArrayStream
 from std import collection.StringBuilder
-import asn1.ASN1Parser
-import asn1.ASN1Serializer
-import asn1.ASN1OutputStream
-import asn1.types.ASN1Tag
-import asn1.types.ASN1Object
-import asn1.encodingrules.ASN1Decoder
-import asn1.encodingrules.ASN1Encoder
-import asn1.util.Checks
 
 public class ASN1ObjectIdentifier<T> <: ASN1PrimitiveValue<T> {
     protected var oid: String

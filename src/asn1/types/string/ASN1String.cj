@@ -1,9 +1,7 @@
 package asn1.types.string
 
-import asn1.types.ASN1Object
 import asn1.types.ASN1Primitive
 import asn1.types.ASN1Constructed
-import asn1.types.ASN1Tag
 import asn1.types.ASN1Encoding
 
 public abstract class ASN1String<T> <: ASN1Object<T> & ASN1Primitive & ASN1Constructed<ASN1Object<T>> {

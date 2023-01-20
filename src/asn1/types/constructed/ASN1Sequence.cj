@@ -55,11 +55,6 @@ class SeqSerializer<T> <: ASN1Serializer<T> where T <: ASN1Object<T>  {
         super(encoder)
     }
 
-    public func parse( asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object<T> {
-        var list: ArrayList<ASN1Object<T>> = ArrayList<ASN1Object<T>>()
-        return ASN1Sequence<T>(list, Array<Byte>())
-    }
-
     public func serializedLength(asn1Object: T): Int64 {
         var object = (asn1Object as ASN1Sequence<T>).getOrThrow()
         if (object.bytes.isEmpty()) {

@@ -57,10 +57,22 @@ public abstract class ASN1Tag {
         ASN1Encoding.CONSTRUCTED(0x20)
     )
 
+    public static let SET: ASN1Tag = ASN1SetTag(
+        ASN1TagClass.UNIVERSAL(0),
+        0x11,
+        ASN1Encoding.CONSTRUCTED(0x20)
+    )
+
     public static let ASN1_BOOLEAN: ASN1Tag = ASN1SequenceTag(
         ASN1TagClass.UNIVERSAL(0),
         0x01,
         ASN1Encoding.PRIMITIVE(0x0)
+    )
+
+    public static let OCTET_STRING: ASN1Tag = ASN1SetTag(
+        ASN1TagClass.UNIVERSAL(0),
+        0x04,
+        ASN1Encoding.CONSTRUCTED(0x20)
     )
 
     public static let ENUMERATED: ASN1Tag = ASN1SequenceTag(ASN1TagClass.UNIVERSAL(0), 0x0A, ASN1Encoding.PRIMITIVE(0x0)
@@ -91,6 +103,11 @@ public abstract class ASN1Tag {
 }
 
 public class ASN1SequenceTag <: ASN1Tag {
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
+        super(asn1TagClass, tag, asn1Encoding)
+    }
+}
+public class ASN1SetTag <: ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
