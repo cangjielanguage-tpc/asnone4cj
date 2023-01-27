@@ -2,7 +2,6 @@ package asn1
 
 from std import io.OutputStream
 import asn1.encodingrules.ASN1Encoder
-import asn1.types.ASN1Object
 import asn1.types.ASN1Tag
 
 public class ASN1OutputStream <: OutputStream {

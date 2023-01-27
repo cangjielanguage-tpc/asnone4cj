@@ -25,7 +25,7 @@ public abstract class ASN1Object<T> {
         return result;
     }
 
-    public func toString(): String {
+    public open func toString(): String {
         return ""
     }
 

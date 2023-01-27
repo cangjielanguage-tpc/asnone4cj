@@ -1,13 +1,10 @@
 package asn1.types.primitive
 
-import asn1.ASN1Parser
-import asn1.ASN1Serializer
-import asn1.ASN1OutputStream
 import asn1.types.ASN1Tag
 import asn1.types.ASN1Object
+import asn1.util.Checks
 import asn1.encodingrules.ASN1Decoder
 import asn1.encodingrules.ASN1Encoder
-import asn1.util.Checks
 
 public class ASN1Null<T> <: ASN1PrimitiveValue<T> {
     private let NULL_BYTES: Array<Byte> = []
