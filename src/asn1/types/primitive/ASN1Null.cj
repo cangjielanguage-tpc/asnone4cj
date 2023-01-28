@@ -6,7 +6,7 @@ import asn1.util.Checks
 import asn1.encodingrules.ASN1Decoder
 import asn1.encodingrules.ASN1Encoder
 
-public class ASN1Null<T> <: ASN1PrimitiveValue<T> {
+public class ASN1Null <: ASN1PrimitiveValue {
     private let NULL_BYTES: Array<Byte> = []
 
     public init() {
@@ -22,25 +22,25 @@ public class ASN1Null<T> <: ASN1PrimitiveValue<T> {
     }
 }
 
-public class ParserNull<T> <: ASN1Parser<T> where T <: ASN1Object<T> {
+public class ParserNull <: ASN1Parser {
     public init(decoder: ASN1Decoder) {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object<T> {
+    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         Checks.checkState(value.size == 0, "ASN.1 NULL can not have a value", Array<Any>())
-        return ASN1Null<T>()
+        return ASN1Null()
     }
 }
 
-public class SerializerNull<T> <: ASN1Serializer<T> where T <: ASN1Object<T> {
+public class SerializerNull <: ASN1Serializer {
     public init(encoder: ASN1Encoder) {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: T): Int64 {
+    public override func serializedLength(asn1Object: ASN1Object): Int64 {
         return 0
     }
 
-    public override func serialize(asn1Object: T, stream: ASN1OutputStream): Unit {}
+    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {}
 }

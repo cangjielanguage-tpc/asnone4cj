@@ -7,8 +7,8 @@ from asn1 import asn1.types.constructed.ASN1Sequence
 from asn1 import asn1.types.ASN1Object
 
 main() {
-    var arr = ArrayList<ASN1Object<Int64>>()
-    var seq = ASN1Sequence<Int64>(arr)
+    var arr = ArrayList<ASN1Object>()
+    var seq = ASN1Sequence(arr)
     try {
         seq.getValue()
         for (i in seq) {

@@ -5,7 +5,7 @@ from std import io.ByteArrayStream
 import asn1.types.ASN1Object
 import asn1.encodingrules.ASN1Decoder
 
-public class ASN1InputStream<T> <: InputStream & Iterable<ASN1Object<T>> {
+public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     private var decoder: ASN1Decoder
 
     public init(decoder: ASN1Decoder, wrapped: InputStream) {
@@ -18,7 +18,7 @@ public class ASN1InputStream<T> <: InputStream & Iterable<ASN1Object<T>> {
         this.decoder = decoder
     }
 
-    public func readObject(): ASN1Object<T> {
+    public func readObject(): ASN1Object {
         //TODO
         throw ASN1ParseException("Cannot parse ASN.1 object from stream")
     }
@@ -28,7 +28,7 @@ public class ASN1InputStream<T> <: InputStream & Iterable<ASN1Object<T>> {
         return Array<Byte>()
     }
 
-    public override func iterator(): Iterator<ASN1Object<T>> {
+    public override func iterator(): Iterator<ASN1Object> {
         //TODO
         throw IllegalArgumentException("")
     }

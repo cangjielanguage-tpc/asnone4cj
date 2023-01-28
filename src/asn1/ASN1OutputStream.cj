@@ -12,7 +12,7 @@ public class ASN1OutputStream <: OutputStream {
         this.encoder = encoder
     }
 
-    public func writeObject<T>(asn1Object: ASN1Object<T>): Unit {
+    public func writeObject(asn1Object: ASN1Object): Unit {
         // TODO
     }
 

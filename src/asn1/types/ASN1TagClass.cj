@@ -1,6 +1,6 @@
 package asn1.types
 
-var tagvalue:Int64 = 0
+var tagvalue: Int64 = 0
 
 public enum ASN1TagClass {
     | UNIVERSAL(Byte)
@@ -9,11 +9,11 @@ public enum ASN1TagClass {
     | PRIVATE(Byte)
 
     func ASN1TagClass(value: Int64) {
-        tagvalue = value;
+        tagvalue = value
     }
 
-    public static func  parseClass(tagByte: Byte): ASN1TagClass {
-        var classValue: UInt8 = (tagByte & 0xc0);
+    public static func parseClass(tagByte: Byte): ASN1TagClass {
+        var classValue: UInt8 = (tagByte & 0xc0)
         match (classValue) {
             case 0 => return UNIVERSAL(0)
             case 0x40 => return return APPLICATION(0x40);
@@ -24,6 +24,6 @@ public enum ASN1TagClass {
     }
 
     public func getValue(): Int64 {
-        return tagvalue;
+        return tagvalue
     }
 }
