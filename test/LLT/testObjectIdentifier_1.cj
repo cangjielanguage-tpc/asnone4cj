@@ -5,14 +5,14 @@ from asn1 import asn1.types.primitive.ASN1ObjectIdentifier
 
 main() {
     var value1: String = ""
-    var asn1ObjectIdentifier1: ASN1ObjectIdentifier<String> = ASN1ObjectIdentifier<String>(value1)
+    var asn1ObjectIdentifier1: ASN1ObjectIdentifier = ASN1ObjectIdentifier(value1)
     try {
         asn1ObjectIdentifier1.getValue()
     } catch (e: ASN1ParseException) {
         return 1
     }
     var value2: String = ""
-    var asn1ObjectIdentifier2: ASN1ObjectIdentifier<String> = ASN1ObjectIdentifier<String>(value2, Array<Byte>())
+    var asn1ObjectIdentifier2: ASN1ObjectIdentifier = ASN1ObjectIdentifier(value2, Array<Byte>())
     try {
         asn1ObjectIdentifier2.getValue()
     } catch (e: ASN1ParseException) {

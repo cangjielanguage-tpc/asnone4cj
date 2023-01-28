@@ -4,7 +4,7 @@ import asn1.types.ASN1Primitive
 import asn1.types.ASN1Constructed
 import asn1.types.ASN1Encoding
 
-public abstract class ASN1String<T> <: ASN1Object<T> & ASN1Primitive & ASN1Constructed<ASN1Object<T>> {
+public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed<ASN1Object> {
     protected var valueBytes: Array<Byte> = Array<Byte>()
 
     public init(tag: ASN1Tag, valueBytes: Array<Byte>) {
@@ -12,7 +12,7 @@ public abstract class ASN1String<T> <: ASN1Object<T> & ASN1Primitive & ASN1Const
         this.valueBytes = valueBytes
     }
 
-    public func iterator(): Iterator<ASN1Object<T>> {
+    public func iterator(): Iterator<ASN1Object> {
         if (tag.getAsn1Encoding() == ASN1Encoding.CONSTRUCTED(0x20)) {
             // TODO
             throw IllegalArgumentException("")

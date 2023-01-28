@@ -12,7 +12,7 @@ import asn1.encodingrules.ASN1Decoder
 import asn1.encodingrules.ASN1Encoder
 import asn1.util.Checks
 
-public class ASN1BitString<T> <: ASN1String<T> {
+public class ASN1BitString <: ASN1String {
     public var unusedBits: Int64 = 0
     private var bits: Array<Bool> = Array<Bool>()
 
@@ -91,16 +91,16 @@ public class ASN1BitString<T> <: ASN1String<T> {
     }
 }
 
-public class BitStringParser<T> <: ASN1Parser<T> where T <: ASN1Object<T> {
+public class BitStringParser <: ASN1Parser {
     public init(decoder: ASN1Decoder) {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object<T> {
+    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         if (asn1Tag.isConstructed()) {
             // TODO
             try {
-                var stream: ASN1InputStream<T> = ASN1InputStream<T>(decoder, value)
+                var stream: ASN1InputStream = ASN1InputStream(decoder, value)
                 var baos: ByteArrayStream = ByteArrayStream()
                 var unusedBits: Int64 = 0
                 while (stream.length > 0) {
@@ -119,24 +119,24 @@ public class BitStringParser<T> <: ASN1Parser<T> where T <: ASN1Object<T> {
             var unusedBits: Byte = value[0]
             var bits: Array<Byte> = Array<Byte>()
             value.copyTo(bits, 1, 1, value.size)
-            return ASN1BitString<T>(asn1Tag, bits, unusedBits.position())
+            return ASN1BitString(asn1Tag, bits, unusedBits.position())
         }
         throw ASN1ParseException("Unable to parse Constructed ASN.1 BIT STRING")
     }
 }
 
-public class BitStringSerializer<T> <: ASN1Serializer<T> where T <: ASN1Object<T> {
+public class BitStringSerializer <: ASN1Serializer {
     public init(encoder: ASN1Encoder) {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: T): Int64 {
-        var object: ASN1BitString<T> = (asn1Object as ASN1BitString<T>).getOrThrow()
+    public override func serializedLength(asn1Object: ASN1Object): Int64 {
+        var object: ASN1BitString = (asn1Object as ASN1BitString).getOrThrow()
         return object.valueBytes.size + 1
     }
 
-    public override func serialize(asn1Object: T, stream: ASN1OutputStream): Unit {
-        var object: ASN1BitString<T> = (asn1Object as ASN1BitString<T>).getOrThrow()
+    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+        var object: ASN1BitString = (asn1Object as ASN1BitString).getOrThrow()
         stream.write(object.unusedBits)
         stream.write(object.valueBytes)
     }
