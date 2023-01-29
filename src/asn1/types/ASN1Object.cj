@@ -1,6 +1,6 @@
 package asn1.types
 
-public abstract class ASN1Object {
+public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
     protected var tag: ASN1Tag
 
     protected init(tag: ASN1Tag) {
@@ -35,5 +35,13 @@ public abstract class ASN1Object {
 
     public func getTag(): ASN1Tag {
         return tag
+    }
+
+    public operator func ==(that: ASN1Object): Bool {
+        return this.equals(that)
+    }
+
+    public operator func !=(that: ASN1Object): Bool {
+        return !(this == that)
     }
 }
