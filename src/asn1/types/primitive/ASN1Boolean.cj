@@ -1,5 +1,6 @@
 package asn1.types.primitive
 
+from std import format.*
 import asn1.ASN1Parser
 import asn1.ASN1Serializer
 import asn1.ASN1OutputStream
@@ -36,7 +37,7 @@ public class BooleanParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        let list: Array<Any> = [value.size]
+        let list: Array<Formatter> = [value.size]
         Checks.checkState(value.size == 1, "ASN.1 NULL can not have a value", list)
         return ASN1Boolean(value[0] != 0x0, value)
     }

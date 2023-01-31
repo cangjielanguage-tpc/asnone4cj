@@ -34,7 +34,7 @@ public class IdentifierParserObject <: ASN1Parser {
         Checks.checkArgument(
             value.size > 0,
             "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value",
-            Array<Any>()
+            Array<Formatter>()
         )
         var byteArrayStream: ByteArrayStream = ByteArrayStream()
 
