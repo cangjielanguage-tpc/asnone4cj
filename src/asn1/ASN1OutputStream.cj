@@ -6,26 +6,38 @@ import asn1.types.ASN1Tag
 
 public class ASN1OutputStream <: OutputStream {
     private var encoder: ASN1Encoder
+    protected  var  output: OutputStream
 
     public init(encoder: ASN1Encoder, out: OutputStream) {
-        // TODO
+        this.output = out
         this.encoder = encoder
     }
 
     public func writeObject(asn1Object: ASN1Object): Unit {
+        var tag: ASN1Tag = asn1Object.getTag()
+        writeTag(tag)
         // TODO
     }
 
     public func write(b: Array<Byte>): Unit {
-        // TODO
+        output.write(b)
     }
 
     public func write(b: Int64): Unit {
-        // TODO
+        output.write([UInt8(b)])
     }
 
     private func writeLength(length: Int64): Unit {
-        // TODO
+        if (length < 0x7f) {
+            write(length)
+        } else {
+            var nrBytes: Int64 = lengthBytes(length)
+            write(0x80 | nrBytes)
+            while (nrBytes > 0) {
+                write(length >> ((nrBytes - 1) * 8))
+                nrBytes --
+            }
+        }
     }
 
     private func lengthBytes(length: Int64): Int64 {
@@ -39,6 +51,7 @@ public class ASN1OutputStream <: OutputStream {
     }
 
     private func writeTag(tag: ASN1Tag): Unit {
-        // TODO
+        var tagByte: Byte =  UInt8 (tag.getAsn1TagClass().getValue() | tag.getAsn1Encoding().getValue() | tag.getTag());
+        write(Int64(tagByte));
     }
 }

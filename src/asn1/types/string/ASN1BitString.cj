@@ -1,6 +1,7 @@
 package asn1.types.string
 
 from std import io.ByteArrayStream
+from std import format.*
 import asn1.ASN1Parser
 import asn1.ASN1Serializer
 import asn1.ASN1OutputStream
@@ -108,7 +109,7 @@ public class BitStringParser <: ASN1Parser {
                     Checks.checkState(
                         subTag.getTag() == asn1Tag.getTag(),
                         "Expected an ASN.1 BIT STRING as Constructed object, got",
-                        Array<Any>()
+                        Array<Formatter>()
                     )
                     var i: Int64 = stream.readLength()
                 }

@@ -2,49 +2,82 @@ package asn1
 
 from std import io.InputStream
 from std import io.ByteArrayStream
+from std import log.*
 import asn1.types.ASN1Object
 import asn1.encodingrules.ASN1Decoder
 
 public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
+    private static let logger: SimpleLogger = SimpleLogger()
+    protected var input: InputStream
+
     private var decoder: ASN1Decoder
 
     public init(decoder: ASN1Decoder, wrapped: InputStream) {
-        // TODO
+        this.input = wrapped
         this.decoder = decoder
     }
 
     public init(decoder: ASN1Decoder, value: Array<Byte>) {
-        // TODO
+        var byteStream = ByteArrayStream()
+        byteStream.write(value)
+        this.input = byteStream
         this.decoder = decoder
     }
 
     public func readObject(): ASN1Object {
-        //TODO
+        try {
+            var tag:ASN1Tag = decoder.readTag(this)
+            logger.trace("Read ASN.1 tag")
+            var length: Int64 = decoder.readLength(this)
+            logger.trace("Read ASN.1 object length: ${length}")
+            var value: Array<Byte> = decoder.readValue(length, this)
+            // TODO
+            logger.debug("Read ASN.1 object")
+        } catch (pe: ASN1ParseException) {
+            throw pe
+        } catch (e: Exception) {
+            throw ASN1ParseException("Cannot parse ASN.1 object from stream")
+        }
         throw ASN1ParseException("Cannot parse ASN.1 object from stream")
     }
 
     public func readValue(length: Int64): Array<Byte> {
-        //TODO
-        return Array<Byte>()
+        return decoder.readValue(length, this)
     }
 
     public override func iterator(): Iterator<ASN1Object> {
-        //TODO
-        throw IllegalArgumentException("")
+        return IteratorASN1Object(this)
     }
 
     public func readTag(): ASN1Tag {
-        //TODO
-        throw IllegalArgumentException("")
+        return decoder.readTag(this)
     }
 
     public func readLength(): Int64 {
-        //TODO
-        return 0
+        return decoder.readLength(this)
     }
 
     public override func read(buffer: Array<Byte>): Int64 {
-        // TODO
-        return buffer.size
+        return this.input.read(buffer)
+    }
+}
+
+class IteratorASN1Object <: Iterator<ASN1Object> {
+    private var stream: ASN1InputStream
+
+    init(stream: ASN1InputStream) {
+        this.stream = stream
+    }
+    public func iterator(): Iterator<ASN1Object> {
+        return this
+    }
+
+    public func next(): Option<ASN1Object>{
+        try {
+            return stream.readObject()
+        } catch (e: Exception) {
+            throw Exception(e.message)
+        }
+        return Option<ASN1Object>.None
     }
 }

@@ -28,7 +28,7 @@ public class ParserNull <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        Checks.checkState(value.size == 0, "ASN.1 NULL can not have a value", Array<Any>())
+        Checks.checkState(value.size == 0, "ASN.1 NULL can not have a value", Array<Formatter>())
         return ASN1Null()
     }
 }
