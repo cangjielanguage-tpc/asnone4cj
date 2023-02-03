@@ -1,5 +1,6 @@
 package asn1.types.primitive
 
+from std import format.Formatter
 import asn1.types.ASN1Tag
 import asn1.types.ASN1Object
 import asn1.util.Checks
@@ -14,7 +15,7 @@ public class ASN1Null <: ASN1PrimitiveValue {
     }
 
     public override func getValue(): Any {
-        return ()
+        return Option<Unit>.None
     }
 
     protected func valueHash(): Int64 {
@@ -42,5 +43,7 @@ public class SerializerNull <: ASN1Serializer {
         return 0
     }
 
-    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {}
+    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+        // No-op, no data
+    }
 }

@@ -1,14 +1,25 @@
 package asn1.types.primitive
 
+from cryptocj import bignumcj.BIGNUM
+from cryptocj import bignumcj.bnNew
+from cryptocj import bignumcj.bnGetWord
+from cryptocj import bignumcj.bnSetWord
+
 public class ASN1Enumerated <: ASN1PrimitiveValue {
-    protected var value: Int64 = 0
+    protected var value: CPointer<BIGNUM> = bnNew()
 
     public init(value: Int64) {
+        super(ASN1Tag.ENUMERATED)
+        // 将整数设置给大数对象
+        bnSetWord(this.value, UInt64(value))
+    }
+
+    public init(value: CPointer<BIGNUM>) {
         super(ASN1Tag.ENUMERATED)
         this.value = value
     }
 
-    public init(value: Int64, valueBytes: Array<Byte>) {
+    public init(value: CPointer<BIGNUM>, valueBytes: Array<Byte>) {
         super(ASN1Tag.ENUMERATED, valueBytes)
         this.value = value
     }
@@ -24,8 +35,14 @@ public class EnumeratedParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        // TODO
-        return ASN1Enumerated(0, value)
+        var valueNumber: Int64 = 0
+        for (i in 0..value.size) {
+            valueNumber += Int64(value[i])
+        }
+        var valueBigNum: CPointer<BIGNUM> = bnNew()
+        // 将整数设置给大数对象
+        bnSetWord(valueBigNum, UInt64(valueNumber))
+        return ASN1Enumerated(valueBigNum, value)
     }
 }
 
@@ -35,7 +52,7 @@ public class SerializerEnumerated <: ASN1Serializer {
     }
 
     public override func serializedLength(asn1Object: ASN1Object): Int64 {
-        var object = (asn1Object as ASN1Enumerated).getOrThrow()
+        var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
         }
@@ -43,7 +60,7 @@ public class SerializerEnumerated <: ASN1Serializer {
     }
 
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
-        var object = (asn1Object as ASN1Enumerated).getOrThrow()
+        var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
         }
@@ -51,6 +68,7 @@ public class SerializerEnumerated <: ASN1Serializer {
     }
 
     private func calculateBytes(asn1Object: ASN1Enumerated): Unit {
-        // TODO
+        // 将大数对象设置给整数
+        asn1Object.valueBytes = bnGetWord(asn1Object.value).toString().toUtf8Array()
     }
 }

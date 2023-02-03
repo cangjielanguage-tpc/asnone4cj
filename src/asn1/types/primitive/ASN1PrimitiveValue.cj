@@ -15,6 +15,9 @@ public abstract class ASN1PrimitiveValue <: ASN1Object & ASN1Primitive & Hashabl
     }
 
     protected open func valueHash(): Int64 {
+        if (valueBytes.isEmpty()) {
+            return 0
+        }
         var result: Int64 = 1
         for (element in valueBytes) {
             result = 31 * result + element.position()

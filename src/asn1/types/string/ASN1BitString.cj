@@ -1,7 +1,7 @@
 package asn1.types.string
 
 from std import io.ByteArrayStream
-from std import format.*
+from std import format.Formatter
 import asn1.ASN1Parser
 import asn1.ASN1Serializer
 import asn1.ASN1OutputStream
@@ -35,10 +35,11 @@ public class ASN1BitString <: ASN1String {
 
     public init(bitSet: Any) {
         // TODO
-        super(ASN1Tag.BIT_STRING, Array<Byte>())
+        // BitSet
+        this(ASN1Tag.BIT_STRING, constructBytes(bitSet), 0)
     }
 
-    private func constructBytes(bits: Array<Bool>): Array<Byte> {
+    private static func constructBytes(bits: Array<Bool>): Array<Byte> {
         var length: Int64
         if (bits.size % 8 > 0) {
             length = bits.size / 8 + 1
@@ -58,6 +59,11 @@ public class ASN1BitString <: ASN1String {
             }
         }
         return bytes
+    }
+
+    private static func constructBytes(bitSet: Any): Array<Byte> {
+        // TODO
+        return Array<Byte>()
     }
 
     private func constructBits(): Array<Bool> {
@@ -99,7 +105,6 @@ public class BitStringParser <: ASN1Parser {
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         if (asn1Tag.isConstructed()) {
-            // TODO
             try {
                 var stream: ASN1InputStream = ASN1InputStream(decoder, value)
                 var baos: ByteArrayStream = ByteArrayStream()
@@ -112,7 +117,14 @@ public class BitStringParser <: ASN1Parser {
                         Array<Formatter>()
                     )
                     var i: Int64 = stream.readLength()
+                    var subValue: Array<Byte> = stream.readValue(i)
+                    baos.write(subValue)
+                    if (stream.length <= 0) {
+                        // Last ASN.1 BitString
+                        unusedBits = Int64(subValue[0])
+                    }
                 }
+                return ASN1BitString(asn1Tag, baos.bytes(), unusedBits)
             } catch (exception: Exception) {
                 throw ASN1ParseException("Unable to parse Constructed ASN.1 BIT STRING")
             }
@@ -120,9 +132,8 @@ public class BitStringParser <: ASN1Parser {
             var unusedBits: Byte = value[0]
             var bits: Array<Byte> = Array<Byte>()
             value.copyTo(bits, 1, 1, value.size)
-            return ASN1BitString(asn1Tag, bits, unusedBits.position())
+            return ASN1BitString(asn1Tag, bits, Int64(unusedBits))
         }
-        throw ASN1ParseException("Unable to parse Constructed ASN.1 BIT STRING")
     }
 }
 

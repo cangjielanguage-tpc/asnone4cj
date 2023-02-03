@@ -1,30 +1,26 @@
 package asn1.types.string
 
 public class ASN1OctetString <: ASN1String {
-    protected var bytes: Array<Byte> = Array<Byte>()
-
     public init(bytes: Array<Byte>) {
         super(ASN1Tag.OCTET_STRING, bytes)
-        this.bytes = bytes
     }
 
     public init(tag: ASN1Tag, bytes: Array<Byte>) {
         super(tag, bytes)
-        this.bytes = bytes
     }
 
     public override func getValue(): Any {
         var copyList: Array<Byte> = Array<Byte>()
-        bytes.copyTo(copyList, 0, 0, this.bytes.size)
+        valueBytes.copyTo(copyList, 0, 0, this.valueBytes.size)
         return copyList
     }
 
     public func valueString(): String {
-        return bytes.toString()
+        return valueBytes.toString()
     }
 
     public func length(): Int64 {
-        return bytes.size
+        return valueBytes.size
     }
 }
 public class OctetStringParser <: ASN1Parser {
@@ -44,11 +40,11 @@ public class OctetStringSerializer <: ASN1Serializer {
 
     public override func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1OctetString = (asn1Object as ASN1OctetString).getOrThrow()
-        return object.bytes.size + 1
+        return object.valueBytes.size
     }
 
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1OctetString = (asn1Object as ASN1OctetString).getOrThrow()
-        stream.write(object.bytes)
+        stream.write(object.valueBytes)
     }
 }
