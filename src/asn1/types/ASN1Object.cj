@@ -10,11 +10,13 @@ public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
     public func getValue(): Any
 
     public func equals(o: Object): Bool {
-        // TODO
         if (refEq(this, o)) {
             return true
         }
         var that: ASN1Object = (o as ASN1Object).getOrThrow()
+        if (refEq(this.tag, that)) {
+            return true
+        }
         return false
     }
 
@@ -24,13 +26,11 @@ public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
     }
 
     public open func toString(): String {
-        // TODO
-        return ""
+        return "ASN1Object" + "[" + valueString() + "]"
     }
 
     protected open func valueString(): String {
-        // TODO
-        return ""
+        return tag.toString()
     }
 
     public func getTag(): ASN1Tag {

@@ -3,7 +3,7 @@ package asn1.types
 from std import collection.*
 
 public abstract class ASN1Tag {
-    private static var tags: HashMap<Int8, ASN1Tag> = HashMap<Int8, ASN1Tag>()
+    private static var tags: HashMap<Int64, ASN1Tag> = HashMap<Int64, ASN1Tag>()
     private var tag: Int64 = 0
     private var asn1TagClass: ASN1TagClass
     private var supportedEncodings: HashSet<ASN1Encoding> = HashSet<ASN1Encoding>()
@@ -85,18 +85,56 @@ public abstract class ASN1Tag {
     }
 
     public func equals(o: Object): Bool {
-        // TODO
-        return false
+        if (refEq(this, o)) {
+            return true
+        }
+        var that: ASN1Tag = (o as ASN1Tag).getOrThrow()
+        return (getTag() == that.getTag() && asn1Encoding == that.asn1Encoding)
     }
 
-    public func hashCode(): Int64 {
-        // TODO
-        return 0
+    public func hashCode(): Int32 {
+        return hashCodeobjs(asn1TagClass, getTag(), asn1Encoding)
+    }
+
+    @overflowWrapping
+    private func hashCodeobjs(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding): Int32 {
+        var result: Int32 = 1
+        var asn1Tagcode: Int32 = 0
+        var asn1Encode: Int32 = 0
+        asn1Tagcode = match (asn1TagClass) {
+            case UNIVERSAL(Byte) => 1590550415
+            case APPLICATION(Byte) => 1058025095
+            case CONTEXT_SPECIFIC(Byte) => 665576141
+            case PRIVATE(Byte) => 1599771323
+        }
+        result = 31 * result + asn1Tagcode
+        result = 31 * result + Int32(tag)
+        match (asn1Encoding) {
+            case PRIMITIVE(Byte) => 1058025095
+            case CONSTRUCTED(Byte) => 665576141
+        }
+        result = 31 * result + Int32(tag)
+        return result
     }
 
     public func toString(): String {
-        // TODO
-        return ""
+        var sb: StringBuilder = StringBuilder()
+        sb.append("ASN1Tag[")
+        match (asn1TagClass) {
+            case UNIVERSAL(Byte) => sb.append("UNIVERSAL")
+            case APPLICATION(Byte) => sb.append("APPLICATION")
+            case CONTEXT_SPECIFIC(Byte) => sb.append("CONTEXT_SPECIFIC")
+            case PRIVATE(Byte) => sb.append("PRIVATE")
+        }
+        sb.append(",")
+        match (asn1Encoding) {
+            case PRIMITIVE(Byte) => sb.append("PRIMITIVE")
+            case CONSTRUCTED(Byte) => sb.append("CONSTRUCTED")
+        }
+        sb.append(",")
+        sb.append(tag)
+        sb.append(']')
+        return sb.toString()
     }
 
     public static let ASN1_BOOLEAN: ASN1Tag = ASN1BooleanTag(
@@ -153,9 +191,22 @@ public abstract class ASN1Tag {
         0x10,
         ASN1Encoding.CONSTRUCTED(0x20)
     )
+
+    private func addTags() {
+        tags.put(ASN1_BOOLEAN.getTag(), ASN1_BOOLEAN)
+        tags.put(INTEGER.getTag(), INTEGER)
+        tags.put(BIT_STRING.getTag(), BIT_STRING)
+        tags.put(OCTET_STRING.getTag(), OCTET_STRING)
+        tags.put(ASN1_NULL_TAG.getTag(), ASN1_NULL_TAG)
+        tags.put(OBJECT_IDENTIFIER.getTag(), OBJECT_IDENTIFIER)
+        tags.put(ENUMERATED.getTag(), ENUMERATED)
+        tags.put(SET.getTag(), SET)
+        tags.put(SEQUENCE.getTag(), SEQUENCE)
+    }
 }
 
 public class ASN1BooleanTag <: ASN1Tag {
+
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
