@@ -4,7 +4,13 @@
   "name": "asn1",
   "description": "nothing here",
   "version": "0.0.1",
-  "requires": {},
+  "requires": {
+    "cryptocj": {
+      "organization": "cangjie",
+      "version": "0.0.5",
+      "path": "./cryptocj"
+    }
+  },
   "package_requires": {
     "path_option": [],
     "package_option": {}

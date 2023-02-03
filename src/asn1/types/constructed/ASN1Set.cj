@@ -1,18 +1,20 @@
 package asn1.types.constructed
 
+from std import collection.HashSet
+import asn1.ASN1ParseException
+import asn1.ASN1InputStream
 
-public class ASN1Set <: ASN1Object & Iterable<ASN1Object> {
-
+public class ASN1Set <: ASN1Object & ASN1Constructed {
     private var objects: HashSet<ASN1Object>
     protected var bytes: Array<Byte> = Array<Byte>()
 
-    private init (objects: HashSet<ASN1Object>, bytes: Array<Byte>) {
+    public init(objects: HashSet<ASN1Object>, bytes: Array<Byte>) {
         super(ASN1Tag.SET)
         this.objects = objects
         this.bytes = bytes
     }
 
-    public init (objects: HashSet<ASN1Object>) {
+    public init(objects: HashSet<ASN1Object>) {
         super(ASN1Tag.SET)
         this.objects = objects
     }
@@ -22,44 +24,49 @@ public class ASN1Set <: ASN1Object & Iterable<ASN1Object> {
     }
 
     public func iterator(): Iterator<ASN1Object> {
-        return this.objects.iterator()
+        return HashSet<ASN1Object>(objects).iterator()
     }
-
 }
 
 class SetParser <: ASN1Parser {
-
     public init(decoder: ASN1Decoder) {
         super(decoder)
     }
 
     public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         var asn1Objects: HashSet<ASN1Object> = HashSet<ASN1Object>()
-        return ASN1Set(asn1Objects)
+        try {
+            var stream: ASN1InputStream = ASN1InputStream(decoder, value)
+            for (asn1Object in stream) {
+                asn1Objects.put(asn1Object)
+            }
+        } catch (ioe: IOException) {
+            throw ASN1ParseException(ioe, "Could not parse ASN.1 SET contents.", Array<Formatter>())
+        }
+        return ASN1Set(asn1Objects, value)
     }
 }
-class SetSerializer <: ASN1Serializer {
 
+class SetSerializer <: ASN1Serializer {
     public init(encoder: ASN1Encoder) {
         super(encoder)
     }
 
     public func serializedLength(asn1Object: ASN1Object): Int64 {
-        var objects = (asn1Object as ASN1Set).getOrThrow()
+        var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
         if (objects.bytes.isEmpty()) {
-            calculateBytes(objects);
+            calculateBytes(objects)
         }
         return objects.bytes.size
     }
 
     public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
-        var objects = (asn1Object as ASN1Set).getOrThrow()
+        var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
         if (!objects.bytes.isEmpty()) {
-            ()
             stream.write(objects.bytes)
         } else {
             for (v in objects) {
-                stream.writeObject(objects)
+                stream.writeObject(v)
             }
         }
     }

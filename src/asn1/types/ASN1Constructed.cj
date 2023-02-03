@@ -1,3 +1,3 @@
 package asn1.types
 
-public interface ASN1Constructed<ASN1Object> <: Iterable<ASN1Object> {}
+public interface ASN1Constructed <: Iterable<ASN1Object> {}

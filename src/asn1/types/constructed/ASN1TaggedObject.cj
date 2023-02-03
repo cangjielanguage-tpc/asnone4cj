@@ -1,17 +1,17 @@
 package asn1.types.constructed
 
-import asn1.encodingrules.ber.*
+from std import collection.StringBuilder
+import asn1.encodingrules.ber.BERDecoder
 
-public class ASN1TaggedObject <: ASN1Object & Iterable<ASN1Object> {
-    private var object: ?ASN1Object
-    private var decoder: ASN1Decoder = BERDecoder()
+public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
+    public var object: ?ASN1Object
     protected var bytes: Array<Byte>
-    private var explicit: Bool = true
+    private var decoder: ASN1Decoder = BERDecoder()
+    public var explicit: Bool = true
     private var tags: ASN1Tag
 
     protected init(tag: ASN1Tag, object: ?ASN1Object, explicit: Bool) {
-        //TODO
-        super(tag)
+        super(formatMessage(tag, object, explicit))
         this.object = object
         this.tags = tag
         this.explicit = explicit
@@ -35,7 +35,7 @@ public class ASN1TaggedObject <: ASN1Object & Iterable<ASN1Object> {
     }
 
     public func getValue(): ASN1Object {
-        return object.getOrThrow()
+        return getObject()
     }
 
     public func getTagNo(): Int64 {
@@ -43,31 +43,47 @@ public class ASN1TaggedObject <: ASN1Object & Iterable<ASN1Object> {
     }
 
     public func iterator(): Iterator<ASN1Object> {
-        // TODO
-        throw Exception("")
+        var seq: ASN1Sequence = (getObject(ASN1Tag.SEQUENCE) as ASN1Sequence).getOrThrow()
+        return seq.iterator()
     }
 
     public func getObject(): ASN1Object {
         match (object) {
-            case None => return object.getOrThrow()
+            case None =>
+                try {
+                    var inputStream: ASN1InputStream = ASN1InputStream(decoder, bytes)
+                    return inputStream.readObject()
+                } catch (asn1ParseException: ASN1ParseException) {
+                    let list: Array<Formatter> = []
+                    throw ASN1ParseException(
+                        asn1ParseException,
+                        "Unable to parse the explicit Tagged Object with %s, it might be implicit",
+                        list
+                    )
+                } catch (ioe: IOException) {
+                    throw ASN1ParseException(ioe, "Could not parse the inputstream", Array<Formatter>())
+                }
             case Some(v) => return object.getOrThrow()
         }
-        // TODO
     }
 
-    public func getObject(tag: ASN1Object): ASN1Object {
-        // TODO
-        return object.getOrThrow()
+    public func getObject(tag: ASN1Tag): ASN1Object {
+        if (object != None && object.getOrThrow().getTag().equals(tag)) {
+            return object.getOrThrow()
+        } else if (object == None && !bytes.isEmpty()) {
+            // TODO
+            // return tag.newParser(decoder).parse(tag, bytes);
+        }
+        throw ASN1ParseException("Unable to parse the implicit Tagged Object with %s, it is explicit")
     }
 
     public func toString(): String {
         var b: StringBuilder = StringBuilder()
         b.append("ASN1TaggedObject")
         b.append("[")
+        b.append(tag.toString())
         match (object) {
-            case Some(v) => b.append(",")
-
-            //b.append(object.getOrThrow())
+            case Some(v) => b.append(",").append(object.getOrThrow())
             case None => b.append(",<unknown>")
         }
         b.append("]")
@@ -75,11 +91,13 @@ public class ASN1TaggedObject <: ASN1Object & Iterable<ASN1Object> {
     }
 }
 
+func formatMessage(tag: ASN1Tag, object: ?ASN1Object, explicit: Bool): ASN1Tag {
+    return tag.constructed()
+}
+
 class TaggedObjectParser <: ASN1Parser {
-    private var decoders: ASN1Decoder
     public init(decoder: ASN1Decoder) {
         super(decoder)
-        this.decoders = decoder
     }
 
     public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
@@ -93,15 +111,15 @@ class TaggedObjectSerializer <: ASN1Serializer {
     }
 
     public func serializedLength(asn1Object: ASN1Object): Int64 {
-        var object = (asn1Object as ASN1TaggedObject).getOrThrow()
+        var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()
         if (object.bytes.isEmpty()) {
-            calculateBytes(object);
+            calculateBytes(object)
         }
         return object.bytes.size
     }
 
     public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
-        var object = (asn1Object as ASN1TaggedObject).getOrThrow()
+        var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()
         if (object.bytes.isEmpty()) {
             calculateBytes(object)
         }
@@ -109,10 +127,14 @@ class TaggedObjectSerializer <: ASN1Serializer {
     }
 
     private func calculateBytes(asn1Object: ASN1TaggedObject): Unit {
+        var object: ASN1Object = asn1Object.object.getOrThrow()
         var out: ByteArrayStream = ByteArrayStream()
         var asn1OutputStream: ASN1OutputStream = ASN1OutputStream(encoder, out)
-        for (object in asn1Object) {
+        if (asn1Object.explicit) {
             asn1OutputStream.writeObject(object)
+        } else {
+            // TODO
+            // object.getTag().newSerializer(encoder).serialize(object, asn1OutputStream);
         }
         asn1Object.bytes = out.bytes()
     }

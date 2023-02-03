@@ -2,6 +2,7 @@ package asn1.encodingrules.ber
 
 from std import io.InputStream
 from std import io.IOException
+from std import format.Formatter
 import asn1.encodingrules.ASN1Decoder
 import asn1.types.ASN1Tag
 import asn1.types.ASN1Object
@@ -40,7 +41,8 @@ public open class BERDecoder <: ASN1Decoder {
                 return ASN1Tag.forTag(asn1TagClass, iTag).asEncoded(asn1Encoding)
             }
         } catch (ioe: IOException) {
-            throw ASN1ParseException("Unable to parse ASN.1 tag")
+            let list: Array<Formatter> = []
+            throw ASN1ParseException("Unable to parse ASN.1 tag", list)
         }
     }
 
@@ -65,7 +67,8 @@ public open class BERDecoder <: ASN1Decoder {
             }
             return longLength
         } catch (ioe: IOException) {
-            throw ASN1ParseException("Unable to read the length of the ASN.1 object.")
+            let list: Array<Formatter> = []
+            throw ASN1ParseException("Unable to read the length of the ASN.1 object.", list)
         }
     }
 
@@ -85,7 +88,8 @@ public open class BERDecoder <: ASN1Decoder {
             }
             return value
         } catch (ioe: IOException) {
-            throw ASN1ParseException("Unable to read the value of the ASN.1 object")
+            let list: Array<Formatter> = []
+            throw ASN1ParseException("Unable to read the value of the ASN.1 object", list)
         }
     }
 }

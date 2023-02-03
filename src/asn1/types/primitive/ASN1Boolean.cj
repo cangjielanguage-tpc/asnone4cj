@@ -1,6 +1,5 @@
 package asn1.types.primitive
 
-from std import format.*
 import asn1.ASN1Parser
 import asn1.ASN1Serializer
 import asn1.ASN1OutputStream
@@ -53,7 +52,7 @@ public class BooleanSerializer <: ASN1Serializer {
     }
 
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
-        var object = (asn1Object as ASN1Boolean).getOrThrow()
+        var object: ASN1Boolean = (asn1Object as ASN1Boolean).getOrThrow()
         if (object.value) {
             stream.write(0x01)
         } else {

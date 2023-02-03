@@ -145,21 +145,17 @@ public abstract class ASN1Tag {
 
     public static let INTEGER: ASN1Tag = ASN1IntegerTag(ASN1TagClass.UNIVERSAL(0), 0x02, ASN1Encoding.PRIMITIVE(0x0))
 
-    public static let SET_BIT: HashSet<ASN1Encoding> = HashSet<ASN1Encoding>()
-
     public static let BIT_STRING: ASN1Tag = ASN1BitStringTag(
         ASN1TagClass.UNIVERSAL(0),
         0x03,
         ASN1Encoding.PRIMITIVE(0x0),
-        SET_BIT
+        HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
     )
-
-    public static let SET_OCTET: HashSet<ASN1Encoding> = HashSet<ASN1Encoding>()
 
     public static let OCTET_STRING: ASN1Tag = ASN1OctetStringTag(
         ASN1TagClass.UNIVERSAL(0),
         0x04,
-        SET_OCTET
+        HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
     )
 
     public static let ASN1_NULL_TAG: ASN1Tag = ASN1NullTag(
