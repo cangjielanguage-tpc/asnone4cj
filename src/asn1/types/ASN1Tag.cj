@@ -1,6 +1,12 @@
 package asn1.types
 
-from std import collection.*
+from std import collection.HashMap
+from std import collection.HashSet
+from std import collection.StringBuilder
+from std import io.IOException
+import asn1.encodingrules.ASN1Encoder
+import asn1.encodingrules.ASN1Decoder
+import asn1.util.Checks
 
 public abstract class ASN1Tag {
     private static var tags: HashMap<Int64, ASN1Tag> = HashMap<Int64, ASN1Tag>()
@@ -47,12 +53,10 @@ public abstract class ASN1Tag {
         if (this.asn1Encoding == asn1Encoding) {
             return this
         }
-
-        // TODO
         if (!supportedEncodings.contains(asn1Encoding)) {
             throw IllegalArgumentException("")
         }
-        throw IllegalArgumentException("")
+        return ASN1AllTag(this.asn1TagClass, this.tag, asn1Encoding, this.supportedEncodings, this)
     }
 
     public static func application(tag: Int64): ASN1Tag {
@@ -64,8 +68,22 @@ public abstract class ASN1Tag {
     }
 
     public static func forTag(asn1TagClass: ASN1TagClass, tag: Int64): ASN1Tag {
-        // TODO
-        throw IllegalArgumentException("")
+        if (asn1TagClass.getValue() == ASN1TagClass.UNIVERSAL(0).getValue()) {
+            for (asn1Tag in tags.values()) {
+                if (asn1Tag.tag == tag && asn1TagClass.getValue() == asn1Tag.asn1TagClass.getValue()) {
+                    return asn1Tag
+                }
+            }
+        } else if (asn1TagClass.getValue() == ASN1TagClass.APPLICATION(0x40).getValue() || asn1TagClass.getValue() ==
+            ASN1TagClass.CONTEXT_SPECIFIC(0x80).getValue() || asn1TagClass.getValue() ==
+            ASN1TagClass.PRIVATE(0xc0).getValue()) {
+            return ASN1TaggedObjectTag(
+                asn1TagClass,
+                tag,
+                HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
+            )
+        }
+        throw ASN1ParseException("")
     }
 
     public func getTag(): Int64 {
@@ -83,6 +101,10 @@ public abstract class ASN1Tag {
     public func isConstructed(): Bool {
         return asn1Encoding == ASN1Encoding.CONSTRUCTED(0x20)
     }
+
+    public func newParser(encoder: ASN1Decoder): ASN1Parser
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
 
     public func equals(o: Object): Bool {
         if (refEq(this, o)) {
@@ -202,18 +224,39 @@ public abstract class ASN1Tag {
 }
 
 public class ASN1BooleanTag <: ASN1Tag {
-
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return BooleanParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return BooleanSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
 }
 
 public class ASN1IntegerTag <: ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return IntegerParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return IntegerSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
 }
 
 public class ASN1BitStringTag <: ASN1Tag {
@@ -225,7 +268,18 @@ public class ASN1BitStringTag <: ASN1Tag {
     ) {
         super(asn1TagClass, tag, asn1Encoding, supportedEncodings)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return BitStringParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return BitStringSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
 }
 
 public class ASN1OctetStringTag <: ASN1Tag {
@@ -236,40 +290,137 @@ public class ASN1OctetStringTag <: ASN1Tag {
     ) {
         super(asn1TagClass, tag, supportedEncodings)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return OctetStringParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return OctetStringSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
 }
 
 public class ASN1NullTag <: ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        return NullParser(decoder)
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        return NullSerializer(encoder)
+    }
 }
 
 public class ASN1ObjectIdentifierTag <: ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return ASN1ObjectIdentifierParser(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return ASN1ObjectIdentifierSerializer(encoder) 
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
 }
 
 public class ASN1EnumeratedTag <: ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return EnumeratedParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return EnumeratedSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
 }
 
 public class ASN1SetTag <: ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return SetParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return SetSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
 }
 
 public class ASN1SequenceTag <: ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
         super(asn1TagClass, tag, asn1Encoding)
     }
-    // TODO
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return SeqParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return SeqSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+}
+
+public class ASN1TaggedObjectTag <: ASN1Tag {
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>) {
+        super(asn1TagClass, tag, supportedEncodings)
+    }
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        // TODO
+        // return TaggedObjectParser(decoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        // TODO
+        // return TaggedObjectSerializer(encoder)
+        throw Exception("corrupted stream - invalid high tag number found")
+    }
+}
+
+public class ASN1AllTag <: ASN1Tag {
+    private var asn1Tag: ASN1Tag
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, 
+        supportedEncodings: HashSet<ASN1Encoding>, asn1Tag: ASN1Tag) {
+        super(asn1TagClass, tag, asn1Encoding, supportedEncodings)
+        this.asn1Tag = asn1Tag
+    }
+
+    public func newParser(decoder: ASN1Decoder): ASN1Parser {
+        asn1Tag.newParser(decoder)
+    }
+
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
+        asn1Tag.newSerializer(encoder)
+    }
 }

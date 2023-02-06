@@ -3,10 +3,9 @@ package asn1.types.constructed
 from std import collection.ArrayList
 from std import io.ByteArrayStream
 from std import io.IOException
-from std import format.Formatter
 import asn1.ASN1OutputStream
-import asn1.ASN1Parser
-import asn1.ASN1Serializer
+import asn1.types.ASN1Parser
+import asn1.types.ASN1Serializer
 import asn1.types.ASN1Object
 import asn1.types.ASN1Tag
 import asn1.types.ASN1Constructed
@@ -50,7 +49,7 @@ class SeqParser <: ASN1Parser {
         super(decoder)
     }
 
-    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+    public func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
         var list: ArrayList<ASN1Object> = ArrayList<ASN1Object>()
         try {
             var stream: ASN1InputStream = ASN1InputStream(decoder, value)
@@ -58,7 +57,7 @@ class SeqParser <: ASN1Parser {
                 list.append(asn1Object)
             }
         } catch (ioe: IOException) {
-            throw ASN1ParseException(ioe, "Unable to parse the ASN.1 SEQUENCE contents.", Array<Formatter>())
+            throw ASN1ParseException(ioe, "Unable to parse the ASN.1 SEQUENCE contents.", Array<ToString>())
         }
         return ASN1Sequence(list, value)
     }
@@ -69,7 +68,7 @@ class SeqSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public func serializedLength(asn1Object: ASN1Object): Int64 {
+    public func serializedLength(asn1Object: Any): Int64 {
         var object: ASN1Sequence = (asn1Object as ASN1Sequence).getOrThrow()
         if (object.bytes.isEmpty()) {
             calculateBytes(object)
@@ -77,13 +76,14 @@ class SeqSerializer <: ASN1Serializer {
         return object.bytes.size
     }
 
-    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+    public func serialize(asn1Object: Any, stream: Any): Unit {
         var object: ASN1Sequence = (asn1Object as ASN1Sequence).getOrThrow()
+        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (!object.bytes.isEmpty()) {
-            stream.write(object.bytes)
+            stream1.write(object.bytes)
         } else {
             for (v in object) {
-                stream.writeObject(v)
+                stream1.writeObject(v)
             }
         }
     }

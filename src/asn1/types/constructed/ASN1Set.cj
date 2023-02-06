@@ -1,7 +1,7 @@
 package asn1.types.constructed
 
 from std import collection.HashSet
-import asn1.ASN1ParseException
+import asn1.types.ASN1ParseException
 import asn1.ASN1InputStream
 
 public class ASN1Set <: ASN1Object & ASN1Constructed {
@@ -33,7 +33,7 @@ class SetParser <: ASN1Parser {
         super(decoder)
     }
 
-    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+    public func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
         var asn1Objects: HashSet<ASN1Object> = HashSet<ASN1Object>()
         try {
             var stream: ASN1InputStream = ASN1InputStream(decoder, value)
@@ -41,7 +41,7 @@ class SetParser <: ASN1Parser {
                 asn1Objects.put(asn1Object)
             }
         } catch (ioe: IOException) {
-            throw ASN1ParseException(ioe, "Could not parse ASN.1 SET contents.", Array<Formatter>())
+            throw ASN1ParseException(ioe, "Could not parse ASN.1 SET contents.", Array<ToString>())
         }
         return ASN1Set(asn1Objects, value)
     }
@@ -52,7 +52,7 @@ class SetSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public func serializedLength(asn1Object: ASN1Object): Int64 {
+    public func serializedLength(asn1Object: Any): Int64 {
         var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
         if (objects.bytes.isEmpty()) {
             calculateBytes(objects)
@@ -60,13 +60,14 @@ class SetSerializer <: ASN1Serializer {
         return objects.bytes.size
     }
 
-    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+    public func serialize(asn1Object: Any, stream: Any): Unit {
         var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
+        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (!objects.bytes.isEmpty()) {
-            stream.write(objects.bytes)
+            stream1.write(objects.bytes)
         } else {
             for (v in objects) {
-                stream.writeObject(v)
+                stream1.writeObject(v)
             }
         }
     }

@@ -28,8 +28,8 @@ public class OctetStringParser <: ASN1Parser {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        return ASN1OctetString(asn1Tag, value)
+    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+        return ASN1OctetString((asn1Tag as ASN1Tag).getOrThrow(), value)
     }
 }
 
@@ -38,13 +38,14 @@ public class OctetStringSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: ASN1Object): Int64 {
+    public override func serializedLength(asn1Object: Any): Int64 {
         var object: ASN1OctetString = (asn1Object as ASN1OctetString).getOrThrow()
         return object.valueBytes.size
     }
 
-    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+    public override func serialize(asn1Object: Any, stream: Any): Unit {
         var object: ASN1OctetString = (asn1Object as ASN1OctetString).getOrThrow()
-        stream.write(object.valueBytes)
+        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
+        stream1.write(object.valueBytes)
     }
 }

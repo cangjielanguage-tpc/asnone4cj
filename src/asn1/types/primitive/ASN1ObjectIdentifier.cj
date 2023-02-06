@@ -7,6 +7,12 @@ from cryptocj import bignumcj.bnAdd
 from cryptocj import bignumcj.bnDec2bn
 from cryptocj import bignumcj.bnRshift
 from cryptocj import bignumcj.bnNumBits
+import asn1.types.ASN1Tag
+import asn1.types.ASN1Object
+import asn1.util.Checks
+import asn1.encodingrules.ASN1Decoder
+import asn1.encodingrules.ASN1Encoder
+import asn1.types.ASN1PrimitiveValue
 
 public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
     protected var oid: String
@@ -30,16 +36,16 @@ public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
     }
 }
 
-public class IdentifierParserObject <: ASN1Parser {
+public class ASN1ObjectIdentifierParser <: ASN1Parser {
     public init(decoder: ASN1Decoder) {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
         Checks.checkArgument(
             value.size > 0,
             "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value",
-            Array<Formatter>()
+            Array<ToString>()
         )
         var byteArrayStream: ByteArrayStream = ByteArrayStream()
 
@@ -79,12 +85,12 @@ public class IdentifierParserObject <: ASN1Parser {
     }
 }
 
-public class ObjectIdentifierSerializer <: ASN1Serializer {
+public class ASN1ObjectIdentifierSerializer <: ASN1Serializer {
     public init(encoder: ASN1Encoder) {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: ASN1Object): Int64 {
+    public override func serializedLength(asn1Object: Any): Int64 {
         var object: ASN1ObjectIdentifier = (asn1Object as ASN1ObjectIdentifier).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
@@ -92,12 +98,13 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
         return object.valueBytes.size
     }
 
-    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+    public override func serialize(asn1Object: Any, stream: Any): Unit {
         var object: ASN1ObjectIdentifier = (asn1Object as ASN1ObjectIdentifier).getOrThrow()
+        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
         }
-        stream.write(object.valueBytes)
+        stream1.write(object.valueBytes)
     }
 
     private func calculateBytes(asn1Object: ASN1ObjectIdentifier): Unit {

@@ -1,6 +1,7 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from asn1 import asn1.ASN1ParseException
+
+from asn1 import asn1.types.ASN1ParseException
 from asn1 import asn1.types.primitive.ASN1Integer
 from cryptocj import bignumcj.BIGNUM
 from cryptocj import bignumcj.bnNew

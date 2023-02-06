@@ -1,4 +1,4 @@
-package asn1
+package asn1.types
 
 public abstract class ASN1Parser {
     protected var decoder: ASN1Decoder
@@ -7,5 +7,5 @@ public abstract class ASN1Parser {
         this.decoder = decoder
     }
 
-    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object
+    public func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object
 }

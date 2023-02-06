@@ -10,4 +10,4 @@ bin/
 *.gcda
 *.gcno
 output/
-cryptocj
+cryptocj/

@@ -5,6 +5,7 @@ from std import io.ByteArrayStream
 from std import log.*
 import asn1.types.ASN1Object
 import asn1.encodingrules.ASN1Decoder
+import asn1.types.ASN1ParseException
 
 public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     private static let logger: SimpleLogger = SimpleLogger()
@@ -26,13 +27,14 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
 
     public func readObject(): ASN1Object {
         try {
-            var tag:ASN1Tag = decoder.readTag(this)
+            var tag: ASN1Tag = (decoder.readTag(this) as ASN1Tag).getOrThrow()
             logger.trace("Read ASN.1 tag")
             var length: Int64 = decoder.readLength(this)
             logger.trace("Read ASN.1 object length: ${length}")
             var value: Array<Byte> = decoder.readValue(length, this)
-            // TODO
+            var parse: ASN1Object = tag.newParser(decoder).parse(tag, value)
             logger.debug("Read ASN.1 object")
+            return parse
         } catch (pe: ASN1ParseException) {
             throw pe
         } catch (e: Exception) {
@@ -50,7 +52,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     }
 
     public func readTag(): ASN1Tag {
-        return decoder.readTag(this)
+        return (decoder.readTag(this) as ASN1Tag).getOrThrow()
     }
 
     public func readLength(): Int64 {
@@ -72,7 +74,7 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
         return this
     }
 
-    public func next(): Option<ASN1Object>{
+    public func next(): Option<ASN1Object> {
         try {
             return stream.readObject()
         } catch (e: Exception) {

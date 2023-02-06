@@ -1,26 +1,24 @@
 package asn1.util
 
-from std import format.*
-
 public class Checks {
     private init() {}
 
-    public static func checkState(state: Bool, messageFormat: String, args: Array<Formatter>) {
+    public static func checkState(state: Bool, messageFormat: String, args: Array<ToString>) {
         if (!state) {
-            throw IllegalArgumentException(formatMessage(messageFormat,args))
+            throw Exception(formatMessage(messageFormat, args))
         }
     }
 
-    public static func checkArgument(bool: Bool, messageFormat: String, args: Array<Formatter>) {
+    public static func checkArgument(bool: Bool, messageFormat: String, args: Array<ToString>) {
         if (!bool) {
-            throw IllegalArgumentException(formatMessage(messageFormat,args))
+            throw IllegalArgumentException(formatMessage(messageFormat, args))
         }
     }
 
-    static func formatMessage(messageFormat: String, args: Array<Formatter>): String {
-        var message: String = ""
+    static func formatMessage(messageFormat: String, args: Array<ToString>): String {
+        var message: String = "IllegalStateException:" + messageFormat
         for (arg in args) {
-            message = message + arg.format(messageFormat)
+            message = message + arg.toString()
         }
         return message
     }

@@ -1,7 +1,7 @@
 package asn1.types.primitive
 
-import asn1.ASN1Parser
-import asn1.ASN1Serializer
+import asn1.types.ASN1Parser
+import asn1.types.ASN1Serializer
 import asn1.ASN1OutputStream
 
 public class ASN1Boolean <: ASN1PrimitiveValue {
@@ -35,8 +35,8 @@ public class BooleanParser <: ASN1Parser {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        let list: Array<Formatter> = [value.size]
+    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+        let list: Array<ToString> = [value.size]
         Checks.checkState(value.size == 1, "ASN.1 NULL can not have a value", list)
         return ASN1Boolean(value[0] != 0x0, value)
     }
@@ -47,16 +47,17 @@ public class BooleanSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: ASN1Object): Int64 {
+    public override func serializedLength(asn1Object: Any): Int64 {
         return 1
     }
 
-    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+    public override func serialize(asn1Object: Any, stream: Any): Unit {
         var object: ASN1Boolean = (asn1Object as ASN1Boolean).getOrThrow()
+        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (object.value) {
-            stream.write(0x01)
+            stream1.write(0x01)
         } else {
-            stream.write(0x00)
+            stream1.write(0x00)
         }
     }
 }
