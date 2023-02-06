@@ -2,7 +2,7 @@
 // EXEC: ./main
 
 from asn1 import asn1.types.ASN1ParseException
-from asn1 import asn1.types.primitive.ASN1Integer
+from asn1 import asn1.types.ASN1Integer
 from cryptocj import bignumcj.BIGNUM
 from cryptocj import bignumcj.bnNew
 from cryptocj import bignumcj.bnGetWord

@@ -1,16 +1,4 @@
-package asn1.types.string
-
-from std import io.ByteArrayStream
-import asn1.types.ASN1Parser
-import asn1.types.ASN1Serializer
-import asn1.ASN1OutputStream
-import asn1.ASN1InputStream
-import asn1.types.ASN1ParseException
-import asn1.types.ASN1Object
-import asn1.types.ASN1Tag
-import asn1.encodingrules.ASN1Decoder
-import asn1.encodingrules.ASN1Encoder
-import asn1.util.Checks
+package asn1.types
 
 public class ASN1BitString <: ASN1String {
     public var unusedBits: Int64 = 0

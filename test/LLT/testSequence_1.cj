@@ -2,7 +2,7 @@
 // EXEC: ./main
 
 from std import collection.ArrayList
-from asn1 import asn1.types.constructed.ASN1Sequence
+from asn1 import asn1.types.ASN1Sequence
 from asn1 import asn1.types.ASN1Object
 from asn1 import asn1.types.ASN1ParseException
 

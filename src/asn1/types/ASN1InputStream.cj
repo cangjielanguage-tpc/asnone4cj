@@ -1,11 +1,7 @@
-package asn1
+package asn1.types
 
 from std import io.InputStream
-from std import io.ByteArrayStream
 from std import log.*
-import asn1.types.ASN1Object
-import asn1.encodingrules.ASN1Decoder
-import asn1.types.ASN1ParseException
 
 public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     private static let logger: SimpleLogger = SimpleLogger()
