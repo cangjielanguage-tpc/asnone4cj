@@ -1,13 +1,4 @@
-package asn1.encodingrules.ber
-
-from std import io.InputStream
-from std import io.IOException
-import asn1.encodingrules.ASN1Decoder
-import asn1.types.ASN1Tag
-import asn1.types.ASN1Object
-import asn1.types.ASN1TagClass
-import asn1.types.ASN1Encoding
-import asn1.types.ASN1ParseException
+package asn1.types
 
 public open class BERDecoder <: ASN1Decoder {
     public override func readTag(inputStream: InputStream): Any {

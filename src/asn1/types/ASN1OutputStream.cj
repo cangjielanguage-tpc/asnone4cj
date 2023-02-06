@@ -1,9 +1,6 @@
-package asn1
+package asn1.types
 
 from std import io.OutputStream
-import asn1.encodingrules.ASN1Encoder
-import asn1.types.ASN1Tag
-import asn1.types.ASN1Serializer
 
 public class ASN1OutputStream <: OutputStream {
     private var encoder: ASN1Encoder

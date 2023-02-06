@@ -1,16 +1,7 @@
-package asn1.types.constructed
+package asn1.types
 
 from std import collection.ArrayList
 from std import io.ByteArrayStream
-from std import io.IOException
-import asn1.ASN1OutputStream
-import asn1.types.ASN1Parser
-import asn1.types.ASN1Serializer
-import asn1.types.ASN1Object
-import asn1.types.ASN1Tag
-import asn1.types.ASN1Constructed
-import asn1.encodingrules.ASN1Decoder
-import asn1.encodingrules.ASN1Encoder
 
 public class ASN1Sequence <: ASN1Object & ASN1Constructed {
     private var objects: ArrayList<ASN1Object>

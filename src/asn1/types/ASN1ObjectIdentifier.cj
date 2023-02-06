@@ -1,18 +1,10 @@
-package asn1.types.primitive
+package asn1.types
 
-from std import io.ByteArrayStream
-from std import collection.StringBuilder
 from cryptocj import bignumcj.bnLshift
 from cryptocj import bignumcj.bnAdd
 from cryptocj import bignumcj.bnDec2bn
 from cryptocj import bignumcj.bnRshift
 from cryptocj import bignumcj.bnNumBits
-import asn1.types.ASN1Tag
-import asn1.types.ASN1Object
-import asn1.util.Checks
-import asn1.encodingrules.ASN1Decoder
-import asn1.encodingrules.ASN1Encoder
-import asn1.types.ASN1PrimitiveValue
 
 public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
     protected var oid: String

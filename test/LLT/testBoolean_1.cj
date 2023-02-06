@@ -2,7 +2,7 @@
 // EXEC: ./main
 
 from asn1 import asn1.types.ASN1ParseException
-from asn1 import asn1.types.primitive.ASN1Boolean
+from asn1 import asn1.types.ASN1Boolean
 
 main() {
     var value1: Bool = false

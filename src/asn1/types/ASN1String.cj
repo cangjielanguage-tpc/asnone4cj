@@ -1,10 +1,4 @@
-package asn1.types.string
-
-import asn1.types.ASN1Primitive
-import asn1.types.ASN1Constructed
-import asn1.types.ASN1Encoding
-import asn1.types.constructed.ASN1Sequence
-import asn1.encodingrules.ber.BERDecoder
+package asn1.types
 
 public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed {
     protected var valueBytes: Array<Byte> = Array<Byte>()

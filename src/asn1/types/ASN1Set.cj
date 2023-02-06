@@ -1,8 +1,4 @@
-package asn1.types.constructed
-
-from std import collection.HashSet
-import asn1.types.ASN1ParseException
-import asn1.ASN1InputStream
+package asn1.types
 
 public class ASN1Set <: ASN1Object & ASN1Constructed {
     private var objects: HashSet<ASN1Object>

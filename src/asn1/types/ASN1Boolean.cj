@@ -1,8 +1,4 @@
-package asn1.types.primitive
-
-import asn1.types.ASN1Parser
-import asn1.types.ASN1Serializer
-import asn1.ASN1OutputStream
+package asn1.types
 
 public class ASN1Boolean <: ASN1PrimitiveValue {
     protected var value: Bool = false

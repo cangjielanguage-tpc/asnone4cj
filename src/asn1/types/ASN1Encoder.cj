@@ -1,3 +1,3 @@
-package asn1.encodingrules
+package asn1.types
 
 public interface ASN1Encoder {}

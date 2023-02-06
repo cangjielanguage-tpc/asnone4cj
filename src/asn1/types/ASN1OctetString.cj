@@ -1,4 +1,4 @@
-package asn1.types.string
+package asn1.types
 
 public class ASN1OctetString <: ASN1String {
     public init(bytes: Array<Byte>) {

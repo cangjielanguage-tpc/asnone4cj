@@ -2,10 +2,7 @@ package asn1.types
 
 from std import collection.HashMap
 from std import collection.HashSet
-from std import collection.StringBuilder
 from std import io.IOException
-import asn1.encodingrules.ASN1Encoder
-import asn1.encodingrules.ASN1Decoder
 import asn1.util.Checks
 
 public abstract class ASN1Tag {
@@ -229,15 +226,11 @@ public class ASN1BooleanTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return BooleanParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return BooleanParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return BooleanSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return BooleanSerializer(encoder)
     }
 }
 
@@ -247,15 +240,11 @@ public class ASN1IntegerTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return IntegerParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return IntegerParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return IntegerSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return IntegerSerializer(encoder)
     }
 }
 
@@ -270,15 +259,11 @@ public class ASN1BitStringTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return BitStringParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return BitStringParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return BitStringSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return BitStringSerializer(encoder)
     }
 }
 
@@ -292,15 +277,11 @@ public class ASN1OctetStringTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return OctetStringParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return OctetStringParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return OctetStringSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return OctetStringSerializer(encoder)
     }
 }
 
@@ -324,15 +305,11 @@ public class ASN1ObjectIdentifierTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return ASN1ObjectIdentifierParser(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return ASN1ObjectIdentifierParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return ASN1ObjectIdentifierSerializer(encoder) 
-        throw Exception("corrupted stream - invalid high tag number found")
+        return ASN1ObjectIdentifierSerializer(encoder)
     }
 }
 
@@ -342,15 +319,11 @@ public class ASN1EnumeratedTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return EnumeratedParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return EnumeratedParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return EnumeratedSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return EnumeratedSerializer(encoder)
     }
 }
 
@@ -360,15 +333,11 @@ public class ASN1SetTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return SetParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return SetParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return SetSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return SetSerializer(encoder)
     }
 }
 
@@ -378,15 +347,11 @@ public class ASN1SequenceTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return SeqParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return SeqParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return SeqSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return SeqSerializer(encoder)
     }
 }
 
@@ -396,15 +361,11 @@ public class ASN1TaggedObjectTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        // TODO
-        // return TaggedObjectParser(decoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return TaggedObjectParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        // TODO
-        // return TaggedObjectSerializer(encoder)
-        throw Exception("corrupted stream - invalid high tag number found")
+        return TaggedObjectSerializer(encoder)
     }
 }
 

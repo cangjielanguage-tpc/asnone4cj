@@ -1,7 +1,6 @@
-package asn1.types.constructed
+package asn1.types
 
 from std import collection.StringBuilder
-import asn1.encodingrules.ber.BERDecoder
 
 public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
     public var object: ?ASN1Object
