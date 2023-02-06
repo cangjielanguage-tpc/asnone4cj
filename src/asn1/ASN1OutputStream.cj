@@ -3,10 +3,11 @@ package asn1
 from std import io.OutputStream
 import asn1.encodingrules.ASN1Encoder
 import asn1.types.ASN1Tag
+import asn1.types.ASN1Serializer
 
 public class ASN1OutputStream <: OutputStream {
     private var encoder: ASN1Encoder
-    protected  var  output: OutputStream
+    protected var output: OutputStream
 
     public init(encoder: ASN1Encoder, out: OutputStream) {
         this.output = out
@@ -16,7 +17,11 @@ public class ASN1OutputStream <: OutputStream {
     public func writeObject(asn1Object: ASN1Object): Unit {
         var tag: ASN1Tag = asn1Object.getTag()
         writeTag(tag)
-        // TODO
+        var asn1Serializer: ASN1Serializer = asn1Object.getTag().newSerializer(encoder)
+        writeLength(asn1Serializer.serializedLength(asn1Object))
+
+        //noinspection unchecked
+        asn1Serializer.serialize(asn1Object, this)
     }
 
     public func write(b: Array<Byte>): Unit {
@@ -35,7 +40,7 @@ public class ASN1OutputStream <: OutputStream {
             write(0x80 | nrBytes)
             while (nrBytes > 0) {
                 write(length >> ((nrBytes - 1) * 8))
-                nrBytes --
+                nrBytes--
             }
         }
     }
@@ -51,7 +56,7 @@ public class ASN1OutputStream <: OutputStream {
     }
 
     private func writeTag(tag: ASN1Tag): Unit {
-        var tagByte: Byte =  UInt8 (tag.getAsn1TagClass().getValue() | tag.getAsn1Encoding().getValue() | tag.getTag());
+        var tagByte: Byte = UInt8(tag.getAsn1TagClass().getValue() | tag.getAsn1Encoding().getValue() | tag.getTag())
         write(Int64(tagByte));
     }
 }

@@ -1,0 +1,42 @@
+package asn1.types
+
+public class ASN1Null <: ASN1PrimitiveValue {
+    private let NULL_BYTES: Array<Byte> = []
+
+    public init() {
+        super(ASN1Tag.ASN1_NULL_TAG, NULL_BYTES)
+    }
+
+    public override func getValue(): Any {
+        return Option<Unit>.None
+    }
+
+    protected func valueHash(): Int64 {
+        return 0
+    }
+}
+
+public class NullParser <: ASN1Parser {
+    public init(decoder: ASN1Decoder) {
+        super(decoder)
+    }
+
+    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+        Checks.checkState(value.size == 0, "ASN.1 NULL can not have a value", Array<ToString>())
+        return ASN1Null()
+    }
+}
+
+public class NullSerializer <: ASN1Serializer {
+    public init(encoder: ASN1Encoder) {
+        super(encoder)
+    }
+
+    public override func serializedLength(asn1Object: Any): Int64 {
+        return 0
+    }
+
+    public override func serialize(asn1Object: Any, stream: Any): Unit {
+        // No-op, no data
+    }
+}

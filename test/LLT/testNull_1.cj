@@ -1,7 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from asn1 import asn1.ASN1ParseException
-from asn1 import asn1.types.primitive.ASN1Null
+
+from asn1 import asn1.types.ASN1ParseException
+from asn1 import asn1.types.ASN1Null
 
 main() {
     var asn1Null1: ASN1Null = ASN1Null()

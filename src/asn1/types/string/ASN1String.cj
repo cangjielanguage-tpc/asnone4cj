@@ -3,6 +3,8 @@ package asn1.types.string
 import asn1.types.ASN1Primitive
 import asn1.types.ASN1Constructed
 import asn1.types.ASN1Encoding
+import asn1.types.constructed.ASN1Sequence
+import asn1.encodingrules.ber.BERDecoder
 
 public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed {
     protected var valueBytes: Array<Byte> = Array<Byte>()
@@ -14,9 +16,8 @@ public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed
 
     public func iterator(): Iterator<ASN1Object> {
         if (tag.getAsn1Encoding() == ASN1Encoding.CONSTRUCTED(0x20)) {
-            // TODO
-            // return ASN1Tag.SEQUENCE.newParser(new BERDecoder()).parse(ASN1Tag.SEQUENCE, valueBytes).iterator();
-            throw IllegalArgumentException("")
+            var asn1Sequence :ASN1Sequence = (ASN1Tag.SEQUENCE.newParser(BERDecoder()).parse(ASN1Tag.SEQUENCE, valueBytes) as ASN1Sequence).getOrThrow()
+            return asn1Sequence.iterator()
         } else {
             return this.iterator()
         }

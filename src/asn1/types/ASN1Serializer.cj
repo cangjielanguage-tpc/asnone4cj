@@ -1,4 +1,4 @@
-package asn1
+package asn1.types
 
 public abstract class ASN1Serializer {
     protected var encoder: ASN1Encoder
@@ -7,7 +7,7 @@ public abstract class ASN1Serializer {
         this.encoder = encoder
     }
 
-    public func serializedLength(asn1Object: ASN1Object): Int64
+    public func serializedLength(asn1Object: Any): Int64
 
-    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
+    public func serialize(asn1Object: Any, stream: Any): Unit
 }

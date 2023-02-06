@@ -1,10 +1,10 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from std import collection.*
-from asn1 import asn1.*
+from std import collection.ArrayList
 from asn1 import asn1.types.constructed.ASN1Sequence
 from asn1 import asn1.types.ASN1Object
+from asn1 import asn1.types.ASN1ParseException
 
 main() {
     var arr = ArrayList<ASN1Object>()
