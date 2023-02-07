@@ -1,4 +1,8 @@
-package asn1.types
+package asn1
+
+import asn1.encodingrules.ASN1Decoder
+import asn1.types.ASN1TagClass
+import asn1.types.ASN1Encoding
 
 public open class BERDecoder <: ASN1Decoder {
     public override func readTag(inputStream: InputStream): Any {

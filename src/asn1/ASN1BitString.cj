@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 public class ASN1BitString <: ASN1String {
     public var unusedBits: Int64 = 0
