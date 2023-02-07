@@ -126,36 +126,3 @@ public class ASN1Sequence <: ASN1Object & ASN1Constructed {
     public func get(i: Int64): ASN1Object
 }
 ```
-
-#### class ASN1Set
-
-```cangjie
-public class ASN1Set <: ASN1Object & ASN1Constructed {
-    /*
-     * 初始化 ASN1Set
-     *
-     * 参数 objects - ASN1Object 对象列表
-     */
-    public init(objects: ArrayList<ASN1Object>)
-    
-    public init(objects: HashSet<ASN1Object>)
-
-    public func getValue(): HashSet<ASN1Object>
-
-    public func iterator(): Iterator<ASN1Object>
-}
-```
-#### class ASN1TaggedObject
-
-```cangjie
-public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
-    public init(tag: ASN1Tag, object: ?ASN1Object)
-    public func isExplicit(): Bool
-    public func getValue(): ASN1Object
-    public func getTagNo(): Int64
-    public func iterator(): Iterator<ASN1Object>
-    public func getObject(): ASN1Object
-    public func getObject(tag: ASN1Tag): ASN1Object
-    public func toString(): String
-}
-```

@@ -65,6 +65,7 @@ public abstract class ASN1Tag {
     }
 
     public static func forTag(asn1TagClass: ASN1TagClass, tag: Int64): ASN1Tag {
+        addTags()
         if (asn1TagClass.getValue() == ASN1TagClass.UNIVERSAL(0).getValue()) {
             for (asn1Tag in tags.values()) {
                 if (asn1Tag.tag == tag && asn1TagClass.getValue() == asn1Tag.asn1TagClass.getValue()) {
@@ -207,7 +208,7 @@ public abstract class ASN1Tag {
         ASN1Encoding.CONSTRUCTED(0x20)
     )
 
-    private func addTags() {
+    private static func addTags() {
         tags.put(ASN1_BOOLEAN.getTag(), ASN1_BOOLEAN)
         tags.put(INTEGER.getTag(), INTEGER)
         tags.put(BIT_STRING.getTag(), BIT_STRING)
