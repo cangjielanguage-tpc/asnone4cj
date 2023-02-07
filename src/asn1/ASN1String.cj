@@ -1,4 +1,6 @@
-package asn1.types
+package asn1
+
+import asn1.types.ASN1Primitive
 
 public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed {
     protected var valueBytes: Array<Byte> = Array<Byte>()

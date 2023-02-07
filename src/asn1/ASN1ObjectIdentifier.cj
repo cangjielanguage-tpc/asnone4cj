@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 from cryptocj import bignumcj.bnLshift
 from cryptocj import bignumcj.bnAdd

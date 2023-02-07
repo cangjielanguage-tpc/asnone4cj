@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 public class ASN1Null <: ASN1PrimitiveValue {
     private let NULL_BYTES: Array<Byte> = []

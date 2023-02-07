@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 from std import collection.ArrayList
 from std import io.ByteArrayStream
