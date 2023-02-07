@@ -36,7 +36,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
         } catch (e: Exception) {
             throw ASN1ParseException("Cannot parse ASN.1 object from stream")
         }
-        throw ASN1ParseException("Cannot parse ASN.1 object from stream")
+        
     }
 
     public func readValue(length: Int64): Array<Byte> {

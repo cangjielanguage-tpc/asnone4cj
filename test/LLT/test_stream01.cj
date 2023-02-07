@@ -1,0 +1,43 @@
+// EXEC: cjc %import-path %L %l %f
+// EXEC: ./main
+
+from asn1 import asn1.BERDecoder
+from asn1 import asn1.ASN1InputStream
+from std import io.*
+
+main() {
+    let decodetd: BERDecoder = BERDecoder()
+    let wrapped: ByteArrayStream = ByteArrayStream()
+    let asn = ASN1InputStream(decodetd,wrapped)
+    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let asn1 = ASN1InputStream(decodetd,bytesBuf)
+    let src = asn.readValue(1)
+    let src1 = asn.iterator()
+    src1.iterator()
+    try {
+        let srcc = asn1.readObject()
+    } catch (e: Exception) {
+        println("case pass")
+    }
+    try {
+        let srcc = src1.next()
+    } catch (e: Exception) {
+        println("case pass")
+    }
+    try {
+        let src2 = asn.readTag()
+    } catch (e: Exception) {
+        println("case pass")
+    }
+    
+    let src3 = asn.readLength()
+    var data: Array<Byte> = Array<Byte>()
+    let src4 = asn.read(data)
+    if (src.size != 1) {
+        return 1
+    }
+    if (src3 != 0) {
+        return 2
+    }
+    return 0
+}

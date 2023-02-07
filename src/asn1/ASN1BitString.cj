@@ -118,8 +118,8 @@ public class BitStringParser <: ASN1Parser {
             }
         } else {
             var unusedBits: Byte = value[0]
-            var bits: Array<Byte> = Array<Byte>()
-            value.copyTo(bits, 1, 1, value.size)
+            var bits: Array<Byte> = Array<Byte>(value.size, item: 0)
+            value.copyTo(bits, 0, 0, value.size)
             return ASN1BitString(asn1test, bits, Int64(unusedBits))
         }
     }
