@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 public class ASN1Set <: ASN1Object & ASN1Constructed {
     private var objects: HashSet<ASN1Object>

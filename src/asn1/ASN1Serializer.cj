@@ -1,4 +1,6 @@
-package asn1.types
+package asn1
+
+import asn1.encodingrules.ASN1Encoder
 
 public abstract class ASN1Serializer {
     protected var encoder: ASN1Encoder

@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 public abstract class ASN1Parser {
     protected var decoder: ASN1Decoder

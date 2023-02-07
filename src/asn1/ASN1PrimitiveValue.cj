@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 public abstract class ASN1PrimitiveValue <: ASN1Object & ASN1Primitive & Hashable {
     public var valueBytes: Array<Byte> = Array<Byte>()

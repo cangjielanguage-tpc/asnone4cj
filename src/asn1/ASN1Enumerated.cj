@@ -1,37 +1,35 @@
-package asn1.types
+package asn1
 
-public class ASN1Integer <: ASN1PrimitiveValue {
+from cryptocj import bignumcj.BIGNUM
+from cryptocj import bignumcj.bnNew
+from cryptocj import bignumcj.bnGetWord
+from cryptocj import bignumcj.bnSetWord
+
+public class ASN1Enumerated <: ASN1PrimitiveValue {
     protected var value: CPointer<BIGNUM> = bnNew()
 
     public init(value: Int64) {
-        super(ASN1Tag.INTEGER)
+        super(ASN1Tag.ENUMERATED)
         // 将整数设置给大数对象
         bnSetWord(this.value, UInt64(value))
-        this.valueBytes = value.toString().toUtf8Array()
     }
 
     public init(value: CPointer<BIGNUM>) {
-        super(ASN1Tag.INTEGER)
+        super(ASN1Tag.ENUMERATED)
         this.value = value
-        // 将大数对象设置给整数
-        this.valueBytes = bnGetWord(value).toString().toUtf8Array()
     }
 
     public init(value: CPointer<BIGNUM>, valueBytes: Array<Byte>) {
-        super(ASN1Tag.INTEGER, valueBytes)
+        super(ASN1Tag.ENUMERATED, valueBytes)
         this.value = value
     }
 
     public override func getValue(): Any {
         return value
     }
-
-    protected func valueHash(): Int64 {
-        return bnGetWord(value).hashCode()
-    }
 }
 
-public class IntegerParser <: ASN1Parser {
+public class EnumeratedParser <: ASN1Parser {
     public init(decoder: ASN1Decoder) {
         super(decoder)
     }
@@ -44,23 +42,34 @@ public class IntegerParser <: ASN1Parser {
         var valueBigNum: CPointer<BIGNUM> = bnNew()
         // 将整数设置给大数对象
         bnSetWord(valueBigNum, UInt64(valueNumber))
-        return ASN1Integer(valueBigNum, value)
+        return ASN1Enumerated(valueBigNum, value)
     }
 }
 
-public class IntegerSerializer <: ASN1Serializer {
+public class EnumeratedSerializer <: ASN1Serializer {
     public init(encoder: ASN1Encoder) {
         super(encoder)
     }
 
     public override func serializedLength(asn1Object: Any): Int64 {
-        var object: ASN1Integer = (asn1Object as ASN1Integer).getOrThrow()
+        var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()
+        if (object.valueBytes.isEmpty()) {
+            calculateBytes(object)
+        }
         return object.valueBytes.size
     }
 
     public override func serialize(asn1Object: Any, stream: Any): Unit {
-        var object: ASN1Integer = (asn1Object as ASN1Integer).getOrThrow()
+        var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()
         var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
+        if (object.valueBytes.isEmpty()) {
+            calculateBytes(object)
+        }
         stream1.write(object.valueBytes)
+    }
+
+    private func calculateBytes(asn1Object: ASN1Enumerated): Unit {
+        // 将大数对象设置给整数
+        asn1Object.valueBytes = bnGetWord(asn1Object.value).toString().toUtf8Array()
     }
 }

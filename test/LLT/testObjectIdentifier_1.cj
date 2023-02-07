@@ -1,8 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.types.ASN1ParseException
-from asn1 import asn1.types.ASN1ObjectIdentifier
+from asn1 import asn1.ASN1ParseException
+from asn1 import asn1.ASN1ObjectIdentifier
 
 main() {
     var value1: String = ""

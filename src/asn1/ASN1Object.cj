@@ -1,4 +1,4 @@
-package asn1.types
+package asn1
 
 public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
     protected var tag: ASN1Tag

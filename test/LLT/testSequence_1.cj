@@ -2,9 +2,9 @@
 // EXEC: ./main
 
 from std import collection.ArrayList
-from asn1 import asn1.types.ASN1Sequence
-from asn1 import asn1.types.ASN1Object
-from asn1 import asn1.types.ASN1ParseException
+from asn1 import asn1.ASN1Sequence
+from asn1 import asn1.ASN1Object
+from asn1 import asn1.ASN1ParseException
 
 main() {
     var arr = ArrayList<ASN1Object>()
