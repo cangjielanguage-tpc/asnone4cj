@@ -1,16 +1,10 @@
 package asn1.types
 
-var tagvalue: Int64 = 0
-
 public enum ASN1TagClass {
     | UNIVERSAL(Byte)
     | APPLICATION(Byte)
     | CONTEXT_SPECIFIC(Byte)
     | PRIVATE(Byte)
-
-    func ASN1TagClass(value: Int64) {
-        tagvalue = value
-    }
 
     public static func parseClass(tagByte: Byte): ASN1TagClass {
         var classValue: UInt8 = (tagByte & 0xc0)
@@ -24,6 +18,27 @@ public enum ASN1TagClass {
     }
 
     public func getValue(): Int64 {
-        return tagvalue
+        match (this) {
+            case UNIVERSAL(v) => if (v != 0) {
+                    throw Exception("UNIVERSAL value should be 0x00");
+                } else {
+                    return Int64(v)
+                }
+            case APPLICATION(v) => if (v != 0x40) {
+                    throw Exception("APPLICATION value should be 0x40");
+                } else {
+                    return Int64(v)
+                }
+            case CONTEXT_SPECIFIC(v) => if (v != 0x80) {
+                    throw Exception("CONTEXT_SPECIFIC value should be 0x80");
+                } else {
+                    return Int64(v)
+                }
+            case PRIVATE(v) => if (v != 0xc0) {
+                    throw Exception("PRIVATE value should be 0xc0");
+                } else {
+                    return Int64(v)
+                }
+        }
     }
 }
