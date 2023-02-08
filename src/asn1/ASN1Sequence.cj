@@ -7,7 +7,7 @@ public class ASN1Sequence <: ASN1Object & ASN1Constructed {
     private var objects: ArrayList<ASN1Object>
     protected var bytes: Array<Byte> = Array<Byte>()
 
-    protected init(objects: ArrayList<ASN1Object>, bytes: Array<Byte>) {
+    public init(objects: ArrayList<ASN1Object>, bytes: Array<Byte>) {
         super(ASN1Tag.SEQUENCE)
         this.objects = objects
         this.bytes = bytes
@@ -40,7 +40,7 @@ class SeqParser <: ASN1Parser {
         super(decoder)
     }
 
-    public func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         var list: ArrayList<ASN1Object> = ArrayList<ASN1Object>()
         try {
             var stream: ASN1InputStream = ASN1InputStream(decoder, value)
@@ -59,7 +59,7 @@ class SeqSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public func serializedLength(asn1Object: Any): Int64 {
+    public func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1Sequence = (asn1Object as ASN1Sequence).getOrThrow()
         if (object.bytes.isEmpty()) {
             calculateBytes(object)
@@ -67,14 +67,13 @@ class SeqSerializer <: ASN1Serializer {
         return object.bytes.size
     }
 
-    public func serialize(asn1Object: Any, stream: Any): Unit {
+    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1Sequence = (asn1Object as ASN1Sequence).getOrThrow()
-        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (!object.bytes.isEmpty()) {
-            stream1.write(object.bytes)
+            stream.write(object.bytes)
         } else {
             for (v in object) {
-                stream1.writeObject(v)
+                stream.writeObject(v)
             }
         }
     }

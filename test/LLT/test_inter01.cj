@@ -6,6 +6,7 @@ from cryptocj import bignumcj.*
 from asn1 import asn1.ASN1Integer
 from asn1 import asn1.IntegerParser
 from asn1 import asn1.BERDecoder
+from asn1 import asn1.ASN1Tag
 
 from std import io.*
 
@@ -20,7 +21,7 @@ main() {
 
     let decodetd: BERDecoder = BERDecoder()
     let src =IntegerParser(decodetd)
-    let src1 = src.parse(6,bytesBuf)
+    let src1 = src.parse(ASN1Tag.INTEGER,bytesBuf)
     println(src1.toString())
     if (src1.toString() != "ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,2]]") {
         return 1

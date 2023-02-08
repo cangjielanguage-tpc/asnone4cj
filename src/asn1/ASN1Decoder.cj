@@ -1,9 +1,7 @@
-package asn1.encodingrules
-
-from std import io.InputStream
+package asn1
 
 public interface ASN1Decoder {
-    func readTag(inputStream: InputStream): Any
+    func readTag(inputStream: InputStream): ASN1Tag
 
     func readLength(inputStream: InputStream): Int64
 

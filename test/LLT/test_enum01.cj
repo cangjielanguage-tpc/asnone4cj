@@ -5,6 +5,7 @@ from cryptocj import bignumcj.BIGNUM
 from asn1 import asn1.ASN1Enumerated
 from asn1 import asn1.EnumeratedParser
 from asn1 import asn1.BERDecoder
+from asn1 import asn1.ASN1Tag
 
 from std import io.*
 
@@ -17,7 +18,7 @@ main() {
     sc.getValue()
     let decodetd: BERDecoder = BERDecoder()
     let src =EnumeratedParser(decodetd)
-    let src1 = src.parse(6,bytesBuf)
+    let src1 = src.parse(ASN1Tag.ENUMERATED,bytesBuf)
     println(src1.toString())
     if (src1.toString() != "ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,10]]") {
         return 1

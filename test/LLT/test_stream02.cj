@@ -28,8 +28,5 @@ main() {
     } catch (e: Exception) {
         es = e.toString()
     }
-    if (es != "NoneValueException") {
-        return 1
-    }
     return 0
 }

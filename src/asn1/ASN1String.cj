@@ -20,7 +20,7 @@ public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed
     }
 
     public func getValueBytes(): Array<Byte> {
-        var copyList: Array<Byte> = Array<Byte>()
+        var copyList: Array<Byte> = Array<Byte>(valueBytes.size, item: 0)
         valueBytes.copyTo(copyList, 0, 0, valueBytes.size)
         return copyList
     }

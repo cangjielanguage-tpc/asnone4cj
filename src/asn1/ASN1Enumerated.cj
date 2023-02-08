@@ -34,7 +34,7 @@ public class EnumeratedParser <: ASN1Parser {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         var valueNumber: Int64 = 0
         for (i in 0..value.size) {
             valueNumber += Int64(value[i])
@@ -51,7 +51,7 @@ public class EnumeratedSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: Any): Int64 {
+    public override func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
@@ -59,13 +59,12 @@ public class EnumeratedSerializer <: ASN1Serializer {
         return object.valueBytes.size
     }
 
-    public override func serialize(asn1Object: Any, stream: Any): Unit {
+    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()
-        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
         }
-        stream1.write(object.valueBytes)
+        stream.write(object.valueBytes)
     }
 
     private func calculateBytes(asn1Object: ASN1Enumerated): Unit {
