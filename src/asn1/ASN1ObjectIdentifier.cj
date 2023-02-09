@@ -51,7 +51,7 @@ public class ObjectIdentifierParser <: ASN1Parser {
         var stringBuilder: StringBuilder = StringBuilder()
         stringBuilder.append(firstTwo / 40)
         stringBuilder.append('.').append(firstTwo % 40)
-        while (byteArrayStream.isEmpty()) {
+        while (byteArrayStream.length > 0) {
             var xLength: Int64 = byteArrayStream.read(dataArr)
             var x: Byte = dataArr[0]
             if (x < 127) {

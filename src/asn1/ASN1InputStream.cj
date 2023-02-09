@@ -9,8 +9,10 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
 
     private var decoder: ASN1Decoder
 
+    public var lengths: Int64
     public init(decoder: ASN1Decoder, wrapped: InputStream) {
         this.input = wrapped
+        this.lengths = wrapped.length
         this.decoder = decoder
     }
 
@@ -18,6 +20,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
         var byteStream = ByteArrayStream()
         byteStream.write(value)
         this.input = byteStream
+        this.lengths = byteStream.length
         this.decoder = decoder
     }
 

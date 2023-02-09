@@ -27,7 +27,7 @@ public class ASN1BitString <: ASN1String {
         } else {
             length = bits.size / 8
         }
-        var bytes: Array<Byte> = Array<Byte>()
+        var bytes: Array<Byte> = Array<Byte>(8, item: 0)
         for (i in 0..bytes.size) {
             bytes[i] = 0
             for (j in 0..8) {
@@ -85,7 +85,7 @@ public class BitStringParser <: ASN1Parser {
                 var stream: ASN1InputStream = ASN1InputStream(decoder, value)
                 var baos: ByteArrayStream = ByteArrayStream()
                 var unusedBits: Int64 = 0
-                while (stream.length > 0) {
+                while (stream.lengths > 0) {
                     var subTag: ASN1Tag = stream.readTag()
                     Checks.checkState(
                         subTag.getTag() == asn1Tag.getTag(),
