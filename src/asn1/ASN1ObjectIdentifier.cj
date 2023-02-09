@@ -23,17 +23,17 @@ public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
         return oid
     }
 
-    protected func valueHash(): Int64 {
+    public func valueHash(): Int64 {
         return oid.hashCode()
     }
 }
 
-public class ASN1ObjectIdentifierParser <: ASN1Parser {
+public class ObjectIdentifierParser <: ASN1Parser {
     public init(decoder: ASN1Decoder) {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         Checks.checkArgument(
             value.size > 0,
             "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value",
@@ -77,12 +77,12 @@ public class ASN1ObjectIdentifierParser <: ASN1Parser {
     }
 }
 
-public class ASN1ObjectIdentifierSerializer <: ASN1Serializer {
+public class ObjectIdentifierSerializer <: ASN1Serializer {
     public init(encoder: ASN1Encoder) {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: Any): Int64 {
+    public override func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1ObjectIdentifier = (asn1Object as ASN1ObjectIdentifier).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
@@ -90,13 +90,12 @@ public class ASN1ObjectIdentifierSerializer <: ASN1Serializer {
         return object.valueBytes.size
     }
 
-    public override func serialize(asn1Object: Any, stream: Any): Unit {
+    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1ObjectIdentifier = (asn1Object as ASN1ObjectIdentifier).getOrThrow()
-        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (object.valueBytes.isEmpty()) {
             calculateBytes(object)
         }
-        stream1.write(object.valueBytes)
+        stream.write(object.valueBytes)
     }
 
     private func calculateBytes(asn1Object: ASN1ObjectIdentifier): Unit {

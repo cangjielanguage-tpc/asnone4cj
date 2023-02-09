@@ -29,7 +29,7 @@ class SetParser <: ASN1Parser {
         super(decoder)
     }
 
-    public func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         var asn1Objects: HashSet<ASN1Object> = HashSet<ASN1Object>()
         try {
             var stream: ASN1InputStream = ASN1InputStream(decoder, value)
@@ -48,7 +48,7 @@ class SetSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public func serializedLength(asn1Object: Any): Int64 {
+    public func serializedLength(asn1Object: ASN1Object): Int64 {
         var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
         if (objects.bytes.isEmpty()) {
             calculateBytes(objects)
@@ -56,14 +56,13 @@ class SetSerializer <: ASN1Serializer {
         return objects.bytes.size
     }
 
-    public func serialize(asn1Object: Any, stream: Any): Unit {
+    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
-        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (!objects.bytes.isEmpty()) {
-            stream1.write(objects.bytes)
+            stream.write(objects.bytes)
         } else {
             for (v in objects) {
-                stream1.writeObject(v)
+                stream.writeObject(v)
             }
         }
     }

@@ -20,12 +20,6 @@ public class ASN1BitString <: ASN1String {
         this.unusedBits = 8 - (bits.size % 8)
     }
 
-    public init(bitSet: Any) {
-        // TODO
-        // BitSet
-        this(ASN1Tag.BIT_STRING, constructBytes(bitSet), 0)
-    }
-
     private static func constructBytes(bits: Array<Bool>): Array<Byte> {
         var length: Int64
         if (bits.size % 8 > 0) {
@@ -48,11 +42,6 @@ public class ASN1BitString <: ASN1String {
         return bytes
     }
 
-    private static func constructBytes(bitSet: Any): Array<Byte> {
-        // TODO
-        return Array<Byte>()
-    }
-
     private func constructBits(): Array<Bool> {
         var bits: Array<Bool> = Array<Bool>()
         for (i in 0..bits.size) {
@@ -62,12 +51,12 @@ public class ASN1BitString <: ASN1String {
     }
 
     public override func getValue(): Any {
-        var copyList: Array<Bool> = Array<Bool>()
+        var copyList: Array<Bool> = Array<Bool>(this.bits.size, item: false)
         bits.copyTo(copyList, 0, 0, this.bits.size)
         return copyList
     }
 
-    protected override func valueString(): String {
+    public override func valueString(): String {
         return bits.toString()
     }
 
@@ -90,9 +79,8 @@ public class BitStringParser <: ASN1Parser {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
-        var asn1test: ASN1Tag = (asn1Tag as ASN1Tag).getOrThrow()
-        if (asn1test.isConstructed()) {
+    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        if (asn1Tag.isConstructed()) {
             try {
                 var stream: ASN1InputStream = ASN1InputStream(decoder, value)
                 var baos: ByteArrayStream = ByteArrayStream()
@@ -100,7 +88,7 @@ public class BitStringParser <: ASN1Parser {
                 while (stream.length > 0) {
                     var subTag: ASN1Tag = stream.readTag()
                     Checks.checkState(
-                        subTag.getTag() == asn1test.getTag(),
+                        subTag.getTag() == asn1Tag.getTag(),
                         "Expected an ASN.1 BIT STRING as Constructed object, got",
                         Array<ToString>()
                     )
@@ -112,7 +100,7 @@ public class BitStringParser <: ASN1Parser {
                         unusedBits = Int64(subValue[0])
                     }
                 }
-                return ASN1BitString(asn1test, baos.bytes(), unusedBits)
+                return ASN1BitString(asn1Tag, baos.bytes(), unusedBits)
             } catch (exception: Exception) {
                 throw ASN1ParseException("Unable to parse Constructed ASN.1 BIT STRING")
             }
@@ -120,7 +108,7 @@ public class BitStringParser <: ASN1Parser {
             var unusedBits: Byte = value[0]
             var bits: Array<Byte> = Array<Byte>(value.size, item: 0)
             value.copyTo(bits, 0, 0, value.size)
-            return ASN1BitString(asn1test, bits, Int64(unusedBits))
+            return ASN1BitString(asn1Tag, bits, Int64(unusedBits))
         }
     }
 }
@@ -130,15 +118,14 @@ public class BitStringSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: Any): Int64 {
+    public override func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1BitString = (asn1Object as ASN1BitString).getOrThrow()
         return object.valueBytes.size + 1
     }
 
-    public override func serialize(asn1Object: Any, stream: Any): Unit {
+    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1BitString = (asn1Object as ASN1BitString).getOrThrow()
-        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
-        stream1.write(object.unusedBits)
-        stream1.write(object.valueBytes)
+        stream.write(object.unusedBits)
+        stream.write(object.valueBytes)
     }
 }

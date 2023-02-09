@@ -23,7 +23,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
 
     public func readObject(): ASN1Object {
         try {
-            var tag: ASN1Tag = (decoder.readTag(this) as ASN1Tag).getOrThrow()
+            var tag: ASN1Tag = decoder.readTag(this)
             logger.trace("Read ASN.1 tag")
             var length: Int64 = decoder.readLength(this)
             logger.trace("Read ASN.1 object length: ${length}")
@@ -48,7 +48,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     }
 
     public func readTag(): ASN1Tag {
-        return (decoder.readTag(this) as ASN1Tag).getOrThrow()
+        return decoder.readTag(this)
     }
 
     public func readLength(): Int64 {

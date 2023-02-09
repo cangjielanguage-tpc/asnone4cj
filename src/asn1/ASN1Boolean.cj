@@ -17,7 +17,7 @@ public class ASN1Boolean <: ASN1PrimitiveValue {
         return value
     }
 
-    protected func valueHash(): Int64 {
+    public func valueHash(): Int64 {
         if (value) {
             return 1231
         } else {
@@ -31,7 +31,7 @@ public class BooleanParser <: ASN1Parser {
         super(decoder)
     }
 
-    public override func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
+    public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
         let list: Array<ToString> = [value.size]
         Checks.checkState(value.size == 1, "ASN.1 NULL can not have a value", list)
         return ASN1Boolean(value[0] != 0x0, value)
@@ -43,17 +43,16 @@ public class BooleanSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public override func serializedLength(asn1Object: Any): Int64 {
+    public override func serializedLength(asn1Object: ASN1Object): Int64 {
         return 1
     }
 
-    public override func serialize(asn1Object: Any, stream: Any): Unit {
+    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1Boolean = (asn1Object as ASN1Boolean).getOrThrow()
-        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (object.value) {
-            stream1.write(0x01)
+            stream.write(0x01)
         } else {
-            stream1.write(0x00)
+            stream.write(0x00)
         }
     }
 }

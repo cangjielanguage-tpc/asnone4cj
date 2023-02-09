@@ -9,7 +9,7 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
     public var explicit: Bool = true
     private var tags: ASN1Tag
 
-    protected init(tag: ASN1Tag, object: ?ASN1Object, explicit: Bool) {
+    public init(tag: ASN1Tag, object: ?ASN1Object, explicit: Bool) {
         super(formatMessage(tag, object, explicit))
         this.object = object
         this.tags = tag
@@ -21,7 +21,7 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
         this(tag, object, true)
     }
 
-    protected init(tag: ASN1Tag, bytes: Array<Byte>, decoder: ASN1Decoder) {
+    public init(tag: ASN1Tag, bytes: Array<Byte>, decoder: ASN1Decoder) {
         super(tag)
         this.bytes = bytes
         this.tags = tag
@@ -98,9 +98,8 @@ class TaggedObjectParser <: ASN1Parser {
         super(decoder)
     }
 
-    public func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object {
-        var asn1test :ASN1Tag = (asn1Tag as ASN1Tag).getOrThrow()
-        return ASN1TaggedObject(asn1test, value, decoder)
+    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        return ASN1TaggedObject(asn1Tag, value, decoder)
     }
 }
 
@@ -109,7 +108,7 @@ class TaggedObjectSerializer <: ASN1Serializer {
         super(encoder)
     }
 
-    public func serializedLength(asn1Object: Any): Int64 {
+    public func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()
         if (object.bytes.isEmpty()) {
             calculateBytes(object)
@@ -117,13 +116,12 @@ class TaggedObjectSerializer <: ASN1Serializer {
         return object.bytes.size
     }
 
-    public func serialize(asn1Object: Any, stream: Any): Unit {
+    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()
-        var stream1: ASN1OutputStream = (stream as ASN1OutputStream).getOrThrow()
         if (object.bytes.isEmpty()) {
             calculateBytes(object)
         }
-        stream1.write(object.bytes)
+        stream.write(object.bytes)
     }
 
     private func calculateBytes(asn1Object: ASN1TaggedObject): Unit {

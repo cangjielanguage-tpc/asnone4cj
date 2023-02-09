@@ -7,5 +7,5 @@ public abstract class ASN1Parser {
         this.decoder = decoder
     }
 
-    public func parse(asn1Tag: Any, value: Array<Byte>): ASN1Object
+    public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object
 }

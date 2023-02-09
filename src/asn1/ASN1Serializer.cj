@@ -9,7 +9,7 @@ public abstract class ASN1Serializer {
         this.encoder = encoder
     }
 
-    public func serializedLength(asn1Object: Any): Int64
+    public func serializedLength(asn1Object: ASN1Object): Int64
 
-    public func serialize(asn1Object: Any, stream: Any): Unit
+    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
 }

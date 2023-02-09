@@ -12,7 +12,7 @@ public abstract class ASN1PrimitiveValue <: ASN1Object & ASN1Primitive & Hashabl
         this.valueBytes = valueBytes
     }
 
-    protected open func valueHash(): Int64 {
+    public open func valueHash(): Int64 {
         if (valueBytes.isEmpty()) {
             return 0
         }

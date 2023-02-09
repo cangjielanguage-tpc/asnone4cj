@@ -306,11 +306,11 @@ public class ASN1ObjectIdentifierTag <: ASN1Tag {
     }
 
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
-        return ASN1ObjectIdentifierParser(decoder)
+        return ObjectIdentifierParser(decoder)
     }
 
     public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {
-        return ASN1ObjectIdentifierSerializer(encoder)
+        return ObjectIdentifierSerializer(encoder)
     }
 }
 

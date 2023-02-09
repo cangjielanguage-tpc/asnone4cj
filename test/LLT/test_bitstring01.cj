@@ -13,7 +13,6 @@ main() {
     let asn = ASN1BitString(bytesBuf,6)
     let arr: Array<Bool> = Array<Bool>(5, item: true)
     let asn1 = ASN1BitString(arr)
-    let asn2 = ASN1BitString(6)
     asn.getValue()
     let indd =asn.isSet(2)
     let src =asn.length()
