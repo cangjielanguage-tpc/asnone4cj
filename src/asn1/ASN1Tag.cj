@@ -51,7 +51,7 @@ public abstract class ASN1Tag {
             return this
         }
         if (!supportedEncodings.contains(asn1Encoding)) {
-            throw IllegalArgumentException("")
+            throw IllegalArgumentException("The ASN.1 tag does not support encoding")
         }
         return ASN1AllTag(this.asn1TagClass, this.tag, asn1Encoding, this.supportedEncodings, this)
     }
@@ -81,7 +81,7 @@ public abstract class ASN1Tag {
                 HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
             )
         }
-        throw ASN1ParseException("")
+        throw ASN1ParseException("Unknown ASN.1 tag")
     }
 
     public func getTag(): Int64 {

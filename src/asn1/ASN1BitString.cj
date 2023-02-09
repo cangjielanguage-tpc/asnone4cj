@@ -27,7 +27,7 @@ public class ASN1BitString <: ASN1String {
         } else {
             length = bits.size / 8
         }
-        var bytes: Array<Byte> = Array<Byte>(8, item: 0)
+        var bytes: Array<Byte> = Array<Byte>(length, item: 0)
         for (i in 0..bytes.size) {
             bytes[i] = 0
             for (j in 0..8) {
@@ -43,7 +43,7 @@ public class ASN1BitString <: ASN1String {
     }
 
     private func constructBits(): Array<Bool> {
-        var bits: Array<Bool> = Array<Bool>()
+        var bits: Array<Bool> = Array<Bool>(length(), item: false)
         for (i in 0..bits.size) {
             bits[i] = isSet(i)
         }
