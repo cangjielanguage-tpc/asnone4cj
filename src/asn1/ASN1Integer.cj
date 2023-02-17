@@ -1,20 +1,34 @@
 package asn1
 
+from encoding import hex.*
+from numeric import bigint.*
+from std import overflow.*
+
 public class ASN1Integer <: ASN1PrimitiveValue {
     protected var value: CPointer<BIGNUM> = bnNew()
 
     public init(value: Int64) {
         super(ASN1Tag.INTEGER)
+
         // 将整数设置给大数对象
         bnSetWord(this.value, UInt64(value))
-        this.valueBytes = value.toString().toUtf8Array()
+        var stringValue: String = UInt64(value).format("x")
+        if (stringValue.size.throwingMod(2) != 0) {
+            stringValue = "0" + stringValue
+        }
+        this.valueBytes = fromHexString(stringValue).getOrThrow()
     }
 
     public init(value: CPointer<BIGNUM>) {
         super(ASN1Tag.INTEGER)
         this.value = value
+        var intValue: UInt64 = bnGetWord(value)
+        var stringValue: String = intValue.format("x")
+        if (stringValue.size.throwingMod(2) != 0) {
+            stringValue = "0" + stringValue
+        }
         // 将大数对象设置给整数
-        this.valueBytes = bnGetWord(value).toString().toUtf8Array()
+        this.valueBytes = fromHexString(stringValue).getOrThrow()
     }
 
     public init(value: CPointer<BIGNUM>, valueBytes: Array<Byte>) {
@@ -42,6 +56,7 @@ public class IntegerParser <: ASN1Parser {
             valueNumber += Int64(value[i])
         }
         var valueBigNum: CPointer<BIGNUM> = bnNew()
+
         // 将整数设置给大数对象
         bnSetWord(valueBigNum, UInt64(valueNumber))
         return ASN1Integer(valueBigNum, value)

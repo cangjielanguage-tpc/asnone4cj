@@ -8,7 +8,7 @@ from asn1 import asn1.encodingrules.der.*
 from std import io.*
 
 // 数组第一位0x05代表ASN1Null类型
-// 数组第二位0x00
+// 数组第二位0x00代表数组长度为0
 main(): Int64 {
     var value: Array<Byte> = [0x05, 0x00]
     var byteArrayStream: ByteArrayStream = ByteArrayStream()
@@ -19,6 +19,7 @@ main(): Int64 {
         return 1
     }
     var object: ASN1Null = (asn1Object as ASN1Null).getOrThrow()
+    var anyValue: Any = object.getValue()
     if (object.valueHash() != 0) {
         return 1
     }
@@ -30,5 +31,6 @@ main(): Int64 {
     if (byteArrayStream1.bytes() != value1) {
         return 1
     }
+
     return 0
 }
