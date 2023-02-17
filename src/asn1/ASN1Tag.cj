@@ -15,11 +15,12 @@ public abstract class ASN1Tag {
     public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>) {
         if (supportedEncodings.contains(ASN1Encoding.PRIMITIVE(0x0))) {
             this.asn1Encoding = ASN1Encoding.PRIMITIVE(0x0)
+        } else {
+            this.asn1Encoding = ASN1Encoding.CONSTRUCTED(0x20)
         }
         this.asn1TagClass = asn1TagClass
         this.tag = tag
         this.supportedEncodings = supportedEncodings
-        this.asn1Encoding = ASN1Encoding.CONSTRUCTED(0x20)
     }
 
     public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
@@ -372,8 +373,13 @@ public class ASN1TaggedObjectTag <: ASN1Tag {
 
 public class ASN1AllTag <: ASN1Tag {
     private var asn1Tag: ASN1Tag
-    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, 
-        supportedEncodings: HashSet<ASN1Encoding>, asn1Tag: ASN1Tag) {
+    public init(
+        asn1TagClass: ASN1TagClass,
+        tag: Int64,
+        asn1Encoding: ASN1Encoding,
+        supportedEncodings: HashSet<ASN1Encoding>,
+        asn1Tag: ASN1Tag
+    ) {
         super(asn1TagClass, tag, asn1Encoding, supportedEncodings)
         this.asn1Tag = asn1Tag
     }
