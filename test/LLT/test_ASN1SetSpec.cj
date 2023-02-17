@@ -16,6 +16,13 @@ main(): Int64 {
     if (anySet.size != 1) {
         return 1
     }
+    var iteratorSet: Iterator<ASN1Object> = anySet.iterator()
+    while (true) {
+        match (iteratorSet.next()) {
+            case Some(i) => println(i)
+            case None => break
+        }
+    }
 
     var objects1: HashSet<ASN1Object> = HashSet<ASN1Object>([ASN1Boolean(true), ASN1Integer(1)])
     var set1: ASN1Set = ASN1Set(objects1)
@@ -23,6 +30,13 @@ main(): Int64 {
     var anySet1: HashSet<ASN1Object> = (any1 as HashSet<ASN1Object>).getOrThrow()
     if (anySet1.size != 2) {
         return 1
+    }
+    var iteratorSet1: Iterator<ASN1Object> = anySet1.iterator()
+    while (true) {
+        match (iteratorSet1.next()) {
+            case Some(i) => println(i)
+            case None => break
+        }
     }
 
     var objects2: HashSet<ASN1Object> = HashSet<ASN1Object>(
@@ -33,5 +47,13 @@ main(): Int64 {
     if (anySet2.size != 4) {
         return 1
     }
+    var iteratorSet2: Iterator<ASN1Object> = anySet2.iterator()
+    while (true) {
+        match (iteratorSet2.next()) {
+            case Some(i) => println(i)
+            case None => break
+        }
+    }
+
     return 0
 }
