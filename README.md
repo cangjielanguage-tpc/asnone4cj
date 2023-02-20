@@ -21,7 +21,7 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 
 - 🚀 支持 Sequence，Set，Tagged 构造类型
 
-- 💪 支持 Boolean，Enumerated，Integer，Null，ObjectIdentifier，PrimitiveValue<T> 原始类型数据
+- 💪 支持 Boolean，Enumerated，Integer，Null，ObjectIdentifier，PrimitiveValue 原始类型数据
 
 - 🛠️ 支持 BitString，Octet String，String 字符串类型
 
@@ -42,9 +42,7 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 │   ├── assets
 │   ├── cjcov
 │   ├── design.md
-│   ├── proposal.md
-│   └── xxx_lib.md
-│   └── api.md
+│   └── feature_api.md
 ├── src
 │   └── asn1
 │        └── encodingrules
@@ -62,7 +60,7 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 
 ### 接口说明
 
-主要是核心类和成员函数说明，详情见 [API](./doc/api.md)
+主要是核心类和成员函数说明，详情见 [API](./doc/feature_api.md)
 
 ## <img alt="" src="./doc/assets/readme-icon-compile.png" style="display: inline-block;" width=3%/> 使用说明
 
@@ -71,8 +69,13 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 编译描述和具体shell命令
 
 ```shell
-cpm update
-cpm build
+git clone https://gitee.com/HW-PLLab/asn-one.git;
+git clone https://gitee.com/HW-PLLab/testJekins.git;
+cd okhttp-idling-resource;
+cp -r ../testJekins/src/ci_test .;
+
+python3 ci_test/main.py build   ---> 编译
+python3 ci_test/main.py test;   ---> 执行 test/LLT 用例 
 ```
 
 ### 功能示例
