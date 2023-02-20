@@ -9,8 +9,6 @@ public class ASN1Integer <: ASN1PrimitiveValue {
 
     public init(value: Int64) {
         super(ASN1Tag.INTEGER)
-
-        // 将整数设置给大数对象
         bnSetWord(this.value, UInt64(value))
         var stringValue: String = UInt64(value).format("x")
         if (stringValue.size.throwingMod(2) != 0) {
@@ -27,7 +25,6 @@ public class ASN1Integer <: ASN1PrimitiveValue {
         if (stringValue.size.throwingMod(2) != 0) {
             stringValue = "0" + stringValue
         }
-        // 将大数对象设置给整数
         this.valueBytes = fromHexString(stringValue).getOrThrow()
     }
 
@@ -51,14 +48,33 @@ public class IntegerParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        var valueNumber: Int64 = 0
-        for (i in 0..value.size) {
-            valueNumber += Int64(value[i])
+        var str: String = toHexString(value)
+        var charArr: Array<Char> = str.toArray()
+        var allNumber: Int64 = 0
+        for (i in 0..charArr.size) {
+            var charStr: String = charArr[i].toString()
+            if (charStr.equals("a")) {
+                charStr = "10"
+            } else if (charStr.equals("b")) {
+                charStr = "11"
+            } else if (charStr.equals("c")) {
+                charStr = "12"
+            } else if (charStr.equals("d")) {
+                charStr = "13"
+            } else if (charStr.equals("e")) {
+                charStr = "14"
+            } else if (charStr.equals("f")) {
+                charStr = "15"
+            }
+            var intNumber: Int64 = Int64.parse(charStr)
+            var intFor: Int64 = intNumber
+            for (k in 0..(charArr.size - 1 - i)) {
+                intFor = intFor * 16
+            }
+            allNumber = allNumber + intFor
         }
         var valueBigNum: CPointer<BIGNUM> = bnNew()
-
-        // 将整数设置给大数对象
-        bnSetWord(valueBigNum, UInt64(valueNumber))
+        bnSetWord(valueBigNum, UInt64(allNumber))
         return ASN1Integer(valueBigNum, value)
     }
 }
