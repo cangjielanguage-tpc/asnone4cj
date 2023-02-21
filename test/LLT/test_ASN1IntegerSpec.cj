@@ -154,7 +154,7 @@ main(): Int64 {
 
     var value6: Array<Byte> = [0x02, 0x02, 0x01, 0x00]
     var byteArrayStream6: ByteArrayStream = ByteArrayStream()
-    byteArrayStream6.write(value5)
+    byteArrayStream6.write(value6)
     var asn1InputStream6: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream6)
     var asn1Object6: ASN1Object = asn1InputStream6.readObject()
     if (!(asn1Object6 is ASN1Integer)) {
@@ -165,11 +165,11 @@ main(): Int64 {
     var bigValue6: CPointer<BIGNUM> = (anyValue6 as CPointer<BIGNUM>).getOrThrow()
     var intValue6: UInt64 = bnGetWord(bigValue6)
     if (intValue6 != 256) {
-        // return 1
+        return 1
     }
     var intHashcode6: Int64 = object6.valueHash()
     if (intHashcode6 != 256) {
-        // return 1
+        return 1
     }
 
     var value7: Array<Byte> = [0x02, 0x02, 0xff, 0xff]
@@ -185,11 +185,11 @@ main(): Int64 {
     var bigValue7: CPointer<BIGNUM> = (anyValue7 as CPointer<BIGNUM>).getOrThrow()
     var intValue7: UInt64 = bnGetWord(bigValue7)
     if (intValue7 != 65535) {
-        // return 1
+        return 1
     }
     var intHashcode7: Int64 = object7.valueHash()
     if (intHashcode7 != 65535) {
-        // return 1
+        return 1
     }
 
     var value8: Array<Byte> = [0x02, 0x03, 0x01, 0xff, 0xff]
@@ -205,11 +205,11 @@ main(): Int64 {
     var bigValue8: CPointer<BIGNUM> = (anyValue8 as CPointer<BIGNUM>).getOrThrow()
     var intValue8: UInt64 = bnGetWord(bigValue8)
     if (intValue8 != 131071) {
-        // return 1
+        return 1
     }
     var intHashcode8: Int64 = object8.valueHash()
     if (intHashcode8 != 131071) {
-        // return 1
+        return 1
     }
 
     var value9: Array<Byte> = [0x02, 0x04, 0x01, 0x01, 0xff, 0xff]
@@ -225,11 +225,11 @@ main(): Int64 {
     var bigValue9: CPointer<BIGNUM> = (anyValue9 as CPointer<BIGNUM>).getOrThrow()
     var intValue9: UInt64 = bnGetWord(bigValue9)
     if (intValue9 != 16908287) {
-        // return 1
+        return 1
     }
     var intHashcode9: Int64 = object9.valueHash()
     if (intHashcode9 != 16908287) {
-        // return 1
+        return 1
     }
 
     var value10: Array<Byte> = [0x02, 0x01, 0x03]
