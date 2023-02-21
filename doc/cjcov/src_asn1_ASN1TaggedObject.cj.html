@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-09 10:28:11</td>
+            <td class="headerValue">2023-02-20 16:41:46</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">53</td>
-            <td class="headerTableEntry">79</td>
-            <td class="headerTableEntry" style="background-color:LightPink">67.1 %</td>
+            <td class="headerTableEntry">66</td>
+            <td class="headerTableEntry">81</td>
+            <td class="headerTableEntry" style="background-color:Yellow">81.5 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -300,9 +300,9 @@ pre
             </td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">10</td>
-            <td class="headerTableEntry">48</td>
-            <td class="headerTableEntry" style="background-color:LightPink">20.8 %</td>
+            <td class="headerTableEntry">17</td>
+            <td class="headerTableEntry">50</td>
+            <td class="headerTableEntry" style="background-color:LightPink">34.0 %</td>
           </tr>
         </table>
       </td>
@@ -629,9 +629,9 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>51</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="takenBranch">&check; Branch 1 taken 2 times.</div>
 </div>
 </details>
 </td>
@@ -647,26 +647,26 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>53</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/4</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 2 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    var inputStream: ASN1InputStream = ASN1InputStream(decoder, bytes)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    var inputStream: ASN1InputStream = ASN1InputStream(decoder, bytes)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>54</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    return inputStream.readObject()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    return inputStream.readObject()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>55</pre></td>
@@ -895,7 +895,7 @@ pre
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
@@ -952,63 +952,69 @@ pre
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>93</pre></td>
-<td align="right" class="linebranch"></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="takenBranch">&check; Branch 1 taken 5 times.</div>
+</div>
+</details>
+</td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    return tag.constructed()</pre></td>
+<td align="left" class="src coveredLine"><pre>    if (explicit) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>94</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>}</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return tag.constructed()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>95</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    }else {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>96</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>class TaggedObjectParser &lt;: ASN1Parser {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return tag.asEncoded(object.getOrThrow().getTag().getAsn1Encoding())</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>97</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(decoder: ASN1Decoder) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>98</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(decoder)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>99</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>100</pre></td>
+<td align="right" class="lineno"><pre>98</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>}</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>99</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
+<td align="right" class="lineno"><pre>100</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>class TaggedObjectParser &lt;: ASN1Parser {</pre></td>
+</tr>
+<tr>
 <td align="right" class="lineno"><pre>101</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func parse(asn1Tag: ASN1Tag, value: Array&lt;Byte&gt;): ASN1Object {</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(decoder: ASN1Decoder) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>102</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return ASN1TaggedObject(asn1Tag, value, decoder)</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(decoder)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>103</pre></td>
@@ -1020,56 +1026,80 @@ pre
 <td align="right" class="lineno"><pre>104</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>}</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>105</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func parse(asn1Tag: ASN1Tag, value: Array&lt;Byte&gt;): ASN1Object {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>106</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>class TaggedObjectSerializer &lt;: ASN1Serializer {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return ASN1TaggedObject(asn1Tag, value, decoder)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>107</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(encoder: ASN1Encoder) {</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>108</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(encoder)</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>}</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>109</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>110</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>class TaggedObjectSerializer &lt;: ASN1Serializer {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>111</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func serializedLength(asn1Object: ASN1Object): Int64 {</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(encoder: ASN1Encoder) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>112</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(encoder)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>113</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>114</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>115</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func serializedLength(asn1Object: ASN1Object): Int64 {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>116</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -1077,11 +1107,11 @@ pre
 <td align="left" class="src coveredLine"><pre>        var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>113</pre></td>
+<td align="right" class="lineno"><pre>117</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
@@ -1089,43 +1119,43 @@ pre
 <td align="left" class="src coveredLine"><pre>        if (object.bytes.isEmpty()) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>114</pre></td>
+<td align="right" class="lineno"><pre>118</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            calculateBytes(object)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            calculateBytes(object)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>115</pre></td>
+<td align="right" class="lineno"><pre>119</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>116</pre></td>
+<td align="right" class="lineno"><pre>120</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        return object.bytes.size</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return object.bytes.size</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>117</pre></td>
+<td align="right" class="lineno"><pre>121</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>118</pre></td>
+<td align="right" class="lineno"><pre>122</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>119</pre></td>
+<td align="right" class="lineno"><pre>123</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>120</pre></td>
+<td align="right" class="lineno"><pre>124</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -1137,7 +1167,7 @@ pre
 <td align="left" class="src coveredLine"><pre>        var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>121</pre></td>
+<td align="right" class="lineno"><pre>125</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/2</summary>
 <div class="linebranchContents">
@@ -1149,109 +1179,109 @@ pre
 <td align="left" class="src coveredLine"><pre>        if (object.bytes.isEmpty()) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>122</pre></td>
+<td align="right" class="lineno"><pre>126</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
 <td align="left" class="src uncoveredLine"><pre>            calculateBytes(object)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>123</pre></td>
+<td align="right" class="lineno"><pre>127</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>124</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        stream.write(object.bytes)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>125</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>126</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>127</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>    private func calculateBytes(asn1Object: ASN1TaggedObject): Unit {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>128</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var object: ASN1Object = asn1Object.object.getOrThrow()</pre></td>
+<td align="left" class="src uncoveredLine"><pre>        stream.write(object.bytes)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>129</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var out: ByteArrayStream = ByteArrayStream()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>130</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var asn1OutputStream: ASN1OutputStream = ASN1OutputStream(encoder, out)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>131</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        if (asn1Object.explicit) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>132</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            asn1OutputStream.writeObject(object)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>133</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        } else {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>134</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            object.getTag().newSerializer(encoder).serialize(object, asn1OutputStream)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>135</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>136</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        asn1Object.bytes = out.bytes()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>137</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
+<td align="right" class="lineno"><pre>130</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>131</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    private func calculateBytes(asn1Object: ASN1TaggedObject): Unit {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>132</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var object: ASN1Object = asn1Object.object.getOrThrow()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>133</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var out: ByteArrayStream = ByteArrayStream()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>134</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var asn1OutputStream: ASN1OutputStream = ASN1OutputStream(encoder, out)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>135</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (asn1Object.explicit) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>136</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            asn1OutputStream.writeObject(object)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>137</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        } else {</pre></td>
+</tr>
+<tr>
 <td align="right" class="lineno"><pre>138</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            object.getTag().newSerializer(encoder).serialize(object, asn1OutputStream)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>139</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>140</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        asn1Object.bytes = out.bytes()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>141</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>142</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>
