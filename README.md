@@ -80,75 +80,112 @@ python3 ci_test/main.py test;   ---> 执行 test/LLT 用例
 
 ### 功能示例
 
-#### primitive 类型解码示例
+#### 编码
 
-功能示例描述:
+功能示例描述: Bool类型编码
 
 示例代码如下：
 
 ```cangjie
+from asn1 import asn1.*
 from asn1 import asn1.types.*
-
-main(): Int64 {
-    var data: Array<Byte> =  [
-            0x02, 0x7f, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d,
-            0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c,
-            0x1d, 0x1e, 0x1f, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b,
-            0x2c, 0x2d, 0x2e, 0x2f, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a,
-            0x3b, 0x3c, 0x3d, 0x3e, 0x3f, 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49,
-            0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58,
-            0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f, 0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67,
-            0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76,
-            0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f]
-    var test: ASN1InputStream = ASN1InputStream(BERDecoder(),  data )
-    if (ASN1Tag.INTEGER.equals(test.readTag()) ) { //readTag == INTEGER
-        if (test.readLength() == 127) { //readLength == 127
-            println("success")
-            return 0
-        }
-    }
-    return 1
-}
-```
-
-执行结果如下：
-
-```shell
-success
-```
-
-#### primitive 类型编码示例
-
-功能示例描述:
-
-示例代码如下：
-
-```cangjie
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
 from std import io.*
-from asn1 import asn1.types.*
-
 
 main(): Int64 {
-    let data1: Array<Byte> =  [0x01, 0x01, 0x0] //false
-    let data2: Array<Byte> =  [0x01, 0x01, 0x01] //true
-    var output = ByteArrayStream()
-    var stream = ASN1OutputStream(encode(), output).writeObject(ASN1Boolean(false))
-    var decodedata = output.readToEnd()
-    if (decodedata !=data1) {
-        println(decodedata)
+    var value3: Array<Byte> = [0x01, 0x01, 0x00]
+    var byteArrayStream3: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
+    asn1OutputStream3.writeObject(ASN1Boolean(false))
+    if (byteArrayStream3.bytes() == value3) {
         return 1
     }
-    println("success")
-    return 0
+
+    var value4: Array<Byte> = [0x01, 0x01, 0x01]
+    var byteArrayStream4: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
+    asn1OutputStream4.writeObject(ASN1Boolean(true))
+    if (byteArrayStream4.bytes() == value4) {
+        return 1
+    }
 }
-class encode <:  ASN1Encoder {}
 ```
 
 执行结果如下：
 
 ```shell
 success
+success
 ```
+
+#### 解码
+
+功能示例描述: Bool类型解码
+
+示例代码如下：
+
+```cangjie
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+
+main(): Int64 {
+    var value: Array<Byte> = [0x01, 0x01, 0x0]
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
+    byteArrayStream.write(value)
+    var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+    var asn1Object: ASN1Object = asn1InputStream.readObject()
+    if (asn1Object is ASN1Boolean) {
+        println("success")
+    }
+    var object: ASN1Boolean = (asn1Object as ASN1Boolean).getOrThrow()
+    var anyValue: Any = object.getValue()
+    var boolValue: Bool = (anyValue as Bool).getOrThrow()
+    if (!boolValue) {
+        println("success")
+    }
+    if (object.valueHash() == 1237) {
+        println("success")
+    }
+
+    var value1: Array<Byte> = [0x01, 0x01, 0x01]
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
+    byteArrayStream1.write(value1)
+    var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
+    var asn1Object1: ASN1Object = asn1InputStream1.readObject()
+    if (asn1Object1 is ASN1Boolean) {
+        println("success")
+    }
+    var object1: ASN1Boolean = (asn1Object1 as ASN1Boolean).getOrThrow()
+    var anyValue1: Any = object1.getValue()
+    var boolValue1: Bool = (anyValue1 as Bool).getOrThrow()
+    if (boolValue1) {
+        println("success")
+    }
+    if (object1.valueHash() == 1231) {
+        println("success")
+    }
+
+    return 0
+}
+```
+
+执行结果如下：
+
+```shell
+success
+success
+success
+success
+success
+success
+```
+
 ## <img alt="" src="./doc/assets/readme-icon-contribute.png" style="display: inline-block;" width=3%/> 参与贡献
 
 欢迎给我们提交PR，欢迎给我们提交Issue，欢迎参与任何形式的贡献。

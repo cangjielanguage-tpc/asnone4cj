@@ -1,6 +1,7 @@
 ## asn-one 库
 
 ### 介绍
+
 ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和 DER 编码规则。
 
 ### 主要接口
@@ -1082,6 +1083,34 @@ public class OctetStringSerializer <: ASN1Serializer {
 ```cangjie
 public abstract class ASN1Tag {
     /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 supportedEncodings - ASN1Encoding 枚举列表
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>)
+    
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     * 参数 supportedEncodings - ASN1Encoding 枚举列表
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, supportedEncodings: HashSet<ASN1Encoding>)
+
+    /*
      * 获取 construct 类型 ASN1Tag 对象
      *
      * 返回值 ASN1Tag - ASN1Tag 对象
@@ -1094,6 +1123,14 @@ public abstract class ASN1Tag {
      * 返回值 ASN1Tag - ASN1Tag 对象
      */
     public func primitive(): ASN1Tag 
+
+    /*
+     * 获取 ASN1Tag 对象 -- 内部接口
+     *
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     * 返回值 ASN1Tag - ASN1Tag 对象
+     */
+    public func asEncoded(asn1Encoding: ASN1Encoding): ASN1Tag
 
     /*
      * 自定义 ASN1 tag 值
@@ -1140,6 +1177,13 @@ public abstract class ASN1Tag {
      * 返回值 ASN1Encoding - ASN1Encoding 对象
      */
     public func getAsn1Encoding(): ASN1Encoding
+
+    /*
+     * 判断是否是 CONSTRUCTED 枚举值 -- 内部接口
+     *
+     * 返回值 Bool - 是否是 CONSTRUCTED 枚举值
+     */
+    public func isConstructed(): Bool
 
     /*
      * 判断是否和当前 AsnTag 相同
@@ -1205,14 +1249,374 @@ public abstract class ASN1Tag {
 }
 ```
 
+#### class ASN1BooleanTag
+
+```cangjie
+public class ASN1BooleanTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1IntegerTag
+
+```cangjie
+public class ASN1IntegerTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1BitStringTag
+
+```cangjie
+public class ASN1BitStringTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1OctetStringTag
+
+```cangjie
+public class ASN1OctetStringTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     * 参数 supportedEncodings - ASN1Encoding 枚举列表
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, supportedEncodings: HashSet<ASN1Encoding>)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1NullTag
+
+```cangjie
+public class ASN1NullTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 supportedEncodings - ASN1Encoding 枚举列表
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1ObjectIdentifierTag
+
+```cangjie
+public class ASN1ObjectIdentifierTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1EnumeratedTag
+
+```cangjie
+public class ASN1EnumeratedTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1SetTag
+
+```cangjie
+public class ASN1SetTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1SequenceTag
+
+```cangjie
+public class ASN1SequenceTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1TaggedObjectTag
+
+```cangjie
+public class ASN1TaggedObjectTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 supportedEncodings - ASN1Encoding 枚举列表
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
+#### class ASN1AllTag
+
+```cangjie
+public class ASN1AllTag <: ASN1Tag {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 asn1TagClass - ASN1TagClass 枚举对象
+     * 参数 tag - 标记
+     * 参数 asn1Encoding - ASN1Encoding 枚举对象
+     * 参数 supportedEncodings - ASN1Encoding 枚举列表
+     * 参数 asn1Tag - ASN1Tag 列表
+     */
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, supportedEncodings: HashSet<ASN1Encoding>, asn1Tag: ASN1Tag)
+
+    /*
+     * 解析数据 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     * 返回值 ASN1Parser - 解码对象
+     */
+    public func newParser(decoder: ASN1Decoder): ASN1Parser
+
+    /*
+     * 编码数据 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     * 返回值 ASN1Serializer - 编码对象
+     */
+    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer
+}
+```
+
 #### abstract  class ASN1PrimitiveValue
 
 ```cangjie
 public abstract class ASN1PrimitiveValue <: ASN1Object & ASN1Primitive & Hashable {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 tag - ASN1Tag
+     */
     public init(tag: ASN1Tag)
 
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 tag - ASN1Tag
+     * 参数 valueBytes - 数组数据
+     */
     public init(tag: ASN1Tag, valueBytes: Array<Byte>)
 
+    /*
+     * 获取valueHash -- 内部接口
+     *
+     * 返回值 Int64 - valueHash 值
+     */
     public open func valueHash(): Int64
 }
 ```
@@ -1221,10 +1625,26 @@ public abstract class ASN1PrimitiveValue <: ASN1Object & ASN1Primitive & Hashabl
 
 ```cangjie
 public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 tag - ASN1Tag
+     * 参数 valueBytes - 数组数据
+     */
     public init(tag: ASN1Tag, valueBytes: Array<Byte>)
 
+    /*
+     * 迭代器 -- 内部接口
+     *
+     * 返回值 Iterator<ASN1Object> - 迭代器
+     */
     public func iterator(): Iterator<ASN1Object>
 
+    /*
+     * 获取数组数据 -- 内部接口
+     *
+     * 返回值 Array<Byte> - 数组数据
+     */
     public func getValueBytes(): Array<Byte>
 }
 ```
@@ -1236,15 +1656,27 @@ public enum ASN1Encoding <: Hashable & Equatable<ASN1Encoding> {
     | PRIMITIVE(Byte)
     | CONSTRUCTED(Byte)
 
+    /*
+     * 获取枚举标记 -- 内部接口
+     *
+     * 返回值 Int64 - 枚举标记
+     */
     public func getValue(): Int64
 
+    /*
+     * 获取枚举 -- 内部接口
+     *
+     * 参数 tagByte - 枚举标记
+     * 返回值 ASN1Encoding - ASN1Encoding 枚举
+     */
     public static func parseEncoding(tagByte: Byte): ASN1Encoding
 
+    /*
+     * 获取hashCode -- 内部接口
+     *
+     * 返回值 Int64 - hashCode 值
+     */
     public func hashCode(): Int64
-
-    public operator func ==(that: ASN1Encoding): Bool
-
-    public operator func !=(that: ASN1Encoding): Bool
 }
 ```
 
@@ -1252,17 +1684,34 @@ public enum ASN1Encoding <: Hashable & Equatable<ASN1Encoding> {
 
 ```cangjie
 public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
+    /*
+     * 对象是否相等 -- 内部接口
+     *
+     * 参数 o - 对象
+     * 返回值 Bool - 是否相等
+     */
     public func equals(o: Object): Bool
 
+    /*
+     * 获取hashCode -- 内部接口
+     *
+     * 返回值 Int64 - hashCode 值
+     */
     public func hashCode(): Int64
 
+    /*
+     * 获取toString -- 内部接口
+     *
+     * 返回值 String - toString
+     */
     public open func toString(): String
 
+    /*
+     * 获取ASN1Tag -- 内部接口
+     *
+     * 返回值 ASN1Tag - ASN1Tag
+     */
     public func getTag(): ASN1Tag
-
-    public operator func ==(that: ASN1Object): Bool
-
-    public operator func !=(that: ASN1Object): Bool
 }
 ```
 
@@ -1289,8 +1738,19 @@ public enum ASN1TagClass {
     | CONTEXT_SPECIFIC(Byte)
     | PRIVATE(Byte)
 
+    /*
+     * 获取枚举 -- 内部接口
+     *
+     * 参数 tagByte - 枚举标记
+     * 返回值 ASN1TagClass - ASN1TagClass 枚举
+     */
     public static func parseClass(tagByte: Byte): ASN1TagClass
 
+    /*
+     * 获取枚举标记 -- 内部接口
+     *
+     * 返回值 Int64 - 枚举标记
+     */
     public func getValue(): Int64
 }
 ```
@@ -1299,12 +1759,33 @@ public enum ASN1TagClass {
 
 ```cangjie
 public class ASN1ParseException <: Exception {
+    /*
+     * 构造方法 -- 内部接口
+     */
     public init()
 
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 message - 异常信息
+     */
     public init(message: String)
 
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 messageFormat - 异常信息
+     * 参数 args - 格式化信息
+     */
     public init(messageFormat: String, args: Array<ToString>)
 
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 cause - 异常
+     * 参数 messageFormat - 异常信息
+     * 参数 args - 格式化信息
+     */
     public init(cause: Exception, messageFormat: String, args: Array<ToString>)
 }
 ```
@@ -1313,6 +1794,11 @@ public class ASN1ParseException <: Exception {
 
 ```cangjie
 public abstract class ASN1Parser {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 decoder - 解码器
+     */
     public init(decoder: ASN1Decoder)
 }
 ```
@@ -1321,6 +1807,11 @@ public abstract class ASN1Parser {
 
 ```cangjie
 public abstract class ASN1Serializer {
+    /*
+     * 构造方法 -- 内部接口
+     *
+     * 参数 encoder - 编码器
+     */
     public init(encoder: ASN1Encoder)
 }
 ```
@@ -1329,10 +1820,29 @@ public abstract class ASN1Serializer {
 
 ```cangjie
 public open class BERDecoder <: ASN1Decoder {
+    /*
+     * 读取Tag -- 内部接口
+     *
+     * 参数 inputStream - 数据流
+     * 返回值 ASN1Tag - ASN1Tag 数据
+     */
     public override func readTag(inputStream: InputStream): ASN1Tag
 
+    /*
+     * 读取长度 -- 内部接口
+     *
+     * 参数 inputStream - 数据流
+     * 参数 Int64 - 长度数据
+     */
     public override func readLength(inputStream: InputStream): Int64
 
+    /*
+     * 读取数据 -- 内部接口
+     *
+     * 参数 length - 长度
+     * 参数 inputStream - 数据流
+     * 参数 Array<Byte> - 数据
+     */
     public override func readValue(length: Int64, inputStream: InputStream): Array<Byte>
 }
 ```
@@ -1369,8 +1879,22 @@ public interface ASN1Decoder {
 
 ```cangjie
 public class Checks {
+    /*
+     * 判断是否抛出异常 -- 内部接口
+     *
+     * 参数 state - Bool 值
+     * 参数 messageFormat - 异常信息
+     * 参数 args - 格式化数据
+     */
     public static func checkState(state: Bool, messageFormat: String, args: Array<ToString>)
 
+    /*
+     * 判断是否抛出异常 -- 内部接口
+     *
+     * 参数 bool - Bool 值
+     * 参数 messageFormat - 异常信息
+     * 参数 args - 格式化数据
+     */
     public static func checkArgument(bool: Bool, messageFormat: String, args: Array<ToString>)
 }
 ```
