@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-09 10:28:11</td>
+            <td class="headerValue">2023-02-20 16:41:46</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">39</td>
+            <td class="headerTableEntry">73</td>
             <td class="headerTableEntry">82</td>
-            <td class="headerTableEntry" style="background-color:LightPink">47.6 %</td>
+            <td class="headerTableEntry" style="background-color:Yellow">89.0 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -300,9 +300,9 @@ pre
             </td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">7</td>
+            <td class="headerTableEntry">27</td>
             <td class="headerTableEntry">60</td>
-            <td class="headerTableEntry" style="background-color:LightPink">11.7 %</td>
+            <td class="headerTableEntry" style="background-color:LightPink">45.0 %</td>
           </tr>
         </table>
       </td>
@@ -643,7 +643,7 @@ pre
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 4 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 28 times.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div>
 </div>
 </details>
 </td>
@@ -665,9 +665,9 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>57</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 25 times.</div><div class="takenBranch">&check; Branch 1 taken 3 times.</div>
 </div>
 </details>
 </td>
@@ -689,32 +689,32 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>60</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 3 times.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                var vInt: Int64 = Int64(x) &amp; 0x7f</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                var vInt: Int64 = Int64(x) &amp; 0x7f</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>61</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                var v: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                var v: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>62</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/4</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 3 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 3 times.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                bnSetWord(v, UInt64(vInt))</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                bnSetWord(v, UInt64(vInt))</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>63</pre></td>
@@ -725,62 +725,62 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>64</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    byteArrayStream.read(dataArr)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    byteArrayStream.read(dataArr)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>65</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    x = dataArr[0]</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    x = dataArr[0]</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>66</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    var r: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    var r: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>67</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    bnLshift(r, v, 7)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    bnLshift(r, v, 7)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>68</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    var c: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    var c: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>69</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    var b: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    var b: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>70</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    bnAdd(c, r, b)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    bnAdd(c, r, b)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>71</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    v = c</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    v = c</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>72</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                } while (x &gt; 127)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                } while (x &gt; 127)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>73</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                stringBuilder.append('.').append(bnGetWord(v))</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                stringBuilder.append('.').append(bnGetWord(v))</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>74</pre></td>
@@ -859,7 +859,7 @@ pre
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 6 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -869,9 +869,9 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>87</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 7 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
@@ -881,8 +881,8 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>88</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            calculateBytes(object)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            calculateBytes(object)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>89</pre></td>
@@ -893,8 +893,8 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>90</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        return object.valueBytes.size</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return object.valueBytes.size</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>91</pre></td>
@@ -919,7 +919,7 @@ pre
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 7 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -929,9 +929,9 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>95</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
 </div>
 </details>
 </td>
@@ -953,8 +953,8 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>98</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        stream.write(object.valueBytes)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        stream.write(object.valueBytes)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>99</pre></td>
@@ -971,74 +971,74 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>101</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>    private func calculateBytes(asn1Object: ASN1ObjectIdentifier): Unit {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    private func calculateBytes(asn1Object: ASN1ObjectIdentifier): Unit {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>102</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var oid: String = asn1Object.oid</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var oid: String = asn1Object.oid</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>103</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var baos: ByteArrayStream = ByteArrayStream()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var baos: ByteArrayStream = ByteArrayStream()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>104</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var stringArr: Array&lt;String&gt; = oid.split(".")</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var stringArr: Array&lt;String&gt; = oid.split(".")</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>105</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var first: Int64 = Int64.parse(stringArr[0])</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var first: Int64 = Int64.parse(stringArr[0])</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>106</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var second: Int64 = Int64.parse(stringArr[1])</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var second: Int64 = Int64.parse(stringArr[1])</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>107</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/4</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 7 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 7 times.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        var number: Int64 = first * 40 + second</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var number: Int64 = first * 40 + second</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>108</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        baos.write(number.toString().toUtf8Array())</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        baos.write(number.toString().toUtf8Array())</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>109</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 29 times.</div><div class="takenBranch">&check; Branch 1 taken 7 times.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        for (i in 2..stringArr.size) {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 2..stringArr.size) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>110</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            var valueBigNum: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var valueBigNum: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>111</pre></td>
@@ -1055,8 +1055,8 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>113</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            bnDec2bn(valueBigNum, stringArr[i])</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            bnDec2bn(valueBigNum, stringArr[i])</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>114</pre></td>
@@ -1073,32 +1073,32 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>116</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 29 times.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            var bigNum: Int64 = Int64(bnGetWord(valueBigNum))</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var bigNum: Int64 = Int64(bnGetWord(valueBigNum))</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>117</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 29 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            if (bigNum &gt; 0 &amp;&amp; bigNum &lt; 127) {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            if (bigNum &gt; 0 &amp;&amp; bigNum &lt; 127) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>118</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                baos.write(bigNum.toString().toUtf8Array())</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                baos.write(bigNum.toString().toUtf8Array())</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>119</pre></td>
@@ -1115,26 +1115,26 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>121</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/6</summary>
+<summary class="linebranchSummary">3/6</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 6 times.</div><div class="takenBranch">&check; Branch 4 taken 6 times.</div><div class="notTakenBranch">&cross; Branch 5 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                if (bnNumBits(valueBigNum) % 7 &gt; 0) {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                if (bnNumBits(valueBigNum) % 7 &gt; 0) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>122</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/6</summary>
+<summary class="linebranchSummary">3/6</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 6 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 6 times.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                    neededBytes = Int64(bnNumBits(valueBigNum)) / 7 + 1</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    neededBytes = Int64(bnNumBits(valueBigNum)) / 7 + 1</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>123</pre></td>
@@ -1163,14 +1163,14 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>126</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/4</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 6 times.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>                for (i in neededBytes - 1..0) {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                for (i in neededBytes - 1..0) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>127</pre></td>
@@ -1259,8 +1259,8 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>138</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        asn1Object.valueBytes = baos.bytes()</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        asn1Object.valueBytes = baos.bytes()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>139</pre></td>

@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-09 10:28:11</td>
+            <td class="headerValue">2023-02-20 16:41:46</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">34</td>
+            <td class="headerTableEntry">40</td>
             <td class="headerTableEntry">41</td>
-            <td class="headerTableEntry" style="background-color:Yellow">82.9 %</td>
+            <td class="headerTableEntry" style="background-color:LightGreen">97.6 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -300,9 +300,9 @@ pre
             </td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">7</td>
+            <td class="headerTableEntry">21</td>
             <td class="headerTableEntry">48</td>
-            <td class="headerTableEntry" style="background-color:LightPink">14.6 %</td>
+            <td class="headerTableEntry" style="background-color:LightPink">43.8 %</td>
           </tr>
         </table>
       </td>
@@ -491,9 +491,9 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>29</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div>
 </div>
 </details>
 </td>
@@ -503,74 +503,74 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>30</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/4</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            logger.trace("Read ASN.1 tag")</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            logger.trace("Read ASN.1 tag")</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>31</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            var length: Int64 = decoder.readLength(this)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var length: Int64 = decoder.readLength(this)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>32</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/10</summary>
+<summary class="linebranchSummary">5/10</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="notTakenBranch">&cross; Branch 5 not taken.</div><div class="notTakenBranch">&cross; Branch 6 not taken.</div><div class="notTakenBranch">&cross; Branch 7 not taken.</div><div class="notTakenBranch">&cross; Branch 8 not taken.</div><div class="notTakenBranch">&cross; Branch 9 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div><div class="takenBranch">&check; Branch 4 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 5 not taken.</div><div class="takenBranch">&check; Branch 6 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 7 not taken.</div><div class="takenBranch">&check; Branch 8 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 9 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            logger.trace("Read ASN.1 object length: ${length}")</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            logger.trace("Read ASN.1 object length: ${length}")</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>33</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            var value: Array&lt;Byte&gt; = decoder.readValue(length, this)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var value: Array&lt;Byte&gt; = decoder.readValue(length, this)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>34</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/4</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            var parse: ASN1Object = tag.newParser(decoder).parse(tag, value)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var parse: ASN1Object = tag.newParser(decoder).parse(tag, value)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>35</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">0/4</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 22 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
 </div>
 </details>
 </td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            logger.debug("Read ASN.1 object")</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            logger.debug("Read ASN.1 object")</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>36</pre></td>
