@@ -20,6 +20,7 @@ public class ASN1BitString <: ASN1String {
         this.unusedBits = 8 - (bits.size % 8)
     }
 
+    @overflowWrapping
     private static func constructBytes(bits: Array<Bool>): Array<Byte> {
         var length: Int64
         if (bits.size % 8 > 0) {
@@ -27,7 +28,7 @@ public class ASN1BitString <: ASN1String {
         } else {
             length = bits.size / 8
         }
-        var bytes: Array<Byte> = Array<Byte>(length, item: 0)
+        var bytes: Array<Int8> = Array<Int8>(length, item: 0)
         for (i in 0..bytes.size) {
             bytes[i] = 0
             for (j in 0..8) {
@@ -39,7 +40,11 @@ public class ASN1BitString <: ASN1String {
                 }
             }
         }
-        return bytes
+        var arr: Array<Byte> = Array<Byte>(bytes.size, item: 0)
+        for (i in 0..bytes.size) {
+            arr[i] = UInt8(Int8(bytes[i]))
+        }
+        return arr
     }
 
     private func constructBits(): Array<Bool> {
@@ -60,9 +65,10 @@ public class ASN1BitString <: ASN1String {
         return bits.toString()
     }
 
+    @overflowWrapping
     public func isSet(x: Int64): Bool {
         var toCheck: Int64 = x / 8
-        var theByte: Byte = valueBytes[toCheck]
+        var theByte: Int8 =  Int8(UInt8(valueBytes[toCheck]))
         var index: Int64 = x % 8
         var mask: Int64 = 1 << (7 - index)
         var masked: Int64 = theByte.position() & mask
