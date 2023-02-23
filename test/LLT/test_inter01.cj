@@ -6,7 +6,7 @@ from asn1 import asn1.ASN1Integer
 from asn1 import asn1.IntegerParser
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
-
+from asn1 import asn1.*
 from std import io.*
 
 main() {
@@ -20,7 +20,7 @@ main() {
 
     let decodetd: BERDecoder = BERDecoder()
     let src =IntegerParser(decodetd)
-    let src1 = src.parse(ASN1Tag.INTEGER,bytesBuf)
+    let src1 = src.parse(INTEGER,bytesBuf)
     println(src1.toString())
     if (src1.toString() != "ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,2]]") {
         return 1

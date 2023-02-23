@@ -11,11 +11,11 @@ public class ASN1BitString <: ASN1String {
     }
 
     public init(bytes: Array<Byte>, unusedBits: Int64) {
-        this(ASN1Tag.BIT_STRING, bytes, unusedBits)
+        this(BIT_STRING, bytes, unusedBits)
     }
 
     public init(bits: Array<Bool>) {
-        super(ASN1Tag.BIT_STRING, constructBytes(bits))
+        super(BIT_STRING, constructBytes(bits))
         this.bits = bits
         this.unusedBits = 8 - (bits.size % 8)
     }

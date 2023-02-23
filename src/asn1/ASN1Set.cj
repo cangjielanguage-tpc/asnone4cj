@@ -5,13 +5,13 @@ public class ASN1Set <: ASN1Object & ASN1Constructed {
     protected var bytes: Array<Byte> = Array<Byte>()
 
     public init(objects: HashSet<ASN1Object>, bytes: Array<Byte>) {
-        super(ASN1Tag.SET)
+        super(SET)
         this.objects = objects
         this.bytes = bytes
     }
 
     public init(objects: HashSet<ASN1Object>) {
-        super(ASN1Tag.SET)
+        super(SET)
         this.objects = objects
     }
 

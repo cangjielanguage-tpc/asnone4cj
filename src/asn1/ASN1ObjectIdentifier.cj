@@ -4,12 +4,12 @@ public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
     protected var oid: String
 
     public init(oid: String) {
-        super(ASN1Tag.OBJECT_IDENTIFIER)
+        super(OBJECT_IDENTIFIER)
         this.oid = oid
     }
 
     public init(oid: String, valueBytes: Array<Byte>) {
-        super(ASN1Tag.OBJECT_IDENTIFIER, valueBytes)
+        super(OBJECT_IDENTIFIER, valueBytes)
         this.oid = oid
     }
 

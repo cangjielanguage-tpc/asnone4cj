@@ -5,9 +5,10 @@ from asn1 import asn1.ASN1Tag
 from asn1 import asn1.BooleanParser
 from asn1 import asn1.BERDecoder
 from std import io.*
+from asn1 import asn1.*
 
 main() {
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
     let dec: BERDecoder = BERDecoder()
     let bitss = BooleanParser(dec)
     let Buf: Array<Byte> = [1]

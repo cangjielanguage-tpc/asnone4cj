@@ -4,12 +4,13 @@
 from asn1 import asn1.ASN1Tag
 from asn1 import asn1.ASN1OctetString
 from std import io.*
+from asn1 import asn1.*
 
 main() {
     let Buf: Array<Byte> = [1]
     let Buf2: Array<Byte> = [0]
     let decs: ASN1OctetString = ASN1OctetString(Buf)
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
 
     let dec1: ASN1OctetString = ASN1OctetString(tags,Buf)
     //let src = decs.getValue()

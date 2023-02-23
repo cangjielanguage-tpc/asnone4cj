@@ -12,7 +12,8 @@ from asn1 import asn1.ASN1PrimitiveValue
 from asn1 import asn1.ASN1Enumerated
 from asn1 import asn1.ASN1Sequence  
 from asn1 import asn1.ASN1Object 
-from asn1 import asn1.encodingrules.der.DEREncoder   
+from asn1 import asn1.encodingrules.der.DEREncoder
+from asn1 import asn1.*
 from std import io.*
 from std import collection.*
 
@@ -20,7 +21,7 @@ main() {
 
     let dec: DEREncoder = DEREncoder()
 
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
     let decz: BERDecoder = BERDecoder()
 
     let oc = OctetStringParser(decz)

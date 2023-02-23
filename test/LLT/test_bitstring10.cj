@@ -9,7 +9,8 @@ from asn1 import asn1.BitStringSerializer
 from asn1 import asn1.ASN1InputStream  
 from asn1 import asn1.ObjectIdentifierParser  
 from asn1 import asn1.encodingrules.der.DEREncoder   
-from std import io.* 
+from std import io.*
+from asn1 import asn1.*
 from std import collection.*
 
 main() {
@@ -18,7 +19,7 @@ main() {
     let arr: Array<Bool> = Array<Bool>(80, item: true)
     let src = ASN1BitString(arr)
     let srt = BitStringParser(decz)
-    let tag = ASN1Tag.SEQUENCE
+    let tag = SEQUENCE
     let sp = tag.isConstructed()
     let buf = Array<Byte>(80, item: 1)
     try {

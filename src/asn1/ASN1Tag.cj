@@ -5,8 +5,72 @@ from std import collection.HashSet
 from std import io.IOException
 import asn1.util.Checks
 
+public let ASN1_BOOLEAN: ASN1Tag = ASN1BooleanTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x01,
+    ASN1Encoding.PRIMITIVE(0x0)
+)
+
+public let INTEGER: ASN1Tag = ASN1IntegerTag(ASN1TagClass.UNIVERSAL(0), 0x02, ASN1Encoding.PRIMITIVE(0x0))
+
+public let BIT_STRING: ASN1Tag = ASN1BitStringTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x03,
+    ASN1Encoding.PRIMITIVE(0x0),
+    HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
+)
+
+public let OCTET_STRING: ASN1Tag = ASN1OctetStringTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x04,
+    HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
+)
+
+public let ASN1_NULL_TAG: ASN1Tag = ASN1NullTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x05,
+    ASN1Encoding.PRIMITIVE(0x0)
+)
+
+public let OBJECT_IDENTIFIER: ASN1Tag = ASN1ObjectIdentifierTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x06,
+    ASN1Encoding.PRIMITIVE(0x0)
+)
+
+public let ENUMERATED: ASN1Tag = ASN1EnumeratedTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x0A,
+    ASN1Encoding.PRIMITIVE(0x0)
+)
+
+public let SET: ASN1Tag = ASN1SetTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x11,
+    ASN1Encoding.CONSTRUCTED(0x20)
+)
+
+public let SEQUENCE: ASN1Tag = ASN1SequenceTag(
+    ASN1TagClass.UNIVERSAL(0),
+    0x10,
+    ASN1Encoding.CONSTRUCTED(0x20)
+)
+
+
+let tags: HashMap<Int64, ASN1Tag> = HashMap<Int64, ASN1Tag>(
+    [
+        (ASN1_BOOLEAN.getTag(), ASN1_BOOLEAN),
+        (INTEGER.getTag(), INTEGER),
+        (BIT_STRING.getTag(), BIT_STRING),
+        (OCTET_STRING.getTag(), OCTET_STRING),
+        (ASN1_NULL_TAG.getTag(), ASN1_NULL_TAG),
+        (OBJECT_IDENTIFIER.getTag(), OBJECT_IDENTIFIER),
+        (ENUMERATED.getTag(), ENUMERATED),
+        (SET.getTag(), SET),
+        (SEQUENCE.getTag(), SEQUENCE)
+    ]
+)
 public abstract class ASN1Tag {
-    private static var tags: HashMap<Int64, ASN1Tag> = HashMap<Int64, ASN1Tag>()
     private var tag: Int64 = 0
     private var asn1TagClass: ASN1TagClass
     private var supportedEncodings: HashSet<ASN1Encoding> = HashSet<ASN1Encoding>()
@@ -66,23 +130,22 @@ public abstract class ASN1Tag {
     }
 
     public static func forTag(asn1TagClass: ASN1TagClass, tag: Int64): ASN1Tag {
-        addTags()
-        if (asn1TagClass.getValue() == ASN1TagClass.UNIVERSAL(0).getValue()) {
-            for (asn1Tag in tags.values()) {
-                if (asn1Tag.tag == tag && asn1TagClass.getValue() == asn1Tag.asn1TagClass.getValue()) {
-                    return asn1Tag
+        match (asn1TagClass) {
+            case UNIVERSAL(0) =>
+                for (asn1Tag in tags.values()) {
+                    if (asn1Tag.tag == tag && asn1TagClass.getValue() == asn1Tag.asn1TagClass.getValue()) {
+                        return asn1Tag
+                    }
                 }
-            }
-        } else if (asn1TagClass.getValue() == ASN1TagClass.APPLICATION(0x40).getValue() || asn1TagClass.getValue() ==
-            ASN1TagClass.CONTEXT_SPECIFIC(0x80).getValue() || asn1TagClass.getValue() ==
-            ASN1TagClass.PRIVATE(0xc0).getValue()) {
-            return ASN1TaggedObjectTag(
-                asn1TagClass,
-                tag,
-                HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
-            )
+                throw ASN1ParseException("Unknown ASN.1 tag")
+            case APPLICATION(0x40) | CONTEXT_SPECIFIC(0x80) | PRIVATE(0xc0) =>
+                return ASN1TaggedObjectTag(
+                    asn1TagClass,
+                    tag,
+                    HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
+                )
+            case _ => throw ASN1ParseException("Unknown ASN.1 tag")
         }
-        throw ASN1ParseException("Unknown ASN.1 tag")
     }
 
     public func getTag(): Int64 {
@@ -156,69 +219,6 @@ public abstract class ASN1Tag {
         sb.append(tag)
         sb.append(']')
         return sb.toString()
-    }
-
-    public static let ASN1_BOOLEAN: ASN1Tag = ASN1BooleanTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x01,
-        ASN1Encoding.PRIMITIVE(0x0)
-    )
-
-    public static let INTEGER: ASN1Tag = ASN1IntegerTag(ASN1TagClass.UNIVERSAL(0), 0x02, ASN1Encoding.PRIMITIVE(0x0))
-
-    public static let BIT_STRING: ASN1Tag = ASN1BitStringTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x03,
-        ASN1Encoding.PRIMITIVE(0x0),
-        HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
-    )
-
-    public static let OCTET_STRING: ASN1Tag = ASN1OctetStringTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x04,
-        HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
-    )
-
-    public static let ASN1_NULL_TAG: ASN1Tag = ASN1NullTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x05,
-        ASN1Encoding.PRIMITIVE(0x0)
-    )
-
-    public static let OBJECT_IDENTIFIER: ASN1Tag = ASN1ObjectIdentifierTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x06,
-        ASN1Encoding.PRIMITIVE(0x0)
-    )
-
-    public static let ENUMERATED: ASN1Tag = ASN1EnumeratedTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x0A,
-        ASN1Encoding.PRIMITIVE(0x0)
-    )
-
-    public static let SET: ASN1Tag = ASN1SetTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x11,
-        ASN1Encoding.CONSTRUCTED(0x20)
-    )
-
-    public static let SEQUENCE: ASN1Tag = ASN1SequenceTag(
-        ASN1TagClass.UNIVERSAL(0),
-        0x10,
-        ASN1Encoding.CONSTRUCTED(0x20)
-    )
-
-    private static func addTags() {
-        tags.put(ASN1_BOOLEAN.getTag(), ASN1_BOOLEAN)
-        tags.put(INTEGER.getTag(), INTEGER)
-        tags.put(BIT_STRING.getTag(), BIT_STRING)
-        tags.put(OCTET_STRING.getTag(), OCTET_STRING)
-        tags.put(ASN1_NULL_TAG.getTag(), ASN1_NULL_TAG)
-        tags.put(OBJECT_IDENTIFIER.getTag(), OBJECT_IDENTIFIER)
-        tags.put(ENUMERATED.getTag(), ENUMERATED)
-        tags.put(SET.getTag(), SET)
-        tags.put(SEQUENCE.getTag(), SEQUENCE)
     }
 }
 

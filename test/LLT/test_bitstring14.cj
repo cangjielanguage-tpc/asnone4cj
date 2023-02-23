@@ -11,11 +11,12 @@ from asn1 import asn1.ASN1Object
 from asn1 import asn1.ASN1Set
 from asn1 import asn1.encodingrules.der.DEREncoder   
 from std import io.*
+from asn1 import asn1.*
 from std import collection.*
 
 main() {
     let dec: BERDecoder = BERDecoder()
-    let tag = ASN1Tag.SEQUENCE
+    let tag = SEQUENCE
     let decs: DEREncoder = DEREncoder()
 
     let str = tag.newSerializer(decs)
@@ -28,7 +29,7 @@ main() {
     let asn = ASN1OutputStream(decs,wrapped)
     str.serialize(sc,asn) 
     
-    let tags = ASN1Tag.SET
+    let tags = SET
     let str1 = tags.newSerializer(decs)
     let buf = HashSet<ASN1Object>()
     buf.put(ASN1Boolean(false))

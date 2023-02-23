@@ -11,12 +11,13 @@ from asn1 import asn1.ASN1OutputStream
 from asn1 import asn1.ASN1OctetString
 from asn1 import asn1.encodingrules.der.DEREncoder
 from std import io.*
+from asn1 import asn1.*
 
 main() {
 
     let dec: DEREncoder = DEREncoder()
 
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
     let decz: BERDecoder = BERDecoder()
     let bitss = BooleanParser(decz)
     let Buf: Array<Byte> = [1]

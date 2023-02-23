@@ -8,13 +8,13 @@ public class ASN1Sequence <: ASN1Object & ASN1Constructed {
     protected var bytes: Array<Byte> = Array<Byte>()
 
     public init(objects: ArrayList<ASN1Object>, bytes: Array<Byte>) {
-        super(ASN1Tag.SEQUENCE)
+        super(SEQUENCE)
         this.objects = objects
         this.bytes = bytes
     }
 
     public init(objects: ArrayList<ASN1Object>) {
-        super(ASN1Tag.SEQUENCE)
+        super(SEQUENCE)
         this.objects = objects
     }
 

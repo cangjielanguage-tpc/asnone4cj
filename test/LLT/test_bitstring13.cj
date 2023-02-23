@@ -8,12 +8,13 @@ from asn1 import asn1.ASN1Tag
 from asn1 import asn1.ASN1ObjectIdentifier
 from asn1 import asn1.ASN1BitString
 from asn1 import asn1.ASN1PrimitiveValue
-from asn1 import asn1.encodingrules.der.DEREncoder   
+from asn1 import asn1.encodingrules.der.DEREncoder
+from asn1 import asn1.*
 from std import io.*
 
 main() {
     let dec: BERDecoder = BERDecoder()
-    let tag = ASN1Tag.BIT_STRING
+    let tag = BIT_STRING
     let decs: DEREncoder = DEREncoder()
 
     let wrapped: ByteArrayStream = ByteArrayStream()

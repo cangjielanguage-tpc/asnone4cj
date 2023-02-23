@@ -9,9 +9,9 @@ from asn1 import asn1.ASN1Tag
 from asn1 import asn1.ASN1TaggedObject
 from asn1 import asn1.encodingrules.der.*
 from std import collection.*
-
+from asn1 import asn1.*
 main() {
-    var tag = ASN1Tag.BIT_STRING
+    var tag = BIT_STRING
     var bud: Array<Byte> = [1]
     let dec: BERDecoder = BERDecoder()
     let dec6: DERDecoder = DERDecoder()

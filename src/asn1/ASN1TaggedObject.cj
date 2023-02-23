@@ -42,7 +42,7 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
     }
 
     public func iterator(): Iterator<ASN1Object> {
-        var seq: ASN1Sequence = (getObject(ASN1Tag.SEQUENCE) as ASN1Sequence).getOrThrow()
+        var seq: ASN1Sequence = (getObject(SEQUENCE) as ASN1Sequence).getOrThrow()
         return seq.iterator()
     }
 

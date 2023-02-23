@@ -5,7 +5,7 @@ from asn1 import asn1.ASN1BitString
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.BitStringParser
 from asn1 import asn1.ASN1Tag
-
+from asn1 import asn1.*
 from std import io.*
 
 main() {
@@ -17,7 +17,7 @@ main() {
     let indd =asn.isSet(2)
     let src =asn.length()
 
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
     let dec: BERDecoder = BERDecoder()
     let bitss = BitStringParser(dec)
     bitss.parse(tags,bytesBuf)

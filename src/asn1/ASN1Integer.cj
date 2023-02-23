@@ -7,19 +7,19 @@ public class ASN1Integer <: ASN1PrimitiveValue {
     protected var value:  BigInt = BigInt(0)
 
     public init(value: Int64) {
-        super(ASN1Tag.INTEGER)
+        super(INTEGER)
         this.value = BigInt(value)
         this.valueBytes = EncodingUtils.asn1Encoded(this.value)
     }
 
     public init(value: BigInt) {
-        super(ASN1Tag.INTEGER)
+        super(INTEGER)
         this.value = value
         this.valueBytes = EncodingUtils.asn1Encoded(this.value)
     }
 
     public init(value: BigInt, valueBytes: Array<Byte>) {
-        super(ASN1Tag.INTEGER, valueBytes)
+        super(INTEGER, valueBytes)
         this.value = value
     }
 
