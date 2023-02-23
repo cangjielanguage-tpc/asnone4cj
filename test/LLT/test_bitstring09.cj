@@ -11,7 +11,8 @@ from asn1 import asn1.types.ASN1Encoding
 from asn1 import asn1.types.ASN1TagClass 
 from asn1 import asn1.ASN1TaggedObjectTag 
 from asn1 import asn1.BitStringSerializer 
-from asn1 import asn1.encodingrules.der.DEREncoder   
+from asn1 import asn1.encodingrules.der.DEREncoder
+from asn1 import asn1.*
 from std import io.* 
 from std import collection.*
 
@@ -19,7 +20,7 @@ main() {
 
     let dec: DEREncoder = DEREncoder()
     let decz: BERDecoder = BERDecoder()
-    let tags = ASN1Tag.ASN1_BOOLEAN
+    let tags = ASN1_BOOLEAN
 
     let bitss = BooleanParser(decz)
     let Buf: Array<Byte> = [1]

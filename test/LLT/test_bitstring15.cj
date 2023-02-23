@@ -12,6 +12,7 @@ from asn1 import asn1.types.ASN1Encoding
 from asn1 import asn1.types.ASN1TagClass
 from asn1 import asn1.encodingrules.der.DEREncoder   
 from std import io.*
+from asn1 import asn1.*
 from std import collection.*
 
 main() {
@@ -20,7 +21,7 @@ main() {
     var buf = Array<Byte>(10, item: 63)
     wrapped.write(buf)
 
-    let tag = ASN1Tag.SET
+    let tag = SET
     let str = ASN1TaggedObject(tag,ASN1Boolean(true))
     let decs: DEREncoder = DEREncoder()
     let arr = HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])

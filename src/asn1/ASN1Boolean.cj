@@ -4,12 +4,12 @@ public class ASN1Boolean <: ASN1PrimitiveValue {
     protected var value: Bool = false
 
     public init(value: Bool) {
-        super(ASN1Tag.ASN1_BOOLEAN)
+        super(ASN1_BOOLEAN)
         this.value = value
     }
 
     public init(value: Bool, valueBytes: Array<Byte>) {
-        super(ASN1Tag.ASN1_BOOLEAN, valueBytes)
+        super(ASN1_BOOLEAN, valueBytes)
         this.value = value
     }
 

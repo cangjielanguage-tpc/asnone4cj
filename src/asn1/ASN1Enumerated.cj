@@ -8,17 +8,17 @@ public class ASN1Enumerated <: ASN1PrimitiveValue {
     protected var value: BigInt = BigInt(0)
 
     public init(value: Int64) {
-        super(ASN1Tag.ENUMERATED)
+        super(ENUMERATED)
         this.value = BigInt(value)
     }
 
     public init(value: BigInt) {
-        super(ASN1Tag.ENUMERATED)
+        super(ENUMERATED)
         this.value = value
     }
 
     public init(value: BigInt, valueBytes: Array<Byte>) {
-        super(ASN1Tag.ENUMERATED, valueBytes)
+        super(ENUMERATED, valueBytes)
         this.value = value
     }
 

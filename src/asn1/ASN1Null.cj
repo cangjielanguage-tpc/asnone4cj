@@ -4,7 +4,7 @@ public class ASN1Null <: ASN1PrimitiveValue {
     private let NULL_BYTES: Array<Byte> = []
 
     public init() {
-        super(ASN1Tag.ASN1_NULL_TAG, NULL_BYTES)
+        super(ASN1_NULL_TAG, NULL_BYTES)
     }
 
     public override func getValue(): Any {

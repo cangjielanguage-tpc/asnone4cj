@@ -6,6 +6,7 @@ from asn1 import asn1.encodingrules.der.DEREncoder
 from asn1 import asn1.ASN1OutputStream 
 from asn1 import asn1.ASN1Tag
 from asn1 import asn1.BooleanParser
+from asn1 import asn1.*
 from std import io.*
 
 main() {
@@ -17,7 +18,7 @@ main() {
     let src = asn.write(bytesBuf)
     let src1 = asn.write(6)
     let src2 = asn.write(6)
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
     let dec: BERDecoder = BERDecoder()
     let bitss = BooleanParser(dec)
     let Buf: Array<Byte> = [1]

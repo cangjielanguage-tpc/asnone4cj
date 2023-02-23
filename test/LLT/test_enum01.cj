@@ -6,7 +6,7 @@ from asn1 import asn1.ASN1Enumerated
 from asn1 import asn1.EnumeratedParser
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
-
+from asn1 import asn1.*
 from std import io.*
 
 main() {
@@ -18,7 +18,7 @@ main() {
     sc.getValue()
     let decodetd: BERDecoder = BERDecoder()
     let src =EnumeratedParser(decodetd)
-    let src1 = src.parse(ASN1Tag.ENUMERATED,bytesBuf)
+    let src1 = src.parse(ENUMERATED,bytesBuf)
     println(src1.toString())
     if (src1.toString() != "ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,10]]") {
         return 1

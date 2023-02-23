@@ -2,7 +2,7 @@ package asn1
 
 public class ASN1OctetString <: ASN1String {
     public init(bytes: Array<Byte>) {
-        super(ASN1Tag.OCTET_STRING, bytes)
+        super(OCTET_STRING, bytes)
     }
 
     public init(tag: ASN1Tag, bytes: Array<Byte>) {

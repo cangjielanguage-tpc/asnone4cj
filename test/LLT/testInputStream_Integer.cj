@@ -16,7 +16,7 @@ main(): Int64 {
             0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76,
             0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f]
     var test: ASN1InputStream = ASN1InputStream(BERDecoder(),  data )
-    if (ASN1Tag.INTEGER.equals(test.readTag()) ) { //readTag == INTEGER
+    if (INTEGER.equals(test.readTag()) ) { //readTag == INTEGER
         if (test.readLength() == 127) { //readLength == 127
             return 0
         }

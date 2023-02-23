@@ -9,12 +9,13 @@ from asn1 import asn1.ObjectIdentifierSerializer
 from asn1 import asn1.ASN1ObjectIdentifier
 from asn1 import asn1.encodingrules.der.DEREncoder   
 from std import io.*
+from asn1 import asn1.*
 
 main() {
     let bytesBuf: Array<Byte> = [127,127,127]
     let str = ASN1ObjectIdentifier("2.3.1")
     let dec: BERDecoder = BERDecoder()
-    let tag = ASN1Tag.BIT_STRING
+    let tag = BIT_STRING
     let decs: DEREncoder = DEREncoder()
     let sc = ObjectIdentifierSerializer(decs)
 

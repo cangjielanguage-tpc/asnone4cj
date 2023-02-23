@@ -8,37 +8,38 @@ from asn1 import asn1.ASN1Object
 from asn1 import asn1.BooleanParser 
 from asn1 import asn1.encodingrules.der.DEREncoder   
 from std import io.*
+from asn1 import asn1.*
 from std import collection.*
 
 main() {
 
     let dec: DEREncoder = DEREncoder()
     let decz: BERDecoder = BERDecoder()
-    let tags = ASN1Tag.ASN1_BOOLEAN
+    let tags = ASN1_BOOLEAN
     tags.newParser(decz)
     tags.newSerializer(dec)
-    let tags1 = ASN1Tag.INTEGER
+    let tags1 = INTEGER
     tags1.newParser(decz)
     tags1.newSerializer(dec)
-    let tags2 = ASN1Tag.BIT_STRING
+    let tags2 = BIT_STRING
     tags2.newParser(decz)
     tags2.newSerializer(dec)
-    let tags3 = ASN1Tag.OCTET_STRING
+    let tags3 = OCTET_STRING
     tags3.newParser(decz)
     tags3.newSerializer(dec)
-    let tags4 = ASN1Tag.ASN1_NULL_TAG
+    let tags4 = ASN1_NULL_TAG
     tags4.newParser(decz)
     tags4.newSerializer(dec)
-    let tags5 = ASN1Tag.OBJECT_IDENTIFIER
+    let tags5 = OBJECT_IDENTIFIER
     tags5.newParser(decz)
     tags5.newSerializer(dec)
-    let tags6 = ASN1Tag.ENUMERATED
+    let tags6 = ENUMERATED
     tags6.newParser(decz)
     tags6.newSerializer(dec)
-    let tags7 = ASN1Tag.SET
+    let tags7 = SET
     tags7.newParser(decz)
     tags7.newSerializer(dec)
-    let tags8 = ASN1Tag.SEQUENCE
+    let tags8 = SEQUENCE
     tags8.newParser(decz)
     tags8.newSerializer(dec)
 

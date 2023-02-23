@@ -12,13 +12,14 @@ from asn1 import asn1.BooleanParser
 from asn1 import asn1.ASN1OutputStream
 from asn1 import asn1.encodingrules.der.DEREncoder
 from std import io.*
+from asn1 import asn1.*
 
 main() {
 
     let arr: Array<Bool> = Array<Bool>(5, item: true)
     let dec: DEREncoder = DEREncoder()
 
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
     let decz: BERDecoder = BERDecoder()
     let bitss = BooleanParser(decz)
     let Buf: Array<Byte> = [1]

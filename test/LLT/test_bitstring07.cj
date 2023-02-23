@@ -8,14 +8,15 @@ from asn1 import asn1.ASN1OutputStream
 from asn1 import asn1.ASN1Object 
 from asn1 import asn1.ASN1Sequence
 from asn1 import asn1.ASN1Parser
-from asn1 import asn1.encodingrules.der.DEREncoder   
+from asn1 import asn1.encodingrules.der.DEREncoder
+from asn1 import asn1.*
 from std import io.*
 from std import collection.*
 
 main() {
 
     let dec: DEREncoder = DEREncoder()
-    let tags = ASN1Tag.INTEGER
+    let tags = INTEGER
     let decz: BERDecoder = BERDecoder()
 
     let bitss = BooleanParser(decz)
@@ -26,7 +27,7 @@ main() {
     let wrapped: ByteArrayStream = ByteArrayStream()
     let asn9 = ASN1OutputStream(decodetd,wrapped)
 
-    let tags1 = ASN1Tag.SEQUENCE
+    let tags1 = SEQUENCE
     let src = tags1.newParser(decz)
     let src1 = tags1.newSerializer(dec)
     try {
@@ -46,7 +47,7 @@ main() {
     }
     let resu = tags1.getTag()
     println(resu)
-    let tags2 = ASN1Tag.SET
+    let tags2 = SET
     let rel = tags2.newParser(decz)
     let rel1 = tags2.newSerializer(dec)
     try {
