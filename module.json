@@ -4,20 +4,14 @@
   "name": "asn1",
   "description": "nothing here",
   "version": "0.0.1",
-  "requires": {
-    "cryptocj": {
-      "organization": "cangjie",
-      "version": "0.0.6",
-      "path": "./cryptocj"
-    }
-  },
+  "requires": {},
   "package_requires": {
     "path_option": [],
     "package_option": {}
   },
   "foreign_requires": {},
   "output_type": "dynamic",
-  "command_option": "",
+  "command_option": "-O2",
   "condition_option": {},
   "link_option": "",
   "cross_compile_configuration": {},

@@ -1,25 +1,23 @@
 package asn1
 
-from cryptocj import bignumcj.BIGNUM
-from cryptocj import bignumcj.bnNew
-from cryptocj import bignumcj.bnGetWord
-from cryptocj import bignumcj.bnSetWord
+from numeric import bigint.*
+import asn1.util.DecoderUtils
+import asn1.util.EncodingUtils
 
 public class ASN1Enumerated <: ASN1PrimitiveValue {
-    protected var value: CPointer<BIGNUM> = bnNew()
+    protected var value: BigInt = BigInt(0)
 
     public init(value: Int64) {
         super(ASN1Tag.ENUMERATED)
-        // 将整数设置给大数对象
-        bnSetWord(this.value, UInt64(value))
+        this.value = BigInt(value)
     }
 
-    public init(value: CPointer<BIGNUM>) {
+    public init(value: BigInt) {
         super(ASN1Tag.ENUMERATED)
         this.value = value
     }
 
-    public init(value: CPointer<BIGNUM>, valueBytes: Array<Byte>) {
+    public init(value: BigInt, valueBytes: Array<Byte>) {
         super(ASN1Tag.ENUMERATED, valueBytes)
         this.value = value
     }
@@ -35,14 +33,8 @@ public class EnumeratedParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        var valueNumber: Int64 = 0
-        for (i in 0..value.size) {
-            valueNumber += Int64(value[i])
-        }
-        var valueBigNum: CPointer<BIGNUM> = bnNew()
-        // 将整数设置给大数对象
-        bnSetWord(valueBigNum, UInt64(valueNumber))
-        return ASN1Enumerated(valueBigNum, value)
+        var bigint :BigInt = DecoderUtils.asn1Decode(value)
+        return ASN1Enumerated(bigint, value)
     }
 }
 
@@ -68,7 +60,6 @@ public class EnumeratedSerializer <: ASN1Serializer {
     }
 
     private func calculateBytes(asn1Object: ASN1Enumerated): Unit {
-        // 将大数对象设置给整数
-        asn1Object.valueBytes = bnGetWord(asn1Object.value).toString().toUtf8Array()
+        asn1Object.valueBytes =EncodingUtils.asn1Encoded(asn1Object.value)
     }
 }

@@ -1,11 +1,5 @@
 package asn1
 
-from cryptocj import bignumcj.bnLshift
-from cryptocj import bignumcj.bnAdd
-from cryptocj import bignumcj.bnDec2bn
-from cryptocj import bignumcj.bnRshift
-from cryptocj import bignumcj.bnNumBits
-
 public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
     protected var oid: String
 
@@ -58,19 +52,16 @@ public class ObjectIdentifierParser <: ASN1Parser {
                 stringBuilder.append('.').append(x)
             } else {
                 var vInt: Int64 = Int64(x) & 0x7f
-                var v: CPointer<BIGNUM> = bnNew()
-                bnSetWord(v, UInt64(vInt))
+                var v: BigInt = BigInt(vInt)
                 do {
                     byteArrayStream.read(dataArr)
                     x = dataArr[0]
-                    var r: CPointer<BIGNUM> = bnNew()
-                    bnLshift(r, v, 7)
-                    var c: CPointer<BIGNUM> = bnNew()
-                    var b: CPointer<BIGNUM> = bnNew()
-                    bnAdd(c, r, b)
+                    var r: BigInt = v.shiftLeft(7)
+                    var b: BigInt = BigInt(Int64(x) & 0x7f)
+                    var c: BigInt = r + b
                     v = c
                 } while (x > 127)
-                stringBuilder.append('.').append(bnGetWord(v))
+                stringBuilder.append('.').append(Int64.parse(v.toStringDec()))
             }
         }
         return ASN1ObjectIdentifier(stringBuilder.toString(), value)
@@ -107,26 +98,20 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
         var number: Int64 = first * 40 + second
         baos.write(number.toString().toUtf8Array())
         for (i in 2..stringArr.size) {
-            var valueBigNum: CPointer<BIGNUM> = bnNew()
-
-            // 将十进制字符串转换为大数
-            bnDec2bn(valueBigNum, stringArr[i])
-
-            // 从大数中提取整数
-            var bigNum: Int64 = Int64(bnGetWord(valueBigNum))
+            var valueBigNum: BigInt = BigInt(stringArr[i])
+            var bigNum: Int64 = Int64.parse(valueBigNum.toStringDec())
             if (bigNum > 0 && bigNum < 127) {
                 baos.write(bigNum.toString().toUtf8Array())
             } else {
                 var neededBytes: Int64
-                if (bnNumBits(valueBigNum) % 7 > 0) {
-                    neededBytes = Int64(bnNumBits(valueBigNum)) / 7 + 1
+                if (valueBigNum.toStringBin().size % 7 > 0) {
+                    neededBytes = Int64(valueBigNum.toStringBin().size) / 7 + 1
                 } else {
-                    neededBytes = Int64(bnNumBits(valueBigNum)) / 7 + 0
+                    neededBytes = Int64(valueBigNum.toStringBin().size) / 7 + 0
                 }
                 for (i in neededBytes - 1..0) {
-                    var r: CPointer<BIGNUM> = bnNew()
-                    bnRshift(r, valueBigNum, Int32(i * 7))
-                    var b: Byte = UInt8(bnGetWord(r))
+                    var r: BigInt = valueBigNum.shiftRight(i * 7)
+                    var b: Byte = UInt8.parse(r.toStringDec())
                     b &= 0x7f
                     if (i > 0) {
                         b |= 0x80
