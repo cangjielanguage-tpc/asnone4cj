@@ -423,17 +423,17 @@ public class ASN1Integer <: ASN1PrimitiveValue {
     /*
      * 初始化 ASN1Integer
      *
-     * 参数 value - 初始化的 CPointer<BIGNUM> 值
+     * 参数 value - 初始化的 BigInt 值
      */
-    public init(value: CPointer<BIGNUM>)
+    public init(value: BigInt)
 
     /*
      * 初始化 ASN1Integer -- 内部接口
      *
-     * 参数 value - 初始化的 CPointer<BIGNUM> 值
+     * 参数 value - 初始化的 BigInt 值
      * 参数 valueBytes - Byte 对象集合
      */
-    public init(value: CPointer<BIGNUM>, valueBytes: Array<Byte>)
+    public init(value: BigInt, valueBytes: Array<Byte>)
 
     /*
      *  获取当前值
@@ -913,17 +913,17 @@ public class ASN1Enumerated <: ASN1PrimitiveValue {
     /*
      * 初始化 ASN1Enumerated -- 内部接口
      *
-     * 参数 value - 初始化的 BIGNUM 值
+     * 参数 value - 初始化的 BigInt 值
      */
-    public init(value: CPointer<BIGNUM>)
+    public init(value: BigInt)
 
     /*
      * 初始化 ASN1Enumerated -- 内部接口
      *
-     * 参数 value - 初始化的 BIGNUM 值
+     * 参数 value - 初始化的 BigInt 值
      * 参数 valueBytes - Byte 数据集合
      */
-    public init(value: CPointer<BIGNUM>, valueBytes: Array<Byte>)
+    public init(value: BigInt, valueBytes: Array<Byte>)
 
     /*
      * 获取原始值 -- 内部接口
@@ -1896,5 +1896,33 @@ public class Checks {
      * 参数 args - 格式化数据
      */
     public static func checkArgument(bool: Bool, messageFormat: String, args: Array<ToString>)
+}
+```
+
+#### class DecoderUtils
+
+```cangjie
+public class DecoderUtils {
+    /*
+     * 将Array<Byte>转换成BigInt -- 内部接口
+     *
+     * 参数 value - Byte 数组数据
+     * 返回值 BigInt - BigInt 数据
+     */
+    public static func asn1Decode(value: Array<Byte>): BigInt
+}
+```
+
+#### class EncodingUtils
+
+```cangjie
+public class EncodingUtils {
+    /*
+     * 将BigInt转换成Array<Byte> -- 内部接口
+     *
+     * 参数 value - BigInt 值
+     * 返回值 Array<Byte> - Byte 数组数据
+     */
+    public static func asn1Encoded(value: BigInt): Array<Byte>
 }
 ```

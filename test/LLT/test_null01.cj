@@ -1,8 +1,5 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-
-from cryptocj import bignumcj.BIGNUM
-from cryptocj import bignumcj.*
 from asn1 import asn1.ASN1Null
 from asn1 import asn1.NullParser
 from asn1 import asn1.BERDecoder
