@@ -1,0 +1,221 @@
+<?xml version="1.0" ?>
+<testsuites errors="0" failures="0" skipped="0" tests="190">
+    <testsuite errors="0" failures="0" name="HLT.asn1taggedobject.asn_Asn1TaggedObject" skipped="0" tests="16" time="0.000159116">
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_01" time="9.465999999999999e-06"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_02" time="1.6754999999999998e-05"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_03" time="2.1635999999999997e-05"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_04" time="1.1140000000000003e-06"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_05" time="8.16e-07"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_06" time="1.1143e-05"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_07" time="9.19e-07"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_08" time="1.2689e-05"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_09" time="8.161e-06"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_10" time="7.228e-06"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_11" time="2.836e-06"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_12" time="3.1199999999999998e-06"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_13" time="2.1728999999999998e-05"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_14" time="2.673e-06"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_15" time="2.7834e-05"/>
+        <testcase class_name="HLT.asn1taggedobject.asn_Asn1TaggedObject" name="asn_Asn1TaggedObject_16" time="6.720000000000001e-07"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1inputStream02.asn_Asn1InputStream01" skipped="0" tests="11" time="7.812e-05">
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream01" time="2.3644e-05"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream02" time="3.7440000000000005e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream03" time="4.102000000000001e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream04" time="2.079e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream05" time="3.733e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream06" time="1.5236000000000001e-05"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream07" time="3.139e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream08" time="1.9590000000000002e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream09" time="6.639e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream10" time="3.6110000000000002e-06"/>
+        <testcase class_name="HLT.asn1inputStream02.asn_Asn1InputStream01" name="asn_Asn1InputStream11" time="2.781e-06"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.fileasn1.asn_Asn1OutputStream01" skipped="0" tests="54" time="0.0010430050000000003">
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne1" time="5.5743e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne2" time="2.1449000000000004e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne3" time="1.8588999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne4" time="1.9992e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne5" time="1.8949e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne6" time="1.7093e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne7" time="1.8546e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne8" time="1.5793999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne9" time="1.5765000000000002e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne10" time="1.5493e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne11" time="1.6631e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne12" time="1.8029e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne13" time="1.5757000000000002e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne14" time="2.3797999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne15" time="5.2592e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne16" time="1.7154e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne17" time="4.435e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne18" time="1.7811e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne19" time="1.5644e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne20" time="1.5392e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne21" time="1.6958999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne22" time="1.5569000000000003e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne23" time="1.9699999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne24" time="1.5739e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne25" time="1.6373e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne26" time="1.5934e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne27" time="1.6567000000000002e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne28" time="1.513e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne29" time="2.203e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne30" time="1.6867e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne31" time="1.7521e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne32" time="1.6559000000000002e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne33" time="1.5669e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne34" time="1.4666999999999999e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne35" time="1.708e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne36" time="1.5231e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne37" time="1.6595e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne38" time="1.6481000000000004e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne39" time="1.7562999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne40" time="1.5617e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne41" time="1.7582000000000002e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne42" time="1.5637000000000003e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne43" time="1.5389e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne44" time="1.5416e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne45" time="1.5396e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne46" time="1.6207e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne47" time="1.7460999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne48" time="1.6469e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne49" time="1.6445000000000003e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne50" time="1.5796000000000003e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne51" time="1.4891999999999999e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne52" time="1.7111999999999998e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne53" time="1.7635e-05"/>
+        <testcase class_name="HLT.fileasn1.asn_Asn1OutputStream01" name="AsnOne54" time="1.7905000000000002e-05"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asnset01.asn_Asn1OutputStream01" skipped="0" tests="15" time="0.00014269">
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_01" time="4.9205e-05"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_02" time="1.6122000000000003e-05"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_03" time="1.3155e-05"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_04" time="1.451e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_05" time="1.1986999999999999e-05"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_06" time="1.598e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_07" time="1.4530000000000001e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_08" time="2.1680000000000002e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_09" time="1.993e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_10" time="1.9e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_11" time="3.3090000000000004e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_12" time="1.3138e-05"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_13" time="2.883e-06"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_14" time="8.57e-07"/>
+        <testcase class_name="HLT.asnset01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_15" time="1.3124999999999999e-05"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1inputStream01.asn_Asn1InputStream01" skipped="0" tests="8" time="6.8649e-05">
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream1" time="1.8944e-05"/>
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream2" time="1.8189999999999999e-06"/>
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream3" time="1.454e-06"/>
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream4" time="2.0699000000000003e-05"/>
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream5" time="5.267e-06"/>
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream6" time="4.2000000000000004e-06"/>
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream7" time="1.2700000000000001e-06"/>
+        <testcase class_name="HLT.asn1inputStream01.asn_Asn1InputStream01" name="asn_Asn1InputStream8" time="6.5730000000000004e-06"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1bitString01.asn_ASN1BitString02" skipped="0" tests="15" time="5.583e-05">
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_01" time="1.3859e-05"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_02" time="2.466e-06"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_03" time="1.143e-06"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_04" time="8.169999999999999e-07"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_23" time="4.061000000000001e-06"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_25" time="8.259999999999999e-07"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_05" time="9.44e-07"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_06" time="7.009999999999999e-07"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_07" time="1.619e-06"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_08" time="7.41e-07"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_09" time="1.3012000000000002e-05"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_10" time="4.27e-06"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_11" time="2.837e-06"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_12" time="9.58e-07"/>
+        <testcase class_name="HLT.asn1bitString01.asn_ASN1BitString02" name="asn_ASN1BitString_13" time="9.92e-07"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1sequence.asn_SeqUencer" skipped="0" tests="12" time="8.734099999999999e-05">
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_02" time="4.4986e-05"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_03" time="1.419e-06"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_04" time="1.0433e-05"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_05" time="1.8220000000000002e-05"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_06" time="1.605e-06"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_07" time="9.89e-07"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_08" time="9.6e-07"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_09" time="9.09e-07"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_10" time="1.789e-06"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_11" time="9.15e-07"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_12" time="1.1249999999999998e-06"/>
+        <testcase class_name="HLT.asn1sequence.asn_SeqUencer" name="asn_ASN1Null_13" time="1.629e-06"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1outputStream01.asn_Asn1OutputStream01" skipped="0" tests="20" time="0.000145966">
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_01" time="1.3494e-05"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_02" time="9.19e-07"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_03" time="1.2362e-05"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_04" time="8.08e-07"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_05" time="5.46e-07"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_06" time="6.554e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_07" time="2.8369999999999998e-05"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_08" time="1.1408e-05"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_09" time="5.883e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_10" time="4.369e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_11" time="3.733e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_12" time="2.0659999999999998e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_13" time="6.38e-07"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_14" time="6.07e-07"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_15" time="6.769e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_16" time="6.395e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_17" time="4.001e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_18" time="1.2942e-05"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_19" time="5.641e-06"/>
+        <testcase class_name="HLT.asn1outputStream01.asn_Asn1OutputStream01" name="asn_Asn1OutputStream_20" time="1.1265000000000001e-05"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1integer.asn_Asn1OutputStream01" skipped="0" tests="7" time="0.000257927">
+        <testcase class_name="HLT.asn1integer.asn_Asn1OutputStream01" name="asn_Asn1Integer_01" time="3.0273e-05"/>
+        <testcase class_name="HLT.asn1integer.asn_Asn1OutputStream01" name="asn_Asn1Integer_02" time="8.6298e-05"/>
+        <testcase class_name="HLT.asn1integer.asn_Asn1OutputStream01" name="asn_Asn1Integer_03" time="5.266e-06"/>
+        <testcase class_name="HLT.asn1integer.asn_Asn1OutputStream01" name="asn_Asn1Integer_04" time="1.0066e-05"/>
+        <testcase class_name="HLT.asn1integer.asn_Asn1OutputStream01" name="asn_Asn1Integer_05" time="2.6890999999999997e-05"/>
+        <testcase class_name="HLT.asn1integer.asn_Asn1OutputStream01" name="asn_Asn1Integer_06" time="8.1794e-05"/>
+        <testcase class_name="HLT.asn1integer.asn_Asn1OutputStream01" name="asn_Asn1Integer_07" time="9.644999999999998e-06"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" skipped="0" tests="9" time="2.3663e-05">
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_01" time="1.2978999999999999e-05"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_02" time="8.98e-07"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_03" time="1.6419999999999997e-06"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_04" time="6.680000000000001e-07"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_05" time="5.66e-07"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_06" time="6.620000000000001e-07"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_07" time="5.86e-07"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_08" time="5.94e-07"/>
+        <testcase class_name="HLT.asn1objectIdentifier.asn_Asn1objectIdentifier" name="asn_Asn1objectIdentifier_09" time="5.679999999999999e-07"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1tag.asn_Asn1Tag01" skipped="0" tests="14" time="8.458199999999998e-05">
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag01" time="2.3268e-05"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag02" time="6.697e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag03" time="3.78e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag04" time="3.738e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag05" time="4.586000000000001e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag06" time="1.0121999999999999e-05"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag07" time="2.265e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag08" time="1.31e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag09" time="2.3039999999999995e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag10" time="1.542e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag11" time="6.384e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag12" time="4.368e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag13" time="3.434e-06"/>
+        <testcase class_name="HLT.asn1tag.asn_Asn1Tag01" name="asn_Asn1Tag014" time="3.5299999999999997e-06"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1boolean.asn_ASN1Boolean01" skipped="0" tests="2" time="1.7684000000000002e-05">
+        <testcase class_name="HLT.asn1boolean.asn_ASN1Boolean01" name="asn_Asn1Boolean_01" time="1.2106e-05"/>
+        <testcase class_name="HLT.asn1boolean.asn_ASN1Boolean01" name="asn_Asn1Boolean_02" time="2.34e-06"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1enumerated.asn_ASN1Enumerated" skipped="0" tests="6" time="8.083e-06">
+        <testcase class_name="HLT.asn1enumerated.asn_ASN1Enumerated" name="asn_ASN1Enumerated_01" time="5.033e-06"/>
+        <testcase class_name="HLT.asn1enumerated.asn_ASN1Enumerated" name="asn_ASN1Enumerated_02" time="2.7800000000000003e-07"/>
+        <testcase class_name="HLT.asn1enumerated.asn_ASN1Enumerated" name="asn_ASN1Enumerated_03" time="2.25e-07"/>
+        <testcase class_name="HLT.asn1enumerated.asn_ASN1Enumerated" name="asn_ASN1OctetString_04" time="6.049999999999999e-07"/>
+        <testcase class_name="HLT.asn1enumerated.asn_ASN1Enumerated" name="asn_ASN1OctetString_05" time="2.44e-07"/>
+        <testcase class_name="HLT.asn1enumerated.asn_ASN1Enumerated" name="asn_ASN1OctetString_06" time="2.4e-07"/>
+    </testsuite>
+    <testsuite errors="0" failures="0" name="HLT.asn1null.asn_ASN1Null" skipped="0" tests="1" time="1.4719e-05">
+        <testcase class_name="HLT.asn1null.asn_ASN1Null" name="asn_ASN1Null_01" time="1.3453e-05"/>
+    </testsuite>
+</testsuites>

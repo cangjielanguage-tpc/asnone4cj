@@ -1,0 +1,29 @@
+[2023-02-24 09:32:11,524] [INFO] find 3rd party libs in ['/home/jwb/project/asn-one/build/asn1']
+[2023-02-24 09:32:11,524] [INFO] ************************Start to run case file: HLT/asn1objectIdentifier.cj************************
+[2023-02-24 09:32:11,524] [INFO] [Run CMD]cjc -O2   --import-path /home/jwb/project/asn-one/build/asn1/.. -L /home/jwb/project/asn-one/build/asn1 -l asn1_asn1.util -l asn1_asn1.types -l asn1_asn1.encodingrules.der -l asn1_asn1 -l asn1_asn1.encodingrules   HLT/asn1objectIdentifier.cj  -o tmp/HLT/asn1objectIdentifier.cj.out --test
+[2023-02-24 09:32:12,405] [INFO] [Run CMD]cd tmp/HLT;./asn1objectIdentifier.cj.out  
+[2023-02-24 09:32:12,419] [INFO] 1.2.52
+[2023-02-24 09:32:12,419] [INFO] 1.2.127.127.127.127
+[2023-02-24 09:32:12,419] [INFO] 0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0
+[2023-02-24 09:32:12,419] [INFO] 128.-129.130.-255
+[2023-02-24 09:32:12,419] [INFO] 
+[2023-02-24 09:32:12,419] [INFO] nihao
+[2023-02-24 09:32:12,419] [INFO] 仓颉
+[2023-02-24 09:32:12,419] [INFO] 仓颉nihao
+[2023-02-24 09:32:12,419] [INFO] 仓颉nihao^%&*%
+[2023-02-24 09:32:12,419] [INFO] --------------------------------------------------------------------------------------------------
+[2023-02-24 09:32:12,419] [INFO] TP: [33mdefault[0m, time elapsed: 24484 ns, Result:
+[2023-02-24 09:32:12,419] [INFO] TCS: [33masn_Asn1objectIdentifier[0m, time elapsed: 23663 ns, RESULT:
+[2023-02-24 09:32:12,419] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_01 (12979 ns)
+[2023-02-24 09:32:12,419] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_02 (898 ns)
+[2023-02-24 09:32:12,419] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_03 (1642 ns)
+[2023-02-24 09:32:12,419] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_04 (668 ns)
+[2023-02-24 09:32:12,419] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_05 (566 ns)
+[2023-02-24 09:32:12,420] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_06 (662 ns)
+[2023-02-24 09:32:12,420] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_07 (586 ns)
+[2023-02-24 09:32:12,420] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_08 (594 ns)
+[2023-02-24 09:32:12,420] [INFO] [[32m PASSED [0m] CASE: asn_Asn1objectIdentifier_09 (568 ns)
+[2023-02-24 09:32:12,420] [INFO] Summary: TOTAL: 9
+[2023-02-24 09:32:12,420] [INFO] [32mPASSED[0m: 9, [32mSKIPPED[0m: 0, ERROR: 0
+[2023-02-24 09:32:12,420] [INFO] [31mFAILED[0m: 0
+[2023-02-24 09:32:12,420] [INFO] --------------------------------------------------------------------------------------------------

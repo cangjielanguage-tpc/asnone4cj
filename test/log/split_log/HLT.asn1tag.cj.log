@@ -1,0 +1,25 @@
+[2023-02-24 09:32:35,816] [INFO] find 3rd party libs in ['/home/jwb/project/asn-one/build/asn1']
+[2023-02-24 09:32:35,817] [INFO] ************************Start to run case file: HLT/asn1tag.cj************************
+[2023-02-24 09:32:35,817] [INFO] [Run CMD]cjc -O2   --import-path /home/jwb/project/asn-one/build/asn1/.. -L /home/jwb/project/asn-one/build/asn1 -l asn1_asn1.util -l asn1_asn1.types -l asn1_asn1.encodingrules.der -l asn1_asn1 -l asn1_asn1.encodingrules   HLT/asn1tag.cj  -o tmp/HLT/asn1tag.cj.out --test
+[2023-02-24 09:32:37,055] [INFO] [Run CMD]cd tmp/HLT;./asn1tag.cj.out  
+[2023-02-24 09:32:37,069] [INFO] --------------------------------------------------------------------------------------------------
+[2023-02-24 09:32:37,069] [INFO] TP: [33mdefault[0m, time elapsed: 85385 ns, Result:
+[2023-02-24 09:32:37,069] [INFO] TCS: [33masn_Asn1Tag01[0m, time elapsed: 84582 ns, RESULT:
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag01 (23268 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag02 (6697 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag03 (3780 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag04 (3738 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag05 (4586 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag06 (10122 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag07 (2265 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag08 (1310 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag09 (2304 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag10 (1542 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag11 (6384 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag12 (4368 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag13 (3434 ns)
+[2023-02-24 09:32:37,069] [INFO] [[32m PASSED [0m] CASE: asn_Asn1Tag014 (3530 ns)
+[2023-02-24 09:32:37,069] [INFO] Summary: TOTAL: 14
+[2023-02-24 09:32:37,069] [INFO] [32mPASSED[0m: 14, [32mSKIPPED[0m: 0, ERROR: 0
+[2023-02-24 09:32:37,069] [INFO] [31mFAILED[0m: 0
+[2023-02-24 09:32:37,069] [INFO] --------------------------------------------------------------------------------------------------

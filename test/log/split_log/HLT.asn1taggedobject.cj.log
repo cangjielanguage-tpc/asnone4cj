@@ -1,0 +1,34 @@
+[2023-02-24 09:32:12,420] [INFO] find 3rd party libs in ['/home/jwb/project/asn-one/build/asn1']
+[2023-02-24 09:32:12,420] [INFO] ************************Start to run case file: HLT/asn1taggedobject.cj************************
+[2023-02-24 09:32:12,420] [INFO] [Run CMD]cjc -O2   --import-path /home/jwb/project/asn-one/build/asn1/.. -L /home/jwb/project/asn-one/build/asn1 -l asn1_asn1.util -l asn1_asn1.types -l asn1_asn1.encodingrules.der -l asn1_asn1 -l asn1_asn1.encodingrules   HLT/asn1taggedobject.cj  -o tmp/HLT/asn1taggedobject.cj.out --test
+[2023-02-24 09:32:17,228] [INFO] [Run CMD]cd tmp/HLT;./asn1taggedobject.cj.out  
+[2023-02-24 09:32:17,241] [INFO] true
+[2023-02-24 09:32:17,241] [INFO] ASN1Object[ASN1Tag[UNIVERSAL,CONSTRUCTED,16]]
+[2023-02-24 09:32:17,241] [INFO] ASN1Object[ASN1Tag[UNIVERSAL,CONSTRUCTED,16]]
+[2023-02-24 09:32:17,242] [INFO] ASN1Object[ASN1Tag[UNIVERSAL,CONSTRUCTED,16]]
+[2023-02-24 09:32:17,242] [INFO] ASN1TaggedObject[ASN1Tag[UNIVERSAL,CONSTRUCTED,16],ASN1Object[ASN1Tag[UNIVERSAL,CONSTRUCTED,16]]]
+[2023-02-24 09:32:17,242] [INFO] true
+[2023-02-24 09:32:17,242] [INFO] true
+[2023-02-24 09:32:17,242] [INFO] --------------------------------------------------------------------------------------------------
+[2023-02-24 09:32:17,242] [INFO] TP: [33mdefault[0m, time elapsed: 159891 ns, Result:
+[2023-02-24 09:32:17,242] [INFO] TCS: [33masn_Asn1TaggedObject[0m, time elapsed: 159116 ns, RESULT:
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_01 (9466 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_02 (16755 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_03 (21636 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_04 (1114 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_05 (816 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_06 (11143 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_07 (919 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_08 (12689 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_09 (8161 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_10 (7228 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_11 (2836 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_12 (3120 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_13 (21729 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_14 (2673 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_15 (27834 ns)
+[2023-02-24 09:32:17,242] [INFO] [[32m PASSED [0m] CASE: asn_Asn1TaggedObject_16 (672 ns)
+[2023-02-24 09:32:17,242] [INFO] Summary: TOTAL: 16
+[2023-02-24 09:32:17,242] [INFO] [32mPASSED[0m: 16, [32mSKIPPED[0m: 0, ERROR: 0
+[2023-02-24 09:32:17,242] [INFO] [31mFAILED[0m: 0
+[2023-02-24 09:32:17,242] [INFO] --------------------------------------------------------------------------------------------------

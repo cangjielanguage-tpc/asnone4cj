@@ -1,0 +1,27 @@
+[2023-02-24 09:32:37,713] [INFO] find 3rd party libs in ['/home/jwb/project/asn-one/build/asn1']
+[2023-02-24 09:32:37,713] [INFO] ************************Start to run case file: HLT/asn1enumerated.cj************************
+[2023-02-24 09:32:37,713] [INFO] [Run CMD]cjc -O2   --import-path /home/jwb/project/asn-one/build/asn1/.. -L /home/jwb/project/asn-one/build/asn1 -l asn1_asn1.util -l asn1_asn1.types -l asn1_asn1.encodingrules.der -l asn1_asn1 -l asn1_asn1.encodingrules   HLT/asn1enumerated.cj  -o tmp/HLT/asn1enumerated.cj.out --test
+[2023-02-24 09:32:38,628] [INFO] [Run CMD]cd tmp/HLT;./asn1enumerated.cj.out  
+[2023-02-24 09:32:38,642] [INFO] --------------------------------------------------------------------------------------------------
+[2023-02-24 09:32:38,642] [INFO] TP: [33mdefault[0m, time elapsed: 8774 ns, Result:
+[2023-02-24 09:32:38,642] [INFO] TCS: [33masn_ASN1Enumerated[0m, time elapsed: 8083 ns, RESULT:
+[2023-02-24 09:32:38,642] [INFO] [[32m PASSED [0m] CASE: asn_ASN1Enumerated_01 (5033 ns)
+[2023-02-24 09:32:38,642] [INFO] [[32m PASSED [0m] CASE: asn_ASN1Enumerated_02 (278 ns)
+[2023-02-24 09:32:38,642] [INFO] [[32m PASSED [0m] CASE: asn_ASN1Enumerated_03 (225 ns)
+[2023-02-24 09:32:38,642] [INFO] [[32m PASSED [0m] CASE: asn_ASN1OctetString_04 (605 ns)
+[2023-02-24 09:32:38,642] [INFO] [[32m PASSED [0m] CASE: asn_ASN1OctetString_05 (244 ns)
+[2023-02-24 09:32:38,642] [INFO] [[32m PASSED [0m] CASE: asn_ASN1OctetString_06 (240 ns)
+[2023-02-24 09:32:38,642] [INFO] Summary: TOTAL: 6
+[2023-02-24 09:32:38,642] [INFO] [32mPASSED[0m: 6, [32mSKIPPED[0m: 0, ERROR: 0
+[2023-02-24 09:32:38,642] [INFO] [31mFAILED[0m: 0
+[2023-02-24 09:32:38,642] [INFO] --------------------------------------------------------------------------------------------------
+[2023-02-24 09:32:38,651] [INFO] **************************************************
+[2023-02-24 09:32:38,651] [INFO] Test Summary
+[2023-02-24 09:32:38,651] [INFO] Total  : 190
+[2023-02-24 09:32:38,651] [INFO] Passed : 190
+[2023-02-24 09:32:38,651] [INFO] Failed : 0
+[2023-02-24 09:32:38,651] [INFO] Error  : 0
+[2023-02-24 09:32:38,651] [INFO] Skipped: 0
+[2023-02-24 09:32:38,651] [INFO] Ratio  : 100.0%
+[2023-02-24 09:32:38,651] [INFO] **************************************************
+[2023-02-24 09:32:38,652] [INFO] View the full log in log/all.log, or view the log of each case under log/split_log
