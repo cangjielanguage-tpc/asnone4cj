@@ -54,7 +54,7 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
     └── UT
 ```
 
-- `doc` 是库的设计文档、提案、库的使用文档、LLT 用例覆盖报告（小于 90%，在此说明）
+- `doc` 是库的设计文档、提案、库的使用文档、LLT 用例覆盖报告
 - `src` 是库源码目录
 - `test` 是存放测试用例，包括 HLT 用例、LLT 用例和 UT 用例
 
@@ -66,6 +66,8 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 
 ### 编译
 
+#### linux环境编译
+
 编译描述和具体shell命令
 
 ```shell
@@ -76,6 +78,20 @@ cp -r ../testJekins/src/ci_test .;
 
 python3 ci_test/main.py build   ---> 编译
 python3 ci_test/main.py test;   ---> 执行 test/LLT 用例 
+```
+
+#### Window环境编译
+
+编译描述和具体cmd命令
+
+```git bash here
+git clone https://gitee.com/HW-PLLab/asn-one.git;
+```
+
+```cmd
+cd asn-one
+cpm build -V   ---> 编译
+cpm test - V   ---> 执行 test/LLT 用例 
 ```
 
 ### 功能示例
