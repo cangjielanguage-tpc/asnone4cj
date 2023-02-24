@@ -1,8 +1,10 @@
-## asn-one 库
+# asn-one 库
+
+## IO操作 - 输出流
 
 ### 介绍
 
-ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和 DER 编码规则。
+写入数据工具，对数据进行编码
 
 ### 主要接口
 
@@ -40,6 +42,45 @@ public class ASN1OutputStream <: OutputStream {
     public func write(b: Int64): Unit
 }
 ```
+
+### 示例
+
+```cangjie
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+
+main(): Int64 {
+    var value3: Array<Byte> = [0x01, 0x01, 0x00]
+    var byteArrayStream3: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
+    asn1OutputStream3.writeObject(ASN1Boolean(false))
+    if (byteArrayStream3.bytes() == value3) {
+        println("success")
+    }
+
+    var value4: Array<Byte> = [0x01, 0x01, 0x01]
+    var byteArrayStream4: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
+    asn1OutputStream4.writeObject(ASN1Boolean(true))
+    if (byteArrayStream4.bytes() == value4) {
+        println("success")
+    }
+
+    return 0
+}
+```
+
+## IO操作 - 输入流
+
+### 介绍
+
+读取数据工具，对数据进行解码
+
+### 主要接口
 
 #### class ASN1InputStream
 
@@ -126,6 +167,65 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
     public func next(): Option<ASN1Object> 
 }
 ```
+
+### 示例
+
+```cangjie
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+
+main(): Int64 {
+    var value: Array<Byte> = [0x01, 0x01, 0x0]
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
+    byteArrayStream.write(value)
+    var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+    var asn1Object: ASN1Object = asn1InputStream.readObject()
+    if (asn1Object is ASN1Boolean) {
+        println("success")
+    }
+    var object: ASN1Boolean = (asn1Object as ASN1Boolean).getOrThrow()
+    var anyValue: Any = object.getValue()
+    var boolValue: Bool = (anyValue as Bool).getOrThrow()
+    if (!boolValue) {
+        println("success")
+    }
+    if (object.valueHash() == 1237) {
+        println("success")
+    }
+
+    var value1: Array<Byte> = [0x01, 0x01, 0x01]
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
+    byteArrayStream1.write(value1)
+    var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
+    var asn1Object1: ASN1Object = asn1InputStream1.readObject()
+    if (asn1Object1 is ASN1Boolean) {
+        println("success")
+    }
+    var object1: ASN1Boolean = (asn1Object1 as ASN1Boolean).getOrThrow()
+    var anyValue1: Any = object1.getValue()
+    var boolValue1: Bool = (anyValue1 as Bool).getOrThrow()
+    if (boolValue1) {
+        println("success")
+    }
+    if (object1.valueHash() == 1231) {
+        println("success")
+    }
+
+    return 0
+}
+```
+
+## Bit类型
+
+### 介绍
+
+Bit类型数据编解码
+
+### 主要接口
 
 #### class  ASN1BitString
 
@@ -237,6 +337,49 @@ public class BitStringSerializer <: ASN1Serializer {
 }
 ```
 
+### 示例
+
+```cangjie
+from asn1 import asn1.ASN1BitString
+from asn1 import asn1.BERDecoder
+from asn1 import asn1.BitStringParser
+from asn1 import asn1.ASN1Tag
+from asn1 import asn1.*
+from std import io.*
+
+main() {
+    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let asn = ASN1BitString(bytesBuf, 6)
+    let arr: Array<Bool> = Array<Bool>(5, item: true)
+    let asn1 = ASN1BitString(arr)
+    asn.getValue()
+    let indd = asn.isSet(2)
+    let src = asn.length()
+
+    let tags = INTEGER
+    let dec: BERDecoder = BERDecoder()
+    let bitss = BitStringParser(dec)
+    bitss.parse(tags, bytesBuf)
+
+    if (indd != false) {
+        return 1
+    }
+    if (src != 74) {
+        return 2
+    }
+    
+    return 0
+}
+```
+
+## Set类型
+
+### 介绍
+
+Set类型数据编解码
+
+### 主要接口
+
 #### class ASN1Set
 
 ```cangjie
@@ -323,6 +466,42 @@ class SetSerializer <: ASN1Serializer {
 }
 ```
 
+### 示例
+
+```cangjie
+from asn1 import asn1.ASN1Object
+from asn1 import asn1.ASN1Set 
+from asn1 import asn1.BitStringParser
+from asn1 import asn1.ASN1Tag
+
+from std import collection.*
+
+main() {
+    var arr = HashSet<ASN1Object>()
+    let buf: Array<Byte> = [1]
+    var sets = ASN1Set(arr,buf)
+    var sets1 = ASN1Set(arr)
+
+    let src = sets.getValue()
+    let src1 = sets.iterator()
+
+    println(src.size)
+    if (src.size != 0){
+        return 1
+    }
+
+    return 0
+}
+```
+
+## Boolean类型
+
+### 介绍
+
+Boolean类型数据编解码
+
+### 主要接口
+
 #### class ASN1Boolean
 
 ```cangjie
@@ -408,6 +587,121 @@ public class BooleanSerializer <: ASN1Serializer {
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
 }
 ```
+
+### 示例
+
+```cangjie
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+
+// 数组第一位0x01代表ASN1Boolean类型
+// 数组第二位0x01代表数组长度为1
+// 数组第三位0x0代表false,0x01代表true,默认值是true
+main(): Int64 {
+    // false
+    var value: Array<Byte> = [0x01, 0x01, 0x0]
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
+    byteArrayStream.write(value)
+    var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+    var asn1Object: ASN1Object = asn1InputStream.readObject()
+    if (!(asn1Object is ASN1Boolean)) {
+        return 1
+    }
+    var object: ASN1Boolean = (asn1Object as ASN1Boolean).getOrThrow()
+    var anyValue: Any = object.getValue()
+    var boolValue: Bool = (anyValue as Bool).getOrThrow()
+    if (boolValue) {
+        return 1
+    }
+    if (object.valueHash() != 1237) {
+        return 1
+    }
+
+    // true
+    var value1: Array<Byte> = [0x01, 0x01, 0x01]
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
+    byteArrayStream1.write(value1)
+    var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
+    var asn1Object1: ASN1Object = asn1InputStream1.readObject()
+    if (!(asn1Object1 is ASN1Boolean)) {
+        return 1
+    }
+    var object1: ASN1Boolean = (asn1Object1 as ASN1Boolean).getOrThrow()
+    var anyValue1: Any = object1.getValue()
+    var boolValue1: Bool = (anyValue1 as Bool).getOrThrow()
+    if (!boolValue1) {
+        return 1
+    }
+    if (object1.valueHash() != 1231) {
+        return 1
+    }
+
+    // true
+    var value2: Array<Byte> = [0x01, 0x01, 0xFF]
+    var byteArrayStream2: ByteArrayStream = ByteArrayStream()
+    byteArrayStream2.write(value2)
+    var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
+    var asn1Object2: ASN1Object = asn1InputStream2.readObject()
+    if (!(asn1Object2 is ASN1Boolean)) {
+        return 1
+    }
+    var object2: ASN1Boolean = (asn1Object2 as ASN1Boolean).getOrThrow()
+    var anyValue2: Any = object2.getValue()
+    var boolValue2: Bool = (anyValue2 as Bool).getOrThrow()
+    if (!boolValue2) {
+        return 1
+    }
+    if (object2.valueHash() != 1231) {
+        return 1
+    }
+
+    var value3: Array<Byte> = [0x01, 0x01, 0x00]
+    var byteArrayStream3: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
+    asn1OutputStream3.writeObject(ASN1Boolean(false))
+    if (byteArrayStream3.bytes() != value3) {
+        return 1
+    }
+
+    var value4: Array<Byte> = [0x01, 0x01, 0x01]
+    var byteArrayStream4: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
+    asn1OutputStream4.writeObject(ASN1Boolean(true))
+    if (byteArrayStream4.bytes() != value4) {
+        return 1
+    }
+
+    var value5: Array<Byte> = [0x01, 0x01, 0x00]
+    var byteArrayStream5: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream5: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream5)
+    asn1OutputStream5.writeObject(ASN1Boolean(false, Array<Byte>()))
+    if (byteArrayStream5.bytes() != value5) {
+        return 1
+    }
+
+    var value6: Array<Byte> = [0x01, 0x01, 0x01]
+    var byteArrayStream6: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
+    asn1OutputStream6.writeObject(ASN1Boolean(true, Array<Byte>()))
+    if (byteArrayStream6.bytes() != value6) {
+        return 1
+    }
+
+    return 0
+}
+```
+
+## Integer类型
+
+### 介绍
+
+Integer类型数据编解码
+
+### 主要接口
 
 #### class ASN1Integer
 
@@ -502,6 +796,335 @@ public class IntegerSerializer <: ASN1Serializer {
 }
 ```
 
+### 示例
+
+```cangjie
+from numeric import bigint.*
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+
+// 数组第一位0x02代表ASN1Integer类型
+// 数组第二位0x01代表数组长度为1
+// 数组第三位开始代表数组内容
+main(): Int64 {
+    var value: Array<Byte> = [0x02, 0x01, 0x03]
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
+    byteArrayStream.write(value)
+    var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+    var asn1Object: ASN1Object = asn1InputStream.readObject()
+    if (!(asn1Object is ASN1Integer)) {
+        return 1
+    }
+    var object: ASN1Integer = (asn1Object as ASN1Integer).getOrThrow()
+    var anyValue: Any = object.getValue()
+    var bigValue: BigInt = (anyValue as BigInt).getOrThrow()
+    var intValue: String = bigValue.toStringDec()
+    if (!(intValue.equals("3"))) {
+        return 2
+    }
+    var intHashcode: Int64 = object.valueHash()
+    if (intHashcode != 3) {
+        return 3
+    }
+
+    var value0: Array<Byte> = [0x02, 0x01, 0x33]
+    var byteArrayStream0: ByteArrayStream = ByteArrayStream()
+    byteArrayStream0.write(value0)
+    var asn1InputStream0: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream0)
+    var asn1Object0: ASN1Object = asn1InputStream0.readObject()
+    if (!(asn1Object0 is ASN1Integer)) {
+        return 4
+    }
+    var object0: ASN1Integer = (asn1Object0 as ASN1Integer).getOrThrow()
+    var anyValue0: Any = object0.getValue()
+    var bigValue0: BigInt = (anyValue0 as BigInt).getOrThrow()
+    var intValue0: String = bigValue0.toStringDec()
+    if (!(intValue0.equals("51"))) {
+        return 5
+    }
+    var intHashcode0: Int64 = object0.valueHash()
+    if (intHashcode0 != 51) {
+        return 6
+    }
+
+    var value1: Array<Byte> = [0x02, 0x01, 0x44]
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
+    byteArrayStream1.write(value1)
+    var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
+    var asn1Object1: ASN1Object = asn1InputStream1.readObject()
+    if (!(asn1Object1 is ASN1Integer)) {
+        return 7
+    }
+    var object1: ASN1Integer = (asn1Object1 as ASN1Integer).getOrThrow()
+    var anyValue1: Any = object1.getValue()
+    var bigValue1: BigInt = (anyValue1 as BigInt).getOrThrow()
+    var intValue1: String = bigValue1.toStringDec()
+    if (!(intValue1.equals("68"))) {
+        return 8
+    }
+    var intHashcode1: Int64 = object1.valueHash()
+    if (intHashcode1 != 68) {
+        return 9
+    }
+
+    var value2: Array<Byte> = [0x02, 0x01, 0x55]
+    var byteArrayStream2: ByteArrayStream = ByteArrayStream()
+    byteArrayStream2.write(value2)
+    var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
+    var asn1Object2: ASN1Object = asn1InputStream2.readObject()
+    if (!(asn1Object2 is ASN1Integer)) {
+        return 10
+    }
+    var object2: ASN1Integer = (asn1Object2 as ASN1Integer).getOrThrow()
+    var anyValue2: Any = object2.getValue()
+    var bigValue2: BigInt = (anyValue2 as BigInt).getOrThrow()
+    var intValue2: String = bigValue2.toStringDec()
+    if (!(intValue2.equals("85"))) {
+        return 11
+    }
+    var intHashcode2: Int64 = object2.valueHash()
+    if (intHashcode2 != 85) {
+        return 12
+    }
+
+    var value3: Array<Byte> = [0x02, 0x01, 0x66]
+    var byteArrayStream3: ByteArrayStream = ByteArrayStream()
+    byteArrayStream3.write(value3)
+    var asn1InputStream3: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream3)
+    var asn1Object3: ASN1Object = asn1InputStream3.readObject()
+    if (!(asn1Object3 is ASN1Integer)) {
+        return 13
+    }
+    var object3: ASN1Integer = (asn1Object3 as ASN1Integer).getOrThrow()
+    var anyValue3: Any = object3.getValue()
+    var bigValue3: BigInt = (anyValue3 as BigInt).getOrThrow()
+    var intValue3: String = bigValue3.toStringDec()
+    if (!(intValue3.equals("102"))) {
+        return 14
+    }
+    var intHashcode3: Int64 = object3.valueHash()
+    if (intHashcode3 != 102) {
+        return 15
+    }
+
+    var value4: Array<Byte> = [0x02, 0x01, 0x7F]
+    var byteArrayStream4: ByteArrayStream = ByteArrayStream()
+    byteArrayStream4.write(value4)
+    var asn1InputStream4: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream4)
+    var asn1Object4: ASN1Object = asn1InputStream4.readObject()
+    if (!(asn1Object4 is ASN1Integer)) {
+        return 16
+    }
+    var object4: ASN1Integer = (asn1Object4 as ASN1Integer).getOrThrow()
+    var anyValue4: Any = object4.getValue()
+    var bigValue4: BigInt = (anyValue4 as BigInt).getOrThrow()
+    var intValue4: String = bigValue4.toStringDec()
+    if (!(intValue4.equals("127"))) {
+        return 17
+    }
+    var intHashcode4: Int64 = object4.valueHash()
+    if (intHashcode4 != 127) {
+        return 18
+    }
+
+    var value5: Array<Byte> = [0x02, 0x01, 0xFF]
+    var byteArrayStream5: ByteArrayStream = ByteArrayStream()
+    byteArrayStream5.write(value5)
+    var asn1InputStream5: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream5)
+    var asn1Object5: ASN1Object = asn1InputStream5.readObject()
+    if (!(asn1Object5 is ASN1Integer)) {
+        return 19
+    }
+    var object5: ASN1Integer = (asn1Object5 as ASN1Integer).getOrThrow()
+    var anyValue5: Any = object5.getValue()
+    var bigValue5: BigInt = (anyValue5 as BigInt).getOrThrow()
+    var intValue5: String = bigValue5.toStringDec()
+    if (!(intValue5.equals("-1"))) {
+        return 20
+    }
+    var intHashcode5: Int64 = object5.valueHash()
+    if (intHashcode5 != -1) {
+        return 21
+    }
+
+    var value6: Array<Byte> = [0x02, 0x02, 0x01, 0x00]
+    var byteArrayStream6: ByteArrayStream = ByteArrayStream()
+    byteArrayStream6.write(value6)
+    var asn1InputStream6: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream6)
+    var asn1Object6: ASN1Object = asn1InputStream6.readObject()
+    if (!(asn1Object6 is ASN1Integer)) {
+        return 22
+    }
+    var object6: ASN1Integer = (asn1Object6 as ASN1Integer).getOrThrow()
+    var anyValue6: Any = object6.getValue()
+    var bigValue6: BigInt = (anyValue6 as BigInt).getOrThrow()
+    var intValue6: String = bigValue6.toStringDec()
+    if (!(intValue6.equals("256"))) {
+        return 23
+    }
+    var intHashcode6: Int64 = object6.valueHash()
+    if (intHashcode6 != 256) {
+        return 24
+    }
+
+    var value7: Array<Byte> = [0x02, 0x02, 0xff, 0xff]
+    var byteArrayStream7: ByteArrayStream = ByteArrayStream()
+    byteArrayStream7.write(value7)
+    var asn1InputStream7: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream7)
+    var asn1Object7: ASN1Object = asn1InputStream7.readObject()
+    if (!(asn1Object7 is ASN1Integer)) {
+        return 25
+    }
+    var object7: ASN1Integer = (asn1Object7 as ASN1Integer).getOrThrow()
+    var anyValue7: Any = object7.getValue()
+    var bigValue7: BigInt = (anyValue7 as BigInt).getOrThrow()
+    var intValue7: String = bigValue7.toStringDec()
+    if (!(intValue7.equals("-1"))) {
+        return 26
+    }
+    var intHashcode7: Int64 = object7.valueHash()
+    if (intHashcode7 != -1) {
+        return 27
+    }
+
+    var value8: Array<Byte> = [0x02, 0x03, 0x01, 0xff, 0xff]
+    var byteArrayStream8: ByteArrayStream = ByteArrayStream()
+    byteArrayStream8.write(value8)
+    var asn1InputStream8: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream8)
+    var asn1Object8: ASN1Object = asn1InputStream8.readObject()
+    if (!(asn1Object8 is ASN1Integer)) {
+        return 28
+    }
+    var object8: ASN1Integer = (asn1Object8 as ASN1Integer).getOrThrow()
+    var anyValue8: Any = object8.getValue()
+    var bigValue8: BigInt = (anyValue8 as BigInt).getOrThrow()
+    var intValue8: String = bigValue8.toStringDec()
+    if (!(intValue8.equals("131071"))) {
+        return 29
+    }
+    var intHashcode8: Int64 = object8.valueHash()
+    if (intHashcode8 != 131071) {
+        return 30
+    }
+
+    var value9: Array<Byte> = [0x02, 0x04, 0x01, 0x01, 0xff, 0xff]
+    var byteArrayStream9: ByteArrayStream = ByteArrayStream()
+    byteArrayStream9.write(value9)
+    var asn1InputStream9: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream9)
+    var asn1Object9: ASN1Object = asn1InputStream9.readObject()
+    if (!(asn1Object9 is ASN1Integer)) {
+        return 31
+    }
+    var object9: ASN1Integer = (asn1Object9 as ASN1Integer).getOrThrow()
+    var anyValue9: Any = object9.getValue()
+    var bigValue9: BigInt = (anyValue9 as BigInt).getOrThrow()
+    var intValue9: String = bigValue9.toStringDec()
+    if (!(intValue9.equals("16908287"))) {
+        return 32
+    }
+    var intHashcode9: Int64 = object9.valueHash()
+    if (intHashcode9 != 16908287) {
+        return 33
+    }
+
+    var value10: Array<Byte> = [0x02, 0x01, 0x03]
+    var byteArrayStream10: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream10: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream10)
+    asn1OutputStream10.writeObject(ASN1Integer(3))
+    if (byteArrayStream10.bytes() != value10) {
+        return 34
+    }
+
+    var value12: Array<Byte> = [0x02, 0x01, 0x33]
+    var byteArrayStream12: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream12: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream12)
+    asn1OutputStream12.writeObject(ASN1Integer(51))
+    if (byteArrayStream12.bytes() != value12) {
+        return 35
+    }
+
+    var value14: Array<Byte> = [0x02, 0x01, 0x44]
+    var byteArrayStream14: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream14: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream14)
+    asn1OutputStream14.writeObject(ASN1Integer(68))
+    if (byteArrayStream14.bytes() != value14) {
+        return 36
+    }
+
+    var value16: Array<Byte> = [0x02, 0x01, 0x55]
+    var byteArrayStream16: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream16: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream16)
+    asn1OutputStream16.writeObject(ASN1Integer(85))
+    if (byteArrayStream16.bytes() != value16) {
+        return 37
+    }
+
+    var value18: Array<Byte> = [0x02, 0x01, 0x66]
+    var byteArrayStream18: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream18: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream18)
+    asn1OutputStream18.writeObject(ASN1Integer(102))
+    if (byteArrayStream18.bytes() != value18) {
+        return 38
+    }
+
+    var value20: Array<Byte> = [0x02, 0x01, 0x7F]
+    var byteArrayStream20: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream20: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream20)
+    asn1OutputStream20.writeObject(ASN1Integer(127))
+    if (byteArrayStream20.bytes() != value20) {
+        return 39
+    }
+
+    var value22: Array<Byte> = [0x02, 0x01, 0xFF]
+    var byteArrayStream22: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream22: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream22)
+    asn1OutputStream22.writeObject(ASN1Integer(-1))
+    if (byteArrayStream22.bytes() != value22) {
+        return 40
+    }
+
+    var value24: Array<Byte> = [0x02, 0x02, 0x01, 0x00]
+    var byteArrayStream24: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream24: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream24)
+    asn1OutputStream24.writeObject(ASN1Integer(256))
+    if (byteArrayStream24.bytes() != value24) {
+        return 41
+    }
+
+    var value28: Array<Byte> = [0x02, 0x03, 0x01, 0xff, 0xff]
+    var byteArrayStream28: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream28: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream28)
+    asn1OutputStream28.writeObject(ASN1Integer(131071))
+    if (byteArrayStream28.bytes() != value28) {
+        return 42
+    }
+
+    var value30: Array<Byte> = [0x02, 0x04, 0x01, 0x01, 0xff, 0xff]
+    var byteArrayStream30: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream30: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream30)
+    asn1OutputStream30.writeObject(ASN1Integer(16908287))
+    if (byteArrayStream30.bytes() != value30) {
+        return 43
+    }
+
+    return 0
+}
+
+class encode <: ASN1Encoder {}
+```
+
+## Null类型
+
+### 介绍
+
+Null类型数据编解码
+
+### 主要接口
+
 #### class ASN1Null
 
 ```cangjie
@@ -577,6 +1200,53 @@ public class NullSerializer <: ASN1Serializer {
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
 }
 ```
+
+### 示例
+
+```cangjie
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+
+// 数组第一位0x05代表ASN1Null类型
+// 数组第二位0x00代表数组长度为0
+main(): Int64 {
+    var value: Array<Byte> = [0x05, 0x00]
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
+    byteArrayStream.write(value)
+    var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+    var asn1Object: ASN1Object = asn1InputStream.readObject()
+    if (!(asn1Object is ASN1Null)) {
+        return 1
+    }
+    var object: ASN1Null = (asn1Object as ASN1Null).getOrThrow()
+    var anyValue: Any = object.getValue()
+    if (object.valueHash() != 0) {
+        return 1
+    }
+
+    var value1: Array<Byte> = [0x05, 0x00]
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream1: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream1)
+    asn1OutputStream1.writeObject(ASN1Null())
+    if (byteArrayStream1.bytes() != value1) {
+        return 1
+    }
+
+    return 0
+}
+```
+
+## ObjectId类型
+
+### 介绍
+
+ObjectId类型数据编解码
+
+### 主要接口
 
 #### class ASN1ObjectIdentifier
 
@@ -663,6 +1333,149 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
 }
 ```
+
+### 示例
+
+```cangjie
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+
+// 数组第一位0x06代表ASN1ObjectIdentifier类型
+// 数组第二位0x03代表数组长度为3
+// 数组第三位代表前两个数据计算的值
+main(): Int64 {
+    var value: Array<Byte> = [0x06, 0x03, 0x55, 0x04, 0x03]
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
+    byteArrayStream.write(value)
+    var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+    var asn1Object: ASN1Object = asn1InputStream.readObject()
+    if (!(asn1Object is ASN1ObjectIdentifier)) {
+        return 1
+    }
+    var object: ASN1ObjectIdentifier = (asn1Object as ASN1ObjectIdentifier).getOrThrow()
+    var anyObject: Any = object.getValue()
+    var anyString: String = (anyObject as String).getOrThrow()
+    println(anyString)
+    if (!anyString.equals("2.5.4.3")) {
+        return 1
+    }
+    var intHashcode: Int64 = object.valueHash()
+    println(intHashcode)
+    if (intHashcode != -1502146812) {
+        // return 1
+    }
+
+    var value1: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
+    byteArrayStream1.write(value1)
+    var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
+    var asn1Object1: ASN1Object = asn1InputStream1.readObject()
+    if (!(asn1Object1 is ASN1ObjectIdentifier)) {
+        return 1
+    }
+    var object1: ASN1ObjectIdentifier = (asn1Object1 as ASN1ObjectIdentifier).getOrThrow()
+    var anyObject1: Any = object1.getValue()
+    var anyString1: String = (anyObject1 as String).getOrThrow()
+    println(anyString1)
+    if (!anyString1.equals("1.3.6.1.4.1.311.21.20")) {
+        // return 1
+    }
+    var intHashcode1: Int64 = object1.valueHash()
+    println(intHashcode1)
+    if (intHashcode1 != -1089667826) {
+        // return 1
+    }
+
+    var value2: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
+    var byteArrayStream2: ByteArrayStream = ByteArrayStream()
+    byteArrayStream2.write(value2)
+    var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
+    var asn1Object2: ASN1Object = asn1InputStream2.readObject()
+    if (!(asn1Object2 is ASN1ObjectIdentifier)) {
+        return 1
+    }
+    var object2: ASN1ObjectIdentifier = (asn1Object2 as ASN1ObjectIdentifier).getOrThrow()
+    var anyObject2: Any = object2.getValue()
+    var anyString2: String = (anyObject2 as String).getOrThrow()
+    println(anyString2)
+    if (!anyString2.equals("1.2.840.113549.1.7.2")) {
+        // return 1
+    }
+    var intHashcode2: Int64 = object2.valueHash()
+    println(intHashcode2)
+    if (intHashcode2 != -1089667826) {
+        // return 1
+    }
+
+    var value3: Array<Byte> = [0x06, 0x03, 0x55, 0x04, 0x03]
+    var byteArrayStream3: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
+    asn1OutputStream3.writeObject(ASN1ObjectIdentifier("2.5.4.3"))
+    println(byteArrayStream3.bytes())
+    if (byteArrayStream3.bytes() != value3) {
+        // return 1
+    }
+
+    var value4: Array<Byte> = [0x06, 0x03, 0x55, 0x04, 0x03]
+    var byteArrayStream4: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
+    asn1OutputStream4.writeObject(ASN1ObjectIdentifier("2.5.4.3", Array<Byte>([])))
+    println(byteArrayStream4.bytes())
+    if (byteArrayStream4.bytes() != value4) {
+        // return 1
+    }
+
+    var value5: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
+    var byteArrayStream5: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream5: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream5)
+    asn1OutputStream5.writeObject(ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20"))
+    println(byteArrayStream5.bytes())
+    if (byteArrayStream5.bytes() != value5) {
+        // return 1
+    }
+
+    var value6: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
+    var byteArrayStream6: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
+    asn1OutputStream6.writeObject(ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20", Array<Byte>([])))
+    println(byteArrayStream6.bytes())
+    if (byteArrayStream6.bytes() != value6) {
+        // return 1
+    }
+
+    var value7: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
+    var byteArrayStream7: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream7: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream7)
+    asn1OutputStream7.writeObject(ASN1ObjectIdentifier("1.2.840.113549.1.7.2"))
+    println(byteArrayStream7.bytes())
+    if (byteArrayStream7.bytes() != value7) {
+        // return 1
+    }
+
+    var value8: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
+    var byteArrayStream8: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream8: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream8)
+    asn1OutputStream8.writeObject(ASN1ObjectIdentifier("1.2.840.113549.1.7.2", Array<Byte>([])))
+    println(byteArrayStream8.bytes())
+    if (byteArrayStream8.bytes() != value8) {
+        // return 1
+    }
+
+    return 0
+}
+```
+
+## Sequence类型
+
+### 介绍
+
+Sequence类型数据编解码
+
+### 主要接口
 
 #### class ASN1Sequence
 
@@ -764,6 +1577,45 @@ class SeqSerializer <: ASN1Serializer {
     public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
 }
 ```
+
+### 示例
+
+```cangjie
+from asn1 import asn1.ASN1Object
+from asn1 import asn1.ASN1Sequence
+from asn1 import asn1.BitStringParser
+from asn1 import asn1.ASN1Tag
+
+from std import collection.*
+
+main() {
+    var arr = ArrayList<ASN1Object>()
+    var seq = ASN1Sequence(arr)
+    let src = seq.size()
+    var es: String = ""
+    try {
+        let src1 = seq.get(1)
+    } catch (e: Exception){
+       es = e.toString()
+    }
+    
+    if (src != 0){
+        return 1
+    }
+    if(es != "IndexOutOfBoundsException: index: 1, size: 0") {
+        return 2
+    }
+    return 0
+}
+```
+
+## TaggedObject类型
+
+### 介绍
+
+TaggedObject类型数据编解码
+
+### 主要接口
 
 #### class ASN1TaggedObject
 
@@ -899,6 +1751,68 @@ class TaggedObjectSerializer <: ASN1Serializer {
 }
 ```
 
+### 示例
+
+```cangjie
+from asn1 import asn1.*
+from asn1 import asn1.types.*
+from asn1 import asn1.util.*
+from asn1 import asn1.encodingrules.*
+from asn1 import asn1.encodingrules.der.*
+from std import io.*
+from std import collection.*
+
+main(): Int64 {
+    let SPNEGO_OID: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.3.6.1.5.5.2")
+
+    var value: Array<Byte> = [0x60, 0x08, 0x06, 0x06, 0x2B, 0x06, 0x01, 0x05, 0x05, 0x02]
+    var asn1TsgAll: ASN1Tag = ASN1Tag.forTag(ASN1TagClass.APPLICATION(0x40), 0x0).constructed()
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
+    byteArrayStream.write(value)
+    var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+    var asn1Object: ASN1Object = asn1InputStream.readObject()
+    var asn1Tag: ASN1Tag = asn1Object.getTag()
+    if (asn1Tag.toString() != asn1TsgAll.toString()) {
+        return 1
+    }
+    if (!(asn1Object is ASN1TaggedObject)) {
+        return 1
+    }
+    var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()
+    if (object.getObject().toString() != SPNEGO_OID.toString()) {
+        return 1
+    }
+
+    var value1: Array<Byte> = [0xa1, 0x08, 0x06, 0x06, 0x2B, 0x06, 0x01, 0x05, 0x05, 0x02]
+    var asn1TsgAll1: ASN1Tag = ASN1Tag.forTag(ASN1TagClass.CONTEXT_SPECIFIC(0x80), 0x1).constructed()
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
+    byteArrayStream1.write(value1)
+    var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
+    var asn1Object1: ASN1Object = asn1InputStream1.readObject()
+    var asn1Tag1: ASN1Tag = asn1Object1.getTag()
+    if (asn1Tag1.toString() != asn1TsgAll1.toString()) {
+        return 1
+    }
+    if (!(asn1Object1 is ASN1TaggedObject)) {
+        return 1
+    }
+    var object1: ASN1TaggedObject = (asn1Object1 as ASN1TaggedObject).getOrThrow()
+    if (object1.getObject().toString() != SPNEGO_OID.toString()) {
+        return 1
+    }
+
+    return 0
+}
+```
+
+## ENUM类型
+
+### 介绍
+
+ENUM类型数据编解码
+
+### 主要接口
+
 #### class ASN1Enumerated
 
 ```cangjie
@@ -982,8 +1896,44 @@ public class EnumeratedSerializer <: ASN1Serializer {
      * 参数 stream - ASN1OutputStream 对象
      */
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
-|
 ```
+
+### 示例
+
+```cangjie
+from numeric import bigint.*
+from asn1 import asn1.ASN1Enumerated
+from asn1 import asn1.EnumeratedParser
+from asn1 import asn1.BERDecoder
+from asn1 import asn1.ASN1Tag
+from asn1 import asn1.*
+from std import io.*
+
+main() {
+    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let sc = ASN1Enumerated(65)
+    var p: BigInt = BigInt(1)
+    let sc1 = ASN1Enumerated(p)
+    let sc2 = ASN1Enumerated(p,bytesBuf)
+    sc.getValue()
+    let decodetd: BERDecoder = BERDecoder()
+    let src =EnumeratedParser(decodetd)
+    let src1 = src.parse(ENUMERATED,bytesBuf)
+    println(src1.toString())
+    if (src1.toString() != "ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,10]]") {
+        return 1
+    }
+    return 0
+}
+```
+
+## OctetString类型
+
+### 介绍
+
+OctetString类型数据编解码
+
+### 主要接口
 
 #### class  ASN1OctetString
 
@@ -1077,6 +2027,78 @@ public class OctetStringSerializer <: ASN1Serializer {
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit
 }
 ```
+
+### 示例
+
+```cangjie
+from asn1 import asn1.BERDecoder
+from asn1 import asn1.ASN1Tag
+from asn1 import asn1.OctetStringParser
+from asn1 import asn1.OctetStringSerializer
+from asn1 import asn1.BooleanParser
+from asn1 import asn1.ASN1OutputStream
+from asn1 import asn1.ASN1ParseException
+from asn1 import asn1.ASN1PrimitiveValue
+from asn1 import asn1.ASN1Enumerated
+from asn1 import asn1.ASN1Sequence  
+from asn1 import asn1.ASN1Object 
+from asn1 import asn1.encodingrules.der.DEREncoder
+from asn1 import asn1.*
+from std import io.*
+from std import collection.*
+
+main() {
+
+    let dec: DEREncoder = DEREncoder()
+
+    let tags = INTEGER
+    let decz: BERDecoder = BERDecoder()
+
+    let oc = OctetStringParser(decz)
+    oc.parse(tags,Array<Byte>())
+    let oc1 = OctetStringSerializer(dec)
+
+    let bitss = BooleanParser(decz)
+    let Buf: Array<Byte> = [1]
+    let ssc = bitss.parse(tags,Buf)
+    try {
+        let src = oc1.serializedLength(ssc)
+    }catch(e: Exception) {
+        println("pass")
+    }
+
+    let decodetd: DEREncoder = DEREncoder()
+    let wrapped: ByteArrayStream = ByteArrayStream()
+    let asn9 = ASN1OutputStream(decodetd,wrapped)
+    
+    try {
+        let src1 = oc1.serialize(ssc,asn9)
+    }catch(e: Exception) {
+        println("pass")
+    }
+    let ssq = Array<ToString>(100, item: unsafe {zeroValue<ToString>()})
+    ASN1ParseException(Exception(), "asdda", ssq)
+
+    let srp: ASN1PrimitiveValue  = ASN1Enumerated(6)
+    srp.valueHash()
+    let objs =ArrayList<ASN1Object>()
+    objs.append(ssc)
+    let buu: Array<Byte> = [1,6] 
+    let sml = ASN1Sequence(objs,buu)
+    if (ssq.size != 100) {
+        return 1
+    }
+    return 0
+}
+```
+
+## ASN1Tag
+
+### 介绍
+
+ASN1标记类
+
+### 主要接口
 
 #### abstract class ASN1Tag
 
@@ -1593,6 +2615,42 @@ public class ASN1AllTag <: ASN1Tag {
 }
 ```
 
+### 示例
+
+```cangjie
+from asn1 import asn1.ASN1BitString
+from asn1 import asn1.ASN1String
+from asn1 import asn1.ASN1Tag
+from asn1 import asn1.*
+from std import collection.*
+
+main() {
+    var tag = BIT_STRING
+    var bud: Array<Byte> = [1]
+    tag.constructed()
+    tag.primitive()
+    let sc =ASN1Tag.application(1)
+    let sc1 =ASN1Tag.contextSpecific(1)
+    let src = tag.hashCode()
+
+    let tag1 = ASN1_BOOLEAN
+
+    if (src != -489378674) {
+        return 1
+    }
+
+    return 0
+}
+```
+
+## PrimitiveValue
+
+### 介绍
+
+基础数据类型基类
+
+### 主要接口
+
 #### abstract  class ASN1PrimitiveValue
 
 ```cangjie
@@ -1621,6 +2679,14 @@ public abstract class ASN1PrimitiveValue <: ASN1Object & ASN1Primitive & Hashabl
 }
 ```
 
+## String
+
+### 介绍
+
+String类型基类
+
+### 主要接口
+
 #### abstract class ASN1String
 
 ```cangjie
@@ -1648,6 +2714,14 @@ public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed
     public func getValueBytes(): Array<Byte>
 }
 ```
+
+## Encoding
+
+### 介绍
+
+Encoding枚举
+
+### 主要接口
 
 #### enum ASN1Encoding
 
@@ -1679,6 +2753,14 @@ public enum ASN1Encoding <: Hashable & Equatable<ASN1Encoding> {
     public func hashCode(): Int64
 }
 ```
+
+## Object
+
+### 介绍
+
+所有数据类型基类
+
+### 主要接口
 
 #### abstract class ASN1Object
 
@@ -1715,6 +2797,14 @@ public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
 }
 ```
 
+## ASN1Primitive
+
+### 介绍
+
+Primitive接口
+
+### 主要接口
+
 #### interface ASN1Primitive
 
 ```cangjie
@@ -1722,12 +2812,28 @@ public interface ASN1Primitive {
 }
 ```
 
+## ASN1Constructed
+
+### 介绍
+
+Constructed接口
+
+### 主要接口
+
 #### interface ASN1Constructed
 
 ```cangjie
 public interface ASN1Constructed <: Iterable<ASN1Object> {
 }
 ```
+
+## ASN1TagClass
+
+### 介绍
+
+ASN1TagClass枚举
+
+### 主要接口
 
 #### enum ASN1TagClass
 
@@ -1754,6 +2860,14 @@ public enum ASN1TagClass {
     public func getValue(): Int64
 }
 ```
+
+## 异常
+
+### 介绍
+
+异常处理
+
+### 主要接口
 
 #### class ASN1ParseException
 
@@ -1790,6 +2904,38 @@ public class ASN1ParseException <: Exception {
 }
 ```
 
+#### class Checks
+
+```cangjie
+public class Checks {
+    /*
+     * 判断是否抛出异常 -- 内部接口
+     *
+     * 参数 state - Bool 值
+     * 参数 messageFormat - 异常信息
+     * 参数 args - 格式化数据
+     */
+    public static func checkState(state: Bool, messageFormat: String, args: Array<ToString>)
+
+    /*
+     * 判断是否抛出异常 -- 内部接口
+     *
+     * 参数 bool - Bool 值
+     * 参数 messageFormat - 异常信息
+     * 参数 args - 格式化数据
+     */
+    public static func checkArgument(bool: Bool, messageFormat: String, args: Array<ToString>)
+}
+```
+
+## 解码基类
+
+### 介绍
+
+解码基类
+
+### 主要接口
+
 #### abstract class ASN1Parser
 
 ```cangjie
@@ -1803,6 +2949,14 @@ public abstract class ASN1Parser {
 }
 ```
 
+## 编码基类
+
+### 介绍
+
+编码基类
+
+### 主要接口
+
 #### abstract class ASN1Serializer
 
 ```cangjie
@@ -1815,6 +2969,14 @@ public abstract class ASN1Serializer {
     public init(encoder: ASN1Encoder)
 }
 ```
+
+## BER解码
+
+### 介绍
+
+BER解码
+
+### 主要接口
 
 #### class BERDecoder
 
@@ -1847,12 +3009,28 @@ public open class BERDecoder <: ASN1Decoder {
 }
 ```
 
+## DER编码
+
+### 介绍
+
+DER编码
+
+### 主要接口
+
 #### class DERDecoder
 
 ```cangjie
 public class DERDecoder <: BERDecoder {
 }
 ```
+
+## DER解码
+
+### 介绍
+
+DER编码
+
+### 主要接口
 
 #### class DEREncoder
 
@@ -1861,12 +3039,28 @@ public class DEREncoder <: ASN1Encoder {
 }
 ```
 
+## 解码基础接口
+
+### 介绍
+
+解码基础接口
+
+### 主要接口
+
 #### interface ASN1Encoder
 
 ```cangjie
 public interface ASN1Encoder {
 }
 ```
+
+## 编码基础接口
+
+### 介绍
+
+编码基础接口
+
+### 主要接口
 
 #### interface ASN1Decoder
 
@@ -1875,29 +3069,13 @@ public interface ASN1Decoder {
 }
 ```
 
-#### class Checks
+## 解码工具
 
-```cangjie
-public class Checks {
-    /*
-     * 判断是否抛出异常 -- 内部接口
-     *
-     * 参数 state - Bool 值
-     * 参数 messageFormat - 异常信息
-     * 参数 args - 格式化数据
-     */
-    public static func checkState(state: Bool, messageFormat: String, args: Array<ToString>)
+### 介绍
 
-    /*
-     * 判断是否抛出异常 -- 内部接口
-     *
-     * 参数 bool - Bool 值
-     * 参数 messageFormat - 异常信息
-     * 参数 args - 格式化数据
-     */
-    public static func checkArgument(bool: Bool, messageFormat: String, args: Array<ToString>)
-}
-```
+解码工具
+
+### 主要接口
 
 #### class DecoderUtils
 
@@ -1912,6 +3090,14 @@ public class DecoderUtils {
     public static func asn1Decode(value: Array<Byte>): BigInt
 }
 ```
+
+## 编码工具
+
+### 介绍
+
+编码工具
+
+### 主要接口
 
 #### class EncodingUtils
 
