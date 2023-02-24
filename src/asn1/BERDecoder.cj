@@ -66,19 +66,12 @@ public open class BERDecoder <: ASN1Decoder {
     }
 
     public override func readValue(length: Int64, inputStream: InputStream): Array<Byte> {
+        if (length <= 0) {
+            return Array<Byte>()
+        }
         try {
             var value: Array<Byte> = Array<Byte>(length, item: 0)
-            var count: Int64 = 0
-            var readLength: Int64 = 0
-            while (count < length) {
-                var valueRead: Array<Byte> = Array<Byte>(length - count, item: 0)
-                readLength = inputStream.read(valueRead)
-                if (readLength == 0) {
-                    break
-                }
-                valueRead.copyTo(value, 0, count, valueRead.size)
-                count += readLength
-            }
+            inputStream.read(value)
             return value
         } catch (ioe: IOException) {
             let list: Array<ToString> = [ioe.toString()]
