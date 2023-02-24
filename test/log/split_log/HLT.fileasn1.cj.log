@@ -1,0 +1,322 @@
+[2023-02-24 09:32:03,186] [INFO] find 3rd party libs in ['/home/jwb/project/asn-one/build/asn1']
+[2023-02-24 09:32:03,187] [INFO] ************************Start to run case file: HLT/fileasn1.cj************************
+[2023-02-24 09:32:03,187] [INFO] Start to copy data files
+[2023-02-24 09:32:03,187] [INFO] copy HLT/file/encoded_tc1.ber to tmp/HLT/file/encoded_tc1.ber
+[2023-02-24 09:32:03,187] [INFO] copy HLT/file/encoded_tc2.ber to tmp/HLT/file/encoded_tc2.ber
+[2023-02-24 09:32:03,187] [INFO] copy HLT/file/encoded_tc3.ber to tmp/HLT/file/encoded_tc3.ber
+[2023-02-24 09:32:03,187] [INFO] copy HLT/file/encoded_tc4.ber to tmp/HLT/file/encoded_tc4.ber
+[2023-02-24 09:32:03,187] [INFO] copy HLT/file/encoded_tc5.ber to tmp/HLT/file/encoded_tc5.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc6.ber to tmp/HLT/file/encoded_tc6.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc7.ber to tmp/HLT/file/encoded_tc7.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc8.ber to tmp/HLT/file/encoded_tc8.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc9.ber to tmp/HLT/file/encoded_tc9.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc10.ber to tmp/HLT/file/encoded_tc10.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc11.ber to tmp/HLT/file/encoded_tc11.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc12.ber to tmp/HLT/file/encoded_tc12.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc13.ber to tmp/HLT/file/encoded_tc13.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc14.ber to tmp/HLT/file/encoded_tc14.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc15.ber to tmp/HLT/file/encoded_tc15.ber
+[2023-02-24 09:32:03,188] [INFO] copy HLT/file/encoded_tc16.ber to tmp/HLT/file/encoded_tc16.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc17.ber to tmp/HLT/file/encoded_tc17.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc18.ber to tmp/HLT/file/encoded_tc18.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc19.ber to tmp/HLT/file/encoded_tc19.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc20.ber to tmp/HLT/file/encoded_tc20.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc21.ber to tmp/HLT/file/encoded_tc21.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc22.ber to tmp/HLT/file/encoded_tc22.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc23.ber to tmp/HLT/file/encoded_tc23.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc24.ber to tmp/HLT/file/encoded_tc24.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc25.ber to tmp/HLT/file/encoded_tc25.ber
+[2023-02-24 09:32:03,189] [INFO] copy HLT/file/encoded_tc26.ber to tmp/HLT/file/encoded_tc26.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc27.ber to tmp/HLT/file/encoded_tc27.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc28.ber to tmp/HLT/file/encoded_tc28.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc29.ber to tmp/HLT/file/encoded_tc29.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc30.ber to tmp/HLT/file/encoded_tc30.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc31.ber to tmp/HLT/file/encoded_tc31.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc32.ber to tmp/HLT/file/encoded_tc32.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc33.ber to tmp/HLT/file/encoded_tc33.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc34.ber to tmp/HLT/file/encoded_tc34.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc35.ber to tmp/HLT/file/encoded_tc35.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc36.ber to tmp/HLT/file/encoded_tc36.ber
+[2023-02-24 09:32:03,190] [INFO] copy HLT/file/encoded_tc37.ber to tmp/HLT/file/encoded_tc37.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc38.ber to tmp/HLT/file/encoded_tc38.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc39.ber to tmp/HLT/file/encoded_tc39.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc40.ber to tmp/HLT/file/encoded_tc40.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc41.ber to tmp/HLT/file/encoded_tc41.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc42.ber to tmp/HLT/file/encoded_tc42.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc43.ber to tmp/HLT/file/encoded_tc43.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc44.ber to tmp/HLT/file/encoded_tc44.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc45.ber to tmp/HLT/file/encoded_tc45.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc46.ber to tmp/HLT/file/encoded_tc46.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc47.ber to tmp/HLT/file/encoded_tc47.ber
+[2023-02-24 09:32:03,191] [INFO] copy HLT/file/encoded_tc48.ber to tmp/HLT/file/encoded_tc48.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc1.ber to tmp/HLT/file/tc1.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc2.ber to tmp/HLT/file/tc2.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc3.ber to tmp/HLT/file/tc3.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc4.ber to tmp/HLT/file/tc4.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc5.ber to tmp/HLT/file/tc5.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc6.ber to tmp/HLT/file/tc6.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc7.ber to tmp/HLT/file/tc7.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc8.ber to tmp/HLT/file/tc8.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc9.ber to tmp/HLT/file/tc9.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc10.ber to tmp/HLT/file/tc10.ber
+[2023-02-24 09:32:03,192] [INFO] copy HLT/file/tc11.ber to tmp/HLT/file/tc11.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc12.ber to tmp/HLT/file/tc12.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc13.ber to tmp/HLT/file/tc13.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc14.ber to tmp/HLT/file/tc14.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc15.ber to tmp/HLT/file/tc15.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc16.ber to tmp/HLT/file/tc16.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc17.ber to tmp/HLT/file/tc17.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc18.ber to tmp/HLT/file/tc18.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc19.ber to tmp/HLT/file/tc19.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc20.ber to tmp/HLT/file/tc20.ber
+[2023-02-24 09:32:03,193] [INFO] copy HLT/file/tc21.ber to tmp/HLT/file/tc21.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc22.ber to tmp/HLT/file/tc22.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc23.ber to tmp/HLT/file/tc23.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc24.ber to tmp/HLT/file/tc24.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc25.ber to tmp/HLT/file/tc25.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc26.ber to tmp/HLT/file/tc26.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc27.ber to tmp/HLT/file/tc27.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc28.ber to tmp/HLT/file/tc28.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc29.ber to tmp/HLT/file/tc29.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc30.ber to tmp/HLT/file/tc30.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc31.ber to tmp/HLT/file/tc31.ber
+[2023-02-24 09:32:03,194] [INFO] copy HLT/file/tc32.ber to tmp/HLT/file/tc32.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc33.ber to tmp/HLT/file/tc33.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc34.ber to tmp/HLT/file/tc34.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc35.ber to tmp/HLT/file/tc35.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc36.ber to tmp/HLT/file/tc36.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc37.ber to tmp/HLT/file/tc37.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc38.ber to tmp/HLT/file/tc38.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc39.ber to tmp/HLT/file/tc39.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc40.ber to tmp/HLT/file/tc40.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc41.ber to tmp/HLT/file/tc41.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc42.ber to tmp/HLT/file/tc42.ber
+[2023-02-24 09:32:03,195] [INFO] copy HLT/file/tc43.ber to tmp/HLT/file/tc43.ber
+[2023-02-24 09:32:03,196] [INFO] copy HLT/file/tc44.ber to tmp/HLT/file/tc44.ber
+[2023-02-24 09:32:03,196] [INFO] copy HLT/file/tc45.ber to tmp/HLT/file/tc45.ber
+[2023-02-24 09:32:03,196] [INFO] copy HLT/file/tc46.ber to tmp/HLT/file/tc46.ber
+[2023-02-24 09:32:03,196] [INFO] copy HLT/file/tc47.ber to tmp/HLT/file/tc47.ber
+[2023-02-24 09:32:03,196] [INFO] copy HLT/file/tc48.ber to tmp/HLT/file/tc48.ber
+[2023-02-24 09:32:03,196] [INFO] [Run CMD]cjc -O2   --import-path /home/jwb/project/asn-one/build/asn1/.. -L /home/jwb/project/asn-one/build/asn1 -l asn1_asn1.util -l asn1_asn1.types -l asn1_asn1.encodingrules.der -l asn1_asn1 -l asn1_asn1.encodingrules   HLT/fileasn1.cj  -o tmp/HLT/fileasn1.cj.out --test
+[2023-02-24 09:32:11,510] [INFO] [Run CMD]cd tmp/HLT;./fileasn1.cj.out  
+[2023-02-24 09:32:11,514] [INFO] file/encoded_tc2.ber
+[2023-02-24 09:32:11,514] [INFO] []
+[2023-02-24 09:32:11,514] [INFO] 0
+[2023-02-24 09:32:11,514] [INFO] file/encoded_tc3.ber
+[2023-02-24 09:32:11,514] [INFO] []
+[2023-02-24 09:32:11,514] [INFO] 0
+[2023-02-24 09:32:11,514] [INFO] file/encoded_tc3.ber
+[2023-02-24 09:32:11,514] [INFO] []
+[2023-02-24 09:32:11,514] [INFO] 0
+[2023-02-24 09:32:11,514] [INFO] file/encoded_tc4.ber
+[2023-02-24 09:32:11,514] [INFO] []
+[2023-02-24 09:32:11,514] [INFO] 0
+[2023-02-24 09:32:11,514] [INFO] file/encoded_tc6.ber
+[2023-02-24 09:32:11,514] [INFO] [9, 0]
+[2023-02-24 09:32:11,514] [INFO] file/encoded_tc7.ber
+[2023-02-24 09:32:11,514] [INFO] [9, 0]
+[2023-02-24 09:32:11,514] [INFO] file/encoded_tc8.ber
+[2023-02-24 09:32:11,514] [INFO] [9, 1, 65]
+[2023-02-24 09:32:11,514] [INFO] 9
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc9.ber
+[2023-02-24 09:32:11,515] [INFO] [9, 0]
+[2023-02-24 09:32:11,515] [INFO] 9
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc11.ber
+[2023-02-24 09:32:11,515] [INFO] [9, 0]
+[2023-02-24 09:32:11,515] [INFO] 9
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc12.ber
+[2023-02-24 09:32:11,515] [INFO] [9, 0]
+[2023-02-24 09:32:11,515] [INFO] 9
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc19.ber
+[2023-02-24 09:32:11,515] [INFO] [2, 0]
+[2023-02-24 09:32:11,515] [INFO] 2
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc21.ber
+[2023-02-24 09:32:11,515] [INFO] [6, 2, 81, 1]
+[2023-02-24 09:32:11,515] [INFO] 6
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc23.ber
+[2023-02-24 09:32:11,515] [INFO] [6, 0]
+[2023-02-24 09:32:11,515] [INFO] 6
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc25.ber
+[2023-02-24 09:32:11,515] [INFO] [1, 3, 0, 0, 0]
+[2023-02-24 09:32:11,515] [INFO] 1
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc26.ber
+[2023-02-24 09:32:11,515] [INFO] [1, 3, 0, 0, 1]
+[2023-02-24 09:32:11,515] [INFO] 1
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc27.ber
+[2023-02-24 09:32:11,515] [INFO] [1, 0]
+[2023-02-24 09:32:11,515] [INFO] 1
+[2023-02-24 09:32:11,515] [INFO] file/encoded_tc29.ber
+[2023-02-24 09:32:11,515] [INFO] [1, 1, 0]
+[2023-02-24 09:32:11,515] [INFO] 1
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc30.ber
+[2023-02-24 09:32:11,516] [INFO] [5, 0]
+[2023-02-24 09:32:11,516] [INFO] 5
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc31.ber
+[2023-02-24 09:32:11,516] [INFO] [5, 0]
+[2023-02-24 09:32:11,516] [INFO] 5
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc32.ber
+[2023-02-24 09:32:11,516] [INFO] [5, 0]
+[2023-02-24 09:32:11,516] [INFO] 5
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc33.ber
+[2023-02-24 09:32:11,516] [INFO] [3, 0]
+[2023-02-24 09:32:11,516] [INFO] 3
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc34.ber
+[2023-02-24 09:32:11,516] [INFO] [3, 0]
+[2023-02-24 09:32:11,516] [INFO] 3
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc37.ber
+[2023-02-24 09:32:11,516] [INFO] [35, 12, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 4, 15]
+[2023-02-24 09:32:11,516] [INFO] 35
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc39.ber
+[2023-02-24 09:32:11,516] [INFO] [35, 0]
+[2023-02-24 09:32:11,516] [INFO] 35
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc40.ber
+[2023-02-24 09:32:11,516] [INFO] [3, 0]
+[2023-02-24 09:32:11,516] [INFO] 3
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc43.ber
+[2023-02-24 09:32:11,516] [INFO] [36, 0]
+[2023-02-24 09:32:11,516] [INFO] 36
+[2023-02-24 09:32:11,516] [INFO] file/encoded_tc44.ber
+[2023-02-24 09:32:11,516] [INFO] [4, 0]
+[2023-02-24 09:32:11,517] [INFO] 4
+[2023-02-24 09:32:11,517] [INFO] file/encoded_tc45.ber
+[2023-02-24 09:32:11,517] [INFO] [36, 0]
+[2023-02-24 09:32:11,517] [INFO] 36
+[2023-02-24 09:32:11,517] [INFO] file/encoded_tc46.ber
+[2023-02-24 09:32:11,517] [INFO] []
+[2023-02-24 09:32:11,517] [INFO] 0
+[2023-02-24 09:32:11,517] [INFO] file/encoded_tc47.ber
+[2023-02-24 09:32:11,517] [INFO] [35, 0]
+[2023-02-24 09:32:11,517] [INFO] 35
+[2023-02-24 09:32:11,517] [INFO] file/tc6.ber
+[2023-02-24 09:32:11,517] [INFO] [9, 7, 3, 43, 48, 46, 69, 45, 53]
+[2023-02-24 09:32:11,517] [INFO] 9
+[2023-02-24 09:32:11,517] [INFO] file/tc7.ber
+[2023-02-24 09:32:11,517] [INFO] [9, 7, 3, 45, 48, 46, 69, 45, 53]
+[2023-02-24 09:32:11,517] [INFO] 9
+[2023-02-24 09:32:11,517] [INFO] file/tc8.ber
+[2023-02-24 09:32:11,517] [INFO] [9, 3, 65, 0, 0]
+[2023-02-24 09:32:11,517] [INFO] 9
+[2023-02-24 09:32:11,517] [INFO] file/tc8.ber
+[2023-02-24 09:32:11,517] [INFO] [9, 3, 65, 0, 0]
+[2023-02-24 09:32:11,517] [INFO] 9
+[2023-02-24 09:32:11,517] [INFO] file/tc11.ber
+[2023-02-24 09:32:11,517] [INFO] [9, 9, 17, 32, 32, 48, 49, 53, 54, 50, 53]
+[2023-02-24 09:32:11,517] [INFO] 9
+[2023-02-24 09:32:11,517] [INFO] file/tc12.ber
+[2023-02-24 09:32:11,517] [INFO] [9, 1, 73]
+[2023-02-24 09:32:11,518] [INFO] 9
+[2023-02-24 09:32:11,518] [INFO] file/tc19.ber
+[2023-02-24 09:32:11,518] [INFO] [2, 1]
+[2023-02-24 09:32:11,518] [INFO] 2
+[2023-02-24 09:32:11,518] [INFO] file/tc25.ber
+[2023-02-24 09:32:11,518] [INFO] [1, 3, 0, 0, 0]
+[2023-02-24 09:32:11,518] [INFO] 1
+[2023-02-24 09:32:11,518] [INFO] file/tc26.ber
+[2023-02-24 09:32:11,518] [INFO] [1, 3, 0, 0, 1]
+[2023-02-24 09:32:11,518] [INFO] 1
+[2023-02-24 09:32:11,518] [INFO] file/tc27.ber
+[2023-02-24 09:32:11,518] [INFO] [1, 3]
+[2023-02-24 09:32:11,518] [INFO] 1
+[2023-02-24 09:32:11,518] [INFO] file/tc29.ber
+[2023-02-24 09:32:11,518] [INFO] [1, 1, 0]
+[2023-02-24 09:32:11,518] [INFO] 1
+[2023-02-24 09:32:11,518] [INFO] file/tc30.ber
+[2023-02-24 09:32:11,518] [INFO] [5, 3, 0, 0, 0]
+[2023-02-24 09:32:11,518] [INFO] 5
+[2023-02-24 09:32:11,518] [INFO] file/tc31.ber
+[2023-02-24 09:32:11,518] [INFO] [5, 3, 0, 0]
+[2023-02-24 09:32:11,518] [INFO] 5
+[2023-02-24 09:32:11,518] [INFO] file/tc32.ber
+[2023-02-24 09:32:11,518] [INFO] [5, 0]
+[2023-02-24 09:32:11,518] [INFO] 5
+[2023-02-24 09:32:11,518] [INFO] file/tc33.ber
+[2023-02-24 09:32:11,518] [INFO] [3, 2, 15, 15]
+[2023-02-24 09:32:11,518] [INFO] 3
+[2023-02-24 09:32:11,518] [INFO] file/tc34.ber
+[2023-02-24 09:32:11,519] [INFO] [3, 2, 4]
+[2023-02-24 09:32:11,519] [INFO] 3
+[2023-02-24 09:32:11,519] [INFO] file/tc37.ber
+[2023-02-24 09:32:11,519] [INFO] [35, 12, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 4, 15]
+[2023-02-24 09:32:11,519] [INFO] 35
+[2023-02-24 09:32:11,519] [INFO] file/tc39.ber
+[2023-02-24 09:32:11,519] [INFO] [35, 0]
+[2023-02-24 09:32:11,519] [INFO] 35
+[2023-02-24 09:32:11,519] [INFO] file/tc40.ber
+[2023-02-24 09:32:11,519] [INFO] [3, 0]
+[2023-02-24 09:32:11,519] [INFO] 3
+[2023-02-24 09:32:11,519] [INFO] file/tc43.ber
+[2023-02-24 09:32:11,519] [INFO] [36, 3]
+[2023-02-24 09:32:11,519] [INFO] 36
+[2023-02-24 09:32:11,519] [INFO] file/tc44.ber
+[2023-02-24 09:32:11,519] [INFO] [4, 0]
+[2023-02-24 09:32:11,519] [INFO] 4
+[2023-02-24 09:32:11,519] [INFO] file/tc45.ber
+[2023-02-24 09:32:11,519] [INFO] [36, 0]
+[2023-02-24 09:32:11,519] [INFO] 36
+[2023-02-24 09:32:11,519] [INFO] file/tc47.ber
+[2023-02-24 09:32:11,519] [INFO] [35, 14, 3, 2, 0, 1, 0, 0, 3, 2, 0, 1, 3, 2, 4, 15]
+[2023-02-24 09:32:11,519] [INFO] 35
+[2023-02-24 09:32:11,519] [INFO] file/tc48.ber
+[2023-02-24 09:32:11,519] [INFO] [35, 128, 3, 2, 0, 1, 3, 2, 0, 1, 3, 2, 15, 15, 0, 0]
+[2023-02-24 09:32:11,519] [INFO] 35
+[2023-02-24 09:32:11,519] [INFO] --------------------------------------------------------------------------------------------------
+[2023-02-24 09:32:11,519] [INFO] TP: [33mdefault[0m, time elapsed: 1043829 ns, Result:
+[2023-02-24 09:32:11,519] [INFO] TCS: [33masn_Asn1OutputStream01[0m, time elapsed: 1043005 ns, RESULT:
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne1 (55743 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne2 (21449 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne3 (18589 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne4 (19992 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne5 (18949 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne6 (17093 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne7 (18546 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne8 (15794 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne9 (15765 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne10 (15493 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne11 (16631 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne12 (18029 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne13 (15757 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne14 (23798 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne15 (52592 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne16 (17154 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne17 (44350 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne18 (17811 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne19 (15644 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne20 (15392 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne21 (16959 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne22 (15569 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne23 (19700 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne24 (15739 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne25 (16373 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne26 (15934 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne27 (16567 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne28 (15130 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne29 (22030 ns)
+[2023-02-24 09:32:11,520] [INFO] [[32m PASSED [0m] CASE: AsnOne30 (16867 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne31 (17521 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne32 (16559 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne33 (15669 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne34 (14667 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne35 (17080 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne36 (15231 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne37 (16595 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne38 (16481 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne39 (17563 ns)
+[2023-02-24 09:32:11,521] [INFO] [[32m PASSED [0m] CASE: AsnOne40 (15617 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne41 (17582 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne42 (15637 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne43 (15389 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne44 (15416 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne45 (15396 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne46 (16207 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne47 (17461 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne48 (16469 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne49 (16445 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne50 (15796 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne51 (14892 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne52 (17112 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne53 (17635 ns)
+[2023-02-24 09:32:11,523] [INFO] [[32m PASSED [0m] CASE: AsnOne54 (17905 ns)
+[2023-02-24 09:32:11,523] [INFO] Summary: TOTAL: 54
+[2023-02-24 09:32:11,523] [INFO] [32mPASSED[0m: 54, [32mSKIPPED[0m: 0, ERROR: 0
+[2023-02-24 09:32:11,523] [INFO] [31mFAILED[0m: 0
+[2023-02-24 09:32:11,523] [INFO] --------------------------------------------------------------------------------------------------
