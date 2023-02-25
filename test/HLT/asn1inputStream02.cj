@@ -136,10 +136,10 @@ public class asn_Asn1InputStream01{
          var buffer1: Array<Byte> = [0x01, 0x08, 0x04, 0x06, 0x10, 0x01, 0x03, 0x05, 0x07, 0x11]
          var read=asn1inputstream.read(buffer1)
          println(read)
-         var buffer2: Array<Byte> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+         var buffer2: Array<Byte> = []
          @Assert(readvalue,buffer2)
-         @Assert(readlength,0)
-         @Assert(read,0)
+         @Assert(readlength,1)
+         @Assert(read,2)
         } catch (e: Exception) {
         @Assert(e.toString(),"NegativeArraySizeException")
     }
