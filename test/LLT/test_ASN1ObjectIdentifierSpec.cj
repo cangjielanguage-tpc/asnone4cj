@@ -21,14 +21,8 @@ main(): Int64 {
     var object: ASN1ObjectIdentifier = (asn1Object as ASN1ObjectIdentifier).getOrThrow()
     var anyObject: Any = object.getValue()
     var anyString: String = (anyObject as String).getOrThrow()
-    println(anyString)
     if (!anyString.equals("2.5.4.3")) {
-        return 1
-    }
-    var intHashcode: Int64 = object.valueHash()
-    println(intHashcode)
-    if (intHashcode != -1502146812) {
-        // return 1
+        return 2
     }
 
     var value1: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
@@ -37,19 +31,13 @@ main(): Int64 {
     var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
     var asn1Object1: ASN1Object = asn1InputStream1.readObject()
     if (!(asn1Object1 is ASN1ObjectIdentifier)) {
-        return 1
+        return 3
     }
     var object1: ASN1ObjectIdentifier = (asn1Object1 as ASN1ObjectIdentifier).getOrThrow()
     var anyObject1: Any = object1.getValue()
     var anyString1: String = (anyObject1 as String).getOrThrow()
-    println(anyString1)
     if (!anyString1.equals("1.3.6.1.4.1.311.21.20")) {
-        // return 1
-    }
-    var intHashcode1: Int64 = object1.valueHash()
-    println(intHashcode1)
-    if (intHashcode1 != -1089667826) {
-        // return 1
+        return 4
     }
 
     var value2: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
@@ -58,73 +46,61 @@ main(): Int64 {
     var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
     var asn1Object2: ASN1Object = asn1InputStream2.readObject()
     if (!(asn1Object2 is ASN1ObjectIdentifier)) {
-        return 1
+        return 5
     }
     var object2: ASN1ObjectIdentifier = (asn1Object2 as ASN1ObjectIdentifier).getOrThrow()
     var anyObject2: Any = object2.getValue()
     var anyString2: String = (anyObject2 as String).getOrThrow()
-    println(anyString2)
     if (!anyString2.equals("1.2.840.113549.1.7.2")) {
-        // return 1
-    }
-    var intHashcode2: Int64 = object2.valueHash()
-    println(intHashcode2)
-    if (intHashcode2 != -1089667826) {
-        // return 1
+        return 6
     }
 
     var value3: Array<Byte> = [0x06, 0x03, 0x55, 0x04, 0x03]
     var byteArrayStream3: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
     asn1OutputStream3.writeObject(ASN1ObjectIdentifier("2.5.4.3"))
-    println(byteArrayStream3.bytes())
     if (byteArrayStream3.bytes() != value3) {
-        // return 1
+        return 7
     }
 
     var value4: Array<Byte> = [0x06, 0x03, 0x55, 0x04, 0x03]
     var byteArrayStream4: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
     asn1OutputStream4.writeObject(ASN1ObjectIdentifier("2.5.4.3", Array<Byte>([])))
-    println(byteArrayStream4.bytes())
     if (byteArrayStream4.bytes() != value4) {
-        // return 1
+        return 8
     }
 
     var value5: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
     var byteArrayStream5: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream5: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream5)
     asn1OutputStream5.writeObject(ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20"))
-    println(byteArrayStream5.bytes())
     if (byteArrayStream5.bytes() != value5) {
-        // return 1
+        return 9
     }
 
     var value6: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
     var byteArrayStream6: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
     asn1OutputStream6.writeObject(ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20", Array<Byte>([])))
-    println(byteArrayStream6.bytes())
     if (byteArrayStream6.bytes() != value6) {
-        // return 1
+        return 10
     }
 
     var value7: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
     var byteArrayStream7: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream7: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream7)
     asn1OutputStream7.writeObject(ASN1ObjectIdentifier("1.2.840.113549.1.7.2"))
-    println(byteArrayStream7.bytes())
     if (byteArrayStream7.bytes() != value7) {
-        // return 1
+        return 11
     }
 
     var value8: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
     var byteArrayStream8: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream8: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream8)
     asn1OutputStream8.writeObject(ASN1ObjectIdentifier("1.2.840.113549.1.7.2", Array<Byte>([])))
-    println(byteArrayStream8.bytes())
     if (byteArrayStream8.bytes() != value8) {
-        // return 1
+        return 12
     }
 
     return 0

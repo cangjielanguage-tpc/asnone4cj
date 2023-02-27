@@ -96,12 +96,12 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
         var first: Int64 = Int64.parse(stringArr[0])
         var second: Int64 = Int64.parse(stringArr[1])
         var number: Int64 = first * 40 + second
-        baos.write(number.toString().toUtf8Array())
+        baos.write(EncodingUtils.asn1Encoded(BigInt(number)))
         for (i in 2..stringArr.size) {
             var valueBigNum: BigInt = BigInt(stringArr[i])
             var bigNum: Int64 = Int64.parse(valueBigNum.toStringDec())
             if (bigNum > 0 && bigNum < 127) {
-                baos.write(bigNum.toString().toUtf8Array())
+                baos.write(EncodingUtils.asn1Encoded(valueBigNum))
             } else {
                 var neededBytes: Int64
                 if (valueBigNum.toStringBin().size % 7 > 0) {
@@ -109,14 +109,17 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
                 } else {
                     neededBytes = Int64(valueBigNum.toStringBin().size) / 7 + 0
                 }
-                for (i in neededBytes - 1..0) {
-                    var r: BigInt = valueBigNum.shiftRight(i * 7)
-                    var b: Byte = UInt8.parse(r.toStringDec())
+                var intI: Int64 = neededBytes - 1
+                while (intI >= 0) {
+                    var r: BigInt = valueBigNum.shiftRight(intI * 7)
+                    var a: Int64 = Int64.parse(r.toStringDec())
+                    var b: Byte = UInt8(a & 255)
                     b &= 0x7f
-                    if (i > 0) {
+                    if (intI > 0) {
                         b |= 0x80
                     }
                     baos.write(Array<Byte>([b]))
+                    intI--
                 }
             }
         }
