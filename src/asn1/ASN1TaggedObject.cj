@@ -92,7 +92,7 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
 func formatMessage(tag: ASN1Tag, object: ?ASN1Object, explicit: Bool): ASN1Tag {
     if (explicit) {
         return tag.constructed()
-    }else {
+    } else {
         return tag.asEncoded(object.getOrThrow().getTag().getAsn1Encoding())
     }
 }

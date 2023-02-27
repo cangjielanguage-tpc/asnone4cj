@@ -4,7 +4,7 @@ from encoding import hex.*
 from std import overflow.*
 
 public class ASN1Integer <: ASN1PrimitiveValue {
-    protected var value:  BigInt = BigInt(0)
+    protected var value: BigInt = BigInt(0)
 
     public init(value: Int64) {
         super(INTEGER)
@@ -38,7 +38,7 @@ public class IntegerParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        var bigint :BigInt = DecoderUtils.asn1Decode(value)
+        var bigint: BigInt = DecoderUtils.asn1Decode(value)
         return ASN1Integer(bigint, value)
     }
 }

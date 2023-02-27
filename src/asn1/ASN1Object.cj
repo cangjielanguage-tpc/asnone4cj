@@ -1,6 +1,6 @@
 package asn1
 
-public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
+public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString {
     protected var tag: ASN1Tag
 
     protected init(tag: ASN1Tag) {

@@ -26,7 +26,8 @@ public class ASN1OutputStream <: OutputStream {
     }
 
     public func write(b: Int64): Unit {
-        output.write([UInt8(b)])
+        var value = b & 255
+        output.write([UInt8(value)])
     }
 
     private func writeLength(length: Int64): Unit {
@@ -54,6 +55,6 @@ public class ASN1OutputStream <: OutputStream {
 
     private func writeTag(tag: ASN1Tag): Unit {
         var tagByte: Byte = UInt8(tag.getAsn1TagClass().getValue() | tag.getAsn1Encoding().getValue() | tag.getTag())
-        write(Int64(tagByte));
+        write(Int64(tagByte))
     }
 }
