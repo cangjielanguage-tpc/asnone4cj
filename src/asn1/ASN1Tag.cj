@@ -56,7 +56,6 @@ public let SEQUENCE: ASN1Tag = ASN1SequenceTag(
     ASN1Encoding.CONSTRUCTED(0x20)
 )
 
-
 let tags: HashMap<Int64, ASN1Tag> = HashMap<Int64, ASN1Tag>(
     [
         (ASN1_BOOLEAN.getTag(), ASN1_BOOLEAN),

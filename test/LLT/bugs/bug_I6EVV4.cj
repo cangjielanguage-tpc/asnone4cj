@@ -6,8 +6,8 @@ from std import collection.*
 from std import time.*
 
 main() {
-    let arr:Array<Bool>=Array<Bool>([true,true,false,true,false,false])
-    var asn1itstring:ASN1BitString=ASN1BitString(arr)
+    let arr: Array<Bool> = Array<Bool>([true, true, false, true, false, false])
+    var asn1itstring: ASN1BitString = ASN1BitString(arr)
     if (!asn1itstring.isSet(-7)) {
         return 1
     }
@@ -55,6 +55,3 @@ main() {
     }
     return 0
 }
-
-
-

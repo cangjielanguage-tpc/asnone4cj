@@ -33,7 +33,7 @@ public class EnumeratedParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
-        var bigint :BigInt = DecoderUtils.asn1Decode(value)
+        var bigint: BigInt = DecoderUtils.asn1Decode(value)
         return ASN1Enumerated(bigint, value)
     }
 }
@@ -60,6 +60,6 @@ public class EnumeratedSerializer <: ASN1Serializer {
     }
 
     private func calculateBytes(asn1Object: ASN1Enumerated): Unit {
-        asn1Object.valueBytes =EncodingUtils.asn1Encoded(asn1Object.value)
+        asn1Object.valueBytes = EncodingUtils.asn1Encoded(asn1Object.value)
     }
 }

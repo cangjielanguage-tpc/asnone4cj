@@ -12,7 +12,8 @@ public abstract class ASN1String <: ASN1Object & ASN1Primitive & ASN1Constructed
 
     public func iterator(): Iterator<ASN1Object> {
         if (tag.getAsn1Encoding() == ASN1Encoding.CONSTRUCTED(0x20)) {
-            var asn1Sequence :ASN1Sequence = (SEQUENCE.newParser(BERDecoder()).parse(SEQUENCE, valueBytes) as ASN1Sequence).getOrThrow()
+            var asn1Sequence: ASN1Sequence = 
+                (SEQUENCE.newParser(BERDecoder()).parse(SEQUENCE, valueBytes) as ASN1Sequence).getOrThrow()
             return asn1Sequence.iterator()
         } else {
             return this.iterator()

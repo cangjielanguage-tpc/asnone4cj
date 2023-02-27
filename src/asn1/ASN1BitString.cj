@@ -68,7 +68,7 @@ public class ASN1BitString <: ASN1String {
     @overflowWrapping
     public func isSet(x: Int64): Bool {
         var toCheck: Int64 = x / 8
-        var theByte: Int8 =  Int8(UInt8(valueBytes[toCheck]))
+        var theByte: Int8 = Int8(UInt8(valueBytes[toCheck]))
         var index: Int64 = x % 8
         var mask: Int64 = 1 << (7 - index)
         var masked: Int64 = theByte.position() & mask

@@ -1,6 +1,6 @@
 package asn1.types
 
-var encodingvalue: Int64 = 0;
+var encodingvalue: Int64 = 0
 
 public enum ASN1Encoding <: Hashable & Equatable<ASN1Encoding> {
     | PRIMITIVE(Byte)
@@ -16,9 +16,9 @@ public enum ASN1Encoding <: Hashable & Equatable<ASN1Encoding> {
 
     public static func parseEncoding(tagByte: Byte): ASN1Encoding {
         if ((tagByte & 0x20) == 0) {
-            return PRIMITIVE(0x0);
+            return PRIMITIVE(0x0)
         } else {
-            return CONSTRUCTED(0x20);
+            return CONSTRUCTED(0x20)
         }
     }
 
