@@ -67,10 +67,14 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
     }
 
     public func getObject(tag: ASN1Tag): ASN1Object {
-        if (object != None && object.getOrThrow().getTag().equals(tag)) {
-            return object.getOrThrow()
-        } else if (object == None && !bytes.isEmpty()) {
-            return tag.newParser(decoder).parse(tag, bytes)
+        if (object != None) {
+            if (object.getOrThrow().getTag().equals(tag)) {
+                return object.getOrThrow()
+            }
+        } else if (object == None) {
+            if (!bytes.isEmpty()) {
+                return tag.newParser(decoder).parse(tag, bytes)
+            }
         }
         throw ASN1ParseException("Unable to parse the implicit Tagged Object with %s, it is explicit")
     }
