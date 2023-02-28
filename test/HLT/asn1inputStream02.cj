@@ -206,13 +206,8 @@ public class asn_Asn1InputStream01{
          println(readvalue)
          var readlength=asn1inputstream.readLength()
          println(readlength)
-         var buffer1: Array<Byte> = []                  //当为空时报错，java不报错
+         var buffer1: Array<Byte> = []                  
          var read=asn1inputstream.read(buffer1)
-         //println(read)
-         //var buffer2: Array<Byte> = []
-         //@Assert(readvalue,buffer2)
-         //@Assert(readlength,1)
-         //@Assert(read,2)
          } catch (e: Exception) {
         @Assert(e.toString(),"IOException: The buffer is Empty.")
     } 
@@ -257,7 +252,24 @@ public class asn_Asn1InputStream01{
          @Assert(readvalue,buffer2)
          @Assert(readlength,1)
          @Assert(read,2)
+    }
 
+
+     @TestCase
+    func asn_Asn1InputStream12(): Unit {   
+         var buffer: Array<Byte> = [0x01, 0x01, 0x0]
+         var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),buffer)
+         var readvalue=asn1inputstream.readValue(0)
+         println(readvalue)
+         var readlength=asn1inputstream.readLength()
+         println(readlength)
+         var buffer1: Array<Byte> = [0x056, 0x08, 0x02]
+         var read=asn1inputstream.read(buffer1)
+         println(read)
+         var buffer2: Array<Byte> = []
+         @Assert(readvalue,buffer2)
+         @Assert(readlength,1)
+         @Assert(read,2)
     }
 
 }
