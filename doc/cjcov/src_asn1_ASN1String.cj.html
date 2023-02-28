@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-20 16:41:46</td>
+            <td class="headerValue">2023-02-28 19:19:08</td>
             <td></td>
             <td class="headerName">Lines:</td>
             <td class="headerTableEntry">8</td>
-            <td class="headerTableEntry">13</td>
-            <td class="headerTableEntry" style="background-color:LightPink">61.5 %</td>
+            <td class="headerTableEntry">14</td>
+            <td class="headerTableEntry" style="background-color:LightPink">57.1 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -412,6 +412,12 @@ pre
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>15</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            var asn1Sequence: ASN1Sequence =</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>16</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/2</summary>
 <div class="linebranchContents">
@@ -420,88 +426,88 @@ pre
 </details>
 </td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            var asn1Sequence :ASN1Sequence = (ASN1Tag.SEQUENCE.newParser(BERDecoder()).parse(ASN1Tag.SEQUENCE, valueBytes) as ASN1Sequence).getOrThrow()</pre></td>
+<td align="left" class="src uncoveredLine"><pre>                (SEQUENCE.newParser(BERDecoder()).parse(SEQUENCE, valueBytes) as ASN1Sequence).getOrThrow()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>16</pre></td>
+<td align="right" class="lineno"><pre>17</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
 <td align="left" class="src uncoveredLine"><pre>            return asn1Sequence.iterator()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>17</pre></td>
+<td align="right" class="lineno"><pre>18</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        } else {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>18</pre></td>
+<td align="right" class="lineno"><pre>19</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
 <td align="left" class="src uncoveredLine"><pre>            return this.iterator()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>19</pre></td>
+<td align="right" class="lineno"><pre>20</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>20</pre></td>
+<td align="right" class="lineno"><pre>21</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>21</pre></td>
+<td align="right" class="lineno"><pre>22</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>22</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func getValueBytes(): Array&lt;Byte&gt; {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>23</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        var copyList: Array&lt;Byte&gt; = Array&lt;Byte&gt;(valueBytes.size, item: 0)</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func getValueBytes(): Array&lt;Byte&gt; {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>24</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        valueBytes.copyTo(copyList, 0, 0, valueBytes.size)</pre></td>
+<td align="left" class="src coveredLine"><pre>        var copyList: Array&lt;Byte&gt; = Array&lt;Byte&gt;(valueBytes.size, item: 0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>25</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return copyList</pre></td>
+<td align="left" class="src coveredLine"><pre>        valueBytes.copyTo(copyList, 0, 0, valueBytes.size)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>26</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return copyList</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>27</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>28</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    public func length(): Int64</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>29</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    public func length(): Int64</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>30</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>

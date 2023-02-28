@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-20 16:41:46</td>
+            <td class="headerValue">2023-02-28 19:19:08</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">170</td>
-            <td class="headerTableEntry">177</td>
-            <td class="headerTableEntry" style="background-color:LightGreen">96.0 %</td>
+            <td class="headerTableEntry">167</td>
+            <td class="headerTableEntry">175</td>
+            <td class="headerTableEntry" style="background-color:LightGreen">95.4 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -300,9 +300,9 @@ pre
             </td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">30</td>
-            <td class="headerTableEntry">36</td>
-            <td class="headerTableEntry" style="background-color:Yellow">83.3 %</td>
+            <td class="headerTableEntry">32</td>
+            <td class="headerTableEntry">40</td>
+            <td class="headerTableEntry" style="background-color:Yellow">80.0 %</td>
           </tr>
         </table>
       </td>
@@ -365,128 +365,122 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>8</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>public abstract class ASN1Tag {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>public let ASN1_BOOLEAN: ASN1Tag = ASN1BooleanTag(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>9</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    private static var tags: HashMap&lt;Int64, ASN1Tag&gt; = HashMap&lt;Int64, ASN1Tag&gt;()</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>10</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    private var tag: Int64 = 0</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    0x01,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>11</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    private var asn1TagClass: ASN1TagClass</pre></td>
+<td align="left" class="src "><pre>    ASN1Encoding.PRIMITIVE(0x0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>12</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    private var supportedEncodings: HashSet&lt;ASN1Encoding&gt; = HashSet&lt;ASN1Encoding&gt;()</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>13</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    private var asn1Encoding: ASN1Encoding</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>14</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>public let INTEGER: ASN1Tag = ASN1IntegerTag(ASN1TagClass.UNIVERSAL(0), 0x02, ASN1Encoding.PRIMITIVE(0x0))</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>15</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>15</pre></td>
+<td align="right" class="lineno"><pre>16</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet&lt;ASN1Encoding&gt;) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>16</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 61 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        if (supportedEncodings.contains(ASN1Encoding.PRIMITIVE(0x0))) {</pre></td>
+<td align="left" class="src coveredLine"><pre>public let BIT_STRING: ASN1Tag = ASN1BitStringTag(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>17</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            this.asn1Encoding = ASN1Encoding.PRIMITIVE(0x0)</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>18</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        }</pre></td>
+<td align="left" class="src "><pre>    0x03,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>19</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.asn1TagClass = asn1TagClass</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1Encoding.PRIMITIVE(0x0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>20</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.tag = tag</pre></td>
+<td align="left" class="src coveredLine"><pre>    HashSet&lt;ASN1Encoding&gt;([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>21</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.supportedEncodings = supportedEncodings</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>22</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.asn1Encoding = ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>23</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>24</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>25</pre></td>
+<td align="right" class="lineno"><pre>23</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {</pre></td>
+<td align="left" class="src coveredLine"><pre>public let OCTET_STRING: ASN1Tag = ASN1OctetStringTag(</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>24</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>25</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    0x04,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>26</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this(asn1TagClass, tag, asn1Encoding, HashSet&lt;ASN1Encoding&gt;([asn1Encoding]))</pre></td>
+<td align="left" class="src coveredLine"><pre>    HashSet&lt;ASN1Encoding&gt;([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>27</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>28</pre></td>
@@ -498,67 +492,67 @@ pre
 <td align="right" class="lineno"><pre>29</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(</pre></td>
+<td align="left" class="src coveredLine"><pre>public let ASN1_NULL_TAG: ASN1Tag = ASN1NullTag(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>30</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        asn1TagClass: ASN1TagClass,</pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>31</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        tag: Int64,</pre></td>
+<td align="left" class="src "><pre>    0x05,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>32</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        asn1Encoding: ASN1Encoding,</pre></td>
+<td align="left" class="src "><pre>    ASN1Encoding.PRIMITIVE(0x0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>33</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        supportedEncodings: HashSet&lt;ASN1Encoding&gt;</pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>34</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    ) {</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>35</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.asn1TagClass = asn1TagClass</pre></td>
+<td align="left" class="src coveredLine"><pre>public let OBJECT_IDENTIFIER: ASN1Tag = ASN1ObjectIdentifierTag(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>36</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.tag = tag</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>37</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.supportedEncodings = supportedEncodings</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    0x06,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>38</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.asn1Encoding = asn1Encoding</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1Encoding.PRIMITIVE(0x0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>39</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>40</pre></td>
@@ -570,115 +564,103 @@ pre
 <td align="right" class="lineno"><pre>41</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func constructed(): ASN1Tag {</pre></td>
+<td align="left" class="src coveredLine"><pre>public let ENUMERATED: ASN1Tag = ASN1EnumeratedTag(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>42</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return asEncoded(ASN1Encoding.CONSTRUCTED(0x20))</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>43</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre>    0x0A,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>44</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1Encoding.PRIMITIVE(0x0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>45</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func primitive(): ASN1Tag {</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>46</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return asEncoded(ASN1Encoding.PRIMITIVE(0x0))</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>47</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>public let SET: ASN1Tag = ASN1SetTag(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>48</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>49</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func asEncoded(asn1Encoding: ASN1Encoding): ASN1Tag {</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    0x11,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>50</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 33 times.</div><div class="takenBranch">&check; Branch 1 taken 5 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        if (this.asn1Encoding == asn1Encoding) {</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>51</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            return this</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>52</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        }</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>53</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 5 times.</div>
-</div>
-</details>
-</td>
+<td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        if (!supportedEncodings.contains(asn1Encoding)) {</pre></td>
+<td align="left" class="src coveredLine"><pre>public let SEQUENCE: ASN1Tag = ASN1SequenceTag(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>54</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            throw IllegalArgumentException("The ASN.1 tag does not support encoding")</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1TagClass.UNIVERSAL(0),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>55</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        }</pre></td>
+<td align="left" class="src "><pre>    0x10,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>56</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return ASN1AllTag(this.asn1TagClass, this.tag, asn1Encoding, this.supportedEncodings, this)</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>57</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>58</pre></td>
@@ -690,169 +672,151 @@ pre
 <td align="right" class="lineno"><pre>59</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static func application(tag: Int64): ASN1Tag {</pre></td>
+<td align="left" class="src coveredLine"><pre>let tags: HashMap&lt;Int64, ASN1Tag&gt; = HashMap&lt;Int64, ASN1Tag&gt;(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>60</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return forTag(ASN1TagClass.APPLICATION(0x40), tag)</pre></td>
+<td align="left" class="src coveredLine"><pre>    [</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>61</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        (ASN1_BOOLEAN.getTag(), ASN1_BOOLEAN),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>62</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        (INTEGER.getTag(), INTEGER),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>63</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static func contextSpecific(tag: Int64): ASN1Tag {</pre></td>
+<td align="left" class="src coveredLine"><pre>        (BIT_STRING.getTag(), BIT_STRING),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>64</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return forTag(ASN1TagClass.CONTEXT_SPECIFIC(0x80), tag)</pre></td>
+<td align="left" class="src coveredLine"><pre>        (OCTET_STRING.getTag(), OCTET_STRING),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>65</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        (ASN1_NULL_TAG.getTag(), ASN1_NULL_TAG),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>66</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        (OBJECT_IDENTIFIER.getTag(), OBJECT_IDENTIFIER),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>67</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static func forTag(asn1TagClass: ASN1TagClass, tag: Int64): ASN1Tag {</pre></td>
+<td align="left" class="src coveredLine"><pre>        (ENUMERATED.getTag(), ENUMERATED),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>68</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        addTags()</pre></td>
+<td align="left" class="src coveredLine"><pre>        (SET.getTag(), SET),</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>69</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 28 times.</div><div class="takenBranch">&check; Branch 1 taken 11 times.</div>
-</div>
-</details>
-</td>
+<td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        if (asn1TagClass.getValue() == ASN1TagClass.UNIVERSAL(0).getValue()) {</pre></td>
+<td align="left" class="src coveredLine"><pre>        (SEQUENCE.getTag(), SEQUENCE)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>70</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 6 times.</div><div class="takenBranch">&check; Branch 1 taken 117 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            for (asn1Tag in tags.values()) {</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ]</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>71</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 22 times.</div><div class="takenBranch">&check; Branch 1 taken 95 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                if (asn1Tag.tag == tag &amp;&amp; asn1TagClass.getValue() == asn1Tag.asn1TagClass.getValue()) {</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>72</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    return asn1Tag</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>public abstract class ASN1Tag {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>73</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>                }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    private var tag: Int64 = 0</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>74</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>            }</pre></td>
+<td align="left" class="src "><pre>    private var asn1TagClass: ASN1TagClass</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>75</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 5 times.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div>
-</div>
-</details>
-</td>
+<td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        } else if (asn1TagClass.getValue() == ASN1TagClass.APPLICATION(0x40).getValue() || asn1TagClass.getValue() ==</pre></td>
+<td align="left" class="src coveredLine"><pre>    private var supportedEncodings: HashSet&lt;ASN1Encoding&gt; = HashSet&lt;ASN1Encoding&gt;()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>76</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            ASN1TagClass.CONTEXT_SPECIFIC(0x80).getValue() || asn1TagClass.getValue() ==</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    private var asn1Encoding: ASN1Encoding</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>77</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            ASN1TagClass.PRIVATE(0xc0).getValue()) {</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>78</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            return ASN1TaggedObjectTag(</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet&lt;ASN1Encoding&gt;) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>79</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>                asn1TagClass,</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 68 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (supportedEncodings.contains(ASN1Encoding.PRIMITIVE(0x0))) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>80</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>                tag,</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            this.asn1Encoding = ASN1Encoding.PRIMITIVE(0x0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>81</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                HashSet&lt;ASN1Encoding&gt;([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        } else {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>82</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>            )</pre></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            this.asn1Encoding = ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>83</pre></td>
@@ -864,121 +828,121 @@ pre
 <td align="right" class="lineno"><pre>84</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        throw ASN1ParseException("Unknown ASN.1 tag")</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.asn1TagClass = asn1TagClass</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>85</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.tag = tag</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>86</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.supportedEncodings = supportedEncodings</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>87</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func getTag(): Int64 {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>88</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return tag</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>89</pre></td>
-<td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>90</pre></td>
+<td align="right" class="lineno"><pre>88</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>91</pre></td>
+<td align="right" class="lineno"><pre>89</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func getAsn1TagClass(): ASN1TagClass {</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>90</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        this(asn1TagClass, tag, asn1Encoding, HashSet&lt;ASN1Encoding&gt;([asn1Encoding]))</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>91</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>92</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return asn1TagClass</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>93</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>94</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>        asn1TagClass: ASN1TagClass,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>95</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func getAsn1Encoding(): ASN1Encoding {</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        tag: Int64,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>96</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return asn1Encoding</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        asn1Encoding: ASN1Encoding,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>97</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre>        supportedEncodings: HashSet&lt;ASN1Encoding&gt;</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>98</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    ) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>99</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public func isConstructed(): Bool {</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.asn1TagClass = asn1TagClass</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>100</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return asn1Encoding == ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.tag = tag</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>101</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.supportedEncodings = supportedEncodings</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>102</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.asn1Encoding = asn1Encoding</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>103</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    public func newParser(encoder: ASN1Decoder): ASN1Parser</pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>104</pre></td>
@@ -989,23 +953,437 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>105</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func constructed(): ASN1Tag {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>106</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return asEncoded(ASN1Encoding.CONSTRUCTED(0x20))</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>107</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>108</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>107</pre></td>
+<td align="right" class="lineno"><pre>109</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func primitive(): ASN1Tag {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>110</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return asEncoded(ASN1Encoding.PRIMITIVE(0x0))</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>111</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>112</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>113</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func asEncoded(asn1Encoding: ASN1Encoding): ASN1Tag {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>114</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 34 times.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (this.asn1Encoding == asn1Encoding) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>115</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            return this</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>116</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>117</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (!supportedEncodings.contains(asn1Encoding)) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>118</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            throw IllegalArgumentException("The ASN.1 tag does not support encoding")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>119</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>120</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return ASN1AllTag(this.asn1TagClass, this.tag, asn1Encoding, this.supportedEncodings, this)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>121</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>122</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>123</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public static func application(tag: Int64): ASN1Tag {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>124</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return forTag(ASN1TagClass.APPLICATION(0x40), tag)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>125</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>126</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>127</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public static func contextSpecific(tag: Int64): ASN1Tag {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>128</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return forTag(ASN1TagClass.CONTEXT_SPECIFIC(0x80), tag)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>129</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>130</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>131</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public static func forTag(asn1TagClass: ASN1TagClass, tag: Int64): ASN1Tag {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>132</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        match (asn1TagClass) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>133</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 13 times.</div><div class="takenBranch">&check; Branch 1 taken 30 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            case UNIVERSAL(0) =&gt;</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>134</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 6 times.</div><div class="takenBranch">&check; Branch 1 taken 119 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                for (asn1Tag in tags.values()) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>135</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 24 times.</div><div class="takenBranch">&check; Branch 1 taken 95 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    if (asn1Tag.tag == tag &amp;&amp; asn1TagClass.getValue() == asn1Tag.asn1TagClass.getValue()) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>136</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                        return asn1Tag</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>137</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>138</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>139</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                throw ASN1ParseException("Unknown ASN.1 tag")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>140</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">5/6</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 6 times.</div><div class="takenBranch">&check; Branch 1 taken 7 times.</div><div class="takenBranch">&check; Branch 2 taken 6 times.</div><div class="takenBranch">&check; Branch 3 taken 1 times.</div><div class="takenBranch">&check; Branch 4 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 5 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            case APPLICATION(0x40) | CONTEXT_SPECIFIC(0x80) | PRIVATE(0xc0) =&gt;</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>141</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                return ASN1TaggedObjectTag(</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>142</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                    asn1TagClass,</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>143</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                    tag,</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>144</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    HashSet&lt;ASN1Encoding&gt;([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>145</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                )</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>146</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            case _ =&gt; throw ASN1ParseException("Unknown ASN.1 tag")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>147</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>148</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>149</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>150</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func getTag(): Int64 {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>151</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return tag</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>152</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>153</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>154</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func getAsn1TagClass(): ASN1TagClass {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>155</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return asn1TagClass</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>156</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>157</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>158</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func getAsn1Encoding(): ASN1Encoding {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>159</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return asn1Encoding</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>160</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>161</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>162</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func isConstructed(): Bool {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>163</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return asn1Encoding == ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>164</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>165</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>166</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    public func newParser(encoder: ASN1Decoder): ASN1Parser</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>167</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>168</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>169</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>170</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public func equals(o: Object): Bool {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>108</pre></td>
+<td align="right" class="lineno"><pre>171</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -1017,19 +1395,19 @@ pre
 <td align="left" class="src coveredLine"><pre>        if (refEq(this, o)) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>109</pre></td>
+<td align="right" class="lineno"><pre>172</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            return true</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>110</pre></td>
+<td align="right" class="lineno"><pre>173</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>111</pre></td>
+<td align="right" class="lineno"><pre>174</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1041,7 +1419,7 @@ pre
 <td align="left" class="src coveredLine"><pre>        var that: ASN1Tag = (o as ASN1Tag).getOrThrow()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>112</pre></td>
+<td align="right" class="lineno"><pre>175</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1053,79 +1431,79 @@ pre
 <td align="left" class="src coveredLine"><pre>        return (getTag() == that.getTag() &amp;&amp; asn1Encoding == that.asn1Encoding)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>113</pre></td>
+<td align="right" class="lineno"><pre>176</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>114</pre></td>
+<td align="right" class="lineno"><pre>177</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>115</pre></td>
+<td align="right" class="lineno"><pre>178</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public func hashCode(): Int32 {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>116</pre></td>
+<td align="right" class="lineno"><pre>179</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        return hashCodeobjs(asn1TagClass, getTag(), asn1Encoding)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>117</pre></td>
+<td align="right" class="lineno"><pre>180</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>118</pre></td>
+<td align="right" class="lineno"><pre>181</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>119</pre></td>
+<td align="right" class="lineno"><pre>182</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    @overflowWrapping</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>120</pre></td>
+<td align="right" class="lineno"><pre>183</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    private func hashCodeobjs(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding): Int32 {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>121</pre></td>
+<td align="right" class="lineno"><pre>184</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var result: Int32 = 1</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>122</pre></td>
+<td align="right" class="lineno"><pre>185</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var asn1Tagcode: Int32 = 0</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>123</pre></td>
+<td align="right" class="lineno"><pre>186</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var asn1Encode: Int32 = 0</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>124</pre></td>
+<td align="right" class="lineno"><pre>187</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        asn1Tagcode = match (asn1TagClass) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>125</pre></td>
+<td align="right" class="lineno"><pre>188</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -1137,7 +1515,7 @@ pre
 <td align="left" class="src coveredLine"><pre>            case UNIVERSAL(Byte) =&gt; 1590550415</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>126</pre></td>
+<td align="right" class="lineno"><pre>189</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -1149,7 +1527,7 @@ pre
 <td align="left" class="src coveredLine"><pre>            case APPLICATION(Byte) =&gt; 1058025095</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>127</pre></td>
+<td align="right" class="lineno"><pre>190</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1161,41 +1539,41 @@ pre
 <td align="left" class="src coveredLine"><pre>            case CONTEXT_SPECIFIC(Byte) =&gt; 665576141</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>128</pre></td>
+<td align="right" class="lineno"><pre>191</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
 <td align="left" class="src uncoveredLine"><pre>            case PRIVATE(Byte) =&gt; 1599771323</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>129</pre></td>
+<td align="right" class="lineno"><pre>192</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>130</pre></td>
+<td align="right" class="lineno"><pre>193</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        result = 31 * result + asn1Tagcode</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>131</pre></td>
+<td align="right" class="lineno"><pre>194</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        result = 31 * result + Int32(tag)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>132</pre></td>
+<td align="right" class="lineno"><pre>195</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        match (asn1Encoding) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>133</pre></td>
+<td align="right" class="lineno"><pre>196</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
+<summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 3 times.</div>
 </div>
 </details>
 </td>
@@ -1203,71 +1581,71 @@ pre
 <td align="left" class="src coveredLine"><pre>            case PRIMITIVE(Byte) =&gt; 1058025095</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>134</pre></td>
+<td align="right" class="lineno"><pre>197</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case CONSTRUCTED(Byte) =&gt; 665576141</pre></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            case CONSTRUCTED(Byte) =&gt; 665576141</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>135</pre></td>
+<td align="right" class="lineno"><pre>198</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>136</pre></td>
+<td align="right" class="lineno"><pre>199</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        result = 31 * result + Int32(tag)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>137</pre></td>
+<td align="right" class="lineno"><pre>200</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        return result</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>138</pre></td>
+<td align="right" class="lineno"><pre>201</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>139</pre></td>
+<td align="right" class="lineno"><pre>202</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>140</pre></td>
+<td align="right" class="lineno"><pre>203</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public func toString(): String {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>141</pre></td>
+<td align="right" class="lineno"><pre>204</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var sb: StringBuilder = StringBuilder()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>142</pre></td>
+<td align="right" class="lineno"><pre>205</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        sb.append("ASN1Tag[")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>143</pre></td>
+<td align="right" class="lineno"><pre>206</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        match (asn1TagClass) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>144</pre></td>
+<td align="right" class="lineno"><pre>207</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 6 times.</div><div class="takenBranch">&check; Branch 1 taken 25 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 8 times.</div><div class="takenBranch">&check; Branch 1 taken 25 times.</div>
 </div>
 </details>
 </td>
@@ -1275,11 +1653,11 @@ pre
 <td align="left" class="src coveredLine"><pre>            case UNIVERSAL(Byte) =&gt; sb.append("UNIVERSAL")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>145</pre></td>
+<td align="right" class="lineno"><pre>208</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 3 times.</div><div class="takenBranch">&check; Branch 1 taken 3 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 4 times.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div>
 </div>
 </details>
 </td>
@@ -1287,11 +1665,11 @@ pre
 <td align="left" class="src coveredLine"><pre>            case APPLICATION(Byte) =&gt; sb.append("APPLICATION")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>146</pre></td>
+<td align="right" class="lineno"><pre>209</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 3 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="takenBranch">&check; Branch 0 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
 </div>
 </details>
 </td>
@@ -1299,35 +1677,35 @@ pre
 <td align="left" class="src coveredLine"><pre>            case CONTEXT_SPECIFIC(Byte) =&gt; sb.append("CONTEXT_SPECIFIC")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>147</pre></td>
+<td align="right" class="lineno"><pre>210</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
 <td align="left" class="src uncoveredLine"><pre>            case PRIVATE(Byte) =&gt; sb.append("PRIVATE")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>148</pre></td>
+<td align="right" class="lineno"><pre>211</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>149</pre></td>
+<td align="right" class="lineno"><pre>212</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        sb.append(",")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>150</pre></td>
+<td align="right" class="lineno"><pre>213</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        match (asn1Encoding) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>151</pre></td>
+<td align="right" class="lineno"><pre>214</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 7 times.</div><div class="takenBranch">&check; Branch 1 taken 24 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 5 times.</div><div class="takenBranch">&check; Branch 1 taken 28 times.</div>
 </div>
 </details>
 </td>
@@ -1335,418 +1713,40 @@ pre
 <td align="left" class="src coveredLine"><pre>            case PRIMITIVE(Byte) =&gt; sb.append("PRIMITIVE")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>152</pre></td>
+<td align="right" class="lineno"><pre>215</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            case CONSTRUCTED(Byte) =&gt; sb.append("CONSTRUCTED")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>153</pre></td>
+<td align="right" class="lineno"><pre>216</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>154</pre></td>
+<td align="right" class="lineno"><pre>217</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        sb.append(",")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>155</pre></td>
+<td align="right" class="lineno"><pre>218</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        sb.append(tag)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>156</pre></td>
+<td align="right" class="lineno"><pre>219</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        sb.append(']')</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>157</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return sb.toString()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>158</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>159</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>160</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let ASN1_BOOLEAN: ASN1Tag = ASN1BooleanTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>161</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>162</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x01,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>163</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1Encoding.PRIMITIVE(0x0)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>164</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>165</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>166</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let INTEGER: ASN1Tag = ASN1IntegerTag(ASN1TagClass.UNIVERSAL(0), 0x02, ASN1Encoding.PRIMITIVE(0x0))</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>167</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>168</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let BIT_STRING: ASN1Tag = ASN1BitStringTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>169</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>170</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x03,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>171</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1Encoding.PRIMITIVE(0x0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>172</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        HashSet&lt;ASN1Encoding&gt;([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>173</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>174</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>175</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let OCTET_STRING: ASN1Tag = ASN1OctetStringTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>176</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>177</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x04,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>178</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        HashSet&lt;ASN1Encoding&gt;([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>179</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>180</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>181</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let ASN1_NULL_TAG: ASN1Tag = ASN1NullTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>182</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>183</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x05,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>184</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1Encoding.PRIMITIVE(0x0)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>185</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>186</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>187</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let OBJECT_IDENTIFIER: ASN1Tag = ASN1ObjectIdentifierTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>188</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>189</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x06,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>190</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1Encoding.PRIMITIVE(0x0)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>191</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>192</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>193</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let ENUMERATED: ASN1Tag = ASN1EnumeratedTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>194</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>195</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x0A,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>196</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1Encoding.PRIMITIVE(0x0)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>197</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>198</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>199</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let SET: ASN1Tag = ASN1SetTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>200</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>201</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x11,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>202</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>203</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>204</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>205</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public static let SEQUENCE: ASN1Tag = ASN1SequenceTag(</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>206</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1TagClass.UNIVERSAL(0),</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>207</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        0x10,</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>208</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        ASN1Encoding.CONSTRUCTED(0x20)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>209</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    )</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>210</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>211</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    private static func addTags() {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>212</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(ASN1_BOOLEAN.getTag(), ASN1_BOOLEAN)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>213</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(INTEGER.getTag(), INTEGER)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>214</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(BIT_STRING.getTag(), BIT_STRING)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>215</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(OCTET_STRING.getTag(), OCTET_STRING)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>216</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(ASN1_NULL_TAG.getTag(), ASN1_NULL_TAG)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>217</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(OBJECT_IDENTIFIER.getTag(), OBJECT_IDENTIFIER)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>218</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(ENUMERATED.getTag(), ENUMERATED)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>219</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(SET.getTag(), SET)</pre></td>
-</tr>
-<tr>
 <td align="right" class="lineno"><pre>220</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        tags.put(SEQUENCE.getTag(), SEQUENCE)</pre></td>
+<td align="left" class="src coveredLine"><pre>        return sb.toString()</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>221</pre></td>
@@ -2676,82 +2676,112 @@ pre
 <td align="right" class="lineno"><pre>375</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding,</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>376</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        supportedEncodings: HashSet&lt;ASN1Encoding&gt;, asn1Tag: ASN1Tag) {</pre></td>
+<td align="left" class="src "><pre>        asn1TagClass: ASN1TagClass,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>377</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(asn1TagClass, tag, asn1Encoding, supportedEncodings)</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        tag: Int64,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>378</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this.asn1Tag = asn1Tag</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        asn1Encoding: ASN1Encoding,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>379</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre>        supportedEncodings: HashSet&lt;ASN1Encoding&gt;,</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>380</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>        asn1Tag: ASN1Tag</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>381</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>    public func newParser(decoder: ASN1Decoder): ASN1Parser {</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    ) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>382</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        asn1Tag.newParser(decoder)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(asn1TagClass, tag, asn1Encoding, supportedEncodings)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>383</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.asn1Tag = asn1Tag</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>384</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>385</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {</pre></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>386</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>        asn1Tag.newSerializer(encoder)</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public func newParser(decoder: ASN1Decoder): ASN1Parser {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>387</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        asn1Tag.newParser(decoder)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>388</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>388</pre></td>
+<td align="right" class="lineno"><pre>389</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>390</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>    public func newSerializer(encoder: ASN1Encoder): ASN1Serializer {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>391</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>        asn1Tag.newSerializer(encoder)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>392</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>393</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>

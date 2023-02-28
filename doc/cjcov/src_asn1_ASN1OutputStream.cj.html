@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-20 16:41:46</td>
+            <td class="headerValue">2023-02-28 19:19:08</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">29</td>
-            <td class="headerTableEntry">31</td>
-            <td class="headerTableEntry" style="background-color:LightGreen">93.5 %</td>
+            <td class="headerTableEntry">30</td>
+            <td class="headerTableEntry">32</td>
+            <td class="headerTableEntry" style="background-color:LightGreen">93.8 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -490,40 +490,46 @@ pre
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>29</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var value = b &amp; 255</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>30</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 98 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 98 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 80 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 80 times.</div>
 </div>
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        output.write([UInt8(b)])</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>30</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src coveredLine"><pre>        output.write([UInt8(value)])</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>31</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>32</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>33</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    private func writeLength(length: Int64): Unit {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>33</pre></td>
+<td align="right" class="lineno"><pre>34</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 40 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 30 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -531,31 +537,31 @@ pre
 <td align="left" class="src coveredLine"><pre>        if (length &lt; 0x7f) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>34</pre></td>
+<td align="right" class="lineno"><pre>35</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            write(length)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>35</pre></td>
+<td align="right" class="lineno"><pre>36</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        } else {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>36</pre></td>
+<td align="right" class="lineno"><pre>37</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            var nrBytes: Int64 = lengthBytes(length)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>37</pre></td>
+<td align="right" class="lineno"><pre>38</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            write(0x80 | nrBytes)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>38</pre></td>
+<td align="right" class="lineno"><pre>39</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -567,7 +573,7 @@ pre
 <td align="left" class="src coveredLine"><pre>            while (nrBytes &gt; 0) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>39</pre></td>
+<td align="right" class="lineno"><pre>40</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">4/8</summary>
 <div class="linebranchContents">
@@ -579,7 +585,7 @@ pre
 <td align="left" class="src coveredLine"><pre>                write(length &gt;&gt; ((nrBytes - 1) * 8))</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>40</pre></td>
+<td align="right" class="lineno"><pre>41</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -591,49 +597,49 @@ pre
 <td align="left" class="src coveredLine"><pre>                nrBytes--</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>41</pre></td>
+<td align="right" class="lineno"><pre>42</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>            }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>42</pre></td>
+<td align="right" class="lineno"><pre>43</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>43</pre></td>
+<td align="right" class="lineno"><pre>44</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>44</pre></td>
+<td align="right" class="lineno"><pre>45</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>45</pre></td>
+<td align="right" class="lineno"><pre>46</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    private func lengthBytes(length: Int64): Int64 {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>46</pre></td>
+<td align="right" class="lineno"><pre>47</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var l: Int64 = length</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>47</pre></td>
+<td align="right" class="lineno"><pre>48</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var nrBytes: Int64 = 1</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>48</pre></td>
+<td align="right" class="lineno"><pre>49</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -645,7 +651,7 @@ pre
 <td align="left" class="src coveredLine"><pre>        while (l &gt; 255) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>49</pre></td>
+<td align="right" class="lineno"><pre>50</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/2</summary>
 <div class="linebranchContents">
@@ -657,47 +663,47 @@ pre
 <td align="left" class="src uncoveredLine"><pre>            nrBytes++</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>50</pre></td>
+<td align="right" class="lineno"><pre>51</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
 <td align="left" class="src uncoveredLine"><pre>            l &gt;&gt;= 8</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>51</pre></td>
+<td align="right" class="lineno"><pre>52</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>52</pre></td>
+<td align="right" class="lineno"><pre>53</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        return nrBytes</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>53</pre></td>
+<td align="right" class="lineno"><pre>54</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>54</pre></td>
+<td align="right" class="lineno"><pre>55</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>55</pre></td>
+<td align="right" class="lineno"><pre>56</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    private func writeTag(tag: ASN1Tag): Unit {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>56</pre></td>
+<td align="right" class="lineno"><pre>57</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 41 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 41 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 31 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 31 times.</div>
 </div>
 </details>
 </td>
@@ -705,25 +711,25 @@ pre
 <td align="left" class="src coveredLine"><pre>        var tagByte: Byte = UInt8(tag.getAsn1TagClass().getValue() | tag.getAsn1Encoding().getValue() | tag.getTag())</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>57</pre></td>
+<td align="right" class="lineno"><pre>58</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 41 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 31 times.</div>
 </div>
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        write(Int64(tagByte));</pre></td>
+<td align="left" class="src coveredLine"><pre>        write(Int64(tagByte))</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>58</pre></td>
+<td align="right" class="lineno"><pre>59</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>59</pre></td>
+<td align="right" class="lineno"><pre>60</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>

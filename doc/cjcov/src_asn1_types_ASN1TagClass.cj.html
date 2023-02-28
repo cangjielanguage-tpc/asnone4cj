@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-20 16:41:46</td>
+            <td class="headerValue">2023-02-28 19:19:08</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">20</td>
-            <td class="headerTableEntry">21</td>
-            <td class="headerTableEntry" style="background-color:LightGreen">95.2 %</td>
+            <td class="headerTableEntry">24</td>
+            <td class="headerTableEntry">25</td>
+            <td class="headerTableEntry" style="background-color:LightGreen">96.0 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -391,7 +391,7 @@ pre
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 8 times.</div><div class="takenBranch">&check; Branch 1 taken 29 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 8 times.</div><div class="takenBranch">&check; Branch 1 taken 31 times.</div>
 </div>
 </details>
 </td>
@@ -408,7 +408,7 @@ pre
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case 0x40 =&gt; return return APPLICATION(0x40);</pre></td>
+<td align="left" class="src coveredLine"><pre>            case 0x40 =&gt; return return APPLICATION(0x40)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>14</pre></td>
@@ -420,7 +420,7 @@ pre
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case 0x80 =&gt; return CONTEXT_SPECIFIC(0x80);</pre></td>
+<td align="left" class="src coveredLine"><pre>            case 0x80 =&gt; return CONTEXT_SPECIFIC(0x80)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>15</pre></td>
@@ -432,13 +432,13 @@ pre
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case 0xc0 =&gt; return PRIVATE(0xc0);</pre></td>
+<td align="left" class="src coveredLine"><pre>            case 0xc0 =&gt; return PRIVATE(0xc0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>16</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            case _ =&gt; throw Exception("Could not parse ASN.1 Tag Class (should be impossible)");</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            case _ =&gt; throw Exception("Could not parse ASN.1 Tag Class (should be impossible)")</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>17</pre></td>
@@ -473,33 +473,45 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>22</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">4/4</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 53 times.</div><div class="takenBranch">&check; Branch 1 taken 153 times.</div><div class="takenBranch">&check; Branch 2 taken 1 times.</div><div class="takenBranch">&check; Branch 3 taken 152 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 6 times.</div><div class="takenBranch">&check; Branch 1 taken 80 times.</div>
 </div>
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case UNIVERSAL(v) =&gt; if (v != 0) {</pre></td>
+<td align="left" class="src coveredLine"><pre>            case UNIVERSAL(v) =&gt;</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>23</pre></td>
-<td align="right" class="linebranch"></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 79 times.</div>
+</div>
+</details>
+</td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    throw Exception("UNIVERSAL value should be 0x00");</pre></td>
+<td align="left" class="src coveredLine"><pre>                if (v != 0) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>24</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    throw Exception("UNIVERSAL value should be 0x00")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>25</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                } else {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>25</pre></td>
+<td align="right" class="lineno"><pre>26</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 152 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 79 times.</div>
 </div>
 </details>
 </td>
@@ -507,83 +519,53 @@ pre
 <td align="left" class="src coveredLine"><pre>                    return Int64(v)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>26</pre></td>
+<td align="right" class="lineno"><pre>27</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>27</pre></td>
+<td align="right" class="lineno"><pre>28</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">4/4</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 23 times.</div><div class="takenBranch">&check; Branch 1 taken 30 times.</div><div class="takenBranch">&check; Branch 2 taken 1 times.</div><div class="takenBranch">&check; Branch 3 taken 22 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div>
 </div>
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case APPLICATION(v) =&gt; if (v != 0x40) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>28</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    throw Exception("APPLICATION value should be 0x40");</pre></td>
+<td align="left" class="src coveredLine"><pre>            case APPLICATION(v) =&gt;</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>29</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>                } else {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>30</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 22 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    return Int64(v)</pre></td>
+<td align="left" class="src coveredLine"><pre>                if (v != 0x40) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>30</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    throw Exception("APPLICATION value should be 0x40")</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>31</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>                }</pre></td>
+<td align="left" class="src "><pre>                } else {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>32</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">4/4</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 23 times.</div><div class="takenBranch">&check; Branch 1 taken 7 times.</div><div class="takenBranch">&check; Branch 2 taken 1 times.</div><div class="takenBranch">&check; Branch 3 taken 22 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case CONTEXT_SPECIFIC(v) =&gt; if (v != 0x80) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>33</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    throw Exception("CONTEXT_SPECIFIC value should be 0x80");</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>34</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>                } else {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>35</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 22 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -591,41 +573,101 @@ pre
 <td align="left" class="src coveredLine"><pre>                    return Int64(v)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>36</pre></td>
+<td align="right" class="lineno"><pre>33</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>37</pre></td>
+<td align="right" class="lineno"><pre>34</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="takenBranch">&check; Branch 1 taken 2 times.</div>
 </div>
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            case PRIVATE(v) =&gt; if (v != 0xc0) {</pre></td>
+<td align="left" class="src coveredLine"><pre>            case CONTEXT_SPECIFIC(v) =&gt;</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>35</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                if (v != 0x80) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>36</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    throw Exception("CONTEXT_SPECIFIC value should be 0x80")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>37</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                } else {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>38</pre></td>
-<td align="right" class="linebranch"></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+</div>
+</details>
+</td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    throw Exception("PRIVATE value should be 0xc0");</pre></td>
+<td align="left" class="src coveredLine"><pre>                    return Int64(v)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>39</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>                } else {</pre></td>
+<td align="left" class="src "><pre>                }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>40</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            case PRIVATE(v) =&gt;</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>41</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                if (v != 0xc0) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>42</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    throw Exception("PRIVATE value should be 0xc0")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>43</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                } else {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>44</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 6 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -633,25 +675,25 @@ pre
 <td align="left" class="src coveredLine"><pre>                    return Int64(v)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>41</pre></td>
+<td align="right" class="lineno"><pre>45</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>42</pre></td>
+<td align="right" class="lineno"><pre>46</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>43</pre></td>
+<td align="right" class="lineno"><pre>47</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>44</pre></td>
+<td align="right" class="lineno"><pre>48</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>
