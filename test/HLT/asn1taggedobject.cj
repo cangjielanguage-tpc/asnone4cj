@@ -193,7 +193,6 @@ public class asn_Asn1TaggedObject{
        let sle = ASN1TaggedObject(tags,asn1sequence)
        println(sle.isExplicit())
        println(sle.getValue())
-
        println(sle.getObject())
        println(sle.getObject(tagss))
        println(sle.toString())
@@ -252,6 +251,26 @@ public class asn_Asn1TaggedObject{
        let sle = ASN1TaggedObject(tags,Buf,decz)
        println(sle.isExplicit())
        @Assert(sle.isExplicit(),true)
+    }
+
+
+
+    @TestCase
+    func asn_Asn1TaggedObject_17(): Unit {                      
+      
+       let tags = SEQUENCE
+       let tagss = SEQUENCE
+       var arr = ArrayList<ASN1Object>([ASN1Enumerated(20)])	
+       var asn1sequence:ASN1Sequence=ASN1Sequence(arr)
+       let set2 = ASN1TaggedObject(tags,asn1sequence)
+       var iteratorSet2: Iterator<ASN1Object> = set2.iterator()
+       while (true) {
+       match (iteratorSet2.next()) {
+            case Some(i) => println(i)
+            @Assert(i.toString(),"ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,10]]")
+            case None => break
+        }
+    }
     }
 
  
