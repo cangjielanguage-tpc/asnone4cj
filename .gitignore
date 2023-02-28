@@ -11,3 +11,7 @@ bin/
 *.gcno
 output/
 cryptocj/
+test/log/
+test/report/
+test/tmp/HLT/
+test/tmp/
