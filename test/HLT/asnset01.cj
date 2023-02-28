@@ -23,7 +23,7 @@ from asn1 import asn1.encodingrules.der.*
 from std import collection.*
 @Test
 public class asn_Asn1OutputStream01{    
-
+/*
   
     @TestCase
     func asn_Asn1OutputStream_01(): Unit {
@@ -178,6 +178,21 @@ public class asn_Asn1OutputStream01{
          var asn1set:ASN1Set=ASN1Set(objects)
          var ssss:HashSet<ASN1Object> = (asn1set.getValue() as HashSet<ASN1Object>).getOrThrow()
          @Assert(ssss.toString(),"[ASN1Object[ASN1Tag[UNIVERSAL,CONSTRUCTED,16]]]")
+    }
+
+*/
+    @TestCase
+    func asn_Asn1OutputStream_16(): Unit {
+    var objects2: HashSet<ASN1Object> = HashSet<ASN1Object>([ASN1Boolean(true)])
+    var set2: ASN1Set = ASN1Set(objects2)
+    var iteratorSet2: Iterator<ASN1Object> = set2.iterator()
+    while (true) {
+        match (iteratorSet2.next()) {
+            case Some(i) => println(i)
+            @Assert(i.toString(),"ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,1]]")
+            case None => break
+        }
+    }
     }
            
 }

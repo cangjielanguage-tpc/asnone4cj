@@ -153,4 +153,20 @@ public class asn_SeqUencer{
          println(asn1sequencer)
     }
 
+
+     @TestCase
+    func asn_Asn1OutputStream_16(): Unit {
+        let decz: BERDecoder = BERDecoder()
+        var arr = ArrayList<ASN1Object>([ASN1Enumerated(20)])
+        var set2:ASN1Sequence=ASN1Sequence(arr)
+        var iteratorSet2: Iterator<ASN1Object> = set2.iterator()
+        while (true) {
+        match (iteratorSet2.next()) {
+            case Some(i) => println(i)
+            @Assert(i.toString(),"ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,10]]")
+            case None => break
+        }
+    }
+    }
+
 }
