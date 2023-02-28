@@ -1,17 +1,24 @@
 package asn1.types
 
-var encodingvalue: Int64 = 0
-
 public enum ASN1Encoding <: Hashable & Equatable<ASN1Encoding> {
     | PRIMITIVE(Byte)
     | CONSTRUCTED(Byte)
 
-    func ASN1Encoding(value: Int64) {
-        encodingvalue = value
-    }
-
     public func getValue(): Int64 {
-        return encodingvalue
+        match (this) {
+            case PRIMITIVE(v) =>
+                if (v != 0) {
+                    throw Exception("PRIMITIVE value should be 0x00")
+                } else {
+                    return Int64(v)
+                }
+            case CONSTRUCTED(v) =>
+                if (v != 0x20) {
+                    throw Exception("CONSTRUCTED value should be 0x20")
+                } else {
+                    return Int64(v)
+                }
+        }
     }
 
     public static func parseEncoding(tagByte: Byte): ASN1Encoding {
