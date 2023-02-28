@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-20 16:41:46</td>
+            <td class="headerValue">2023-02-28 19:19:08</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">34</td>
-            <td class="headerTableEntry">35</td>
-            <td class="headerTableEntry" style="background-color:LightGreen">97.1 %</td>
+            <td class="headerTableEntry">30</td>
+            <td class="headerTableEntry">31</td>
+            <td class="headerTableEntry" style="background-color:LightGreen">96.8 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -300,9 +300,9 @@ pre
             </td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">12</td>
-            <td class="headerTableEntry">22</td>
-            <td class="headerTableEntry" style="background-color:LightPink">54.5 %</td>
+            <td class="headerTableEntry">4</td>
+            <td class="headerTableEntry">8</td>
+            <td class="headerTableEntry" style="background-color:LightPink">50.0 %</td>
           </tr>
         </table>
       </td>
@@ -336,319 +336,307 @@ pre
 <td align="right" class="lineno"><pre>3</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>from cryptocj import bignumcj.BIGNUM</pre></td>
+<td align="left" class="src "><pre>from numeric import bigint.*</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>4</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>from cryptocj import bignumcj.bnNew</pre></td>
+<td align="left" class="src "><pre>import asn1.util.DecoderUtils</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>5</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>from cryptocj import bignumcj.bnGetWord</pre></td>
+<td align="left" class="src "><pre>import asn1.util.EncodingUtils</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>6</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>from cryptocj import bignumcj.bnSetWord</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>7</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>public class ASN1Enumerated &lt;: ASN1PrimitiveValue {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>8</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>public class ASN1Enumerated &lt;: ASN1PrimitiveValue {</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    protected var value: BigInt = BigInt(0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>9</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    protected var value: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>10</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>11</pre></td>
+<td align="right" class="lineno"><pre>10</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public init(value: Int64) {</pre></td>
 </tr>
 <tr>
+<td align="right" class="lineno"><pre>11</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(ENUMERATED)</pre></td>
+</tr>
+<tr>
 <td align="right" class="lineno"><pre>12</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(ASN1Tag.ENUMERATED)</pre></td>
+<td align="left" class="src coveredLine"><pre>        this.value = BigInt(value)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>13</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        // 将整数设置给大数对象</pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>14</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/4</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 4 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        bnSetWord(this.value, UInt64(value))</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>15</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(value: BigInt) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>16</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(ENUMERATED)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>17</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(value: CPointer&lt;BIGNUM&gt;) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>18</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(ASN1Tag.ENUMERATED)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>19</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        this.value = value</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>20</pre></td>
+<td align="right" class="lineno"><pre>18</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>21</pre></td>
+<td align="right" class="lineno"><pre>19</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>20</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(value: BigInt, valueBytes: Array&lt;Byte&gt;) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>21</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(ENUMERATED, valueBytes)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>22</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(value: CPointer&lt;BIGNUM&gt;, valueBytes: Array&lt;Byte&gt;) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>23</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(ASN1Tag.ENUMERATED, valueBytes)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>24</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        this.value = value</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>25</pre></td>
+<td align="right" class="lineno"><pre>23</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>26</pre></td>
+<td align="right" class="lineno"><pre>24</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>27</pre></td>
+<td align="right" class="lineno"><pre>25</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public override func getValue(): Any {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>28</pre></td>
+<td align="right" class="lineno"><pre>26</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        return value</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>29</pre></td>
+<td align="right" class="lineno"><pre>27</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>28</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>}</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>29</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>30</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>}</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>31</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>32</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>public class EnumeratedParser &lt;: ASN1Parser {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>33</pre></td>
+<td align="right" class="lineno"><pre>31</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public init(decoder: ASN1Decoder) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>34</pre></td>
+<td align="right" class="lineno"><pre>32</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        super(decoder)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>35</pre></td>
+<td align="right" class="lineno"><pre>33</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>36</pre></td>
+<td align="right" class="lineno"><pre>34</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>37</pre></td>
+<td align="right" class="lineno"><pre>35</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public override func parse(asn1Tag: ASN1Tag, value: Array&lt;Byte&gt;): ASN1Object {</pre></td>
 </tr>
 <tr>
+<td align="right" class="lineno"><pre>36</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var bigint: BigInt = DecoderUtils.asn1Decode(value)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>37</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return ASN1Enumerated(bigint, value)</pre></td>
+</tr>
+<tr>
 <td align="right" class="lineno"><pre>38</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        var valueNumber: Int64 = 0</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>39</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 10 times.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        for (i in 0..value.size) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>40</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/4</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 10 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 10 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            valueNumber += Int64(value[i])</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>41</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>42</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        var valueBigNum: CPointer&lt;BIGNUM&gt; = bnNew()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>43</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        // 将整数设置给大数对象</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>44</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/4</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 1 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        bnSetWord(valueBigNum, UInt64(valueNumber))</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>45</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return ASN1Enumerated(valueBigNum, value)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>46</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>47</pre></td>
+<td align="right" class="lineno"><pre>39</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>48</pre></td>
+<td align="right" class="lineno"><pre>40</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>49</pre></td>
+<td align="right" class="lineno"><pre>41</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>public class EnumeratedSerializer &lt;: ASN1Serializer {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>50</pre></td>
+<td align="right" class="lineno"><pre>42</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public init(encoder: ASN1Encoder) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>51</pre></td>
+<td align="right" class="lineno"><pre>43</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        super(encoder)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>44</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>45</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>46</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public override func serializedLength(asn1Object: ASN1Object): Int64 {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>47</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>48</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (object.valueBytes.isEmpty()) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>49</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            calculateBytes(object)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>50</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>51</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return object.valueBytes.size</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>52</pre></td>
@@ -666,7 +654,7 @@ pre
 <td align="right" class="lineno"><pre>54</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public override func serializedLength(asn1Object: ASN1Object): Int64 {</pre></td>
+<td align="left" class="src coveredLine"><pre>    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>55</pre></td>
@@ -685,7 +673,7 @@ pre
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -695,8 +683,8 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>57</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            calculateBytes(object)</pre></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            calculateBytes(object)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>58</pre></td>
@@ -708,7 +696,7 @@ pre
 <td align="right" class="lineno"><pre>59</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return object.valueBytes.size</pre></td>
+<td align="left" class="src coveredLine"><pre>        stream.write(object.valueBytes)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>60</pre></td>
@@ -726,88 +714,22 @@ pre
 <td align="right" class="lineno"><pre>62</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>63</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        var object: ASN1Enumerated = (asn1Object as ASN1Enumerated).getOrThrow()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>64</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        if (object.valueBytes.isEmpty()) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>65</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
-<td align="left" class="src uncoveredLine"><pre>            calculateBytes(object)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>66</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>67</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        stream.write(object.valueBytes)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>68</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>69</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>70</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    private func calculateBytes(asn1Object: ASN1Enumerated): Unit {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>71</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>        // 将大数对象设置给整数</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>72</pre></td>
+<td align="right" class="lineno"><pre>63</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        asn1Object.valueBytes = bnGetWord(asn1Object.value).toString().toUtf8Array()</pre></td>
+<td align="left" class="src coveredLine"><pre>        asn1Object.valueBytes = EncodingUtils.asn1Encoded(asn1Object.value)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>73</pre></td>
+<td align="right" class="lineno"><pre>64</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>74</pre></td>
+<td align="right" class="lineno"><pre>65</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>

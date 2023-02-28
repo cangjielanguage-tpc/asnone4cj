@@ -1,0 +1,1391 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Cangjie Code Coverage Report</title>
+  <style media="screen" type="text/css">
+  body
+{
+  color: #000000;
+  background-color: #FFFFFF;
+}
+
+/* Link formats: use maroon w/underlines */
+a:link
+{
+  color: navy;
+  text-decoration: underline;
+}
+a:visited
+{
+  color: maroon;
+  text-decoration: underline;
+}
+a:active
+{
+  color: navy;
+  text-decoration: underline;
+}
+
+/*** TD formats ***/
+td
+{
+  font-family: sans-serif;
+}
+td.title
+{
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+/* TD Header Information */
+td.headerName
+{
+  text-align: right;
+  color: black;
+  padding-right: 6px;
+  font-weight: bold;
+  vertical-align: top;
+  white-space: nowrap;
+}
+td.headerValue
+{
+  text-align: left;
+  color: #284FA8;
+  font-family: sans-serif;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+td.headerTableEntry
+{
+  text-align: right;
+  color: black;
+  font-weight: bold;
+  white-space: nowrap;
+  padding-left: 12px;
+  padding-right: 4px;
+  background-color: LightBlue;
+}
+td.headerValueLeg
+{
+  text-align: left;
+  color: black;
+  font-size: 80%;
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+/* Color of horizontal ruler */
+td.hr
+{
+  background-color: navy;
+  height:3px;
+}
+/* Footer format */
+td.footer
+{
+  text-align: center;
+  padding-top: 3px;
+  font-family: sans-serif;
+}
+
+/* Coverage Table */
+
+td.coverTableHead
+{
+  text-align: center;
+  color: white;
+  background-color: SteelBlue;
+  font-family: sans-serif;
+  font-size: 120%;
+  white-space: nowrap;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+td.coverFile
+{
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 20px;
+  color: black;
+  background-color: LightBlue;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 110%;
+}
+td.coverBar
+{
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: LightBlue;
+}
+td.coverBarOutline
+{
+  background-color: white;
+}
+td.coverValue
+{
+  padding-top: 2px;
+  text-align: right;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: sans-serif;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+/* Link Details */
+a.detail:link
+{
+  color: #B8D0FF;
+  font-size:80%;
+}
+a.detail:visited
+{
+  color: #B8D0FF;
+  font-size:80%;
+}
+a.detail:active
+{
+  color: #FFFFFF;
+  font-size:80%;
+}
+
+.graphcont{
+    color:#000;
+    font-weight:700;
+    float:left
+}
+
+.graph{
+    float:left;
+    background-color: white;
+    position:relative;
+    width:280px;
+    padding:0
+}
+
+.graph .bar{
+    display:block;
+    position:relative;
+    border:black 1px solid;
+    text-align:center;
+    color:#fff;
+    height:10px;
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:12px;
+    line-height:1.9em
+}
+
+.graph .bar span{
+    position:absolute;
+    left:1em
+}
+
+td.coveredLine,
+span.coveredLine
+{
+    background-color: LightGreen!important;
+}
+
+td.uncoveredLine,
+span.uncoveredLine
+{
+    background-color: LightPink!important;
+}
+
+.linebranch, .linecount
+{
+    border-right: 1px gray solid;
+    background-color: lightgray;
+}
+
+.linebranchDetails
+{
+    position: relative;
+}
+.linebranchSummary
+{
+    cursor: help;
+}
+.linebranchContents
+{
+    font-family: sans-serif;
+    font-size: small;
+    text-align: left;
+    position: absolute;
+    width: 15em;
+    padding: 1em;
+    background: white;
+    border: solid gray 1px;
+    box-shadow: 5px 5px 10px gray;
+    z-index: 1; /* show in front of the table entries */
+}
+
+.takenBranch
+{
+    color: Green!important;
+    cursor: help;
+}
+
+.notTakenBranch
+{
+    color: Red!important;
+    cursor: help;
+}
+
+.src
+{
+    padding-left: 12px;
+}
+
+.srcHeader,
+span.takenBranch,
+span.notTakenBranch
+{
+    font-family: monospace;
+    font-weight: bold;
+}
+
+pre
+{
+    height : 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.lineno
+{
+    background-color: #EFE383;
+    border-right: 1px solid #BBB15F;
+}
+  </style>
+</head>
+
+<body>
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr><td class="title">Cangjie Code Coverage Report</td></tr>
+    <tr><td class="hr"></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding="1" border="0" width="100%">
+          <tr>
+            <td class="headerName">File:</td>
+            <td class="headerValue">src/asn1/util/EncodingUtils.cj</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerValue" style="text-align:right;">Hit</td>
+            <td width="10%" class="headerValue" style="text-align:right;">Total</td>
+            <td width="15%" class="headerValue" style="text-align:right;">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerName">Date:</td>
+            <td class="headerValue">2023-02-28 19:19:08</td>
+            <td></td>
+            <td class="headerName">Lines:</td>
+            <td class="headerTableEntry">76</td>
+            <td class="headerTableEntry">79</td>
+            <td class="headerTableEntry" style="background-color:LightGreen">96.2 %</td>
+          </tr>
+          <tr>
+            <td class="headerName">Legend:</td>
+            <td class="headerValueLeg">
+              <span style="background-color:LightPink">low: &lt; 75.0 %</span>
+              <span style="background-color:Yellow">medium: &gt;= 75.0 %</span>
+              <span style="background-color:LightGreen">high: &gt;= 90.0 %</span>
+            </td>
+            <td></td>
+            <td class="headerName">Branches:</td>
+            <td class="headerTableEntry">52</td>
+            <td class="headerTableEntry">76</td>
+            <td class="headerTableEntry" style="background-color:LightPink">68.4 %</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="hr"></td></tr>
+  </table>
+
+  <br>
+  <table cellspacing="0" cellpadding="1">
+     <tr>
+      <td width="5%" align="right" class="srcHeader">Line</td>
+      <td width="5%" align="right" class="srcHeader">Branch</td>
+      <td width="5%" align="center" class="srcHeader">Hit</td>
+      <td width="75%" align="left" class="srcHeader src">Source</td>
+    </tr>
+
+    <tr>
+<td align="right" class="lineno"><pre>1</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>package asn1.util</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>2</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>3</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>public class EncodingUtils {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>4</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    /**</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>5</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>     * 编码</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>6</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>     * 第一步：将数据转换成二进制字符串</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>7</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>     * 第二步：区分传入数据的正负值</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>8</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>     * 第三步：负数进行补码操作，在转换成Array&lt;Byte&gt;数组</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>9</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>     * 第四步：正数转换成Array&lt;Byte&gt;数组</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>10</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>     */</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>11</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public static func asn1Encoded(value: BigInt): Array&lt;Byte&gt; {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>12</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 将BigInt转换成二进制字符串</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>13</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var valueBinStr: String = value.toStringBin()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>14</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>15</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 字符串转字符串数组</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>16</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var charBinArr: Array&lt;Char&gt; = valueBinStr.toArray()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>17</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var strBin: String = charBinArr[0].toString()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>18</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 8 times.</div><div class="takenBranch">&check; Branch 1 taken 53 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (strBin.equals("-")) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>19</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            return minusEncoding(valueBinStr, strBin, charBinArr)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>20</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        } else {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>21</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            return positiveEncoding(valueBinStr, strBin)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>22</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>23</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>24</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>25</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    private static func minusBinStrEncoding(valueBinStr: String, strBin: String, charBinArr: Array&lt;Char&gt;): BigInt {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>26</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var allNumber: BigInt = BigInt(0)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>27</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 66 times.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 1..charBinArr.size) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>28</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var charBinStr: String = charBinArr[i].toString()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>29</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>30</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            // 反码</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>31</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            match (charBinStr) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>32</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 34 times.</div><div class="takenBranch">&check; Branch 1 taken 32 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                case "0" =&gt; charBinStr = "1"</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>33</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 32 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                case "1" =&gt; charBinStr = "0"</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>34</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>                case _ =&gt; ()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>35</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>36</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>37</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var intNumber: Int64 = Int64.parse(charBinStr)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>38</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var intFor: BigInt = BigInt(intNumber)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>39</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>40</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            // 通过位数转int</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>41</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">4/6</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 66 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 66 times.</div><div class="takenBranch">&check; Branch 4 taken 476 times.</div><div class="takenBranch">&check; Branch 5 taken 66 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            for (k in 0..(charBinArr.size - 1 - i)) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>42</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                intFor = intFor * 2</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>43</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>44</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            allNumber = allNumber + intFor</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>45</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>46</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        allNumber = allNumber + 1</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>47</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return allNumber</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>48</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>49</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>50</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    private static func minusEncoding(valueBinStr: String, strBin: String, charBinArr: Array&lt;Char&gt;): Array&lt;Byte&gt; {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>51</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var allNumber: BigInt = minusBinStrEncoding(valueBinStr, strBin, charBinArr)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>52</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>53</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 将BigInt转换成二进制字符串</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>54</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var valueBinStr1: String = allNumber.toStringBin()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>55</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>56</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var valueBinStr0 = valueBinStr.slice(1, valueBinStr.size - 1)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>57</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>58</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 二进制 八位一个字节 还缺失多少位数</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>59</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 原始数据8位一个字节还缺多少位</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>60</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/4</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var addLengthBinStr: Int64 = valueBinStr0.size % 8</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>61</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>62</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 转换数据8位一个字节还缺多少位</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>63</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/4</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var addLengthBinStr1: Int64 = valueBinStr1.size % 8</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>64</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>65</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 缺失的位数,需要补0</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>66</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var addLengthBinStr2: Int64 = addLengthBinStr - addLengthBinStr1</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>67</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>68</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 缺失的位数,需要补1</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>69</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var addLengthBinStr3: Int64 = 8 - addLengthBinStr</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>70</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var stringBuilder: StringBuilder = StringBuilder(valueBinStr1)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>71</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 5 times.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..addLengthBinStr2) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>72</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            stringBuilder.insert(0, "0")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>73</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>74</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 46 times.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..addLengthBinStr3) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>75</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            stringBuilder.insert(0, "1")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>76</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>77</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var valueBinStr2 = stringBuilder.toString()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>78</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>79</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 重新计算数据</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>80</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 字符串转字符串数组</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>81</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var charBinArr1: Array&lt;Char&gt; = valueBinStr2.toArray()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>82</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var allNumber1: BigInt = BigInt(0)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>83</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>84</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..charBinArr1.size) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>85</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var charBinStr: String = charBinArr1[i].toString()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>86</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var intNumber: Int64 = Int64.parse(charBinStr)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>87</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var intFor: BigInt = BigInt(intNumber)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>88</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>89</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            // 通过位数转int</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>90</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">6/8</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 112 times.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 112 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 112 times.</div><div class="takenBranch">&check; Branch 6 taken 968 times.</div><div class="takenBranch">&check; Branch 7 taken 112 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            for (k in 0..(charBinArr1.size - 1 - i)) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>91</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                intFor = intFor * 2</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>92</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>93</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            allNumber1 = allNumber1 + intFor</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>94</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>95</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>96</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 将BigIint转成十六进制的字符串</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>97</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var stringValue: String = allNumber1.toStringHex()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>98</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 8 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (stringValue.size.throwingMod(2) != 0) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>99</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount uncoveredLine"><pre>N</pre></td>
+<td align="left" class="src uncoveredLine"><pre>            stringValue = "0" + stringValue</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>100</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>101</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return fromHexString(stringValue).getOrThrow()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>102</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>103</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>104</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    private static func positiveEncoding(valueBinStr: String, strBin: String): Array&lt;Byte&gt; {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>105</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/4</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 53 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 53 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var addLengthBinStr: Int64 = valueBinStr.size % 8</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>106</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var stringBuilder: StringBuilder = StringBuilder(valueBinStr)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>107</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 51 times.</div><div class="takenBranch">&check; Branch 1 taken 2 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        if (addLengthBinStr != 0) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>108</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">3/4</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 51 times.</div><div class="takenBranch">&check; Branch 2 taken 239 times.</div><div class="takenBranch">&check; Branch 3 taken 51 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            for (i in 0..(8 - addLengthBinStr)) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>109</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                stringBuilder.insert(0, "0")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>110</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>111</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        } else {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>112</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 2 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            if (strBin.equals("1")) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>113</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                stringBuilder.insert(0, "00000000")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>114</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>115</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>116</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var valueBinStrNew: String = stringBuilder.toString()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>117</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/4</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 53 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 53 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var arrStringByte: Array&lt;String&gt; = Array&lt;String&gt;(valueBinStrNew.size / 8, item: "")</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>118</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>119</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 字符串转字符串数组</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>120</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var charBinArr1: Array&lt;Char&gt; = valueBinStrNew.toArray()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>121</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var strTemporary: String = ""</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>122</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>123</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        // 将二进制八位一个字节转换成String列表</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>124</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..arrStringByte.size) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>125</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">3/4</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 65 times.</div><div class="takenBranch">&check; Branch 1 taken 53 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 65 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            arrStringByte[i] = valueBinStrNew.substring((i * 8), 8)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>126</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>127</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        var arrByte: Array&lt;Byte&gt; = Array&lt;Byte&gt;(arrStringByte.size, item: 0)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>128</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..arrStringByte.size) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>129</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var valueBinStr1: String = arrStringByte[i]</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>130</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>131</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            // 重新计算数据</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>132</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            // 字符串转字符串数组</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>133</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var charBinArr1: Array&lt;Char&gt; = valueBinStr1.toArray()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>134</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var allNumber1: BigInt = BigInt(0)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>135</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            for (j in 0..charBinArr1.size) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>136</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                var charBinStr: String = charBinArr1[j].toString()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>137</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                var intNumber: Int64 = Int64.parse(charBinStr)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>138</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                var intFor: BigInt = BigInt(intNumber)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>139</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>140</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                // 通过位数转int</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>141</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">6/8</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 520 times.</div><div class="takenBranch">&check; Branch 1 taken 65 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 520 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 520 times.</div><div class="takenBranch">&check; Branch 6 taken 1820 times.</div><div class="takenBranch">&check; Branch 7 taken 520 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                for (k in 0..(charBinArr1.size - 1 - j)) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>142</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    intFor = intFor * 2</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>143</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>                }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>144</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                allNumber1 = allNumber1 + intFor</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>145</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>146</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>147</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>            // 将BigIint转成十进制的字符串</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>148</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var stringValue: String = allNumber1.toStringDec()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>149</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            var intValue: Int64 = Int64.parse(stringValue)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>150</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">4/6</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 65 times.</div><div class="takenBranch">&check; Branch 1 taken 53 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 65 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 65 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            arrByte[i] = UInt8(intValue)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>151</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>152</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return arrByte</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>153</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>154</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>}</pre></td>
+</tr>
+
+  </table>
+  <br>
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr><td class="hr"><td></tr>
+    <tr><td class="footer">Generated by: cjcov (Version 1.0.0)</a></td></tr>
+  </table>
+  <br>
+
+</body>
+
+</html>

@@ -284,12 +284,12 @@ pre
           </tr>
           <tr>
             <td class="headerName">Date:</td>
-            <td class="headerValue">2023-02-20 16:41:46</td>
+            <td class="headerValue">2023-02-28 19:19:08</td>
             <td></td>
             <td class="headerName">Lines:</td>
-            <td class="headerTableEntry">74</td>
-            <td class="headerTableEntry">79</td>
-            <td class="headerTableEntry" style="background-color:LightGreen">93.7 %</td>
+            <td class="headerTableEntry">77</td>
+            <td class="headerTableEntry">82</td>
+            <td class="headerTableEntry" style="background-color:LightGreen">93.9 %</td>
           </tr>
           <tr>
             <td class="headerName">Legend:</td>
@@ -300,9 +300,9 @@ pre
             </td>
             <td></td>
             <td class="headerName">Branches:</td>
-            <td class="headerTableEntry">66</td>
-            <td class="headerTableEntry">140</td>
-            <td class="headerTableEntry" style="background-color:LightPink">47.1 %</td>
+            <td class="headerTableEntry">58</td>
+            <td class="headerTableEntry">122</td>
+            <td class="headerTableEntry" style="background-color:LightPink">47.5 %</td>
           </tr>
         </table>
       </td>
@@ -402,7 +402,7 @@ pre
 <td align="right" class="lineno"><pre>14</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        this(ASN1Tag.BIT_STRING, bytes, unusedBits)</pre></td>
+<td align="left" class="src coveredLine"><pre>        this(BIT_STRING, bytes, unusedBits)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>15</pre></td>
@@ -426,7 +426,7 @@ pre
 <td align="right" class="lineno"><pre>18</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(ASN1Tag.BIT_STRING, constructBytes(bits))</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(BIT_STRING, constructBytes(bits))</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>19</pre></td>
@@ -439,7 +439,7 @@ pre
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">3/6</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 4 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 5 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 5 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 5 times.</div>
 </div>
 </details>
 </td>
@@ -461,21 +461,27 @@ pre
 <tr>
 <td align="right" class="lineno"><pre>23</pre></td>
 <td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    @overflowWrapping</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>24</pre></td>
+<td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    private static func constructBytes(bits: Array&lt;Bool&gt;): Array&lt;Byte&gt; {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>24</pre></td>
+<td align="right" class="lineno"><pre>25</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        var length: Int64</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>25</pre></td>
+<td align="right" class="lineno"><pre>26</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">4/6</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 4 times.</div><div class="takenBranch">&check; Branch 4 taken 3 times.</div><div class="takenBranch">&check; Branch 5 taken 1 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 5 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 5 times.</div><div class="takenBranch">&check; Branch 4 taken 4 times.</div><div class="takenBranch">&check; Branch 5 taken 1 times.</div>
 </div>
 </details>
 </td>
@@ -483,11 +489,11 @@ pre
 <td align="left" class="src coveredLine"><pre>        if (bits.size % 8 &gt; 0) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>26</pre></td>
+<td align="right" class="lineno"><pre>27</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">3/6</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 3 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 3 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 3 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 4 times.</div>
 </div>
 </details>
 </td>
@@ -495,13 +501,13 @@ pre
 <td align="left" class="src coveredLine"><pre>            length = bits.size / 8 + 1</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>27</pre></td>
+<td align="right" class="lineno"><pre>28</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        } else {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>28</pre></td>
+<td align="right" class="lineno"><pre>29</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
@@ -513,41 +519,35 @@ pre
 <td align="left" class="src coveredLine"><pre>            length = bits.size / 8</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>29</pre></td>
+<td align="right" class="lineno"><pre>30</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>30</pre></td>
+<td align="right" class="lineno"><pre>31</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        var bytes: Array&lt;Byte&gt; = Array&lt;Byte&gt;(length, item: 0)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>31</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 138 times.</div><div class="takenBranch">&check; Branch 1 taken 4 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        for (i in 0..bytes.size) {</pre></td>
+<td align="left" class="src coveredLine"><pre>        var bytes: Array&lt;Int8&gt; = Array&lt;Int8&gt;(length, item: 0)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>32</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>            bytes[i] = 0</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..bytes.size) {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>33</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            bytes[i] = 0</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>34</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1104 times.</div><div class="takenBranch">&check; Branch 1 taken 138 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 1112 times.</div><div class="takenBranch">&check; Branch 1 taken 139 times.</div>
 </div>
 </details>
 </td>
@@ -555,11 +555,11 @@ pre
 <td align="left" class="src coveredLine"><pre>            for (j in 0..8) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>34</pre></td>
+<td align="right" class="lineno"><pre>35</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">6/10</summary>
+<summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1104 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 1104 times.</div><div class="takenBranch">&check; Branch 4 taken 1094 times.</div><div class="takenBranch">&check; Branch 5 taken 10 times.</div><div class="notTakenBranch">&cross; Branch 6 not taken.</div><div class="takenBranch">&check; Branch 7 taken 1094 times.</div><div class="notTakenBranch">&cross; Branch 8 not taken.</div><div class="takenBranch">&check; Branch 9 taken 1094 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 1100 times.</div><div class="takenBranch">&check; Branch 1 taken 12 times.</div>
 </div>
 </details>
 </td>
@@ -567,11 +567,11 @@ pre
 <td align="left" class="src coveredLine"><pre>                var v: Bool = i * 8 + j &lt; bits.size &amp;&amp; bits[i * 8 + j]</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>35</pre></td>
+<td align="right" class="lineno"><pre>36</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1094 times.</div><div class="takenBranch">&check; Branch 1 taken 10 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 1097 times.</div><div class="takenBranch">&check; Branch 1 taken 15 times.</div>
 </div>
 </details>
 </td>
@@ -579,11 +579,11 @@ pre
 <td align="left" class="src coveredLine"><pre>                if (v) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>36</pre></td>
+<td align="right" class="lineno"><pre>37</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">4/8</summary>
+<summary class="linebranchSummary">4/6</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1094 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 1094 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 1094 times.</div><div class="notTakenBranch">&cross; Branch 6 not taken.</div><div class="takenBranch">&check; Branch 7 taken 1094 times.</div>
+<div class="takenBranch">&check; Branch 0 taken 139 times.</div><div class="takenBranch">&check; Branch 1 taken 5 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 1097 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 1097 times.</div>
 </div>
 </details>
 </td>
@@ -591,17 +591,17 @@ pre
 <td align="left" class="src coveredLine"><pre>                    bytes[i] += 1 &lt;&lt; (8 - j - 1)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>37</pre></td>
+<td align="right" class="lineno"><pre>38</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                } else {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>38</pre></td>
+<td align="right" class="lineno"><pre>39</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">4/8</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 10 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 10 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 10 times.</div><div class="notTakenBranch">&cross; Branch 6 not taken.</div><div class="takenBranch">&check; Branch 7 taken 10 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 15 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 15 times.</div>
 </div>
 </details>
 </td>
@@ -609,55 +609,91 @@ pre
 <td align="left" class="src coveredLine"><pre>                    bytes[i] += 0 &lt;&lt; (8 - j - 1)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>39</pre></td>
+<td align="right" class="lineno"><pre>40</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>40</pre></td>
+<td align="right" class="lineno"><pre>41</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>            }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>41</pre></td>
+<td align="right" class="lineno"><pre>42</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>42</pre></td>
+<td align="right" class="lineno"><pre>43</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return bytes</pre></td>
+<td align="left" class="src coveredLine"><pre>        var arr: Array&lt;Byte&gt; = Array&lt;Byte&gt;(bytes.size, item: 0)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>43</pre></td>
+<td align="right" class="lineno"><pre>44</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..bytes.size) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>45</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 139 times.</div><div class="takenBranch">&check; Branch 1 taken 5 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>            arr[i] = UInt8(Int8(bytes[i]))</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>46</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>        }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>47</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return arr</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>48</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>44</pre></td>
+<td align="right" class="lineno"><pre>49</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>45</pre></td>
+<td align="right" class="lineno"><pre>50</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    private func constructBits(): Array&lt;Bool&gt; {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>46</pre></td>
+<td align="right" class="lineno"><pre>51</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var bits: Array&lt;Bool&gt; = Array&lt;Bool&gt;(length(), item: false)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>47</pre></td>
+<td align="right" class="lineno"><pre>52</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        for (i in 0..bits.size) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>53</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -666,110 +702,110 @@ pre
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        for (i in 0..bits.size) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>48</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            bits[i] = isSet(i)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>49</pre></td>
+<td align="right" class="lineno"><pre>54</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>50</pre></td>
+<td align="right" class="lineno"><pre>55</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        return bits</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>51</pre></td>
+<td align="right" class="lineno"><pre>56</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>52</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>53</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public override func getValue(): Any {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>54</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        var copyList: Array&lt;Bool&gt; = Array&lt;Bool&gt;(this.bits.size, item: false)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>55</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        bits.copyTo(copyList, 0, 0, this.bits.size)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>56</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return copyList</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>57</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>58</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public override func getValue(): Any {</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>59</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public override func valueString(): String {</pre></td>
+<td align="left" class="src coveredLine"><pre>        var copyList: Array&lt;Bool&gt; = Array&lt;Bool&gt;(this.bits.size, item: false)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>60</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        return bits.toString()</pre></td>
+<td align="left" class="src coveredLine"><pre>        bits.copyTo(copyList, 0, 0, this.bits.size)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>61</pre></td>
 <td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return copyList</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>62</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>63</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>64</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public override func valueString(): String {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>65</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        return bits.toString()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>66</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>67</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>68</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    @overflowWrapping</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>69</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public func isSet(x: Int64): Bool {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>64</pre></td>
+<td align="right" class="lineno"><pre>70</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 243 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 243 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 258 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 258 times.</div>
 </div>
 </details>
 </td>
@@ -777,17 +813,17 @@ pre
 <td align="left" class="src coveredLine"><pre>        var toCheck: Int64 = x / 8</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>65</pre></td>
+<td align="right" class="lineno"><pre>71</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        var theByte: Byte = valueBytes[toCheck]</pre></td>
+<td align="left" class="src coveredLine"><pre>        var theByte: Int8 = Int8(UInt8(valueBytes[toCheck]))</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>66</pre></td>
+<td align="right" class="lineno"><pre>72</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 243 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 243 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 258 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 258 times.</div>
 </div>
 </details>
 </td>
@@ -795,11 +831,11 @@ pre
 <td align="left" class="src coveredLine"><pre>        var index: Int64 = x % 8</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>67</pre></td>
+<td align="right" class="lineno"><pre>73</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">3/6</summary>
+<summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 243 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 243 times.</div><div class="notTakenBranch">&cross; Branch 4 not taken.</div><div class="takenBranch">&check; Branch 5 taken 243 times.</div>
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 258 times.</div><div class="notTakenBranch">&cross; Branch 2 not taken.</div><div class="takenBranch">&check; Branch 3 taken 258 times.</div>
 </div>
 </details>
 </td>
@@ -807,37 +843,37 @@ pre
 <td align="left" class="src coveredLine"><pre>        var mask: Int64 = 1 &lt;&lt; (7 - index)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>68</pre></td>
+<td align="right" class="lineno"><pre>74</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        var masked: Int64 = theByte.position() &amp; mask</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>69</pre></td>
+<td align="right" class="lineno"><pre>75</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        return masked != 0</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>70</pre></td>
+<td align="right" class="lineno"><pre>76</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>71</pre></td>
+<td align="right" class="lineno"><pre>77</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>72</pre></td>
+<td align="right" class="lineno"><pre>78</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public override func length(): Int64 {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>73</pre></td>
+<td align="right" class="lineno"><pre>79</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/4</summary>
 <div class="linebranchContents">
@@ -849,42 +885,6 @@ pre
 <td align="left" class="src coveredLine"><pre>        return (valueBytes.size * 8) - unusedBits</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>74</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>75</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>}</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>76</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>77</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>public class BitStringParser &lt;: ASN1Parser {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>78</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(decoder: ASN1Decoder) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>79</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(decoder)</pre></td>
-</tr>
-<tr>
 <td align="right" class="lineno"><pre>80</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
@@ -894,16 +894,52 @@ pre
 <td align="right" class="lineno"><pre>81</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>}</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>82</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>83</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>public class BitStringParser &lt;: ASN1Parser {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>84</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(decoder: ASN1Decoder) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>85</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(decoder)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>86</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>87</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>88</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public override func parse(asn1Tag: ASN1Tag, value: Array&lt;Byte&gt;): ASN1Object {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>83</pre></td>
+<td align="right" class="lineno"><pre>89</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -915,76 +951,10 @@ pre
 <td align="left" class="src coveredLine"><pre>        if (asn1Tag.isConstructed()) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>84</pre></td>
+<td align="right" class="lineno"><pre>90</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>            try {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>85</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/4</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                var stream: ASN1InputStream = ASN1InputStream(decoder, value)</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>86</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">2/4</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                var baos: ByteArrayStream = ByteArrayStream()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>87</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                var unusedBits: Int64 = 0</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>88</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                while (stream.lengths &gt; 0) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>89</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
-<div class="linebranchContents">
-<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    var subTag: ASN1Tag = stream.readTag()</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>90</pre></td>
-<td align="right" class="linebranch"><details class="linebranchDetails">
-<summary class="linebranchSummary">1/2</summary>
-<div class="linebranchContents">
-<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
-</div>
-</details>
-</td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                    Checks.checkState(</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>91</pre></td>
@@ -996,10 +966,76 @@ pre
 </details>
 </td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>                        subTag.getTag() == asn1Tag.getTag(),</pre></td>
+<td align="left" class="src coveredLine"><pre>                var stream: ASN1InputStream = ASN1InputStream(decoder, value)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>92</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/4</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                var baos: ByteArrayStream = ByteArrayStream()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>93</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                var unusedBits: Int64 = 0</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>94</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                while (stream.lengths &gt; 0) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>95</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    var subTag: ASN1Tag = stream.readTag()</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>96</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">1/2</summary>
+<div class="linebranchContents">
+<div class="notTakenBranch">&cross; Branch 0 not taken.</div><div class="takenBranch">&check; Branch 1 taken 1 times.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                    Checks.checkState(</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>97</pre></td>
+<td align="right" class="linebranch"><details class="linebranchDetails">
+<summary class="linebranchSummary">2/4</summary>
+<div class="linebranchContents">
+<div class="takenBranch">&check; Branch 0 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 1 not taken.</div><div class="takenBranch">&check; Branch 2 taken 1 times.</div><div class="notTakenBranch">&cross; Branch 3 not taken.</div>
+</div>
+</details>
+</td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>                        subTag.getTag() == asn1Tag.getTag(),</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>98</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1011,7 +1047,7 @@ pre
 <td align="left" class="src coveredLine"><pre>                        "Expected an ASN.1 BIT STRING as Constructed object, got",</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>93</pre></td>
+<td align="right" class="lineno"><pre>99</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1023,13 +1059,13 @@ pre
 <td align="left" class="src coveredLine"><pre>                        Array&lt;ToString&gt;()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>94</pre></td>
+<td align="right" class="lineno"><pre>100</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                    )</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>95</pre></td>
+<td align="right" class="lineno"><pre>101</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/2</summary>
 <div class="linebranchContents">
@@ -1041,7 +1077,7 @@ pre
 <td align="left" class="src uncoveredLine"><pre>                    var i: Int64 = stream.readLength()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>96</pre></td>
+<td align="right" class="lineno"><pre>102</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/2</summary>
 <div class="linebranchContents">
@@ -1053,7 +1089,7 @@ pre
 <td align="left" class="src uncoveredLine"><pre>                    var subValue: Array&lt;Byte&gt; = stream.readValue(i)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>97</pre></td>
+<td align="right" class="lineno"><pre>103</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/2</summary>
 <div class="linebranchContents">
@@ -1065,7 +1101,7 @@ pre
 <td align="left" class="src uncoveredLine"><pre>                    baos.write(subValue)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>98</pre></td>
+<td align="right" class="lineno"><pre>104</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/4</summary>
 <div class="linebranchContents">
@@ -1077,13 +1113,13 @@ pre
 <td align="left" class="src uncoveredLine"><pre>                    if (stream.length &lt;= 0) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>99</pre></td>
+<td align="right" class="lineno"><pre>105</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                        // Last ASN.1 BitString</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>100</pre></td>
+<td align="right" class="lineno"><pre>106</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/10</summary>
 <div class="linebranchContents">
@@ -1095,19 +1131,19 @@ pre
 <td align="left" class="src uncoveredLine"><pre>                        unusedBits = Int64(subValue[0])</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>101</pre></td>
+<td align="right" class="lineno"><pre>107</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>102</pre></td>
+<td align="right" class="lineno"><pre>108</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>                }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>103</pre></td>
+<td align="right" class="lineno"><pre>109</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">0/6</summary>
 <div class="linebranchContents">
@@ -1119,7 +1155,7 @@ pre
 <td align="left" class="src coveredLine"><pre>                return ASN1BitString(asn1Tag, baos.bytes(), unusedBits)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>104</pre></td>
+<td align="right" class="lineno"><pre>110</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1131,7 +1167,7 @@ pre
 <td align="left" class="src coveredLine"><pre>            } catch (exception: Exception) {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>105</pre></td>
+<td align="right" class="lineno"><pre>111</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">3/6</summary>
 <div class="linebranchContents">
@@ -1143,37 +1179,37 @@ pre
 <td align="left" class="src coveredLine"><pre>                throw ASN1ParseException("Unable to parse Constructed ASN.1 BIT STRING")</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>106</pre></td>
+<td align="right" class="lineno"><pre>112</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>            }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>107</pre></td>
+<td align="right" class="lineno"><pre>113</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        } else {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>108</pre></td>
+<td align="right" class="lineno"><pre>114</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            var unusedBits: Byte = value[0]</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>109</pre></td>
+<td align="right" class="lineno"><pre>115</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            var bits: Array&lt;Byte&gt; = Array&lt;Byte&gt;(value.size, item: 0)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>110</pre></td>
+<td align="right" class="lineno"><pre>116</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>            value.copyTo(bits, 0, 0, value.size)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>111</pre></td>
+<td align="right" class="lineno"><pre>117</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1185,46 +1221,10 @@ pre
 <td align="left" class="src coveredLine"><pre>            return ASN1BitString(asn1Tag, bits, Int64(unusedBits))</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>112</pre></td>
+<td align="right" class="lineno"><pre>118</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>        }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>113</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>    }</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>114</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>}</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>115</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>116</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre>public class BitStringSerializer &lt;: ASN1Serializer {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>117</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>    public init(encoder: ASN1Encoder) {</pre></td>
-</tr>
-<tr>
-<td align="right" class="lineno"><pre>118</pre></td>
-<td align="right" class="linebranch"></td>
-<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
-<td align="left" class="src coveredLine"><pre>        super(encoder)</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>119</pre></td>
@@ -1236,16 +1236,52 @@ pre
 <td align="right" class="lineno"><pre>120</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
-<td align="left" class="src "><pre></pre></td>
+<td align="left" class="src "><pre>}</pre></td>
 </tr>
 <tr>
 <td align="right" class="lineno"><pre>121</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>122</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>public class BitStringSerializer &lt;: ASN1Serializer {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>123</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>    public init(encoder: ASN1Encoder) {</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>124</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount coveredLine"><pre>Y</pre></td>
+<td align="left" class="src coveredLine"><pre>        super(encoder)</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>125</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre>    }</pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>126</pre></td>
+<td align="right" class="linebranch"></td>
+<td align="center" class="linecount "><pre></pre></td>
+<td align="left" class="src "><pre></pre></td>
+</tr>
+<tr>
+<td align="right" class="lineno"><pre>127</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public override func serializedLength(asn1Object: ASN1Object): Int64 {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>122</pre></td>
+<td align="right" class="lineno"><pre>128</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -1257,7 +1293,7 @@ pre
 <td align="left" class="src coveredLine"><pre>        var object: ASN1BitString = (asn1Object as ASN1BitString).getOrThrow()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>123</pre></td>
+<td align="right" class="lineno"><pre>129</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">1/2</summary>
 <div class="linebranchContents">
@@ -1269,25 +1305,25 @@ pre
 <td align="left" class="src coveredLine"><pre>        return object.valueBytes.size + 1</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>124</pre></td>
+<td align="right" class="lineno"><pre>130</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>125</pre></td>
+<td align="right" class="lineno"><pre>131</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre></pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>126</pre></td>
+<td align="right" class="lineno"><pre>132</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>    public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>127</pre></td>
+<td align="right" class="lineno"><pre>133</pre></td>
 <td align="right" class="linebranch"><details class="linebranchDetails">
 <summary class="linebranchSummary">2/2</summary>
 <div class="linebranchContents">
@@ -1299,25 +1335,25 @@ pre
 <td align="left" class="src coveredLine"><pre>        var object: ASN1BitString = (asn1Object as ASN1BitString).getOrThrow()</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>128</pre></td>
+<td align="right" class="lineno"><pre>134</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        stream.write(object.unusedBits)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>129</pre></td>
+<td align="right" class="lineno"><pre>135</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount coveredLine"><pre>Y</pre></td>
 <td align="left" class="src coveredLine"><pre>        stream.write(object.valueBytes)</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>130</pre></td>
+<td align="right" class="lineno"><pre>136</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>    }</pre></td>
 </tr>
 <tr>
-<td align="right" class="lineno"><pre>131</pre></td>
+<td align="right" class="lineno"><pre>137</pre></td>
 <td align="right" class="linebranch"></td>
 <td align="center" class="linecount "><pre></pre></td>
 <td align="left" class="src "><pre>}</pre></td>
