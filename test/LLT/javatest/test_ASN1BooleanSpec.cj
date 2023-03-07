@@ -24,10 +24,10 @@ main(): Int64 {
     var anyValue: Any = object.getValue()
     var boolValue: Bool = (anyValue as Bool).getOrThrow()
     if (boolValue) {
-        return 1
+        return 2
     }
     if (object.valueHash() != 1237) {
-        return 1
+        return 3
     }
 
     // true
@@ -37,16 +37,16 @@ main(): Int64 {
     var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
     var asn1Object1: ASN1Object = asn1InputStream1.readObject()
     if (!(asn1Object1 is ASN1Boolean)) {
-        return 1
+        return 4
     }
     var object1: ASN1Boolean = (asn1Object1 as ASN1Boolean).getOrThrow()
     var anyValue1: Any = object1.getValue()
     var boolValue1: Bool = (anyValue1 as Bool).getOrThrow()
     if (!boolValue1) {
-        return 1
+        return 5
     }
     if (object1.valueHash() != 1231) {
-        return 1
+        return 6
     }
 
     // true
@@ -56,16 +56,16 @@ main(): Int64 {
     var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
     var asn1Object2: ASN1Object = asn1InputStream2.readObject()
     if (!(asn1Object2 is ASN1Boolean)) {
-        return 1
+        return 7
     }
     var object2: ASN1Boolean = (asn1Object2 as ASN1Boolean).getOrThrow()
     var anyValue2: Any = object2.getValue()
     var boolValue2: Bool = (anyValue2 as Bool).getOrThrow()
     if (!boolValue2) {
-        return 1
+        return 8
     }
     if (object2.valueHash() != 1231) {
-        return 1
+        return 9
     }
 
     var value3: Array<Byte> = [0x01, 0x01, 0x00]
@@ -73,7 +73,7 @@ main(): Int64 {
     var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
     asn1OutputStream3.writeObject(ASN1Boolean(false))
     if (byteArrayStream3.bytes() != value3) {
-        return 1
+        return 10
     }
 
     var value4: Array<Byte> = [0x01, 0x01, 0x01]
@@ -81,7 +81,7 @@ main(): Int64 {
     var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
     asn1OutputStream4.writeObject(ASN1Boolean(true))
     if (byteArrayStream4.bytes() != value4) {
-        return 1
+        return 11
     }
 
     var value5: Array<Byte> = [0x01, 0x01, 0x00]
@@ -89,7 +89,7 @@ main(): Int64 {
     var asn1OutputStream5: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream5)
     asn1OutputStream5.writeObject(ASN1Boolean(false, Array<Byte>()))
     if (byteArrayStream5.bytes() != value5) {
-        return 1
+        return 12
     }
 
     var value6: Array<Byte> = [0x01, 0x01, 0x01]
@@ -97,7 +97,7 @@ main(): Int64 {
     var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
     asn1OutputStream6.writeObject(ASN1Boolean(true, Array<Byte>()))
     if (byteArrayStream6.bytes() != value6) {
-        return 1
+        return 13
     }
 
     return 0

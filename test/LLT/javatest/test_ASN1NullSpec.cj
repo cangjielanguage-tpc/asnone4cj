@@ -21,7 +21,7 @@ main(): Int64 {
     var object: ASN1Null = (asn1Object as ASN1Null).getOrThrow()
     var anyValue: Any = object.getValue()
     if (object.valueHash() != 0) {
-        return 1
+        return 2
     }
 
     var value1: Array<Byte> = [0x05, 0x00]
@@ -29,7 +29,7 @@ main(): Int64 {
     var asn1OutputStream1: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream1)
     asn1OutputStream1.writeObject(ASN1Null())
     if (byteArrayStream1.bytes() != value1) {
-        return 1
+        return 3
     }
 
     return 0

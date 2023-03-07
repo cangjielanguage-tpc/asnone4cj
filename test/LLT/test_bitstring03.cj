@@ -21,7 +21,7 @@ main() {
     
     let tag = BIT_STRING
     let dec: BERDecoder = BERDecoder()
-    let buf:  Array<Byte> = [1]
+    let buf:  Array<Byte> = [1,1]
     let bitss = BitStringParser(dec)
     bitss.parse(tag,buf)
 
