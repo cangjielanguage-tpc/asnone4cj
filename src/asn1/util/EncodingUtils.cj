@@ -66,7 +66,12 @@ public class EncodingUtils {
         var addLengthBinStr2: Int64 = addLengthBinStr - addLengthBinStr1
 
         // 缺失的位数,需要补1
-        var addLengthBinStr3: Int64 = 8 - addLengthBinStr
+        var addLengthBinStr3: Int64
+        if (addLengthBinStr == 0) {
+            addLengthBinStr3 = 0
+        } else {
+            addLengthBinStr3 = 8 - addLengthBinStr
+        }
         var stringBuilder: StringBuilder = StringBuilder(valueBinStr1)
         for (i in 0..addLengthBinStr2) {
             stringBuilder.insert(0, "0")

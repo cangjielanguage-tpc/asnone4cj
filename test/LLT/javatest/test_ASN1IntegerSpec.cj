@@ -32,7 +32,7 @@ main(): Int64 {
         return 3
     }
 
-    var value0: Array<Byte> = [0x02, 0x01, 0x33]
+    var value0: Array<Byte> = [0x02, 0x01, 0x80]
     var byteArrayStream0: ByteArrayStream = ByteArrayStream()
     byteArrayStream0.write(value0)
     var asn1InputStream0: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream0)
@@ -44,15 +44,15 @@ main(): Int64 {
     var anyValue0: Any = object0.getValue()
     var bigValue0: BigInt = (anyValue0 as BigInt).getOrThrow()
     var intValue0: String = bigValue0.toStringDec()
-    if (!(intValue0.equals("51"))) {
+    if (!(intValue0.equals("-128"))) {
         return 5
     }
     var intHashcode0: Int64 = object0.valueHash()
-    if (intHashcode0 != 51) {
+    if (intHashcode0 != -128) {
         return 6
     }
 
-    var value1: Array<Byte> = [0x02, 0x01, 0x44]
+    var value1: Array<Byte> = [0x02, 0x02, 0x00, 0x80]
     var byteArrayStream1: ByteArrayStream = ByteArrayStream()
     byteArrayStream1.write(value1)
     var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
@@ -64,15 +64,15 @@ main(): Int64 {
     var anyValue1: Any = object1.getValue()
     var bigValue1: BigInt = (anyValue1 as BigInt).getOrThrow()
     var intValue1: String = bigValue1.toStringDec()
-    if (!(intValue1.equals("68"))) {
+    if (!(intValue1.equals("128"))) {
         return 8
     }
     var intHashcode1: Int64 = object1.valueHash()
-    if (intHashcode1 != 68) {
+    if (intHashcode1 != 128) {
         return 9
     }
 
-    var value2: Array<Byte> = [0x02, 0x01, 0x55]
+    var value2: Array<Byte> = [0x02, 0x01, 0x83]
     var byteArrayStream2: ByteArrayStream = ByteArrayStream()
     byteArrayStream2.write(value2)
     var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
@@ -84,15 +84,24 @@ main(): Int64 {
     var anyValue2: Any = object2.getValue()
     var bigValue2: BigInt = (anyValue2 as BigInt).getOrThrow()
     var intValue2: String = bigValue2.toStringDec()
-    if (!(intValue2.equals("85"))) {
+    if (!(intValue2.equals("-125"))) {
         return 11
     }
     var intHashcode2: Int64 = object2.valueHash()
-    if (intHashcode2 != 85) {
+    if (intHashcode2 != -125) {
         return 12
     }
 
-    var value3: Array<Byte> = [0x02, 0x01, 0x66]
+    var value3: Array<Byte> = [0x02, 0x81, 0x81, 0x00, 0x8f, 0xe2, 0x41, 0x2a, 0x08, 0xe8, 0x51, 0xa8, 0x8c, 0xb3, 0xe8,
+    0x53, 0xe7, 0xd5, 0x49, 0x50, 0xb3, 0x27, 0x8a, 0x2b, 0xcb, 0xea, 0xb5, 0x42, 0x73, 0xea, 0x02, 0x57, 0xcc, 0x65,
+    0x33, 0xee, 0x88, 0x20, 0x61, 0xa1, 0x17, 0x56, 0xc1, 0x24, 0x18, 0xe3, 0xa8, 0x08, 0xd3, 0xbe, 0xd9, 0x31, 0xf3,
+    0x37, 0x0b, 0x94, 0xb8, 0xcc, 0x43, 0x08, 0x0b, 0x70, 0x24, 0xf7, 0x9c, 0xb1, 0x8d, 0x5d, 0xd6, 0x6d, 0x82, 0xd0,
+    0x54, 0x09, 0x84, 0xf8, 0x9f, 0x97, 0x01, 0x75, 0x05, 0x9c, 0x89, 0xd4, 0xd5, 0xc9, 0x1e, 0xc9, 0x13, 0xd7, 0x2a,
+    0x6b, 0x30, 0x91, 0x19, 0xd6, 0xd4, 0x42, 0xe0, 0xc4, 0x9d, 0x7c, 0x92, 0x71, 0xe1, 0xb2, 0x2f, 0x5c, 0x8d, 0xee,
+    0xf0, 0xf1, 0x17, 0x1e, 0xd2, 0x5f, 0x31, 0x5b, 0xb1, 0x9c, 0xbc, 0x20, 0x55, 0xbf, 0x3a, 0x37, 0x42, 0x45, 0x75,
+    0xdc, 0x90, 0x65]
+    var stringValue3: String = 
+        "101038645214968213029489864879507742420925199145132483818978980455132582258676381289000109319204510275496178360219909358646064503513889573494768497419381751359787623037449375660247011308028102339473875820259375735204357343091558075960601364303443174344509161224592926325506446708043127306053676664799729848421"
     var byteArrayStream3: ByteArrayStream = ByteArrayStream()
     byteArrayStream3.write(value3)
     var asn1InputStream3: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream3)
@@ -104,12 +113,8 @@ main(): Int64 {
     var anyValue3: Any = object3.getValue()
     var bigValue3: BigInt = (anyValue3 as BigInt).getOrThrow()
     var intValue3: String = bigValue3.toStringDec()
-    if (!(intValue3.equals("102"))) {
+    if (!(intValue3.equals(stringValue3))) {
         return 14
-    }
-    var intHashcode3: Int64 = object3.valueHash()
-    if (intHashcode3 != 102) {
-        return 15
     }
 
     var value4: Array<Byte> = [0x02, 0x01, 0x7F]
@@ -240,76 +245,97 @@ main(): Int64 {
         return 34
     }
 
-    var value12: Array<Byte> = [0x02, 0x01, 0x33]
-    var byteArrayStream12: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream12: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream12)
-    asn1OutputStream12.writeObject(ASN1Integer(51))
-    if (byteArrayStream12.bytes() != value12) {
+    var value11: Array<Byte> = [0x02, 0x01, 0x80]
+    var byteArrayStream11: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream11: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream11)
+    asn1OutputStream11.writeObject(ASN1Integer(-128))
+    if (byteArrayStream11.bytes() != value11) {
         return 35
     }
 
-    var value14: Array<Byte> = [0x02, 0x01, 0x44]
-    var byteArrayStream14: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream14: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream14)
-    asn1OutputStream14.writeObject(ASN1Integer(68))
-    if (byteArrayStream14.bytes() != value14) {
+    var value12: Array<Byte> = [0x02, 0x02, 0x00, 0x80]
+    var byteArrayStream12: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream12: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream12)
+    asn1OutputStream12.writeObject(ASN1Integer(128))
+    if (byteArrayStream12.bytes() != value12) {
         return 36
     }
 
-    var value16: Array<Byte> = [0x02, 0x01, 0x55]
-    var byteArrayStream16: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream16: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream16)
-    asn1OutputStream16.writeObject(ASN1Integer(85))
-    if (byteArrayStream16.bytes() != value16) {
+    var value13: Array<Byte> = [0x02, 0x01, 0x83]
+    var byteArrayStream13: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream13: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream13)
+    asn1OutputStream13.writeObject(ASN1Integer(-125))
+    if (byteArrayStream13.bytes() != value13) {
         return 37
     }
 
-    var value18: Array<Byte> = [0x02, 0x01, 0x66]
-    var byteArrayStream18: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream18: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream18)
-    asn1OutputStream18.writeObject(ASN1Integer(102))
-    if (byteArrayStream18.bytes() != value18) {
+    var value14: Array<Byte> = [0x02, 0x81, 0x81, 0x00, 0x8f, 0xe2, 0x41, 0x2a, 0x08, 0xe8, 0x51, 0xa8, 0x8c, 0xb3,
+    0xe8, 0x53, 0xe7, 0xd5, 0x49, 0x50, 0xb3, 0x27, 0x8a, 0x2b, 0xcb, 0xea, 0xb5, 0x42, 0x73, 0xea, 0x02, 0x57, 0xcc,
+    0x65, 0x33, 0xee, 0x88, 0x20, 0x61, 0xa1, 0x17, 0x56, 0xc1, 0x24, 0x18, 0xe3, 0xa8, 0x08, 0xd3, 0xbe, 0xd9, 0x31,
+    0xf3, 0x37, 0x0b, 0x94, 0xb8, 0xcc, 0x43, 0x08, 0x0b, 0x70, 0x24, 0xf7, 0x9c, 0xb1, 0x8d, 0x5d, 0xd6, 0x6d, 0x82,
+    0xd0, 0x54, 0x09, 0x84, 0xf8, 0x9f, 0x97, 0x01, 0x75, 0x05, 0x9c, 0x89, 0xd4, 0xd5, 0xc9, 0x1e, 0xc9, 0x13, 0xd7,
+    0x2a, 0x6b, 0x30, 0x91, 0x19, 0xd6, 0xd4, 0x42, 0xe0, 0xc4, 0x9d, 0x7c, 0x92, 0x71, 0xe1, 0xb2, 0x2f, 0x5c, 0x8d,
+    0xee, 0xf0, 0xf1, 0x17, 0x1e, 0xd2, 0x5f, 0x31, 0x5b, 0xb1, 0x9c, 0xbc, 0x20, 0x55, 0xbf, 0x3a, 0x37, 0x42, 0x45,
+    0x75, 0xdc, 0x90, 0x65]
+    var stringValue14: String = 
+        "101038645214968213029489864879507742420925199145132483818978980455132582258676381289000109319204510275496178360219909358646064503513889573494768497419381751359787623037449375660247011308028102339473875820259375735204357343091558075960601364303443174344509161224592926325506446708043127306053676664799729848421"
+    var byteArrayStream14: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream14: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream14)
+    asn1OutputStream14.writeObject(ASN1Integer(BigInt(stringValue14)))
+    if (byteArrayStream14.bytes() != value14) {
         return 38
     }
 
-    var value20: Array<Byte> = [0x02, 0x01, 0x7F]
-    var byteArrayStream20: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream20: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream20)
-    asn1OutputStream20.writeObject(ASN1Integer(127))
-    if (byteArrayStream20.bytes() != value20) {
+    var value15: Array<Byte> = [0x02, 0x01, 0x7F]
+    var byteArrayStream15: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream15: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream15)
+    asn1OutputStream15.writeObject(ASN1Integer(127))
+    if (byteArrayStream15.bytes() != value15) {
         return 39
     }
 
-    var value22: Array<Byte> = [0x02, 0x01, 0xFF]
-    var byteArrayStream22: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream22: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream22)
-    asn1OutputStream22.writeObject(ASN1Integer(-1))
-    if (byteArrayStream22.bytes() != value22) {
+    var value16: Array<Byte> = [0x02, 0x01, 0xFF]
+    var byteArrayStream16: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream16: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream16)
+    asn1OutputStream16.writeObject(ASN1Integer(-1))
+    if (byteArrayStream16.bytes() != value16) {
         return 40
     }
 
-    var value24: Array<Byte> = [0x02, 0x02, 0x01, 0x00]
-    var byteArrayStream24: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream24: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream24)
-    asn1OutputStream24.writeObject(ASN1Integer(256))
-    if (byteArrayStream24.bytes() != value24) {
+    var value17: Array<Byte> = [0x02, 0x02, 0x01, 0x00]
+    var byteArrayStream17: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream17: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream17)
+    asn1OutputStream17.writeObject(ASN1Integer(256))
+    if (byteArrayStream17.bytes() != value17) {
         return 41
     }
 
-    var value28: Array<Byte> = [0x02, 0x03, 0x01, 0xff, 0xff]
-    var byteArrayStream28: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream28: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream28)
-    asn1OutputStream28.writeObject(ASN1Integer(131071))
-    if (byteArrayStream28.bytes() != value28) {
+    var value18: Array<Byte> = [0x02, 0x03, 0x01, 0xff, 0xff]
+    var byteArrayStream18: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream18: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream18)
+    asn1OutputStream18.writeObject(ASN1Integer(131071))
+    if (byteArrayStream18.bytes() != value18) {
         return 42
     }
 
-    var value30: Array<Byte> = [0x02, 0x04, 0x01, 0x01, 0xff, 0xff]
-    var byteArrayStream30: ByteArrayStream = ByteArrayStream()
-    var asn1OutputStream30: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream30)
-    asn1OutputStream30.writeObject(ASN1Integer(16908287))
-    if (byteArrayStream30.bytes() != value30) {
+    var value19: Array<Byte> = [0x02, 0x04, 0x01, 0x01, 0xff, 0xff]
+    var byteArrayStream19: ByteArrayStream = ByteArrayStream()
+    var asn1OutputStream19: ASN1OutputStream = ASN1OutputStream(encode(), byteArrayStream19)
+    asn1OutputStream19.writeObject(ASN1Integer(16908287))
+    if (byteArrayStream19.bytes() != value19) {
         return 43
+    }
+
+    var value20: Array<Byte> = [0x22, 0x01, 0x03]
+    var byteArrayStream20: ByteArrayStream = ByteArrayStream()
+    byteArrayStream20.write(value20)
+    var asn1InputStream20: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream20)
+    try {
+        var asn1Object20: ASN1Object = asn1InputStream20.readObject()
+    } catch (e: ASN1ParseException) {
+        if (!((e.message).equals("Cannot parse ASN.1 object from stream"))) {
+            return 44
+        }
     }
 
     return 0

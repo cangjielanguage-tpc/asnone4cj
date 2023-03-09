@@ -91,7 +91,7 @@ public class BitStringParser <: ASN1Parser {
                 var stream: ASN1InputStream = ASN1InputStream(decoder, value)
                 var baos: ByteArrayStream = ByteArrayStream()
                 var unusedBits: Int64 = 0
-                while (stream.lengths > 0) {
+                while (stream.lengthData() > 0) {
                     var subTag: ASN1Tag = stream.readTag()
                     Checks.checkState(
                         subTag.getTag() == asn1Tag.getTag(),
@@ -100,8 +100,9 @@ public class BitStringParser <: ASN1Parser {
                     )
                     var i: Int64 = stream.readLength()
                     var subValue: Array<Byte> = stream.readValue(i)
-                    baos.write(subValue)
-                    if (stream.length <= 0) {
+                    var subValueNew: Array<Byte> = subValue.slice(1, subValue.size - 1)
+                    baos.write(subValueNew)
+                    if (stream.lengthData() <= 0) {
                         // Last ASN.1 BitString
                         unusedBits = Int64(subValue[0])
                     }
@@ -112,8 +113,8 @@ public class BitStringParser <: ASN1Parser {
             }
         } else {
             var unusedBits: Byte = value[0]
-            var bits: Array<Byte> = Array<Byte>(value.size, item: 0)
-            value.copyTo(bits, 0, 0, value.size)
+            var bits: Array<Byte> = Array<Byte>(value.size - 1, item: 0)
+            value.copyTo(bits, 1, 0, value.size - 1)
             return ASN1BitString(asn1Tag, bits, Int64(unusedBits))
         }
     }

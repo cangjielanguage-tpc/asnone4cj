@@ -60,6 +60,10 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     public override func read(buffer: Array<Byte>): Int64 {
         return this.input.read(buffer)
     }
+
+    protected func lengthData(): Int64 {
+        return input.length
+    }
 }
 
 class IteratorASN1Object <: Iterator<ASN1Object> {
