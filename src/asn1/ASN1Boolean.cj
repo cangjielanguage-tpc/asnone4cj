@@ -32,6 +32,7 @@ public class BooleanParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        asn1Tag
         let list: Array<ToString> = [value.size]
         Checks.checkState(value.size == 1, "ASN.1 NULL can not have a value", list)
         return ASN1Boolean(value[0] != 0x0, value)
@@ -44,6 +45,7 @@ public class BooleanSerializer <: ASN1Serializer {
     }
 
     public override func serializedLength(asn1Object: ASN1Object): Int64 {
+        asn1Object
         return 1
     }
 

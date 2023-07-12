@@ -6,7 +6,7 @@ from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
 from std import io.*
-from numeric import bigint.*
+from asn1 import asn1.util.BigInt
 
 main(): Int64 {
     var asn1Enumerated: ASN1Enumerated = ASN1Enumerated(-9)

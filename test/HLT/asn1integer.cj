@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn-one/build/asn1
+// 3rd_party_lib:asn1-cj/build/asn1
 from asn1 import asn1.EnumeratedSerializer
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
@@ -21,7 +21,7 @@ from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
 from std import collection.*
-from numeric import bigint.*
+
 @Test
 public class asn_Asn1OutputStream01{
 

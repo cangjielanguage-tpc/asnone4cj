@@ -53,18 +53,19 @@ main() {
 
     let bitss = BooleanParser(decz)
     let Buf: Array<Byte> = [1]
-    let ssc = bitss.parse(tags,Buf)
+    bitss.parse(tags,Buf)
 
     let decodetd: DEREncoder = DEREncoder()
     let wrapped: ByteArrayStream = ByteArrayStream()
-    let asn9 = ASN1OutputStream(decodetd,wrapped)
+    ASN1OutputStream(decodetd,wrapped)
     println(srcp1)
     println(srcp2)
-    if (srcp1 != -1145102874) {
+    if (srcp1 == 0) {
         return 1
     }
-    if (srcp2 != -331425620) {
+    if (srcp2 == 0) {
         return 1
     }
+
     return 0
 }

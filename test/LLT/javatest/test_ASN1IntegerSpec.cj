@@ -1,6 +1,6 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from numeric import bigint.*
+from asn1 import asn1.util.BigInt
 from asn1 import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
@@ -331,7 +331,7 @@ main(): Int64 {
     byteArrayStream20.write(value20)
     var asn1InputStream20: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream20)
     try {
-        var asn1Object20: ASN1Object = asn1InputStream20.readObject()
+        asn1InputStream20.readObject()
     } catch (e: ASN1ParseException) {
         if (!((e.message).equals("Cannot parse ASN.1 object from stream"))) {
             return 44

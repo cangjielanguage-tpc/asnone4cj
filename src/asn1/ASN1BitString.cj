@@ -20,7 +20,7 @@ public class ASN1BitString <: ASN1String {
         this.unusedBits = 8 - (bits.size % 8)
     }
 
-    @overflowWrapping
+    @OverflowWrapping
     private static func constructBytes(bits: Array<Bool>): Array<Byte> {
         var length: Int64
         if (bits.size % 8 > 0) {
@@ -65,7 +65,7 @@ public class ASN1BitString <: ASN1String {
         return bits.toString()
     }
 
-    @overflowWrapping
+    @OverflowWrapping
     public func isSet(x: Int64): Bool {
         var toCheck: Int64 = x / 8
         var theByte: Int8 = Int8(UInt8(valueBytes[toCheck]))

@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn-one/build/asn1
+// 3rd_party_lib:asn1-cj/build/asn1
 from asn1 import asn1.EnumeratedSerializer
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
@@ -114,6 +114,7 @@ public class asn_Asn1Tag01{
         let tags = ENUMERATED 
         let a:ASN1Tag=ASN1Tag.forTag(ASN1TagClass.UNIVERSAL(0x40),0x0)
         @Assert(a.getTag(),0)
+        @Assert(tags.getTag(),10)
         } catch (e: Exception) {
         @Assert(e.toString(),"Exception: Unknown ASN.1 tag")
     } 
@@ -126,6 +127,7 @@ public class asn_Asn1Tag01{
 
         let tags = ENUMERATED 
         let a:ASN1Tag=ASN1Tag.forTag(ASN1TagClass.APPLICATION(0x40),9223372036854775807)
+        @Assert(tags.getTag(),10)
         @Assert(a.getTag(),9223372036854775807) 
     }
 
@@ -134,9 +136,10 @@ public class asn_Asn1Tag01{
     @TestCase
     func asn_Asn1Tag08(): Unit {
 
-        let tags = ENUMERATED 
+   
         let a:ASN1Tag=ASN1Tag.forTag(ASN1TagClass.APPLICATION(0x40),-9223372036854775808)
         @Assert(a.getTag(),-9223372036854775808) 
+
     }
 
 
@@ -144,23 +147,25 @@ public class asn_Asn1Tag01{
     @TestCase
     func asn_Asn1Tag09(): Unit {
 
-        let tags = ENUMERATED 
+   
         let a:ASN1Tag=ASN1Tag.forTag(ASN1TagClass.CONTEXT_SPECIFIC(0x80),-9223372036854775808)
-        @Assert(a.getTag(),-9223372036854775808) 
+        @Assert(a.getTag(),-9223372036854775808)
+ 
     }
 
 
     @TestCase
     func asn_Asn1Tag10(): Unit {
 
-        let tags =ENUMERATED 
+    
         let a:ASN1Tag=ASN1Tag.forTag(ASN1TagClass.PRIVATE(0xc0),-9223372036854775808)
         @Assert(a.getTag(),-9223372036854775808) 
+     
     }
 
 
 
-  
+
 
     @TestCase  
     func asn_Asn1Tag11(): Unit {
@@ -168,7 +173,7 @@ public class asn_Asn1Tag01{
         let tags = BIT_STRING
         @Assert(ASN1Tag.contextSpecific(-9223372036854775808).toString(),"ASN1Tag[CONTEXT_SPECIFIC,PRIMITIVE,-9223372036854775808]")
         @Assert(ASN1Tag.application(-9223372036854775808).toString(),"ASN1Tag[APPLICATION,PRIMITIVE,-9223372036854775808]")
-        @Assert(tags.hashCode(),-489378674)
+        @Assert(tags.hashCode(),568646418)
     }
 
 
@@ -179,7 +184,7 @@ public class asn_Asn1Tag01{
         let tags = BIT_STRING
         @Assert(ASN1Tag.contextSpecific(9223372036854775807).toString(),"ASN1Tag[CONTEXT_SPECIFIC,PRIMITIVE,9223372036854775807]")
         @Assert(ASN1Tag.application(9223372036854775807).toString(),"ASN1Tag[APPLICATION,PRIMITIVE,9223372036854775807]")
-        @Assert(tags.hashCode(),-489378674)
+        @Assert(tags.hashCode(),568646418)
     }
 
 
@@ -189,7 +194,7 @@ public class asn_Asn1Tag01{
         let tags = BIT_STRING
         @Assert(ASN1Tag.contextSpecific(0).toString(),"ASN1Tag[CONTEXT_SPECIFIC,PRIMITIVE,0]")
         @Assert(ASN1Tag.application(0).toString(),"ASN1Tag[APPLICATION,PRIMITIVE,0]")
-        @Assert(tags.hashCode(),-489378674)
+        @Assert(tags.hashCode(),568646418)
     }
 
 
@@ -200,7 +205,7 @@ public class asn_Asn1Tag01{
         let tags = BIT_STRING
         @Assert(ASN1Tag.application(0).toString(),"ASN1Tag[APPLICATION,PRIMITIVE,0]")
         @Assert(ASN1Tag.contextSpecific(0).toString(),"ASN1Tag[CONTEXT_SPECIFIC,PRIMITIVE,0]")
-        @Assert(tags.hashCode(),-489378674)
+        @Assert(tags.hashCode(),568646418)
     }
 
 

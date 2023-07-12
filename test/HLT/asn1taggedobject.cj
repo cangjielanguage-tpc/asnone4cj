@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn-one/build/asn1
+// 3rd_party_lib:asn1-cj/build/asn1
 from asn1 import asn1.EnumeratedSerializer
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
@@ -63,9 +63,6 @@ public class asn_Asn1TaggedObject{
        @Assert(sle.toString(),"ASN1TaggedObject[ASN1Tag[UNIVERSAL,CONSTRUCTED,3],ASN1Object[[true, true, false, true, false, false]]]")
     }
   
- 
- 
-   
     @TestCase
     func asn_Asn1TaggedObject_04(): Unit {
     
@@ -93,16 +90,12 @@ public class asn_Asn1TaggedObject{
     func asn_Asn1TaggedObject_06(): Unit {
     
        let tags =SEQUENCE
-       let tagss = SEQUENCE
        var arr = ArrayList<ASN1Object>([ASN1Boolean(true), ASN1Integer(1), ASN1Boolean(false), ASN1Integer(2)])	
        var asn1sequence:ASN1Sequence=ASN1Sequence(arr)
        let sle = ASN1TaggedObject(tags,asn1sequence,true)
        @Assert(sle.isExplicit(),true)
     }
 
- 
-  
-  
     @TestCase
     func asn_Asn1TaggedObject_07(): Unit {
     
@@ -123,7 +116,7 @@ public class asn_Asn1TaggedObject{
     func asn_Asn1TaggedObject_08(): Unit {
        try {
        let tags = ASN1_BOOLEAN
-       let sle = ASN1TaggedObject(tags,ASN1Boolean(false))
+       ASN1TaggedObject(tags,ASN1Boolean(false))
        } catch (e: Exception) {
         @Assert(e.toString(),"IllegalArgumentException: The ASN.1 tag does not support encoding")
     } 
@@ -135,7 +128,7 @@ public class asn_Asn1TaggedObject{
     func asn_Asn1TaggedObject_09(): Unit {
        try {
        let tags = INTEGER
-       let sle = ASN1TaggedObject(tags,ASN1Integer(10))
+       ASN1TaggedObject(tags,ASN1Integer(10))
       } catch (e: Exception) {
         @Assert(e.toString(),"IllegalArgumentException: The ASN.1 tag does not support encoding")
     } 
@@ -158,13 +151,13 @@ public class asn_Asn1TaggedObject{
      
     }
 
- 
+
  
     @TestCase
     func asn_Asn1TaggedObject_11(): Unit {                                  
        try {                
        let tags = ASN1_NULL_TAG
-       let sle = ASN1TaggedObject(tags,ASN1Null())
+       ASN1TaggedObject(tags,ASN1Null())
               } catch (e: Exception) {
         @Assert(e.toString(),"IllegalArgumentException: The ASN.1 tag does not support encoding")
     } 
@@ -176,7 +169,7 @@ public class asn_Asn1TaggedObject{
     func asn_Asn1TaggedObject_12(): Unit {
        try {
        let tags = OBJECT_IDENTIFIER
-       let sle = ASN1TaggedObject(tags,ASN1ObjectIdentifier("1.3.4"))
+       ASN1TaggedObject(tags,ASN1ObjectIdentifier("1.3.4"))
               } catch (e: Exception) {
         @Assert(e.toString(),"IllegalArgumentException: The ASN.1 tag does not support encoding")
     } 
@@ -204,19 +197,17 @@ public class asn_Asn1TaggedObject{
     }
 
   
-  
+ 
     @TestCase
     func asn_Asn1TaggedObject_14(): Unit {
        try {
        let tags = ENUMERATED
-       let sle = ASN1TaggedObject(tags,ASN1Enumerated(20))
+       ASN1TaggedObject(tags,ASN1Enumerated(20))
               } catch (e: Exception) {
         @Assert(e.toString(),"IllegalArgumentException: The ASN.1 tag does not support encoding")
     } 
     }
     
-
-   
     
    //public init(tag: ASN1Tag, bytes: Array<Byte>, decoder: ASN1Decoder) 
 
@@ -227,7 +218,7 @@ public class asn_Asn1TaggedObject{
        let tags = ASN1_BOOLEAN
        let tagss = ASN1_BOOLEAN
        let decz: BERDecoder = BERDecoder()
-       let bitss = BooleanParser(decz)
+       BooleanParser(decz)
        let Buf: Array<Byte> = [0x01, 0x08, 0x06, 0x06, 0x2B, 0x06, 0x01, 0x05, 0x05, 0x02]
        let sle = ASN1TaggedObject(tags,Buf,decz)
        println(sle.isExplicit())
@@ -241,7 +232,7 @@ public class asn_Asn1TaggedObject{
 
     }
 
-
+  
     @TestCase
     func asn_Asn1TaggedObject_16(): Unit {
     
@@ -259,7 +250,6 @@ public class asn_Asn1TaggedObject{
     func asn_Asn1TaggedObject_17(): Unit {                      
       
        let tags = SEQUENCE
-       let tagss = SEQUENCE
        var arr = ArrayList<ASN1Object>([ASN1Enumerated(20)])	
        var asn1sequence:ASN1Sequence=ASN1Sequence(arr)
        let set2 = ASN1TaggedObject(tags,asn1sequence)
@@ -273,5 +263,4 @@ public class asn_Asn1TaggedObject{
     }
     }
 
- 
 }

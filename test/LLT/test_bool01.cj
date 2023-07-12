@@ -9,12 +9,12 @@ from std import io.*
 main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
     let sc = ASN1Boolean(true)
-    let sc1 = ASN1Boolean(true,bytesBuf)
+    ASN1Boolean(true,bytesBuf)
     let fs = sc.getValue()
     var asn1test: Bool = (fs as Bool).getOrThrow()
     println(asn1test)
     let dec: BERDecoder = BERDecoder()
-    let sc2 = BooleanParser(dec)
+    BooleanParser(dec)
     //sc2.parse(sc,bytesBuf)
     if(asn1test) {
         return 0

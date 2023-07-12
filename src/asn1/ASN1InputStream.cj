@@ -82,6 +82,5 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
         } catch (e: Exception) {
             throw Exception(e.message)
         }
-        return Option<ASN1Object>.None
     }
 }

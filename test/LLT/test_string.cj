@@ -12,15 +12,13 @@ main() {
     var bud: Array<Byte> = [1]
  
     var src = ASN1BitString(tag,bud,1)
-    let src1 = src.length()
+    src.length()
     var es: String = ""
     try {
-        let src3 = src.getValueBytes()
+        src.getValueBytes()
     } catch (e: Exception){
        es = e.toString()
     }
-    if(bud.size == 0){
-        return 1
-    }
+    
     return 0
 }

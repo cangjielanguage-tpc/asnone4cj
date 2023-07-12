@@ -1,8 +1,8 @@
 package asn1
 
-from numeric import bigint.*
 import asn1.util.DecoderUtils
 import asn1.util.EncodingUtils
+import asn1.util.BigInt
 
 public class ASN1Enumerated <: ASN1PrimitiveValue {
     protected var value: BigInt = BigInt(0)
@@ -33,6 +33,7 @@ public class EnumeratedParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        asn1Tag
         var bigint: BigInt = DecoderUtils.asn1Decode(value)
         return ASN1Enumerated(bigint, value)
     }

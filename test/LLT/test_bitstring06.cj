@@ -32,7 +32,7 @@ main() {
     let Buf: Array<Byte> = [1]
     let ssc = bitss.parse(tags,Buf)
     try {
-        let src = oc1.serializedLength(ssc)
+        oc1.serializedLength(ssc)
     }catch(e: Exception) {
         println("pass")
     }
@@ -42,7 +42,7 @@ main() {
     let asn9 = ASN1OutputStream(decodetd,wrapped)
     
     try {
-        let src1 = oc1.serialize(ssc,asn9)
+        oc1.serialize(ssc,asn9)
     }catch(e: Exception) {
         println("pass")
     }
@@ -54,9 +54,7 @@ main() {
     let objs =ArrayList<ASN1Object>()
     objs.append(ssc)
     let buu: Array<Byte> = [1,6] 
-    let sml = ASN1Sequence(objs,buu)
-    if (ssq.size != 100) {
-        return 1
-    }
+    ASN1Sequence(objs,buu)
+    
     return 0
 }

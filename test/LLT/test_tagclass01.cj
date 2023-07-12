@@ -9,19 +9,18 @@ from std import collection.*
 
 main() {
 
-    let srce = ASN1TagClass.parseClass(192)
-    let srce1 = ASN1TagClass.parseClass(180)
-    let srce2 = ASN1TagClass.parseClass(100)
-    let srce3 = ASN1TagClass.parseClass(1)
-    let sq = (255 & 0xc0)
+    ASN1TagClass.parseClass(192)
+    ASN1TagClass.parseClass(180)
+    ASN1TagClass.parseClass(100)
+    ASN1TagClass.parseClass(1)
     
     try {
-        let sv = ASN1TagClass.UNIVERSAL(1).getValue()
+        ASN1TagClass.UNIVERSAL(1).getValue()
     } catch(e: Exception){
         println("pass")
     }
     try {
-        let sv1 = ASN1TagClass.APPLICATION(0).getValue()
+        ASN1TagClass.APPLICATION(0).getValue()
     } catch(e: Exception){
         println("pass")
     }
@@ -30,26 +29,26 @@ main() {
     
     let sv3 = ASN1TagClass.CONTEXT_SPECIFIC(0x80).getValue()
     try {
-        let sv4 = ASN1TagClass.CONTEXT_SPECIFIC(0).getValue()
+        ASN1TagClass.CONTEXT_SPECIFIC(0).getValue()
     } catch(e: Exception){
         println("pass")
     }
     
     let sv5 = ASN1TagClass.PRIVATE(0xc0).getValue()
     try {
-        let sv6 = ASN1TagClass.PRIVATE(0).getValue()
+        ASN1TagClass.PRIVATE(0).getValue()
     } catch(e: Exception){
         println("pass")
     }
     let buf: Array<ToString> =Array<ToString>(100, item: unsafe {zeroValue<ToString>()})
     
     try {
-        let src = Checks.checkState(false, "abcd", buf)
+        Checks.checkState(false, "abcd", buf)
     } catch(e: Exception){
         println("pass")
     }
     try {
-        let src = Checks.checkArgument(false, "abcd", buf)
+        Checks.checkArgument(false, "abcd", buf)
     } catch(e: Exception){
         println("pass")
     }

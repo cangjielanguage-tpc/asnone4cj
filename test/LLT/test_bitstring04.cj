@@ -15,8 +15,6 @@ from std import io.*
 from asn1 import asn1.*
 
 main() {
-
-    let arr: Array<Bool> = Array<Bool>(5, item: true)
     let dec: DEREncoder = DEREncoder()
 
     let tags = INTEGER
@@ -27,7 +25,7 @@ main() {
 
     let enu = EnumeratedSerializer(dec)
     try {
-        let src = enu.serializedLength(ssc)
+        enu.serializedLength(ssc)
     }catch(e: Exception) {
         println("pass")
     }
@@ -35,7 +33,7 @@ main() {
     let wrapped: ByteArrayStream = ByteArrayStream()
     let asn = ASN1OutputStream(decodetd,wrapped)
     try {
-        let src1 = enu.serialize(ssc,asn)
+        enu.serialize(ssc,asn)
     }catch(e: Exception) {
         println("pass")
     }
@@ -43,12 +41,12 @@ main() {
     let ssc4 = ssc3.valueHash()
     let srv = IntegerSerializer(decodetd)
     try {
-        let src = srv.serializedLength(ssc)
+        srv.serializedLength(ssc)
     }catch(e: Exception) {
         println("pass")
     }
     try {
-        let src = srv.serialize(ssc,asn)
+        srv.serialize(ssc,asn)
     }catch(e: Exception) {
         println("pass")
     }
@@ -58,9 +56,6 @@ main() {
     let srt1 = NullSerializer(decodetd)
     srt1.serializedLength(ssc)
     srt1.serialize(ssc,asn)
-    if(arr.size != 5) {
-        return 1
-    }
     if(ssc4 != 6) {
         return 2
     }

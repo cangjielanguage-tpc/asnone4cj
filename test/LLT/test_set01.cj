@@ -12,10 +12,10 @@ main() {
     var arr = HashSet<ASN1Object>()
     let buf: Array<Byte> = [1]
     var sets = ASN1Set(arr,buf)
-    var sets1 = ASN1Set(arr)
+    ASN1Set(arr)
 
     let src = sets.getValue()
-    let src1 = sets.iterator()
+    sets.iterator()
 
     println(src.size)
     if (src.size != 0){

@@ -25,10 +25,10 @@ main() {
     let tag2 = SEQUENCE
     var arr = ArrayList<ASN1Object>([ASN1Boolean(true), ASN1Integer(1), ASN1Boolean(false), ASN1Integer(2)])
     var arr2 = ASN1Sequence(arr)
-    let sc2 = ASN1TaggedObject(tag2, arr2, false)
+    ASN1TaggedObject(tag2, arr2, false)
 
     let tag3 = ENUMERATED
-    let sc3 = ASN1TaggedObject(tag3, ASN1Enumerated(20), false)
+    ASN1TaggedObject(tag3, ASN1Enumerated(20), false)
 
     if (src != "ASN1TaggedObject[ASN1Tag[UNIVERSAL,PRIMITIVE,5],ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,5]]]") {
         return 1

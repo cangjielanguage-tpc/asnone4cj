@@ -7,7 +7,7 @@ public open class BERDecoder <: ASN1Decoder {
     public override func readTag(inputStream: InputStream): ASN1Tag {
         try {
             var dataArr = Array<Byte>(1, item: 0)
-            var tagByteLength: Int64 = inputStream.read(dataArr)
+            inputStream.read(dataArr)
             var byte: Byte = dataArr[0]
             var asn1TagClass: ASN1TagClass = ASN1TagClass.parseClass(byte)
             var asn1Encoding: ASN1Encoding = ASN1Encoding.parseEncoding(byte)
@@ -50,6 +50,7 @@ public open class BERDecoder <: ASN1Decoder {
             var nrBytes: Int64 = Int64(firstByte) & 0x7f
             var longLength: Int64 = 0
             for (i in 0..nrBytes) {
+                i
                 longLength = longLength << 8
                 firstByteLength = inputStream.read(dataArr)
                 firstByte = dataArr[0]

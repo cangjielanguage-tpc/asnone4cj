@@ -8,11 +8,10 @@ from asn1 import asn1.*
 
 main() {
     let Buf: Array<Byte> = [1]
-    let Buf2: Array<Byte> = [0]
     let decs: ASN1OctetString = ASN1OctetString(Buf)
     let tags = INTEGER
 
-    let dec1: ASN1OctetString = ASN1OctetString(tags,Buf)
+    ASN1OctetString(tags,Buf)
     //let src = decs.getValue()
     let src2 = decs.valueString()
     let src3 = decs.length()

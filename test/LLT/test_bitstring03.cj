@@ -17,7 +17,7 @@ main() {
     let asn1 = ASN1BitString(arr)
     let str = asn1.valueString()
     let asse = DEREncoder()
-    let str1 = BitStringSerializer(asse)
+    BitStringSerializer(asse)
     
     let tag = BIT_STRING
     let dec: BERDecoder = BERDecoder()

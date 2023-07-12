@@ -115,14 +115,13 @@ main(): Int64 {
         return 16
     }
 
-    var value8: Array<Byte> = [0x60, 0x06, 0x2B, 0x06, 0x01, 0x05, 0x05, 0x02]
     var byteArrayStream8: ByteArrayStream = ByteArrayStream()
     byteArrayStream8.write(value3)
     var asn1InputStream8: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream8)
     var asn1Object8: ASN1Object = asn1InputStream8.readObject()
     try {
         var object8: ASN1TaggedObject = (asn1Object8 as ASN1TaggedObject).getOrThrow()
-        var asn1ObjectGet: ASN1Object = object8.getObject()
+        object8.getObject()
     } catch (e: ASN1ParseException) {
         if (!((e.message).equals(
             "Unknown ASN.1 tagUnable to parse the explicit Tagged Object with %s, it might be implicit"))) {

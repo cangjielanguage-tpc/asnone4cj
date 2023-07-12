@@ -14,7 +14,7 @@ main() {
     let src = seq.size()
     var es: String = ""
     try {
-        let src1 = seq.get(1)
+        seq.get(1)
     } catch (e: Exception){
        es = e.toString()
     }

@@ -1,7 +1,7 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from numeric import bigint.*
+from asn1 import asn1.util.BigInt
 from asn1 import asn1.ASN1Enumerated
 from asn1 import asn1.EnumeratedParser
 from asn1 import asn1.BERDecoder
@@ -13,8 +13,8 @@ main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
     let sc = ASN1Enumerated(65)
     var p: BigInt = BigInt(1)
-    let sc1 = ASN1Enumerated(p)
-    let sc2 = ASN1Enumerated(p,bytesBuf)
+    ASN1Enumerated(p)
+    ASN1Enumerated(p,bytesBuf)
     sc.getValue()
     let decodetd: BERDecoder = BERDecoder()
     let src =EnumeratedParser(decodetd)

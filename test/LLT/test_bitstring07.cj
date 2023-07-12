@@ -31,17 +31,17 @@ main() {
     let src = tags1.newParser(decz)
     let src1 = tags1.newSerializer(dec)
     try {
-        let src = src.parse(tags, Array<Byte>())
+        src.parse(tags, Array<Byte>())
     }catch(e: Exception) {
         println("pass")
     }
     try {
-        let src1 = src1.serializedLength(ssc)
+        src1.serializedLength(ssc)
     }catch(e: Exception) {
         println("pass")
     }
     try {
-        let src2 = src1.serialize(ssc,asn9)
+        src1.serialize(ssc,asn9)
     }catch(e: Exception) {
         println("pass")
     }
@@ -51,17 +51,17 @@ main() {
     let rel = tags2.newParser(decz)
     let rel1 = tags2.newSerializer(dec)
     try {
-        let src3 = rel.parse(tags, Array<Byte>())
+        rel.parse(tags, Array<Byte>())
     }catch(e: Exception) {
         println("pass")
     }
     try {
-        let src4 = rel1.serializedLength(ssc)
+        rel1.serializedLength(ssc)
     }catch(e: Exception) {
         println("pass")
     }
     try {
-        let src5 = rel1.serialize(ssc,asn9)
+        rel1.serialize(ssc,asn9)
     }catch(e: Exception) {
         println("pass")
     }

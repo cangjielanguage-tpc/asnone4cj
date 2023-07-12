@@ -12,7 +12,7 @@ main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
     let asn = ASN1BitString(bytesBuf,6)
     let arr: Array<Bool> = Array<Bool>(5, item: true)
-    let asn1 = ASN1BitString(arr)
+    ASN1BitString(arr)
     asn.getValue()
     let indd =asn.isSet(2)
     let src =asn.length()

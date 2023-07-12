@@ -38,6 +38,7 @@ public class IntegerParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        asn1Tag
         var bigint: BigInt = DecoderUtils.asn1Decode(value)
         return ASN1Integer(bigint, value)
     }

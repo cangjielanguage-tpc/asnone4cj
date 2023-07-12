@@ -11,7 +11,7 @@ main(): Int64 {
     var value: Array<Byte> = [0x23, 0x80, 0x03, 0x02, 0xF0, 0xF0, 0x03, 0x02, 0x02, 0xF4, 0x0, 0x0]
     var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), value)
     try {
-        var asn1Object: ASN1Object = asn1InputStream.readObject()
+        asn1InputStream.readObject()
     } catch (e: ASN1ParseException) {
         if (!((e.message).equals("The indefinite length form is not (yet) supported!"))) {
             return 1

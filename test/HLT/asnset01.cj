@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn-one/build/asn1
+// 3rd_party_lib:asn1-cj/build/asn1
 from asn1 import asn1.EnumeratedSerializer
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
@@ -23,7 +23,7 @@ from asn1 import asn1.encodingrules.der.*
 from std import collection.*
 @Test
 public class asn_Asn1OutputStream01{    
-/*
+
   
     @TestCase
     func asn_Asn1OutputStream_01(): Unit {
@@ -180,7 +180,7 @@ public class asn_Asn1OutputStream01{
          @Assert(ssss.toString(),"[ASN1Object[ASN1Tag[UNIVERSAL,CONSTRUCTED,16]]]")
     }
 
-*/
+
     @TestCase
     func asn_Asn1OutputStream_16(): Unit {
     var objects2: HashSet<ASN1Object> = HashSet<ASN1Object>([ASN1Boolean(true)])

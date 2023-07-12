@@ -1,6 +1,5 @@
 package asn1.util
 
-from numeric import bigint.*
 from encoding import hex.*
 from std import overflow.*
 from std import format.*
@@ -24,6 +23,7 @@ public class DecoderUtils {
 
             // 二进制不够八位高位补0
             for (k in 0..(8 - strLength)) {
+                k
                 byteStr = "0" + byteStr
             }
             strBin = strBin + byteStr
@@ -52,6 +52,7 @@ public class DecoderUtils {
 
             // 通过位数转int
             for (k in 0..(charArr1.size - 1 - i)) {
+                k
                 intFor = intFor * 2
             }
             allNumber1 = allNumber1 + intFor

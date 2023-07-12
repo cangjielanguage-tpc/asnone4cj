@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn-one/build/asn1
+// 3rd_party_lib:asn1-cj/build/asn1
 from asn1 import asn1.EnumeratedSerializer
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
@@ -27,49 +27,27 @@ public class asn_ASN1Enumerated{
     @TestCase
     func asn_ASN1Enumerated_01(): Unit {
 
+     var  a=0
+     try{
          let  a=9
-         var asn1integer: ASN1Enumerated= ASN1Enumerated(a)
-    }
-
-
-    @TestCase
-    func asn_ASN1Enumerated_02(): Unit {                   
-
-         let  a=-9
-         var asn1integer: ASN1Enumerated= ASN1Enumerated(a)
-    }
-
-
-
-    @TestCase
-    func asn_ASN1Enumerated_03(): Unit {
-
-         let  a=9223372036854775807
-         var asn1integer: ASN1Enumerated= ASN1Enumerated(a)
-    }
-
-
-    @TestCase
-    func asn_ASN1OctetString_04(): Unit {
-
+         ASN1Enumerated(a)
+         let  b=-9
+         ASN1Enumerated(b)
+          let  c=9223372036854775807
+         ASN1Enumerated(c)
          let Buf: Array<Byte> = [0x60, 0x08, 0x06, 0x06, 0x2B, 0x06, 0x01, 0x05, 0x05, 0x02]
-         var asn1octetString: ASN1OctetString= ASN1OctetString(Buf)
+         ASN1OctetString(Buf)
+         let Buf1: Array<Byte> = [0x04, 0x08, 0x06, 0x06, 0x2B, 0x06, 0x01, 0x05, 0x05, 0x02]
+          ASN1OctetString(Buf1)
+          let Buf2: Array<Byte> = []
+         ASN1OctetString(Buf2)
+         } catch (e: Exception) {
+          a = 1
+    }
+     @Assert(a,0)
     }
 
 
-    @TestCase
-    func asn_ASN1OctetString_05(): Unit {
 
-         let Buf: Array<Byte> = [0x04, 0x08, 0x06, 0x06, 0x2B, 0x06, 0x01, 0x05, 0x05, 0x02]
-         var asn1octetString: ASN1OctetString= ASN1OctetString(Buf)
-    }
-
-
-    @TestCase
-    func asn_ASN1OctetString_06(): Unit {
-
-         let Buf: Array<Byte> = []
-         var asn1octetString: ASN1OctetString= ASN1OctetString(Buf)
-    }
 
 }

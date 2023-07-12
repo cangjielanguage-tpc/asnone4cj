@@ -30,7 +30,7 @@ main() {
     let result = sc.serializedLength(str)
     println(result)
     try {
-        let tag = dec.readTag(wrapped)
+        dec.readTag(wrapped)
     }catch(e: Exception) {
         return 0
     }
