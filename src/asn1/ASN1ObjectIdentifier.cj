@@ -28,6 +28,7 @@ public class ObjectIdentifierParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        asn1Tag
         Checks.checkArgument(
             value.size > 0,
             "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value",
@@ -40,13 +41,13 @@ public class ObjectIdentifierParser <: ASN1Parser {
 
         // 返回当前缓冲区总容量
         var dataArr: Array<Byte> = Array<Byte>(1, item: 0)
-        var firstTwoLength: Int64 = byteArrayStream.read(dataArr)
+        byteArrayStream.read(dataArr)
         var firstTwo: Byte = dataArr[0]
         var stringBuilder: StringBuilder = StringBuilder()
         stringBuilder.append(firstTwo / 40)
         stringBuilder.append('.').append(firstTwo % 40)
         while (byteArrayStream.length > 0) {
-            var xLength: Int64 = byteArrayStream.read(dataArr)
+            byteArrayStream.read(dataArr)
             var x: Byte = dataArr[0]
             if (x < 127) {
                 stringBuilder.append('.').append(x)

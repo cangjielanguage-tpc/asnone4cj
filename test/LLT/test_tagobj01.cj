@@ -12,10 +12,9 @@ from std import collection.*
 from asn1 import asn1.*
 main() {
     var tag = BIT_STRING
-    var bud: Array<Byte> = [1]
     let dec: BERDecoder = BERDecoder()
-    let dec6: DERDecoder = DERDecoder()
-    let dec7: DEREncoder = DEREncoder()
+    DERDecoder()
+    DEREncoder()
     let bitss = BooleanParser(dec)
     let Buf: Array<Byte> = [1]
     let ssc = bitss.parse(tag,Buf)
@@ -24,12 +23,12 @@ main() {
 
     asn1.getValue()
     try {
-        let ssc9 = asn1.iterator()
+        asn1.iterator()
     } catch (e : Exception){
         println("pass")
     }
     try {
-        let ssc8 = asn1.getObject(tag)
+        asn1.getObject(tag)
     } catch (e : Exception){
         println("pass")
     }

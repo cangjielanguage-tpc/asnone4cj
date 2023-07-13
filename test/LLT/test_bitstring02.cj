@@ -17,12 +17,12 @@ main() {
 
 
     let wrapped: ByteArrayStream = ByteArrayStream()
-    let asn = ASN1OutputStream(decodetd,wrapped)
+    ASN1OutputStream(decodetd,wrapped)
 
-    let src = BitStringSerializer(decodetd)
+    BitStringSerializer(decodetd)
 
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
-    let asn2 = ASN1BitString(bytesBuf,6)
+    ASN1BitString(bytesBuf,6)
 
     if (bytesBuf.size != 0) {
         return 0

@@ -15,7 +15,7 @@ from asn1 import asn1.*
 from std import collection.*
 
 main() {
-    let dec: BERDecoder = BERDecoder()
+    BERDecoder()
     let tag = SEQUENCE
     let decs: DEREncoder = DEREncoder()
 

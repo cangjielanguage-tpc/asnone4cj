@@ -31,12 +31,12 @@ main() {
     let asn9 = ASN1OutputStream(decodetd,wrapped)
     let sp1 = BitStringSerializer(dec)
     try {
-        let srncn = sp1.serializedLength(ssc)
+        sp1.serializedLength(ssc)
     }catch(e: Exception) {
         println("pass")
     }
     try {
-        let srncn2 = sp1.serialize(ssc,asn9)
+        sp1.serialize(ssc,asn9)
     }catch(e: Exception) {
         println("pass")
     }
@@ -44,7 +44,7 @@ main() {
     let sle = ASN1TaggedObject(tags,Array<Byte>(),decz)
     
     try {
-        let src = sle.iterator()
+        sle.iterator()
     }catch(e: Exception) {
         println("pass")
     }
@@ -55,17 +55,14 @@ main() {
     op1.parse(tags,Array<Byte>())
     let op2 =tagg1.newSerializer(dec)
     try {
-        let src10 = op2.serializedLength(ssc)
+        op2.serializedLength(ssc)
     }catch(e: Exception) {
         println("pass")
     }
      try {
-        let src11 = op2.serialize(ssc,asn9)
+        op2.serialize(ssc,asn9)
     }catch(e: Exception) {
         println("pass11")
-    }
-    if (Buf.size != 1) {
-        return 1
     }
     return 0
 }

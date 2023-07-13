@@ -74,7 +74,8 @@ main(): Int64 {
     var value5: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
     var byteArrayStream5: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream5: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream5)
-    asn1OutputStream5.writeObject(ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20"))
+    var aSN1ObjectIdentifier5: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20")
+    asn1OutputStream5.writeObject(aSN1ObjectIdentifier5)
     if (byteArrayStream5.bytes() != value5) {
         return 9
     }
@@ -82,7 +83,8 @@ main(): Int64 {
     var value6: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
     var byteArrayStream6: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
-    asn1OutputStream6.writeObject(ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20", Array<Byte>([])))
+    var aSN1ObjectIdentifier6: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20", Array<Byte>([]))
+    asn1OutputStream6.writeObject(aSN1ObjectIdentifier6)
     if (byteArrayStream6.bytes() != value6) {
         return 10
     }
@@ -90,7 +92,8 @@ main(): Int64 {
     var value7: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
     var byteArrayStream7: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream7: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream7)
-    asn1OutputStream7.writeObject(ASN1ObjectIdentifier("1.2.840.113549.1.7.2"))
+    var aSN1ObjectIdentifier7: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.2.840.113549.1.7.2")
+    asn1OutputStream7.writeObject(aSN1ObjectIdentifier7)
     if (byteArrayStream7.bytes() != value7) {
         return 11
     }
@@ -98,7 +101,8 @@ main(): Int64 {
     var value8: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
     var byteArrayStream8: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream8: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream8)
-    asn1OutputStream8.writeObject(ASN1ObjectIdentifier("1.2.840.113549.1.7.2", Array<Byte>([])))
+    var aSN1ObjectIdentifier8: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.2.840.113549.1.7.2", Array<Byte>([]))
+    asn1OutputStream8.writeObject(aSN1ObjectIdentifier8)
     if (byteArrayStream8.bytes() != value8) {
         return 12
     }

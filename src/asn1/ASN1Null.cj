@@ -22,6 +22,7 @@ public class NullParser <: ASN1Parser {
     }
 
     public override func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        asn1Tag
         Checks.checkState(value.size == 0, "ASN.1 NULL can not have a value", Array<ToString>())
         return ASN1Null()
     }
@@ -33,10 +34,12 @@ public class NullSerializer <: ASN1Serializer {
     }
 
     public override func serializedLength(asn1Object: ASN1Object): Int64 {
+        asn1Object
         return 0
     }
 
     public override func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
+        (asn1Object,stream)
         // No-op, no data
     }
 }

@@ -6,9 +6,8 @@ from std import io.*
 
 main() {
     let Buf: Array<Byte> = [1]
-    let Buf2: Array<Byte> = [0]
     let dec: ASN1ObjectIdentifier = ASN1ObjectIdentifier("ascsc")
-    let dec1: ASN1ObjectIdentifier = ASN1ObjectIdentifier("ascsc",Buf)
+    ASN1ObjectIdentifier("ascsc",Buf)
     let src = dec.getValue()
     let src1 = (src as String).getOrThrow()
     println(src1)

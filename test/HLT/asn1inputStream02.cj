@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn-one/build/asn1
+// 3rd_party_lib:asn1-cj/build/asn1
 from asn1 import asn1.EnumeratedSerializer
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
@@ -53,7 +53,6 @@ public class asn_Asn1InputStream01{
          var buffer1: Array<Byte> = [0x01, 0x08, 0x04, 0x06, 0x10, 0x01, 0x03, 0x05, 0x07, 0x11]
          var read=asn1inputstream.read(buffer1)
          println(read)
-         var buffer2: Array<Byte> = [1, 1]
          @Assert(read,3)
     }
 
@@ -61,7 +60,7 @@ public class asn_Asn1InputStream01{
     @TestCase
     func asn_Asn1InputStream03(): Unit {
 
-         let decodetd: DEREncoder = DEREncoder()
+
          var buffer: Array<Byte> = [0x01, 0x08]
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
@@ -79,7 +78,7 @@ public class asn_Asn1InputStream01{
     @TestCase
     func asn_Asn1InputStream04(): Unit {
 
-         let decodetd: DEREncoder = DEREncoder()
+         
          var buffer: Array<Byte> = [0x09, 0x08,0x03, 0x06, 0x10, 0x01]
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
@@ -101,7 +100,7 @@ public class asn_Asn1InputStream01{
     @TestCase
     func asn_Asn1InputStream05(): Unit {
 
-         let decodetd: DEREncoder = DEREncoder()
+      
          var buffer: Array<Byte> = []
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
@@ -124,7 +123,7 @@ public class asn_Asn1InputStream01{
     func asn_Asn1InputStream06(): Unit {                                //readValue
 
         try{
-         let decodetd: DEREncoder = DEREncoder()
+     
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
@@ -152,7 +151,7 @@ public class asn_Asn1InputStream01{
     @TestCase
     func asn_Asn1InputStream07(): Unit {                             //readValue
 
-         let decodetd: DEREncoder = DEREncoder()
+   
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
@@ -172,9 +171,9 @@ public class asn_Asn1InputStream01{
 
 
     @TestCase
-    func asn_Asn1InputStream08(): Unit {                                //read   0x01, 0x08, 0x00
+    func asn_Asn1InputStream08(): Unit {                           
 
-         let decodetd: DEREncoder = DEREncoder()
+ 
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
@@ -195,9 +194,8 @@ public class asn_Asn1InputStream01{
 
   
     @TestCase
-    func asn_Asn1InputStream09(): Unit {                                //read
+    func asn_Asn1InputStream09(): Unit {                             
          try{
-         let decodetd: DEREncoder = DEREncoder()
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
@@ -207,18 +205,18 @@ public class asn_Asn1InputStream01{
          var readlength=asn1inputstream.readLength()
          println(readlength)
          var buffer1: Array<Byte> = []                  
-         var read=asn1inputstream.read(buffer1)
+         asn1inputstream.read(buffer1)
          } catch (e: Exception) {
-        @Assert(e.toString(),"IOException: The buffer is Empty.")
+        @Assert(e.toString(),"IllegalArgumentException: The buffer is Empty.")
     } 
          
     }
 
 
     @TestCase
-    func asn_Asn1InputStream10(): Unit {                           //read  
+    func asn_Asn1InputStream10(): Unit {                        
 
-         let decodetd: DEREncoder = DEREncoder()
+      
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
          var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)

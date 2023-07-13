@@ -10,7 +10,7 @@ from asn1 import asn1.encodingrules.der.DEREncoder
 from std import io.*
 
 main() {
-    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    Array<Byte>(10, item: 0)
     let str = ASN1Enumerated(8)
     let sss6 = str.equals(str)
     println(sss6)

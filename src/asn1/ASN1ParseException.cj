@@ -20,7 +20,7 @@ public class ASN1ParseException <: Exception {
     func formatMessage(messageFormat: String, args: Array<ToString>): String {
         var message: String = messageFormat
         for (arg in args) {
-            message = message + args.toString()
+            message = message + arg.toString()
         }
         return message
     }

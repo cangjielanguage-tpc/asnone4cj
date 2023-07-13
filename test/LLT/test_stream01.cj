@@ -15,24 +15,24 @@ main() {
     let src1 = asn.iterator()
     src1.iterator()
     try {
-        let srcc = asn1.readObject()
+        asn1.readObject()
     } catch (e: Exception) {
         println("case pass")
     }
     try {
-        let srcc = src1.next()
+        src1.next()
     } catch (e: Exception) {
         println("case pass")
     }
     try {
-        let src2 = asn.readTag()
+        asn.readTag()
     } catch (e: Exception) {
         println("case pass")
     }
     
     let src3 = asn.readLength()
     var data: Array<Byte> = Array<Byte>()
-    let src4 = asn.read(data)
+    asn.read(data)
     if (src.size != 1) {
         return 1
     }

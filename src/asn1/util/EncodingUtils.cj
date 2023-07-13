@@ -23,6 +23,7 @@ public class EncodingUtils {
     }
 
     private static func minusBinStrEncoding(valueBinStr: String, strBin: String, charBinArr: Array<Char>): BigInt {
+        (valueBinStr,strBin)
         var allNumber: BigInt = BigInt(0)
         for (i in 1..charBinArr.size) {
             var charBinStr: String = charBinArr[i].toString()
@@ -39,6 +40,7 @@ public class EncodingUtils {
 
             // 通过位数转int
             for (k in 0..(charBinArr.size - 1 - i)) {
+                k
                 intFor = intFor * 2
             }
             allNumber = allNumber + intFor
@@ -74,9 +76,11 @@ public class EncodingUtils {
         }
         var stringBuilder: StringBuilder = StringBuilder(valueBinStr1)
         for (i in 0..addLengthBinStr2) {
+            i
             stringBuilder.insert(0, "0")
         }
         for (i in 0..addLengthBinStr3) {
+            i
             stringBuilder.insert(0, "1")
         }
         var valueBinStr2 = stringBuilder.toString()
@@ -93,6 +97,7 @@ public class EncodingUtils {
 
             // 通过位数转int
             for (k in 0..(charBinArr1.size - 1 - i)) {
+                k
                 intFor = intFor * 2
             }
             allNumber1 = allNumber1 + intFor
@@ -111,6 +116,7 @@ public class EncodingUtils {
         var stringBuilder: StringBuilder = StringBuilder(valueBinStr)
         if (addLengthBinStr != 0) {
             for (i in 0..(8 - addLengthBinStr)) {
+                i
                 stringBuilder.insert(0, "0")
             }
         } else {
@@ -122,8 +128,7 @@ public class EncodingUtils {
         var arrStringByte: Array<String> = Array<String>(valueBinStrNew.size / 8, item: "")
 
         // 字符串转字符串数组
-        var charBinArr1: Array<Char> = valueBinStrNew.toArray()
-        var strTemporary: String = ""
+        // var charBinArr1: Array<Char> = valueBinStrNew.toArray()
 
         // 将二进制八位一个字节转换成String列表
         for (i in 0..arrStringByte.size) {
@@ -144,6 +149,7 @@ public class EncodingUtils {
 
                 // 通过位数转int
                 for (k in 0..(charBinArr1.size - 1 - j)) {
+                    k
                     intFor = intFor * 2
                 }
                 allNumber1 = allNumber1 + intFor

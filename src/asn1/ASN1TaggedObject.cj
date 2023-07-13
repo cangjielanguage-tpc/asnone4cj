@@ -62,7 +62,9 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
                 } catch (ioe: IOException) {
                     throw ASN1ParseException(ioe, "Could not parse the inputstream", Array<ToString>())
                 }
-            case Some(v) => return object.getOrThrow()
+            case Some(v) =>
+                v
+                return object.getOrThrow()
         }
     }
 
@@ -85,7 +87,9 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
         b.append("[")
         b.append(tag.toString())
         match (object) {
-            case Some(v) => b.append(",").append(object.getOrThrow())
+            case Some(v) =>
+                (v)
+                b.append(",").append(object.getOrThrow())
             case None => b.append(",<unknown>")
         }
         b.append("]")

@@ -11,10 +11,9 @@ from std import io.*
 from asn1 import asn1.*
 
 main() {
-    let bytesBuf: Array<Byte> = [127, 127, 127]
+    [127, 127, 127]
     let str = ASN1ObjectIdentifier("2.3.1")
-    let dec: BERDecoder = BERDecoder()
-    let tag = BIT_STRING
+    BERDecoder()
     let decs: DEREncoder = DEREncoder()
     let sc = ObjectIdentifierSerializer(decs)
 
@@ -22,12 +21,12 @@ main() {
 
     let wrapped: ByteArrayStream = ByteArrayStream()
     let asn = ASN1OutputStream(decs, wrapped)
-    let sq1 = sc.serialize(str, asn)
+    sc.serialize(str, asn)
 
     let wrapped1: ByteArrayStream = ByteArrayStream()
     let asn1 = ASN1OutputStream(decs, wrapped1)
     asn1.write(6)
-    let sq2 = sc.serialize(str, asn1)
+    sc.serialize(str, asn1)
     println(sq)
     if (sq != 2) {
         return 1

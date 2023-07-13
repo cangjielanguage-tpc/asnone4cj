@@ -31,13 +31,13 @@ main() {
     let src1 = ObjectIdentifierParser(decz)
     try {
         let arr: Array<Byte> = [1,2,3,5,6]
-        let ssc9 = src1.parse(tags, arr)
+        src1.parse(tags, arr)
     }catch(e : Exception){
         println("pass")
     }
     let src2 = ObjectIdentifierSerializer(dec)
     try {
-        let ssc8 = src2.serializedLength(ssc)
+        src2.serializedLength(ssc)
     }catch(e : Exception){
         println("pass")
     }
@@ -46,7 +46,7 @@ main() {
     let wrapped: ByteArrayStream = ByteArrayStream()
     let asn9 = ASN1OutputStream(decodetd,wrapped)
     try {
-        let ssc7 = src2.serialize(ssc,asn9)
+        src2.serialize(ssc,asn9)
     }catch(e : Exception){
         println("pass7")
     }

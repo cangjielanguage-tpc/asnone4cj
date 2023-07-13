@@ -179,24 +179,26 @@ public abstract class ASN1Tag {
         return hashCodeobjs(asn1TagClass, getTag(), asn1Encoding)
     }
 
-    @overflowWrapping
+    @OverflowWrapping
     private func hashCodeobjs(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding): Int32 {
         var result: Int32 = 1
         var asn1Tagcode: Int32 = 0
         var asn1Encode: Int32 = 0
         asn1Tagcode = match (asn1TagClass) {
-            case UNIVERSAL(Byte) => 1590550415
-            case APPLICATION(Byte) => 1058025095
-            case CONTEXT_SPECIFIC(Byte) => 665576141
-            case PRIVATE(Byte) => 1599771323
+            case UNIVERSAL(0) => 1590550415
+            case APPLICATION(0x40) => 1058025095
+            case CONTEXT_SPECIFIC(0x80) => 665576141
+            case PRIVATE(0xc0) => 1599771323
+            case _ =>0
         }
         result = 31 * result + asn1Tagcode
         result = 31 * result + Int32(tag)
-        match (asn1Encoding) {
-            case PRIMITIVE(Byte) => 1058025095
-            case CONSTRUCTED(Byte) => 665576141
+        asn1Encode = match (asn1Encoding) {
+            case PRIMITIVE(0x0) => 1058025095
+            case CONSTRUCTED(0x20) => 665576141
+            case _ =>0
         }
-        result = 31 * result + Int32(tag)
+        result = 31 * result + asn1Encode
         return result
     }
 
@@ -204,15 +206,17 @@ public abstract class ASN1Tag {
         var sb: StringBuilder = StringBuilder()
         sb.append("ASN1Tag[")
         match (asn1TagClass) {
-            case UNIVERSAL(Byte) => sb.append("UNIVERSAL")
-            case APPLICATION(Byte) => sb.append("APPLICATION")
-            case CONTEXT_SPECIFIC(Byte) => sb.append("CONTEXT_SPECIFIC")
-            case PRIVATE(Byte) => sb.append("PRIVATE")
+            case UNIVERSAL(0) => sb.append("UNIVERSAL")
+            case APPLICATION(0x40) => sb.append("APPLICATION")
+            case CONTEXT_SPECIFIC(0x80) => sb.append("CONTEXT_SPECIFIC")
+            case PRIVATE(0xc0) => sb.append("PRIVATE")
+            case _ =>sb.append("")
         }
         sb.append(",")
         match (asn1Encoding) {
-            case PRIMITIVE(Byte) => sb.append("PRIMITIVE")
-            case CONSTRUCTED(Byte) => sb.append("CONSTRUCTED")
+            case PRIMITIVE(0x0) => sb.append("PRIMITIVE")
+            case CONSTRUCTED(0x20) => sb.append("CONSTRUCTED")
+            case _ =>sb.append("")
         }
         sb.append(",")
         sb.append(tag)

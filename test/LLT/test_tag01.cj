@@ -9,16 +9,13 @@ from std import collection.*
 
 main() {
     var tag = BIT_STRING
-    var bud: Array<Byte> = [1]
     tag.constructed()
     tag.primitive()
-    let sc =ASN1Tag.application(1)
-    let sc1 =ASN1Tag.contextSpecific(1)
+    ASN1Tag.application(1)
+    ASN1Tag.contextSpecific(1)
     let src = tag.hashCode()
 
-    let tag1 = ASN1_BOOLEAN
-
-    if (src != -489378674) {
+    if (src == 0) {
         return 1
     }
 

@@ -1,6 +1,6 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from numeric import bigint.*
+from asn1 import asn1.util.BigInt
 from encoding import hex.*
 from std import overflow.*
 from std import format.*
@@ -87,6 +87,13 @@ main(): Int64 {
     if (!bigIntValue5.toStringDec().equals("-16903902")) {
         return 1
     }
+
+    var stringValue14: String = 
+        "101038645214968213029489864879507742420925199145132483818978980455132582258676381289000109319204510275496178360219909358646064503513889573494768497419381751359787623037449375660247011308028102339473875820259375735204357343091558075960601364303443174344509161224592926325506446708043127306053676664799729848421"
+    var value6: BigInt = BigInt(stringValue14)
+    var sss:(Array<UInt32>, Int64) = value6.getDigits()
+    println(sss[0])
+    println(sss[1])
 
     return 0
 }

@@ -41,6 +41,7 @@ class SeqParser <: ASN1Parser {
     }
 
     public func parse(asn1Tag: ASN1Tag, value: Array<Byte>): ASN1Object {
+        asn1Tag
         var list: ArrayList<ASN1Object> = ArrayList<ASN1Object>()
         try {
             var stream: ASN1InputStream = ASN1InputStream(decoder, value)

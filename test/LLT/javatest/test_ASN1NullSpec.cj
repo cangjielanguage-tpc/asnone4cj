@@ -19,7 +19,7 @@ main(): Int64 {
         return 1
     }
     var object: ASN1Null = (asn1Object as ASN1Null).getOrThrow()
-    var anyValue: Any = object.getValue()
+    object.getValue()
     if (object.valueHash() != 0) {
         return 2
     }

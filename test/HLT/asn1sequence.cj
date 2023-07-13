@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn-one/build/asn1
+// 3rd_party_lib:asn1-cj/build/asn1
 from asn1 import asn1.EnumeratedSerializer
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
@@ -31,7 +31,6 @@ public class asn_SeqUencer{
     @TestCase
     func asn_ASN1Null_02(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true), ASN1Integer(1),ASN1Null(),ASN1Integer(2),ASN1ObjectIdentifier("1.3.4"),
          ASN1Enumerated(20),ASN1Boolean(true), ASN1Integer(1),ASN1Null(),ASN1Integer(2),ASN1ObjectIdentifier("1.3.4"),ASN1Enumerated(20)])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
@@ -42,7 +41,6 @@ public class asn_SeqUencer{
     @TestCase
     func asn_ASN1Null_03(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true)])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -53,7 +51,6 @@ public class asn_SeqUencer{
     @TestCase
     func asn_ASN1Null_04(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var ar = ArrayList<ASN1Object>([ASN1Boolean(true), ASN1Integer(1), ASN1Boolean(false), ASN1Integer(2)])
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true),ASN1Sequence(ar)])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
@@ -65,7 +62,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_05(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var ar = ArrayList<ASN1Object>([ASN1Boolean(true), ASN1Integer(1), ASN1Boolean(false), ASN1Integer(2)])
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true),ASN1Sequence(ar),ASN1Boolean(true), ASN1Integer(1),ASN1Null(),ASN1Integer(2),ASN1ObjectIdentifier("1.3.4")])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
@@ -77,7 +73,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_06(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>()
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -87,7 +82,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_07(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Null()])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -97,7 +91,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_08(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1ObjectIdentifier("1.3.4")])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -107,7 +100,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_09(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Enumerated(20)])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -117,7 +109,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_10(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true),ASN1Enumerated(20)])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -127,7 +118,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_11(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true),ASN1ObjectIdentifier("1.3.4")])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -137,7 +127,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_12(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true),ASN1Enumerated(20),ASN1ObjectIdentifier("1.3.4")])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -147,7 +136,6 @@ public class asn_SeqUencer{
      @TestCase
     func asn_ASN1Null_13(): Unit {
         
-         let decz: BERDecoder = BERDecoder()
          var arr = ArrayList<ASN1Object>([ASN1Enumerated(20),ASN1ObjectIdentifier("1.3.4")])
          var asn1sequencer:ASN1Sequence=ASN1Sequence(arr)
          println(asn1sequencer)
@@ -156,7 +144,6 @@ public class asn_SeqUencer{
 
      @TestCase
     func asn_Asn1OutputStream_16(): Unit {
-        let decz: BERDecoder = BERDecoder()
         var arr = ArrayList<ASN1Object>([ASN1Enumerated(20)])
         var set2:ASN1Sequence=ASN1Sequence(arr)
         var iteratorSet2: Iterator<ASN1Object> = set2.iterator()

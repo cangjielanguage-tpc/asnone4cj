@@ -15,9 +15,9 @@ main() {
     let asn = ASN1OutputStream(decodetd,wrapped)
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
    
-    let src = asn.write(bytesBuf)
-    let src1 = asn.write(6)
-    let src2 = asn.write(6)
+    asn.write(bytesBuf)
+    asn.write(6)
+    asn.write(6)
     let tags = INTEGER
     let dec: BERDecoder = BERDecoder()
     let bitss = BooleanParser(dec)
@@ -25,7 +25,7 @@ main() {
     let ssc = bitss.parse(tags,Buf)
     var es: String = ""
     try {
-        let asnob = asn.writeObject(ssc)
+        asn.writeObject(ssc)
     } catch (e: Exception) {
         es = e.toString()
     }

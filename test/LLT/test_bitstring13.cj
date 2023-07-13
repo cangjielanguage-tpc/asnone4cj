@@ -13,8 +13,7 @@ from asn1 import asn1.*
 from std import io.*
 
 main() {
-    let dec: BERDecoder = BERDecoder()
-    let tag = BIT_STRING
+    BERDecoder()
     let decs: DEREncoder = DEREncoder()
 
     let wrapped: ByteArrayStream = ByteArrayStream()
