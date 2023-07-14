@@ -1,5 +1,5 @@
 <div align="center">
-<h1>asn-one</h1>
+<h1>asn1-cj</h1>
 </div>
 
 <p align="center">
@@ -13,7 +13,7 @@
 
 ## <img alt="" src="./doc/assets/readme-icon-introduction.png" style="display: inline-block;" width=3%/> 介绍
 
-ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和 DER 编码规则。
+asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和 DER 编码规则。
 
 ### 特性
 
@@ -71,7 +71,7 @@ ASN-one 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 编译描述和具体shell命令
 
 ```shell
-git clone https://gitee.com/HW-PLLab/asn-one.git;
+git clone https://gitee.com/HW-PLLab/asn1-cj.git;
 git clone https://gitee.com/HW-PLLab/testJekins.git;
 cd okhttp-idling-resource;
 cp -r ../testJekins/src/ci_test .;
@@ -85,11 +85,11 @@ python3 ci_test/main.py test;   ---> 执行 test/LLT 用例
 编译描述和具体cmd命令
 
 ```git bash here
-git clone https://gitee.com/HW-PLLab/asn-one.git;
+git clone https://gitee.com/HW-PLLab/asn1-cj.git;
 ```
 
 ```cmd
-cd asn-one
+cd asn1-cj
 cpm build -V   ---> 编译
 cpm test - V   ---> 执行 test/LLT 用例 
 ```
