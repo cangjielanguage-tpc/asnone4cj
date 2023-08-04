@@ -26,6 +26,9 @@ from std import time.*
 import secodeFuzz.*
 from std import unittest.testmacro.*
 from std import collection.ArrayList
+from std import math.*
+from std import convert.*
+
 func call_fuzz(int64: Int64) {
 
     var asn1integer: ASN1Enumerated= ASN1Enumerated(int64)
