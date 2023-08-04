@@ -1,5 +1,8 @@
 package asn1
 
+from std import math.*
+from std import convert.*
+
 public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
     protected var oid: String
 
