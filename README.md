@@ -72,12 +72,11 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 
 ```shell
 git clone https://gitee.com/HW-PLLab/asn1-cj.git;
-git clone https://gitee.com/HW-PLLab/testJekins.git;
-cd okhttp-idling-resource;
-cp -r ../testJekins/src/ci_test .;
 
-python3 ci_test/main.py build   ---> 编译
-python3 ci_test/main.py test;   ---> 执行 test/LLT 用例 
+cd asn1-cj;
+
+cpm build -V;   ---> 编译
+cpm test - V;   ---> 执行 test/LLT 用例 
 ```
 
 #### Window环境编译
