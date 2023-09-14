@@ -431,7 +431,6 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
-    @FastCall
     private static func additionIsSafe(x: Int64, y: Int64): Bool {
         try {
             x + y
@@ -567,7 +566,6 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         return (rest, newFst)
     }
 
-    @FastCall
     @OverflowWrapping
     private static func negationIsSafe(x: Int64): Bool {
         return x != Int64.Min
@@ -699,7 +697,6 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
-    @FastCall
     private static func multiplicationIsSafe(x: Int64, y: Int64): Bool {
         try {
             x * y
@@ -891,7 +888,6 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         (a0, newFst)
     }
 
-    @FastCall
     @OverflowWrapping
     private static func multD(a0: (Array<UInt32>, Int64), a1: (Array<UInt32>, Int64)): (Array<UInt32>, Int64) {
         sumordered(
@@ -1013,7 +1009,6 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
-    @FastCall
     private static func divisionIsSafe(x: Int64, y: Int64): Bool {
         try {
             x / y
