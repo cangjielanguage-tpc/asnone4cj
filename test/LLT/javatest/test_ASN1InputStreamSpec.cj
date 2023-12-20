@@ -13,7 +13,7 @@ main(): Int64 {
     try {
         asn1InputStream.readObject()
     } catch (e: ASN1ParseException) {
-        if (!((e.message).equals("The indefinite length form is not (yet) supported!"))) {
+        if (e.message!="The indefinite length form is not (yet) supported!") {
             return 1
         }
     }

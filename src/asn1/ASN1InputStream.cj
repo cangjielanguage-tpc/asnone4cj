@@ -1,6 +1,7 @@
 package asn1
 
 from std import io.InputStream
+from std import io.Seekable
 from std import log.*
 
 public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
@@ -10,9 +11,13 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     private var decoder: ASN1Decoder
 
     public var lengths: Int64
+
     public init(decoder: ASN1Decoder, wrapped: InputStream) {
         this.input = wrapped
-        this.lengths = wrapped.length
+        this.lengths = match (wrapped as Seekable) {
+            case Some(v) => v.remainLength
+            case None => -1
+        }
         this.decoder = decoder
     }
 
@@ -62,7 +67,10 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     }
 
     protected func lengthData(): Int64 {
-        return input.length
+        return match (input as Seekable) {
+            case Some(v) => v.remainLength
+            case None => -1
+        }
     }
 }
 

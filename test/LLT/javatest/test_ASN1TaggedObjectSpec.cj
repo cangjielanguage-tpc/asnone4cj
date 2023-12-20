@@ -123,11 +123,10 @@ main(): Int64 {
         var object8: ASN1TaggedObject = (asn1Object8 as ASN1TaggedObject).getOrThrow()
         object8.getObject()
     } catch (e: ASN1ParseException) {
-        if (!((e.message).equals(
-            "Unknown ASN.1 tagUnable to parse the explicit Tagged Object with %s, it might be implicit"))) {
+        if (e.message != "Unknown ASN.1 tagUnable to parse the explicit Tagged Object with %s, it might be implicit") {
             return 17
         }
     }
-    
+
     return 0
 }

@@ -1,7 +1,5 @@
 package asn1
 
-from std import collection.StringBuilder
-
 public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
     public var object: ?ASN1Object
     protected var bytes: Array<Byte>
@@ -89,7 +87,8 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
         match (object) {
             case Some(v) =>
                 (v)
-                b.append(",").append(object.getOrThrow())
+                b.append(",")
+                b.append(object.getOrThrow())
             case None => b.append(",<unknown>")
         }
         b.append("]")
