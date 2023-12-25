@@ -1,6 +1,5 @@
 package asn1.util
 
-from std import collection.StringBuilder
 from std import math.*
 from std import convert.*
 
@@ -33,6 +32,11 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
 
     private static let smallInts: Array<BigInt> = Array<BigInt>(100, {i => BigInt(i)})
 
+    /*
+     * Construction method
+     *
+     * @param n Int64 value
+     */
     public init(n: Int64) {
         intVal = Some(n)
         sign = n >= 0
@@ -78,6 +82,11 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * Construction method
+     *
+     * @param x BigInt value
+     */
     public init(x: BigInt) {
         sign = x.getSign()
         if (x.isInt()) {
@@ -87,6 +96,11 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * Construction method
+     *
+     * @param str String value
+     */
     public init(str: String) {
         match (Int64.tryParse(str)) {
             case Some(n) =>
@@ -94,15 +108,15 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
                 sign = (n >= 0)
             case None =>
                 if (str.isEmpty()) {
-                    throw Exception("")
+                    throw IllegalArgumentException("An empty String cannot be passed in.")
                 }
-                if (str.equals("-") || str.equals("+")) {
-                    throw Exception("")
+                if (str=="-" || str=="+") {
+                    throw IllegalArgumentException("Invalid String cannot be passed in.")
                 }
                 sign = true
                 var start: Int64 = 0
-                let len: Int64 = str.utf8View.size
-                let strUtf8 = str.utf8View
+                let len: Int64 = str.toArray().size
+                let strUtf8 = str.toArray()
                 var size: Int64 = len
                 var ch: UInt8 = strUtf8[0]
                 if (ch == b'-') {
@@ -127,10 +141,10 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
                     var d1: Int64 = 0
                     match {
                         case b'0' <= ch && ch <= b'9' => d1 = Int64(ch - b'0')
-                        case _ => throw Exception("")
+                        case _ => throw IllegalArgumentException("Invalid String cannot be passed in.")
                     }
                     if (d1 >= flag) {
-                        throw Exception("")
+                        throw IllegalArgumentException("Invalid String cannot be passed in.")
                     }
                     di = di * flag + d1
                     i++
@@ -160,11 +174,36 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * Construction method
+     *
+     * @param s sign value
+     * @param ds digits value
+     */
+    private init(s: Bool, ds: (Array<UInt32>, Int64)) {
+        if (ds[0].size == 0) {
+            throw IllegalArgumentException("An empty Array<UInt32> cannot be passed in.")
+        }
+        sign = s
+        digits = ds
+        intVal = signDigsToOptionInt(s, ds)
+    }
+
+    /*
+     * Obtain sign, where true is a positive value and false is a negative value
+     *
+     * @return sign value
+     */
     @OverflowWrapping
     public func getSign(): Bool {
         sign
     }
 
+    /*
+     * get digits
+     *
+     * @return digits value
+     */
     @OverflowWrapping
     public func getDigits(): (Array<UInt32>, Int64) {
         match (digits) {
@@ -174,12 +213,23 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         digits.getOrThrow()
     }
 
+    /*
+     * Obtain replicated digits
+     *
+     * @return digits value
+     */
     @OverflowWrapping
-    public func copyDigits(): (Array<UInt32>, Int64) {
+    private func copyDigits(): (Array<UInt32>, Int64) {
         let (a, fst) = getDigits()
         (a.clone(), fst)
     }
 
+    /*
+     * Get int value, exceeding Int64. Max truncation
+     *
+     * @return int value
+     * exception BigIntException - BigInt conversion to int64 failed, possibly exceeding the int64 range。
+     */
     @OverflowWrapping
     public func toInt(): Int64 {
         toIntUnSafe()
@@ -214,11 +264,21 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * Get int value, may be empty
+     *
+     * @return int value
+     */
     @OverflowWrapping
     public func checkedToInt(): Option<Int64> {
         intVal
     }
 
+    /*
+     * Get Decimal String
+     *
+     * @return Decimal String
+     */
     @OverflowWrapping
     public func toStringDec(): String {
         match (checkedToInt()) {
@@ -227,32 +287,42 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
                 let b: Int64 = (10 ** 9)
                 var q: BigInt = abs()
                 var r: BigInt = valueOf(0)
-                var str: StringBuilder = StringBuilder()
+                var str: LinkedList<String> = LinkedList<String>()
                 var n: Int64 = -1
                 while (!q.isZero()) {
                     if (n >= 0) {
-                        str.insert(0, n.toString().padLeft(9, paddingChar: '0'))
+                        str.prepend(n.toString().padLeft(9, padding: "0"))
                     }
                     let qr: (BigInt, BigInt) = q.div(b)
                     q = qr[0]
                     r = qr[1]
                     n = r.toInt()
                 }
-                str.insert(0, n.toString())
+                str.prepend(n.toString())
                 if (!sign) {
-                    str.insert(0, "-")
+                    str.prepend("-")
                 }
-                return str.toString()
+                var buff: StringBuilder = StringBuilder()
+                for (item in str) {
+                    buff.append(item)
+                }
+                str.clear()
+                return buff.toString()
         }
     }
 
+    /*
+     * Get hexadecimal string
+     *
+     * @return hexadecimal string
+     */
     @OverflowWrapping
     public func toStringHex(): String {
         toStringPo2(4, {n: Int64 => toHexDig(n)})
     }
 
     @OverflowWrapping
-    public func toHexDig(n: Int64): String {
+    private func toHexDig(n: Int64): String {
         if (n >= 0 && n <= 9) {
             n.toString()
         } else {
@@ -268,11 +338,21 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * Get octal string
+     *
+     * @return octal string
+     */
     @OverflowWrapping
     public func toStringOct(): String {
         toStringPo2(3, {n: Int64 => n.toString()})
     }
 
+    /*
+     * Get binary string
+     *
+     * @return binary string
+     */
     @OverflowWrapping
     public func toStringBin(): String {
         toStringPo2(1, {n: Int64 => n.toString()})
@@ -286,29 +366,48 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         let b: Int64 = 2 ** UInt64(e)
         var q: (Array<UInt32>, Int64) = getDigits()
         var r: Int64 = 0
+        var arr: LinkedList<String> = LinkedList<String>()
         var subStr: StringBuilder = StringBuilder()
         while (!eqI(q, 0)) {
             let qr: ((Array<UInt32>, Int64), Int64) = divI(q, b)
             q = qr[0]
             r = qr[1]
-            subStr.insert(0, f(r))
+            arr.prepend(f(r))
         }
         if (!sign) {
-            subStr.insert(0, '-')
+            arr.prepend("-")
+        }
+        for (item in arr) {
+            subStr.append(item)
         }
         return subStr.toString()
     }
 
+    /*
+     * Get String, decimal content
+     *
+     * @return String
+     */
     @OverflowWrapping
     public func toString(): String {
         toStringDec()
     }
 
+    /*
+     * Obtain the hashCode value of toString()
+     *
+     * @return hashCode value
+     */
     @OverflowWrapping
     public func hashCode(): Int64 {
         toString().hashCode()
     }
 
+    /*
+     * Obtain the absolute value of BigInt
+     *
+     * @return Absolute value of BigInt
+     */
     @OverflowWrapping
     public func abs(): BigInt {
         match (checkedToInt()) {
@@ -322,6 +421,11 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * Get negative value of BigInt
+     *
+     * @return Negative value of BigInt
+     */
     @OverflowWrapping
     public operator func -(): BigInt {
         negate()
@@ -341,13 +445,25 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * BigInt addition
+     *
+     * @param x BigInt value
+     * @return Additive result
+     */
     @OverflowWrapping
     public operator func +(x: BigInt): BigInt {
         add(x)
     }
 
+    /*
+     * BigInt addition
+     *
+     * @param x BigInt value
+     * @return Additive result
+     */
     @OverflowWrapping
-    public func add(x: BigInt): BigInt {
+    private func add(x: BigInt): BigInt {
         if (x.isZero()) {
             return this
         } else if (isZero()) {
@@ -378,18 +494,35 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * BigInt addition
+     *
+     * @param x Int64 value
+     * @return Additive result
+     */
     @OverflowWrapping
     public operator func +(n: Int64): BigInt {
         add(n)
     }
 
+    /*
+     * BigInt addition
+     *
+     * @param x Int64 value
+     * @return Additive result
+     */
     @OverflowWrapping
-    public func add(n: Int64): BigInt {
-        if (isInt() && additionIsSafe(toInt(), n)) {
-            valueOf(toInt() + n)
+    private func add(n: Int64): BigInt {
+        if (isInt()) {
+            if (additionIsSafe(toInt(), n)) {
+                valueOf(toInt() + n)
+            }
         }
         if (n == 0) {
             return this
+        }
+        if (n == Int64.Min) {
+            return add(Int64.Min + 1).add(-1)
         }
         if (n < 0) {
             if (sign) {
@@ -413,21 +546,37 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * BigInt Subtraction
+     *
+     * @param x BigInt value
+     * @return Subtractive result
+     */
     @OverflowWrapping
     public operator func -(x: BigInt): BigInt {
         add(-x)
     }
 
+    /*
+     * BigInt Subtraction
+     *
+     * @param x Int64 value
+     * @return Subtractive result
+     */
     @OverflowWrapping
     public operator func -(n: Int64): BigInt {
-        add(-n)
+        if (n == Int64.Min) {
+            add(Int64.Max).add(1)
+        } else {
+            add(-n)
+        }
     }
 
     @OverflowWrapping
     private func toIntUnSafe(): Int64 {
         match (intVal) {
             case Some(n) => n
-            case None => throw Exception("")
+            case None => throw BigIntException("BigInt conversion to int64 failed, possibly exceeding the int64 range")
         }
     }
 
@@ -450,6 +599,12 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * BigInt multiplication
+     *
+     * @param x BigInt value
+     * @return The result of multiplication
+     */
     @OverflowWrapping
     public operator func *(x: BigInt): BigInt {
         mult(x)
@@ -470,15 +625,29 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * BigInt multiplication
+     *
+     * @param x Int64 value
+     * @return The result of multiplication
+     */
     @OverflowWrapping
     public operator func *(n: Int64): BigInt {
         mult(n)
     }
 
+    /*
+     * BigInt multiplication
+     *
+     * @param x Int64 value
+     * @return The result of multiplication
+     */
     @OverflowWrapping
-    public func mult(n: Int64): BigInt {
-        if (isInt() && multiplicationIsSafe(toInt(), n)) {
-            return valueOf(toInt() * n)
+    private func mult(n: Int64): BigInt {
+        if (isInt()) {
+            if (multiplicationIsSafe(toInt(), n)) {
+                return valueOf(toInt() * n)
+            }
         }
         if (n == 0) {
             return valueOf(0)
@@ -571,18 +740,16 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         return x != Int64.Min
     }
 
+    /*
+     * BigInt division
+     *
+     * @param x BigInt value
+     * @return The result of division
+     * exception ArithmeticException - It is possible that an exception occurred with a divisor of 0.
+     */
     @OverflowWrapping
     public operator func /(x: BigInt): BigInt {
         div(x)[0]
-    }
-
-    public init(s: Bool, ds: (Array<UInt32>, Int64)) {
-        if (ds[0].size == 0) {
-            throw Exception("")
-        }
-        sign = s
-        digits = ds
-        intVal = signDigsToOptionInt(s, ds)
     }
 
     @OverflowWrapping
@@ -789,7 +956,7 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
     @OverflowWrapping
     private static func divI(a_: (Array<UInt32>, Int64), n: Int64): ((Array<UInt32>, Int64), Int64) {
         if (n == 0) {
-            throw Exception("")
+            throw BigIntException("BigInt divI error")
         }
         if (n == 1) {
             return (a_, 0)
@@ -840,17 +1007,28 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         return (quot, rem)
     }
 
+    /*
+     * BigInt Shift Left
+     *
+     * @param n Shift Value Left
+     * @return Left shift result
+     * exception ArithmeticException - It is possible that an exception occurs when the offset is negative.
+     */
     @OverflowWrapping
     public func shiftLeft(n: Int64): BigInt {
         if (n < 0) {
-            throw Exception("")
+            throw ArithmeticException("BigInt shiftLeft by negative argument is undefined!")
         }
-        if (n < 64 && isInt() && multiplicationIsSafe(toInt(), 1 << n)) {
-            return valueOf(toInt() * (1 << n))
-        } else {
-            let (d, m) = (n / baseLength, n % baseLength)
-            return BigInt(sign, multD(getDigits(), 2 ** UInt64(m), d))
+        if (n < 64) {
+            if (isInt()) {
+                if (multiplicationIsSafe(toInt(), 1 << n)) {
+                    return valueOf(toInt() * (1 << n))
+                }
+            }
         }
+
+        let (d, m) = (n / baseLength, n % baseLength)
+        return BigInt(sign, multD(getDigits(), 2 ** UInt64(m), d))
     }
 
     @OverflowWrapping
@@ -938,6 +1116,13 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         multD(a, d, 0)
     }
 
+    /*
+     * BigInt division
+     *
+     * @param n Int64 value
+     * @return The result of division
+     * exception ArithmeticException - It is possible that an exception occurred with a divisor of 0.
+     */
     @OverflowWrapping
     public operator func /(n: Int64): BigInt {
         div(n)[0]
@@ -945,6 +1130,9 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
 
     @OverflowWrapping
     private func div(n: Int64): (BigInt, BigInt) {
+        if (n == 0) {
+            throw ArithmeticException("Divided by zero !")
+        }
         if (eq(n)) {
             return (valueOf(1), valueOf(0))
         }
@@ -953,8 +1141,10 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         if (isBool) {
             return (valueOf(0), this)
         }
-        if (isInt() && divisionIsSafe(toInt(), n)) {
-            (valueOf(toInt() / n), valueOf(toInt() % n))
+        if (isInt()) {
+            if (divisionIsSafe(toInt(), n)) {
+                (valueOf(toInt() / n), valueOf(toInt() % n))
+            }
         }
         if (n == Int64.Min) {
             return div(BigInt(n))
@@ -975,6 +1165,9 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
 
     @OverflowWrapping
     private func div(x: BigInt): (BigInt, BigInt) {
+        if (x.isZero()) {
+            throw ArithmeticException("Divided by zero !")
+        }
         if (eq(x)) {
             return (valueOf(1), valueOf(0))
         } else if (sign) {
@@ -1103,11 +1296,23 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         }
     }
 
+    /*
+     * ==Method
+     *
+     * @param x BigInt value
+     * @return Equal or not
+     */
     @OverflowWrapping
     public operator func ==(x: BigInt): Bool {
         return eq(x)
     }
 
+    /*
+     * !=Method
+     *
+     * @param x BigInt value
+     * @return Is it unequal
+     */
     @OverflowWrapping
     public operator func !=(x: BigInt): Bool {
         return !eq(x)
@@ -1140,30 +1345,61 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         return (rest, 0)
     }
 
+    /*
+     * >=Method
+     *
+     * @param x BigInt value
+     * @return Is it greater than or equal to
+     */
     @OverflowWrapping
     public operator func >=(x: BigInt): Bool {
         gte(x)
     }
 
+    /*
+     * <=Method
+     *
+     * @param x BigInt value
+     * @return Is it less than or equal to
+     */
     @OverflowWrapping
     public operator func <=(x: BigInt): Bool {
         x.gte(this)
     }
 
+    /*
+     * >=Method
+     *
+     * @param x Int64 value
+     * @return Is it greater than or equal to
+     */
     @OverflowWrapping
     public operator func >=(n: Int64): Bool {
         gte(n)
     }
 
+    /*
+     * <=Method
+     *
+     * @param x Int64 value
+     * @return Is it less than or equal to
+     */
     @OverflowWrapping
     public operator func <=(n: Int64): Bool {
         !(this > n)
     }
 
+    /*
+     * BigInt Shift Right
+     *
+     * @param n Shift Value Right
+     * @return Result of Right Shift
+     * exception ArithmeticException - It is possible that an exception occurs when the offset is negative.
+     */
     @OverflowWrapping
     public func shiftRight(n: Int64): BigInt {
         if (n < 0) {
-            throw Exception("")
+            throw ArithmeticException("BigInt shiftRight by negative argument is undefined!")
         }
         if (n <= 61) {
             return this / (1 << n)
@@ -1171,33 +1407,62 @@ public class BigInt <: Equatable<BigInt> & Hashable & ToString {
         return this / valueOf(n).powerOf2()
     }
 
+    /*
+     * <Method
+     *
+     * @param x BigInt value
+     * @return Is it less than
+     */
     @OverflowWrapping
     public operator func <(x: BigInt): Bool {
         x.gt(this)
     }
 
+    /*
+     * >Method
+     *
+     * @param x BigInt value
+     * @return Is it greater than
+     */
     @OverflowWrapping
     public operator func >(x: BigInt): Bool {
         gt(x)
     }
 
+    /*
+     * >Method
+     *
+     * @param x Int64 value
+     * @return Is it greater than
+     */
     @OverflowWrapping
     public operator func >(n: Int64): Bool {
         gt(n)
     }
 
+    /*
+     * <Method
+     *
+     * @param x Int64 value
+     * @return Is it less than
+     */
     @OverflowWrapping
     public operator func <(n: Int64): Bool {
         !gte(n)
     }
 
+    /*
+     * Sign negate
+     *
+     * @return The inverse value of sign
+     */
     @OverflowWrapping
     public func isNegative(): Bool {
         !sign
     }
 
     @OverflowWrapping
-    public func powerOf2(): BigInt {
+    private func powerOf2(): BigInt {
         if (isNegative()) {
             return valueOf(0)
         }

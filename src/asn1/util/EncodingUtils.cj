@@ -1,21 +1,27 @@
 package asn1.util
 
+/*
+* Encoding
+* Step 1: Convert the data into binary strings
+* Step 2: Distinguish the positive and negative values of incoming data
+* Step 3: Perform a complement operation on negative numbers and convert them into an Array<Byte>array
+* Step 4: Convert positive numbers to Array<Byte>arrays
+*/
 public class EncodingUtils {
-    /**
-     * 编码
-     * 第一步：将数据转换成二进制字符串
-     * 第二步：区分传入数据的正负值
-     * 第三步：负数进行补码操作，在转换成Array<Byte>数组
-     * 第四步：正数转换成Array<Byte>数组
-     */
+    /*
+    * Convert BigInt to Array<Byte>
+    *
+    * @param value BigInt
+    * @return Byte array
+    */
     public static func asn1Encoded(value: BigInt): Array<Byte> {
-        // 将BigInt转换成二进制字符串
+        // Convert BigInt to binary string
         var valueBinStr: String = value.toStringBin()
 
-        // 字符串转字符串数组
-        var charBinArr: Array<Char> = valueBinStr.toArray()
+        // String to String Array
+        var charBinArr: Array<Char> = valueBinStr.toRuneArray()
         var strBin: String = charBinArr[0].toString()
-        if (strBin.equals("-")) {
+        if (strBin=="-") {
             return minusEncoding(valueBinStr, strBin, charBinArr)
         } else {
             return positiveEncoding(valueBinStr, strBin)
@@ -23,23 +29,33 @@ public class EncodingUtils {
     }
 
     private static func minusBinStrEncoding(valueBinStr: String, strBin: String, charBinArr: Array<Char>): BigInt {
-        (valueBinStr,strBin)
+        (valueBinStr, strBin, charBinArr)
         var allNumber: BigInt = BigInt(0)
-        for (i in 1..charBinArr.size) {
-            var charBinStr: String = charBinArr[i].toString()
 
-            // 反码
+        // How many bits are missing from each 8-bit byte of raw data
+        var addLengthBinStr: Int64 = 8 - (valueBinStr.size - 1) % 8
+        var stringBuilder: StringBuilder = StringBuilder("-")
+        for (_ in 0..addLengthBinStr) {
+            stringBuilder.append("0")
+        }
+        var strArr:String = String(valueBinStr.toRuneArray().slice(1,valueBinStr.size - 1))
+        stringBuilder.append(strArr)
+        var str = stringBuilder.toString()
+        var charBinArrNew: Array<Char> = str.toRuneArray()
+        for (i in 1..charBinArrNew.size) {
+            var charBinStr: String = charBinArrNew[i].toString()
+
+            // Inverse code
             match (charBinStr) {
                 case "0" => charBinStr = "1"
                 case "1" => charBinStr = "0"
                 case _ => ()
             }
-
             var intNumber: Int64 = Int64.parse(charBinStr)
             var intFor: BigInt = BigInt(intNumber)
 
-            // 通过位数转int
-            for (k in 0..(charBinArr.size - 1 - i)) {
+            // Convert to int by number of digits
+            for (k in 0..(charBinArrNew.size - 1 - i)) {
                 k
                 intFor = intFor * 2
             }
@@ -52,42 +68,12 @@ public class EncodingUtils {
     private static func minusEncoding(valueBinStr: String, strBin: String, charBinArr: Array<Char>): Array<Byte> {
         var allNumber: BigInt = minusBinStrEncoding(valueBinStr, strBin, charBinArr)
 
-        // 将BigInt转换成二进制字符串
+        // Convert BigInt to binary string
         var valueBinStr1: String = allNumber.toStringBin()
 
-        var valueBinStr0 = valueBinStr.slice(1, valueBinStr.size - 1)
-
-        // 二进制 八位一个字节 还缺失多少位数
-        // 原始数据8位一个字节还缺多少位
-        var addLengthBinStr: Int64 = valueBinStr0.size % 8
-
-        // 转换数据8位一个字节还缺多少位
-        var addLengthBinStr1: Int64 = valueBinStr1.size % 8
-
-        // 缺失的位数,需要补0
-        var addLengthBinStr2: Int64 = addLengthBinStr - addLengthBinStr1
-
-        // 缺失的位数,需要补1
-        var addLengthBinStr3: Int64
-        if (addLengthBinStr == 0) {
-            addLengthBinStr3 = 0
-        } else {
-            addLengthBinStr3 = 8 - addLengthBinStr
-        }
-        var stringBuilder: StringBuilder = StringBuilder(valueBinStr1)
-        for (i in 0..addLengthBinStr2) {
-            i
-            stringBuilder.insert(0, "0")
-        }
-        for (i in 0..addLengthBinStr3) {
-            i
-            stringBuilder.insert(0, "1")
-        }
-        var valueBinStr2 = stringBuilder.toString()
-
-        // 重新计算数据
-        // 字符串转字符串数组
-        var charBinArr1: Array<Char> = valueBinStr2.toArray()
+        // Recalculate data
+        // String to String Array
+        var charBinArr1: Array<Char> = valueBinStr1.toRuneArray()
         var allNumber1: BigInt = BigInt(0)
 
         for (i in 0..charBinArr1.size) {
@@ -95,7 +81,7 @@ public class EncodingUtils {
             var intNumber: Int64 = Int64.parse(charBinStr)
             var intFor: BigInt = BigInt(intNumber)
 
-            // 通过位数转int
+            // Convert to int by number of digits
             for (k in 0..(charBinArr1.size - 1 - i)) {
                 k
                 intFor = intFor * 2
@@ -103,51 +89,57 @@ public class EncodingUtils {
             allNumber1 = allNumber1 + intFor
         }
 
-        // 将BigIint转成十六进制的字符串
+        // Convert BigIint to a hexadecimal string
         var stringValue: String = allNumber1.toStringHex()
         if (stringValue.size.throwingMod(2) != 0) {
             stringValue = "0" + stringValue
         }
-        return fromHexString(stringValue).getOrThrow()
+        var arrayByte: Array<Byte> = fromHexString(stringValue).getOrThrow()
+        if (arrayByte.size >= 2) {
+            if (arrayByte[0] == 255 && arrayByte[1] > 127) {
+                // The first item is 255, and when the second item is greater than 127, the supplementary 255 needs to be removed.
+                var list: Array<Byte> = Array<Byte>(arrayByte.size - 1, item: 0)
+                arrayByte.copyTo(list, 1, 0, list.size)
+                return list
+            }
+        }
+        return arrayByte
     }
 
     private static func positiveEncoding(valueBinStr: String, strBin: String): Array<Byte> {
         var addLengthBinStr: Int64 = valueBinStr.size % 8
-        var stringBuilder: StringBuilder = StringBuilder(valueBinStr)
+        var stringBuilder: StringBuilder = StringBuilder()
         if (addLengthBinStr != 0) {
-            for (i in 0..(8 - addLengthBinStr)) {
-                i
-                stringBuilder.insert(0, "0")
+            for (_ in 0..(8 - addLengthBinStr)) {
+                stringBuilder.append("0")
             }
         } else {
-            if (strBin.equals("1")) {
-                stringBuilder.insert(0, "00000000")
+            if (strBin=="1") {
+                stringBuilder.append("00000000")
             }
         }
+        stringBuilder.append(valueBinStr)
         var valueBinStrNew: String = stringBuilder.toString()
         var arrStringByte: Array<String> = Array<String>(valueBinStrNew.size / 8, item: "")
-
-        // 字符串转字符串数组
-        // var charBinArr1: Array<Char> = valueBinStrNew.toArray()
-
-        // 将二进制八位一个字节转换成String列表
+        
+        // Convert binary octets into a String list
         for (i in 0..arrStringByte.size) {
-            arrStringByte[i] = valueBinStrNew.substring((i * 8), 8)
+            arrStringByte[i] = valueBinStrNew[(i * 8)..(i * 8)+8]
         }
         var arrByte: Array<Byte> = Array<Byte>(arrStringByte.size, item: 0)
         for (i in 0..arrStringByte.size) {
             var valueBinStr1: String = arrStringByte[i]
 
-            // 重新计算数据
-            // 字符串转字符串数组
-            var charBinArr1: Array<Char> = valueBinStr1.toArray()
+            // Recalculate data
+            // String to String Array
+            var charBinArr1: Array<Char> = valueBinStr1.toRuneArray()
             var allNumber1: BigInt = BigInt(0)
             for (j in 0..charBinArr1.size) {
                 var charBinStr: String = charBinArr1[j].toString()
                 var intNumber: Int64 = Int64.parse(charBinStr)
                 var intFor: BigInt = BigInt(intNumber)
 
-                // 通过位数转int
+                // Convert to int by number of digits
                 for (k in 0..(charBinArr1.size - 1 - j)) {
                     k
                     intFor = intFor * 2
@@ -155,7 +147,7 @@ public class EncodingUtils {
                 allNumber1 = allNumber1 + intFor
             }
 
-            // 将BigIint转成十进制的字符串
+            // Convert BigIint to a decimal string
             var stringValue: String = allNumber1.toStringDec()
             var intValue: Int64 = Int64.parse(stringValue)
             arrByte[i] = UInt8(intValue)

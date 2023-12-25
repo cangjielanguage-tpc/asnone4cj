@@ -21,7 +21,7 @@ main(): Int64 {
     var object: ASN1ObjectIdentifier = (asn1Object as ASN1ObjectIdentifier).getOrThrow()
     var anyObject: Any = object.getValue()
     var anyString: String = (anyObject as String).getOrThrow()
-    if (!anyString.equals("2.5.4.3")) {
+    if (anyString!="2.5.4.3") {
         return 2
     }
 
@@ -36,7 +36,7 @@ main(): Int64 {
     var object1: ASN1ObjectIdentifier = (asn1Object1 as ASN1ObjectIdentifier).getOrThrow()
     var anyObject1: Any = object1.getValue()
     var anyString1: String = (anyObject1 as String).getOrThrow()
-    if (!anyString1.equals("1.3.6.1.4.1.311.21.20")) {
+    if (anyString1!="1.3.6.1.4.1.311.21.20") {
         return 4
     }
 
@@ -51,7 +51,7 @@ main(): Int64 {
     var object2: ASN1ObjectIdentifier = (asn1Object2 as ASN1ObjectIdentifier).getOrThrow()
     var anyObject2: Any = object2.getValue()
     var anyString2: String = (anyObject2 as String).getOrThrow()
-    if (!anyString2.equals("1.2.840.113549.1.7.2")) {
+    if (anyString2!="1.2.840.113549.1.7.2") {
         return 6
     }
 

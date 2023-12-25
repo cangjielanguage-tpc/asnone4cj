@@ -23,7 +23,7 @@ main(): Int64 {
     var valueByteArr1: Array<Byte> = EncodingUtils.asn1Encoded(value1)
     println(valueByteArr1)
     if (valueByteArr1 != valueArr1) {
-        return 1
+        return 2
     }
 
     // [0xfe][254]
@@ -32,7 +32,7 @@ main(): Int64 {
     var valueByteArr01: Array<Byte> = EncodingUtils.asn1Encoded(value01)
     println(valueByteArr01)
     if (valueByteArr01 != value01Arr) {
-        return 1
+        return 3
     }
 
     // [0x00, 0xfe][0, 254]
@@ -41,7 +41,7 @@ main(): Int64 {
     var valueByteArr001: Array<Byte> = EncodingUtils.asn1Encoded(value001)
     println(valueByteArr001)
     if (valueByteArr001 != value001Arr) {
-        return 1
+        return 4
     }
 
     // [0xff][255]
@@ -50,7 +50,7 @@ main(): Int64 {
     var valueByteArr0001: Array<Byte> = EncodingUtils.asn1Encoded(value0001)
     println(valueByteArr0001)
     if (valueByteArr0001 != value0001Arr) {
-        return 1
+        return 5
     }
 
     // [0xfe, 0xfe][254, 254]
@@ -59,7 +59,7 @@ main(): Int64 {
     var valueByteArr00001: Array<Byte> = EncodingUtils.asn1Encoded(value00001)
     println(valueByteArr00001)
     if (valueByteArr00001 != value00001Arr) {
-        return 1
+        return 6
     }
 
     // [0x01, 0x00][1, 0]
@@ -68,7 +68,7 @@ main(): Int64 {
     var valueByteArr2: Array<Byte> = EncodingUtils.asn1Encoded(value2)
     println(valueByteArr2)
     if (valueByteArr2 != value2Arr) {
-        return 1
+        return 7
     }
 
     // [0xee, 0x72][238, 114]
@@ -77,7 +77,7 @@ main(): Int64 {
     var valueByteArr3: Array<Byte> = EncodingUtils.asn1Encoded(value3)
     println(valueByteArr3)
     if (valueByteArr3 != value3Arr) {
-        return 1
+        return 8
     }
 
     // [0x01, 0x01, 0x01, 0x72][1, 1, 1, 114]
@@ -86,7 +86,7 @@ main(): Int64 {
     var valueByteArr4: Array<Byte> = EncodingUtils.asn1Encoded(value4)
     println(valueByteArr4)
     if (valueByteArr4 != value4Arr) {
-        return 1
+        return 9
     }    
 
     // [0xfe, 0xfe, 0x11, 0x22][254, 254, 17, 34]
@@ -95,7 +95,7 @@ main(): Int64 {
     var valueByteArr5: Array<Byte> = EncodingUtils.asn1Encoded(value5)
     println(valueByteArr5)
     if (valueByteArr5 != value5Arr) {
-        return 1
+        return 10
     }
 
     return 0

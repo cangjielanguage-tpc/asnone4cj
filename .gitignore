@@ -16,3 +16,4 @@ tmp/
 temp_ci_lib/
 .cjpm-history
 module-lock.json
+*.macrocall

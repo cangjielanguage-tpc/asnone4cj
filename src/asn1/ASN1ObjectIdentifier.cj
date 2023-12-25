@@ -48,12 +48,14 @@ public class ObjectIdentifierParser <: ASN1Parser {
         var firstTwo: Byte = dataArr[0]
         var stringBuilder: StringBuilder = StringBuilder()
         stringBuilder.append(firstTwo / 40)
-        stringBuilder.append('.').append(firstTwo % 40)
-        while (byteArrayStream.length > 0) {
+        stringBuilder.append('.')
+        stringBuilder.append(firstTwo % 40)
+        while (byteArrayStream.remainLength > 0) {
             byteArrayStream.read(dataArr)
             var x: Byte = dataArr[0]
             if (x < 127) {
-                stringBuilder.append('.').append(x)
+                stringBuilder.append('.')
+                stringBuilder.append(x)
             } else {
                 var vInt: Int64 = Int64(x) & 0x7f
                 var v: BigInt = BigInt(vInt)
@@ -65,7 +67,8 @@ public class ObjectIdentifierParser <: ASN1Parser {
                     var c: BigInt = r + b
                     v = c
                 } while (x > 127)
-                stringBuilder.append('.').append(Int64.parse(v.toStringDec()))
+                stringBuilder.append('.')
+                stringBuilder.append(Int64.parse(v.toStringDec()))
             }
         }
         return ASN1ObjectIdentifier(stringBuilder.toString(), value)

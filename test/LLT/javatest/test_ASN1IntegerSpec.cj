@@ -24,7 +24,7 @@ main(): Int64 {
     var anyValue: Any = object.getValue()
     var bigValue: BigInt = (anyValue as BigInt).getOrThrow()
     var intValue: String = bigValue.toStringDec()
-    if (!(intValue.equals("3"))) {
+    if (intValue!="3") {
         return 2
     }
     var intHashcode: Int64 = object.valueHash()
@@ -44,7 +44,7 @@ main(): Int64 {
     var anyValue0: Any = object0.getValue()
     var bigValue0: BigInt = (anyValue0 as BigInt).getOrThrow()
     var intValue0: String = bigValue0.toStringDec()
-    if (!(intValue0.equals("-128"))) {
+    if (intValue0!="-128") {
         return 5
     }
     var intHashcode0: Int64 = object0.valueHash()
@@ -64,7 +64,7 @@ main(): Int64 {
     var anyValue1: Any = object1.getValue()
     var bigValue1: BigInt = (anyValue1 as BigInt).getOrThrow()
     var intValue1: String = bigValue1.toStringDec()
-    if (!(intValue1.equals("128"))) {
+    if (intValue1!="128") {
         return 8
     }
     var intHashcode1: Int64 = object1.valueHash()
@@ -84,7 +84,7 @@ main(): Int64 {
     var anyValue2: Any = object2.getValue()
     var bigValue2: BigInt = (anyValue2 as BigInt).getOrThrow()
     var intValue2: String = bigValue2.toStringDec()
-    if (!(intValue2.equals("-125"))) {
+    if (intValue2!="-125") {
         return 11
     }
     var intHashcode2: Int64 = object2.valueHash()
@@ -113,7 +113,7 @@ main(): Int64 {
     var anyValue3: Any = object3.getValue()
     var bigValue3: BigInt = (anyValue3 as BigInt).getOrThrow()
     var intValue3: String = bigValue3.toStringDec()
-    if (!(intValue3.equals(stringValue3))) {
+    if (intValue3!=stringValue3) {
         return 14
     }
 
@@ -129,7 +129,7 @@ main(): Int64 {
     var anyValue4: Any = object4.getValue()
     var bigValue4: BigInt = (anyValue4 as BigInt).getOrThrow()
     var intValue4: String = bigValue4.toStringDec()
-    if (!(intValue4.equals("127"))) {
+    if (intValue4!="127") {
         return 17
     }
     var intHashcode4: Int64 = object4.valueHash()
@@ -149,7 +149,7 @@ main(): Int64 {
     var anyValue5: Any = object5.getValue()
     var bigValue5: BigInt = (anyValue5 as BigInt).getOrThrow()
     var intValue5: String = bigValue5.toStringDec()
-    if (!(intValue5.equals("-1"))) {
+    if (intValue5!="-1") {
         return 20
     }
     var intHashcode5: Int64 = object5.valueHash()
@@ -169,7 +169,7 @@ main(): Int64 {
     var anyValue6: Any = object6.getValue()
     var bigValue6: BigInt = (anyValue6 as BigInt).getOrThrow()
     var intValue6: String = bigValue6.toStringDec()
-    if (!(intValue6.equals("256"))) {
+    if (intValue6!="256") {
         return 23
     }
     var intHashcode6: Int64 = object6.valueHash()
@@ -189,7 +189,7 @@ main(): Int64 {
     var anyValue7: Any = object7.getValue()
     var bigValue7: BigInt = (anyValue7 as BigInt).getOrThrow()
     var intValue7: String = bigValue7.toStringDec()
-    if (!(intValue7.equals("-1"))) {
+    if (intValue7!="-1") {
         return 26
     }
     var intHashcode7: Int64 = object7.valueHash()
@@ -209,7 +209,7 @@ main(): Int64 {
     var anyValue8: Any = object8.getValue()
     var bigValue8: BigInt = (anyValue8 as BigInt).getOrThrow()
     var intValue8: String = bigValue8.toStringDec()
-    if (!(intValue8.equals("131071"))) {
+    if (intValue8!="131071") {
         return 29
     }
     var intHashcode8: Int64 = object8.valueHash()
@@ -229,7 +229,7 @@ main(): Int64 {
     var anyValue9: Any = object9.getValue()
     var bigValue9: BigInt = (anyValue9 as BigInt).getOrThrow()
     var intValue9: String = bigValue9.toStringDec()
-    if (!(intValue9.equals("16908287"))) {
+    if (intValue9!="16908287") {
         return 32
     }
     var intHashcode9: Int64 = object9.valueHash()
@@ -333,7 +333,7 @@ main(): Int64 {
     try {
         asn1InputStream20.readObject()
     } catch (e: ASN1ParseException) {
-        if (!((e.message).equals("Cannot parse ASN.1 object from stream"))) {
+        if (e.message!="Cannot parse ASN.1 object from stream") {
             return 44
         }
     }
