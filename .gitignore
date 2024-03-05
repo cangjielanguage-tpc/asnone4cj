@@ -19,3 +19,7 @@ module-lock.json
 *.macrocall
 .cache/
 .vnext/
+*.lock
+*.toml
+target/
+test_temp/
