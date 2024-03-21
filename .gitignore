@@ -20,6 +20,5 @@ module-lock.json
 .cache/
 .vnext/
 *.lock
-*.toml
 target/
 test_temp/
