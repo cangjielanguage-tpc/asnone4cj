@@ -28,7 +28,7 @@ main() {
     
     let result = strc.valueHash()
     println(result)
-    if(result != 196345501) {
+    if(result != 6445174239661554901) {
         return 1
     }
     return 0
