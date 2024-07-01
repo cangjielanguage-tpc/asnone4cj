@@ -1,13 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.util.BigInt
-from asn1 import asn1.ASN1Enumerated
-from asn1 import asn1.EnumeratedParser
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.ASN1Tag
 from asn1 import asn1.*
 from std import io.*
+from std import math.numeric.*
 
 main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)

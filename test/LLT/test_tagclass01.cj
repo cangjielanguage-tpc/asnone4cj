@@ -1,10 +1,7 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-
-from asn1 import asn1.types.ASN1TagClass
-from asn1 import asn1.util.Checks
-
+from asn1 import asn1.*
 from std import collection.*
 
 main() {

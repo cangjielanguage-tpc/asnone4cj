@@ -1,8 +1,6 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.ASN1Tag
-from asn1 import asn1.ASN1OctetString
 from std import io.*
 from asn1 import asn1.*
 

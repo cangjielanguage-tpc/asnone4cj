@@ -1,18 +1,6 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.ASN1Tag
-from asn1 import asn1.OctetStringParser
-from asn1 import asn1.OctetStringSerializer
-from asn1 import asn1.BooleanParser
-from asn1 import asn1.ASN1OutputStream
-from asn1 import asn1.ASN1ParseException
-from asn1 import asn1.ASN1PrimitiveValue
-from asn1 import asn1.ASN1Enumerated
-from asn1 import asn1.ASN1Sequence  
-from asn1 import asn1.ASN1Object 
-from asn1 import asn1.encodingrules.der.DEREncoder
 from asn1 import asn1.*
 from std import io.*
 from std import collection.*
