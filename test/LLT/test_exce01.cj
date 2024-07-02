@@ -1,7 +1,7 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.ASN1ParseException
+from asn1 import asn1.*
 from std import io.*
 
 main() {

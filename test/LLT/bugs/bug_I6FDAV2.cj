@@ -1,14 +1,6 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from asn1 import asn1.ASN1Tag
-from asn1 import asn1.ASN1TaggedObject
-from asn1 import asn1.ASN1Null
-from asn1 import asn1.ASN1ObjectIdentifier
-from asn1 import asn1.ASN1Object
-from asn1 import asn1.ASN1Sequence
-from asn1 import asn1.ASN1Enumerated
-from asn1 import asn1.ASN1Boolean
-from asn1 import asn1.ASN1Integer
+
 from asn1 import asn1.*
 from std import io.*
 from std import collection.*

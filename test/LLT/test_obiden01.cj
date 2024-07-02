@@ -1,7 +1,7 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.ASN1ObjectIdentifier
+from asn1 import asn1.*
 from std import io.*
 
 main() {

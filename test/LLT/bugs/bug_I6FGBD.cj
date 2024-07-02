@@ -1,12 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from asn1 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
+
 from std import io.*
-from asn1 import asn1.util.BigInt
+from asn1 import asn1.*
+from std import math.numeric.*
 
 main(): Int64 {
     var asn1Enumerated: ASN1Enumerated = ASN1Enumerated(-9)
