@@ -10,20 +10,16 @@
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
 
-
-## <img alt="" src="./doc/assets/readme-icon-introduction.png" style="display: inline-block;" width=3%/> 介绍
+## 介绍
 
 asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和 DER 编码规则。
 
 ### 特性
 
-- 🚀 支持 Ber,Der 编码规则
-
-- 🚀 支持 Sequence，Set，Tagged 构造类型
-
-- 💪 支持 Boolean，Enumerated，Integer，Null，ObjectIdentifier，PrimitiveValue 原始类型数据
-
-- 🛠️ 支持 BitString，Octet String，String 字符串类型
+- 支持 Ber,Der 编码规则
+- 支持 Sequence，Set，Tagged 构造类型
+- 支持 Boolean，Enumerated，Integer，Null，ObjectIdentifier，PrimitiveValue 原始类型数据
+- 支持 BitString，Octet String，String 字符串类型
 
 ### 路线
 
@@ -31,7 +27,7 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 <img src="./doc/assets/milestone.png" width="100%" >
 </p>
 
-## <img alt="" src="./doc/assets/readme-icon-framework.png" style="display: inline-block;" width=3%/> 软件架构
+## 软件架构
 
 ### 源码目录
 
@@ -45,9 +41,6 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 │   └── feature_api.md
 ├── src
 │   └── asn1
-│        └── encodingrules
-│        └── types
-│        └── util
 └── test
     ├── HLT
     ├── LLT
@@ -62,7 +55,7 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 
 主要是核心类和成员函数说明，详情见 [API](./doc/feature_api.md)
 
-## <img alt="" src="./doc/assets/readme-icon-compile.png" style="display: inline-block;" width=3%/> 使用说明
+## 使用说明
 
 ### 编译
 
@@ -75,8 +68,8 @@ git clone https://gitee.com/HW-PLLab/asn1-cj.git;
 
 cd asn1-cj;
 
-cpm build -V;   ---> 编译
-cpm test - V;   ---> 执行 test/LLT 用例 
+cjpm build -V;   ---> 编译
+cjpm test - V;   ---> 执行 test/LLT 用例 
 ```
 
 #### Window环境编译
@@ -89,8 +82,8 @@ git clone https://gitee.com/HW-PLLab/asn1-cj.git;
 
 ```cmd
 cd asn1-cj
-cpm build -V   ---> 编译
-cpm test - V   ---> 执行 test/LLT 用例 
+cjpm build -V   ---> 编译
+cjpm test - V   ---> 执行 test/LLT 用例 
 ```
 
 ### 功能示例
@@ -201,6 +194,10 @@ success
 success
 ```
 
-## <img alt="" src="./doc/assets/readme-icon-contribute.png" style="display: inline-block;" width=3%/> 参与贡献
+## 开源协议
+
+[LICENSE](/LICENSE)
+
+## 参与贡献
 
 欢迎给我们提交PR，欢迎给我们提交Issue，欢迎参与任何形式的贡献。
