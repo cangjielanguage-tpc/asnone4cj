@@ -1,14 +1,16 @@
 package asn1
 
+let dataArr : Array<Byte>= Array<Byte>(1, item: 0)
+
 public open class BERDecoder <: ASN1Decoder {
     public override func readTag(inputStream: InputStream): ASN1Tag {
         try {
-            var dataArr = Array<Byte>(1, item: 0)
+            dataArr[0] = 0
             inputStream.read(dataArr)
-            var byte: Byte = dataArr[0]
-            var asn1TagClass: ASN1TagClass = ASN1TagClass.parseClass(byte)
-            var asn1Encoding: ASN1Encoding = ASN1Encoding.parseEncoding(byte)
-            var tag: Int64 = Int64(byte) & 0x1f
+            let byte: Byte = dataArr[0]
+            let asn1TagClass: ASN1TagClass = ASN1TagClass.parseClass(byte)
+            let asn1Encoding: ASN1Encoding = ASN1Encoding.parseEncoding(byte)
+            let tag: Int64 = Int64(byte) & 0x1f
             if (tag <= 0x1e) {
                 return ASN1Tag.forTag(asn1TagClass, tag).asEncoded(asn1Encoding)
             } else {
@@ -38,13 +40,13 @@ public open class BERDecoder <: ASN1Decoder {
 
     public override func readLength(inputStream: InputStream): Int64 {
         try {
-            var dataArr: Array<Byte> = Array<Byte>(1, item: 0)
+            dataArr[0] = 0
             var firstByteLength: Int64 = inputStream.read(dataArr)
             var firstByte: Byte = dataArr[0]
             if (firstByte <= 0x7f) {
                 return Int64(firstByte)
             }
-            var nrBytes: Int64 = Int64(firstByte) & 0x7f
+            let nrBytes: Int64 = Int64(firstByte) & 0x7f
             var longLength: Int64 = 0
             for (_ in 0..nrBytes) {
                 longLength = longLength << 8
@@ -67,7 +69,7 @@ public open class BERDecoder <: ASN1Decoder {
             return Array<Byte>()
         }
         try {
-            var value: Array<Byte> = Array<Byte>(length, item: 0)
+            let value: Array<Byte> = Array<Byte>(length, item: 0)
             inputStream.read(value)
             return value
         } catch (ioe: IOException) {
