@@ -1,7 +1,6 @@
 package asn1
 
 public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
-    private static let logger: SimpleLogger = SimpleLogger()
     protected var input: InputStream
 
     private var decoder: ASN1Decoder
@@ -28,12 +27,9 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     public func readObject(): ASN1Object {
         try {
             var tag: ASN1Tag = decoder.readTag(this)
-            logger.trace("Read ASN.1 tag")
             var length: Int64 = decoder.readLength(this)
-            logger.trace("Read ASN.1 object length: ${length}")
             var value: Array<Byte> = decoder.readValue(length, this)
             var parse: ASN1Object = tag.newParser(decoder).parse(tag, value)
-            logger.debug("Read ASN.1 object")
             return parse
         } catch (pe: ASN1ParseException) {
             throw pe
