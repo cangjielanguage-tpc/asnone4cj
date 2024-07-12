@@ -3,9 +3,9 @@
         "Name": " asn-one ",
         "License": " Apache License 2.0",
         "License File": " LICENSE ",
-        "Version Number": " v0.7.0 ",
         "Owner" : "",
         "Upstream URL": " https://github.com/hierynomus/asn-one ",
+        "Version Number": " v0.7.0 ",
         "Description": " A Standalone ASN.1 Encoding/Decoding Library "
     }
 ]

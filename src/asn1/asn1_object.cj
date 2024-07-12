@@ -1,3 +1,7 @@
+/*
+ * @Copyright (c) Huawei Technologies Co., Ltd. 2023-2024. All rights reserved.
+ */
+ 
 package asn1
 
 public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString {
