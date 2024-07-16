@@ -22,3 +22,5 @@ module-lock.json
 *.lock
 target/
 test_temp/
+main
+*.bchir2

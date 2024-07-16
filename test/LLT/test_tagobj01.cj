@@ -1,8 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from std import collection.*
-from asn1 import asn1.*
+import std.collection.*
+import asn1.*
 main() {
     var tag = BIT_STRING
     let dec: BERDecoder = BERDecoder()

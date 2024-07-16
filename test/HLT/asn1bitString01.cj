@@ -1,21 +1,8 @@
-// 3rd_party_lib:asn1-cj/build/asn1
-from asn1 import asn1.EnumeratedSerializer
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.ASN1Tag
-from asn1 import asn1.ASN1Null
-from asn1 import asn1.ASN1Integer
-from asn1 import asn1.NullSerializer
-from asn1 import asn1.IntegerSerializer
-from asn1 import asn1.BooleanParser
-from asn1 import asn1.ASN1OutputStream
-from asn1 import asn1.ASN1TaggedObject
-from std import io.*
-from asn1 import asn1.ASN1ParseException
-from asn1 import asn1.ASN1Object
-from asn1 import asn1.ASN1Sequence
-from asn1 import asn1.BitStringParser
-from asn1 import asn1.*
-from std import collection.*
+// 3rd_party_lib:asnone4cj/target/release/asn1
+
+import std.io.*
+import asn1.*
+import std.collection.*
 @Test
 public class asn_ASN1BitString02{
 

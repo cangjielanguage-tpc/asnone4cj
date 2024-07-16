@@ -5,7 +5,7 @@
 <p align="center">
 <img alt="" src="https://img.shields.io/badge/release-v0.0.1-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/build-pass-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v0.51.4-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/cjc-v0.53.4-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/cjcov-91.8%25-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
@@ -63,13 +63,20 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 
 编译描述和具体shell命令
 
+${path}修改成用户自己项目本地路径
+示例文件在 test/DOC/examples_1.cj 和 test/DOC/examples_2.cj
+
 ```shell
-git clone https://gitee.com/HW-PLLab/asn1-cj.git;
+git clone https://gitcode.com/Cangjie-TPC/asnone4cj.git;
 
-cd asn1-cj;
+cd asnone4cj   ---> 切换到项目目录
 
-cjpm build -V;   ---> 编译
-cjpm test - V;   ---> 执行 test/LLT 用例 
+cjpm build -V   ---> 编译项目
+cd target/release/asn1   ---> 切换到编译so目录
+cjc  --import-path ${path}/asnone4cj/target/release  -L ${path}/asnone4cj/target/release/asn1 -l asn1  ${path}/asnone4cj/test/DOC/example_1.cj -O0 -Woff all  ---> 编译 test/LLT 用例1
+./main   ---> 执行用例1
+cjc  --import-path ${path}/asnone4cj/target/release  -L ${path}/asnone4cj/target/release/asn1 -l asn1  ${path}/asnone4cj/test/DOC/example_2.cj -O0 -Woff all  ---> 编译 test/LLT 用例2
+./main   ---> 执行用例2
 ```
 
 #### Window环境编译
@@ -77,13 +84,17 @@ cjpm test - V;   ---> 执行 test/LLT 用例
 编译描述和具体cmd命令
 
 ```git bash here
-git clone https://gitee.com/HW-PLLab/asn1-cj.git;
+git clone https://gitcode.com/Cangjie-TPC/asnone4cj.git;
 ```
 
 ```cmd
-cd asn1-cj
-cjpm build -V   ---> 编译
-cjpm test - V   ---> 执行 test/LLT 用例 
+cd asnone4cj
+cjpm build -V   ---> 编译项目
+cd target/release/asn1
+cjc  --import-path ${path}/asnone4cj/target/release  -L ${path}/asnone4cj/target/release/asn1 -l asn1  ${path}/asnone4cj/test/DOC/example_1.cj -O0 -Woff all  ---> 编译 test/LLT 用例1
+./main   ---> 执行用例1
+cjc  --import-path ${path}/asnone4cj/target/release  -L ${path}/asnone4cj/target/release/asn1 -l asn1  ${path}/asnone4cj/test/DOC/example_2.cj -O0 -Woff all  ---> 编译 test/LLT 用例2
+./main   ---> 执行用例2
 ```
 
 ### 功能示例
@@ -95,12 +106,8 @@ cjpm test - V   ---> 执行 test/LLT 用例
 示例代码如下：
 
 ```cangjie
-from asn1 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import asn1.*
+import std.io.*
 
 main(): Int64 {
     var value3: Array<Byte> = [0x01, 0x01, 0x00]
@@ -135,12 +142,8 @@ success
 示例代码如下：
 
 ```cangjie
-from asn1 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import asn1.*
+import std.io.*
 
 main(): Int64 {
     var value: Array<Byte> = [0x01, 0x01, 0x0]

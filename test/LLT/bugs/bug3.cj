@@ -1,10 +1,10 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from std import io.*
-from asn1 import asn1.*
-from std import collection.*
-from std import time.*
+import std.io.*
+import asn1.*
+import std.collection.*
+import std.time.*
 
 main() {
     let tag = ASN1_BOOLEAN

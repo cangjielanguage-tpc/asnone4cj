@@ -1,8 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.*
-from std import io.*
+import asn1.*
+import std.io.*
 
 // 数组第一位0x01代表ASN1Boolean类型
 // 数组第二位0x01代表数组长度为1

@@ -1,4 +1,4 @@
-// 3rd_party_lib:asn1-cj/build/asn1
+// 3rd_party_lib:asnone4cj/target/release/asn1
 //data_file:file/encoded_tc1.ber:file/encoded_tc2.ber:file/encoded_tc3.ber:file/encoded_tc4.ber:file/encoded_tc5.ber:file/encoded_tc6.ber:file/encoded_tc7.ber:file/encoded_tc8.ber:file/encoded_tc9.ber:file/encoded_tc10.ber
 //data_file:file/encoded_tc11.ber:file/encoded_tc12.ber:file/encoded_tc13.ber:file/encoded_tc14.ber:file/encoded_tc15.ber:file/encoded_tc16.ber:file/encoded_tc17.ber:file/encoded_tc18.ber:file/encoded_tc19.ber:file/encoded_tc20.ber
 //data_file:file/encoded_tc21.ber:file/encoded_tc22.ber:file/encoded_tc23.ber:file/encoded_tc24.ber:file/encoded_tc25.ber:file/encoded_tc26.ber:file/encoded_tc27.ber:file/encoded_tc28.ber:file/encoded_tc29.ber:file/encoded_tc30.ber
@@ -9,28 +9,15 @@
 //data_file:file/tc21.ber:file/tc22.ber:file/tc23.ber:file/tc24.ber:file/tc25.ber:file/tc26.ber:file/tc27.ber:file/tc28.ber:file/tc29.ber:file/tc30.ber
 //data_file:file/tc31.ber:file/tc32.ber:file/tc33.ber:file/tc34.ber:file/tc35.ber:file/tc36.ber:file/tc37.ber:file/tc38.ber:file/tc39.ber:file/tc40.ber
 //data_file:file/tc41.ber:file/tc42.ber:file/tc43.ber:file/tc44.ber:file/tc45.ber:file/tc46.ber:file/tc47.ber:file/tc48.ber
-from asn1 import asn1.EnumeratedSerializer
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.ASN1Tag
-from asn1 import asn1.ASN1Null
-from asn1 import asn1.ASN1Integer
-from asn1 import asn1.NullSerializer
-from asn1 import asn1.IntegerSerializer
-from asn1 import asn1.BooleanParser
-from asn1 import asn1.ASN1OutputStream
-from asn1 import asn1.ASN1TaggedObject
-from std import io.*
-from asn1 import asn1.ASN1ParseException
-from asn1 import asn1.ASN1Object
-from asn1 import asn1.ASN1Sequence
-from asn1 import asn1.BitStringParser
-from asn1 import asn1.*
-from std import collection.*
-from std import os.posix.*
-from std import fs.*
-from encoding import json.*
-from std import unittest.*
-from std import unittest.testmacro.*
+
+import std.io.*
+import asn1.*
+import std.collection.*
+import std.os.posix.*
+import std.fs.*
+import encoding.json.*
+import std.unittest.*
+import std.unittest.testmacro.*
 @Test
 public class asn_Asn1OutputStream01{    
 

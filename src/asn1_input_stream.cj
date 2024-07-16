@@ -76,9 +76,6 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
     init(stream: ASN1InputStream) {
         this.stream = stream
     }
-    public func iterator(): Iterator<ASN1Object> {
-        return this
-    }
 
     public func next(): Option<ASN1Object> {
         try {

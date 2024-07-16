@@ -1,8 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.*
-from std import io.*
+import asn1.*
+import std.io.*
 
 // 数组第一位0x06代表ASN1ObjectIdentifier类型
 // 数组第二位0x03代表数组长度为3
