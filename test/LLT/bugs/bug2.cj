@@ -1,9 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from asn1 import asn1.*
-from std import io.*
-from std import collection.*
-from std import time.*
+import asn1.*
+import std.io.*
+import std.collection.*
+import std.time.*
 
 main() {
     var asn1Tag1: ASN1Tag = ASN1Tag.application(2)

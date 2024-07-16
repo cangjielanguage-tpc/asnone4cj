@@ -1,9 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from std import io.*
-from asn1 import asn1.*
-from std import math.numeric.*
+import std.io.*
+import asn1.*
+import std.math.numeric.*
 
 main(): Int64 {
     var asn1Enumerated: ASN1Enumerated = ASN1Enumerated(-9)

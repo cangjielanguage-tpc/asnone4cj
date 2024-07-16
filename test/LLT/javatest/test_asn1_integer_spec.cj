@@ -1,9 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.*
-from std import io.*
-from std import math.numeric.*
+import asn1.*
+import std.io.*
+import std.math.numeric.*
 
 // 数组第一位0x02代表ASN1Integer类型
 // 数组第二位0x01代表数组长度为1

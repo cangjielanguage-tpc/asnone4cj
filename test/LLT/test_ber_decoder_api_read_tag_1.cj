@@ -1,8 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from std import io.*
-from std import collection.*
-from asn1 import asn1.*
+import std.io.*
+import std.collection.*
+import asn1.*
 
 main() {
     var array: Array<Byte> = [0xc0]

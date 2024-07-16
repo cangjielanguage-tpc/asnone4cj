@@ -1,9 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.*
-from std import io.*
-from std import collection.*
+import asn1.*
+import std.io.*
+import std.collection.*
 
 main(): Int64 {
     let SPNEGO_OID: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.3.6.1.5.5.2")

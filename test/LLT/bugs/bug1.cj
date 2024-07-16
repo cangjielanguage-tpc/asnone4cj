@@ -1,9 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
-from asn1 import asn1.*
-from std import io.*
-from std import collection.*
-from std import time.*
+import asn1.*
+import std.io.*
+import std.collection.*
+import std.time.*
 
 main() {
     let arr: Array<Bool> = Array<Bool>([true, true, false, true, false, false])

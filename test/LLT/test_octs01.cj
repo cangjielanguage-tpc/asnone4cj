@@ -1,8 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from std import io.*
-from asn1 import asn1.*
+import std.io.*
+import asn1.*
 
 main() {
     let Buf: Array<Byte> = [1]

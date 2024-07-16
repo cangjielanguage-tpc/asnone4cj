@@ -1,8 +1,8 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.*
-from std import io.*
+import asn1.*
+import std.io.*
 
 main(): Int64 {
     var value: Array<Byte> = [0x23, 0x80, 0x03, 0x02, 0xF0, 0xF0, 0x03, 0x02, 0x02, 0xF4, 0x0, 0x0]

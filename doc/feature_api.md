@@ -46,12 +46,12 @@ public class ASN1OutputStream <: OutputStream {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.*
+import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import std.io.*
 
 main(): Int64 {
     var value3: Array<Byte> = [0x01, 0x01, 0x00]
@@ -171,12 +171,12 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.*
+import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import std.io.*
 
 main(): Int64 {
     var value: Array<Byte> = [0x01, 0x01, 0x0]
@@ -344,8 +344,8 @@ from asn1 import asn1.ASN1BitString
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.BitStringParser
 from asn1 import asn1.ASN1Tag
-from asn1 import asn1.*
-from std import io.*
+import asn1.*
+import std.io.*
 
 main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
@@ -474,7 +474,7 @@ from asn1 import asn1.ASN1Set
 from asn1 import asn1.BitStringParser
 from asn1 import asn1.ASN1Tag
 
-from std import collection.*
+import std.collection.*
 
 main() {
     var arr = HashSet<ASN1Object>()
@@ -591,12 +591,12 @@ public class BooleanSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.*
+import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import std.io.*
 
 // 数组第一位0x01代表ASN1Boolean类型
 // 数组第二位0x01代表数组长度为1
@@ -800,12 +800,12 @@ public class IntegerSerializer <: ASN1Serializer {
 
 ```cangjie
 from numeric import bigint.*
-from asn1 import asn1.*
+import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import std.io.*
 
 // 数组第一位0x02代表ASN1Integer类型
 // 数组第二位0x01代表数组长度为1
@@ -1204,12 +1204,12 @@ public class NullSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.*
+import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import std.io.*
 
 // 数组第一位0x05代表ASN1Null类型
 // 数组第二位0x00代表数组长度为0
@@ -1337,12 +1337,12 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.*
+import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
-from std import io.*
+import std.io.*
 
 // 数组第一位0x06代表ASN1ObjectIdentifier类型
 // 数组第二位0x03代表数组长度为3
@@ -1586,7 +1586,7 @@ from asn1 import asn1.ASN1Sequence
 from asn1 import asn1.BitStringParser
 from asn1 import asn1.ASN1Tag
 
-from std import collection.*
+import std.collection.*
 
 main() {
     var arr = ArrayList<ASN1Object>()
@@ -1754,13 +1754,13 @@ class TaggedObjectSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.*
+import asn1.*
 from asn1 import asn1.types.*
 from asn1 import asn1.util.*
 from asn1 import asn1.encodingrules.*
 from asn1 import asn1.encodingrules.der.*
-from std import io.*
-from std import collection.*
+import std.io.*
+import std.collection.*
 
 main(): Int64 {
     let SPNEGO_OID: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.3.6.1.5.5.2")
@@ -1906,8 +1906,8 @@ from asn1 import asn1.ASN1Enumerated
 from asn1 import asn1.EnumeratedParser
 from asn1 import asn1.BERDecoder
 from asn1 import asn1.ASN1Tag
-from asn1 import asn1.*
-from std import io.*
+import asn1.*
+import std.io.*
 
 main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
@@ -2043,9 +2043,9 @@ from asn1 import asn1.ASN1Enumerated
 from asn1 import asn1.ASN1Sequence  
 from asn1 import asn1.ASN1Object 
 from asn1 import asn1.encodingrules.der.DEREncoder
-from asn1 import asn1.*
-from std import io.*
-from std import collection.*
+import asn1.*
+import std.io.*
+import std.collection.*
 
 main() {
 
@@ -2621,8 +2621,8 @@ public class ASN1AllTag <: ASN1Tag {
 from asn1 import asn1.ASN1BitString
 from asn1 import asn1.ASN1String
 from asn1 import asn1.ASN1Tag
-from asn1 import asn1.*
-from std import collection.*
+import asn1.*
+import std.collection.*
 
 main() {
     var tag = BIT_STRING

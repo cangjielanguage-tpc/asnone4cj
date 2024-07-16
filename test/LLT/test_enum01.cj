@@ -1,9 +1,9 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-from asn1 import asn1.*
-from std import io.*
-from std import math.numeric.*
+import asn1.*
+import std.io.*
+import std.math.numeric.*
 
 main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)

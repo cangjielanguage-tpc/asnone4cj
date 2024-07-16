@@ -1,33 +1,15 @@
-// 3rd_party_lib:asn1-cj/build/asn1
-from asn1 import asn1.EnumeratedSerializer
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.ASN1Tag
-from asn1 import asn1.ASN1Null
-from asn1 import asn1.ASN1Integer
-from asn1 import asn1.NullSerializer
-from asn1 import asn1.IntegerSerializer
-from asn1 import asn1.BooleanParser
-from asn1 import asn1.ASN1OutputStream
-from asn1 import asn1.encodingrules.der.DEREncoder
-from asn1 import asn1.ASN1TaggedObject
-from std import io.*
-from asn1 import asn1.ASN1ParseException
-from asn1 import asn1.ASN1Object
-from asn1 import asn1.ASN1Sequence
-from asn1 import asn1.BitStringParser
-from asn1 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
-from std import collection.*
-from std import io.*
-from std import time.*
+// 3rd_party_lib:asnone4cj/target/release/asn1
+
+import std.io.*
+import asn1.*
+import std.collection.*
+import std.io.*
+import std.time.*
 import secodeFuzz.*
-from std import unittest.testmacro.*
-from std import collection.ArrayList
-from std import math.*
-from std import convert.*
+import std.unittest.testmacro.*
+import std.collection.ArrayList
+import std.math.*
+import std.convert.*
 
 func call_fuzz(int64: Int64) {
 
