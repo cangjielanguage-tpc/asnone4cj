@@ -30,12 +30,17 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
 
     public func readObject(): ASN1Object {
         try {
+            if(lengthData() <= 0){
+                throw NoneValueException()
+            }
             var tag: ASN1Tag = decoder.readTag(this)
             var length: Int64 = decoder.readLength(this)
             var value: Array<Byte> = decoder.readValue(length, this)
             var parse: ASN1Object = tag.newParser(decoder).parse(tag, value)
             return parse
         } catch (pe: ASN1ParseException) {
+            throw pe
+        } catch (pe: NoneValueException) {
             throw pe
         } catch (e: Exception) {
             throw ASN1ParseException("Cannot parse ASN.1 object from stream")
@@ -80,6 +85,8 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
     public func next(): Option<ASN1Object> {
         try {
             return stream.readObject()
+        } catch (e: NoneValueException) {
+            return None
         } catch (e: Exception) {
             throw Exception(e.message)
         }
