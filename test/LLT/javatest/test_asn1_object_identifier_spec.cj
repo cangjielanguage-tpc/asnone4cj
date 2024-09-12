@@ -63,7 +63,7 @@ main(): Int64 {
     var value4: Array<Byte> = [0x06, 0x03, 0x55, 0x04, 0x03]
     var byteArrayStream4: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
-    asn1OutputStream4.writeObject(ASN1ObjectIdentifier("2.5.4.3", Array<Byte>([])))
+    asn1OutputStream4.writeObject(ASN1ObjectIdentifier("2.5.4.3", Array<Byte>()))
     if (byteArrayStream4.bytes() != value4) {
         return 8
     }
@@ -80,7 +80,7 @@ main(): Int64 {
     var value6: Array<Byte> = [0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x37, 0x15, 0x14]
     var byteArrayStream6: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
-    var aSN1ObjectIdentifier6: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20", Array<Byte>([]))
+    var aSN1ObjectIdentifier6: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.3.6.1.4.1.311.21.20", Array<Byte>())
     asn1OutputStream6.writeObject(aSN1ObjectIdentifier6)
     if (byteArrayStream6.bytes() != value6) {
         return 10
@@ -98,7 +98,7 @@ main(): Int64 {
     var value8: Array<Byte> = [0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07, 0x02]
     var byteArrayStream8: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream8: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream8)
-    var aSN1ObjectIdentifier8: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.2.840.113549.1.7.2", Array<Byte>([]))
+    var aSN1ObjectIdentifier8: ASN1ObjectIdentifier = ASN1ObjectIdentifier("1.2.840.113549.1.7.2", Array<Byte>())
     asn1OutputStream8.writeObject(aSN1ObjectIdentifier8)
     if (byteArrayStream8.bytes() != value8) {
         return 12

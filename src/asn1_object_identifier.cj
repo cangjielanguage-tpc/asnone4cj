@@ -43,7 +43,7 @@ public class ObjectIdentifierParser <: ASN1Parser {
         byteArrayStream.write(value)
 
         // 返回当前缓冲区总容量
-        var dataArr: Array<Byte> = Array<Byte>(1, item: 0)
+        var dataArr: Array<Byte> = Array<Byte>(1, repeat: 0)
         byteArrayStream.read(dataArr)
         var firstTwo: Byte = dataArr[0]
         var stringBuilder: StringBuilder = StringBuilder()
@@ -125,7 +125,7 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
                     if (intI > 0) {
                         b |= 0x80
                     }
-                    baos.write(Array<Byte>([b]))
+                    baos.write([b].toArray())
                     intI--
                 }
             }

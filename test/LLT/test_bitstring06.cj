@@ -34,7 +34,7 @@ main() {
     }catch(e: Exception) {
         println("pass")
     }
-    let ssq = Array<ToString>(100, item: unsafe {zeroValue<ToString>()})
+    let ssq = Array<ToString>(100, repeat: unsafe {zeroValue<ToString>()})
     ASN1ParseException(Exception(), "asdda", ssq)
 
     let srp: ASN1PrimitiveValue  = ASN1Enumerated(6)

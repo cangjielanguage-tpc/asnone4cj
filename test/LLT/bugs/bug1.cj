@@ -6,7 +6,7 @@ import std.collection.*
 import std.time.*
 
 main() {
-    let arr: Array<Bool> = Array<Bool>([true, true, false, true, false, false])
+    let arr: Array<Bool> = [true, true, false, true, false, false].toArray()
     var asn1itstring: ASN1BitString = ASN1BitString(arr)
     if (!asn1itstring.isSet(-7)) {
         return 1

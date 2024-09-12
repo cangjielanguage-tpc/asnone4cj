@@ -6,7 +6,7 @@ import std.io.*
 import std.math.numeric.*
 
 main() {
-    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     let sc = ASN1Enumerated(65)
     var p: BigInt = BigInt(1)
     ASN1Enumerated(p)
