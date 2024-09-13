@@ -36,7 +36,7 @@ public class asn_Asn1TaggedObject{
     
        let tags = BIT_STRING
        let tagss = BIT_STRING
-       let arr: Array<Bool> =Array<Bool>([true,true,false,true,false,false])
+       let arr: Array<Bool> =[true,true,false,true,false,false].toArray()
        let sle = ASN1TaggedObject(tags,ASN1BitString(arr),true)
        @Assert(sle.isExplicit(),true)
        @Assert(sle.getValue().toString(),"ASN1Object[[true, true, false, true, false, false]]")
@@ -123,7 +123,7 @@ public class asn_Asn1TaggedObject{
       
        let tags = BIT_STRING
        let tagss = BIT_STRING
-       let arr: Array<Bool> =Array<Bool>([true,true,false,true,false,false])
+       let arr: Array<Bool> =[true,true,false,true,false,false].toArray()
        let sle = ASN1TaggedObject(tags,ASN1BitString(arr))
        @Assert(sle.isExplicit(),true)
        @Assert(sle.getValue().toString(),"ASN1Object[[true, true, false, true, false, false]]")

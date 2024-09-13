@@ -5,9 +5,9 @@ import asn1.*
 import std.io.*
 
 main() {
-    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     let asn = ASN1BitString(bytesBuf,6)
-    let arr: Array<Bool> = Array<Bool>(5, item: true)
+    let arr: Array<Bool> = Array<Bool>(5, repeat: true)
     ASN1BitString(arr)
     asn.getValue()
     let indd =asn.isSet(2)

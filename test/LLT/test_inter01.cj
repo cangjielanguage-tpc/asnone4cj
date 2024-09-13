@@ -6,7 +6,7 @@ import std.io.*
 import std.math.numeric.*
 
 main() {
-    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     ASN1Integer(65)
     BigInt(1)
     var d: BigInt = BigInt(2)

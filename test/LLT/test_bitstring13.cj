@@ -10,12 +10,12 @@ main() {
 
     let wrapped: ByteArrayStream = ByteArrayStream()
     let asn = ASN1OutputStream(decs,wrapped)
-    let arr =Array<Bool>(1004, item: true)
+    let arr =Array<Bool>(1004, repeat: true)
     let str = ASN1BitString(arr)
     asn.writeObject(str)
     println(0x7f)
 
-    let buf = Array<Byte>(10, item: 1)
+    let buf = Array<Byte>(10, repeat: 1)
     let strc: ASN1PrimitiveValue = ASN1ObjectIdentifier("3.4.5",buf)
     
     let result = strc.valueHash()

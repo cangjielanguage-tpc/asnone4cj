@@ -32,7 +32,7 @@ public class ASN1BitString <: ASN1String {
         } else {
             length = bits.size / 8
         }
-        var bytes: Array<Int8> = Array<Int8>(length, item: 0)
+        var bytes: Array<Int8> = Array<Int8>(length, repeat: 0)
         for (i in 0..bytes.size) {
             bytes[i] = 0
             for (j in 0..8) {
@@ -44,7 +44,7 @@ public class ASN1BitString <: ASN1String {
                 }
             }
         }
-        var arr: Array<Byte> = Array<Byte>(bytes.size, item: 0)
+        var arr: Array<Byte> = Array<Byte>(bytes.size, repeat: 0)
         for (i in 0..bytes.size) {
             arr[i] = UInt8(Int8(bytes[i]))
         }
@@ -52,7 +52,7 @@ public class ASN1BitString <: ASN1String {
     }
 
     private func constructBits(): Array<Bool> {
-        var bits: Array<Bool> = Array<Bool>(length(), item: false)
+        var bits: Array<Bool> = Array<Bool>(length(), repeat: false)
         for (i in 0..bits.size) {
             bits[i] = isSet(i)
         }
@@ -60,7 +60,7 @@ public class ASN1BitString <: ASN1String {
     }
 
     public override func getValue(): Any {
-        var copyList: Array<Bool> = Array<Bool>(this.bits.size, item: false)
+        var copyList: Array<Bool> = Array<Bool>(this.bits.size, repeat: false)
         bits.copyTo(copyList, 0, 0, this.bits.size)
         return copyList
     }
@@ -117,7 +117,7 @@ public class BitStringParser <: ASN1Parser {
             }
         } else {
             var unusedBits: Byte = value[0]
-            var bits: Array<Byte> = Array<Byte>(value.size - 1, item: 0)
+            var bits: Array<Byte> = Array<Byte>(value.size - 1, repeat: 0)
             value.copyTo(bits, 1, 0, value.size - 1)
             return ASN1BitString(asn1Tag, bits, Int64(unusedBits))
         }

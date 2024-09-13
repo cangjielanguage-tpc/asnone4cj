@@ -4,7 +4,7 @@
  
 package asn1
 
-let dataArr : Array<Byte>= Array<Byte>(1, item: 0)
+let dataArr : Array<Byte>= Array<Byte>(1, repeat: 0)
 
 public open class BERDecoder <: ASN1Decoder {
     public override func readTag(inputStream: InputStream): ASN1Tag {
@@ -73,7 +73,7 @@ public open class BERDecoder <: ASN1Decoder {
             return Array<Byte>()
         }
         try {
-            let value: Array<Byte> = Array<Byte>(length, item: 0)
+            let value: Array<Byte> = Array<Byte>(length, repeat: 0)
             inputStream.read(value)
             return value
         } catch (ioe: IOException) {

@@ -5,7 +5,7 @@ import asn1.*
 import std.io.*
 
 main() {
-    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     let sc = ASN1Boolean(true)
     ASN1Boolean(true,bytesBuf)
     let fs = sc.getValue()

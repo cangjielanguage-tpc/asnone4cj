@@ -14,7 +14,7 @@ main() {
 
     BitStringSerializer(decodetd)
 
-    let bytesBuf: Array<Byte> = Array<Byte>(10, item: 0)
+    let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     ASN1BitString(bytesBuf,6)
 
     if (bytesBuf.size != 0) {

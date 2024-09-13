@@ -6,7 +6,7 @@ import std.io.*
 
 main() {
 
-    let arr: Array<Bool> = Array<Bool>(5, item: true)
+    let arr: Array<Bool> = Array<Bool>(5, repeat: true)
     let asn1 = ASN1BitString(arr)
     let str = asn1.valueString()
     let asse = DEREncoder()
