@@ -12,7 +12,7 @@ public class asn_Asn1OutputStream01{
          var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var bool=ASN1Boolean(false)
          asn1OutputStream.writeObject(bool)
@@ -33,7 +33,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var bool=ASN1Boolean(false)
          asn1OutputStream.writeObject(bool)
@@ -52,7 +52,7 @@ public class asn_Asn1OutputStream01{
      
      try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          asn1OutputStream.write(-2)
     } catch (e: Exception) {
@@ -67,7 +67,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var bool=ASN1Boolean(false)
          asn1OutputStream.writeObject(bool)
@@ -87,7 +87,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var bool=ASN1Boolean(false)
          asn1OutputStream.writeObject(bool)
@@ -107,7 +107,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var arr = HashSet<ASN1Object>()
          var asn1set:ASN1Set=ASN1Set(arr)
@@ -128,7 +128,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var arr: HashSet<ASN1Object> = HashSet<ASN1Object>([ASN1Boolean(true), ASN1Integer(1), ASN1Boolean(false), ASN1Integer(2)])
          var asn1set:ASN1Set=ASN1Set(arr)
@@ -149,7 +149,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var arr: HashSet<ASN1Object> = HashSet<ASN1Object>([ASN1Boolean(true), ASN1Integer(1), ASN1Boolean(false), ASN1Integer(2)])
          var asn1set:ASN1Set=ASN1Set(arr)
@@ -171,7 +171,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1integer:ASN1Integer=ASN1Integer(10)
          asn1OutputStream.writeObject(asn1integer)
@@ -191,7 +191,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1integer:ASN1Integer=ASN1Integer(0)
          asn1OutputStream.writeObject(asn1integer)
@@ -211,7 +211,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1integer:ASN1Integer=ASN1Integer(0)
          asn1OutputStream.writeObject(asn1integer)
@@ -231,7 +231,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1null:ASN1Null=ASN1Null()
          asn1OutputStream.writeObject(asn1null)
@@ -252,7 +252,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1null:ASN1Null=ASN1Null()
          asn1OutputStream.writeObject(asn1null)
@@ -272,7 +272,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1null:ASN1Null=ASN1Null()
          asn1OutputStream.writeObject(asn1null)
@@ -292,7 +292,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1dentifier:ASN1ObjectIdentifier=ASN1ObjectIdentifier("1.3.4")
          asn1OutputStream.writeObject(asn1dentifier)
@@ -311,7 +311,7 @@ public class asn_Asn1OutputStream01{
 
          try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1dentifier:ASN1ObjectIdentifier=ASN1ObjectIdentifier("")
          asn1OutputStream.writeObject(asn1dentifier)
@@ -330,7 +330,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1dentifier:ASN1ObjectIdentifier=ASN1ObjectIdentifier("1.3.4.51.51.67")
          asn1OutputStream.writeObject(asn1dentifier)
@@ -352,7 +352,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var arr = ArrayList<ASN1Object>([ASN1Boolean(true), ASN1Integer(1), ASN1Boolean(false), ASN1Integer(2)])
          var asn1sequence:ASN1Sequence=ASN1Sequence(arr)
@@ -374,7 +374,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1enumerated:ASN1Enumerated=ASN1Enumerated(0)
          asn1OutputStream.writeObject(asn1enumerated)
@@ -395,7 +395,7 @@ public class asn_Asn1OutputStream01{
           var returnFlag:Int64=0
       try{
          let decodetd: DEREncoder = DEREncoder()
-         var output=ByteArrayStream()
+         var output=ByteBuffer()
          var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
          var asn1enumerated:ASN1Enumerated=ASN1Enumerated(999)
          asn1OutputStream.writeObject(asn1enumerated)

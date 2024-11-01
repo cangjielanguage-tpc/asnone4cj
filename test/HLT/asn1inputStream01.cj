@@ -15,7 +15,7 @@ public class asn_Asn1InputStream01{
 
           DEREncoder()
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readtag=asn1inputstream.readTag().getTag()
@@ -29,7 +29,7 @@ public class asn_Asn1InputStream01{
 
         
          var buffer: Array<Byte> = [0x02, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readtag=asn1inputstream.readTag().getTag()
@@ -43,7 +43,7 @@ public class asn_Asn1InputStream01{
 
   
          var buffer: Array<Byte> = [0x0A, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readtag=asn1inputstream.readTag().getTag()
@@ -57,7 +57,7 @@ public class asn_Asn1InputStream01{
 
         try{
          var buffer: Array<Byte> = [0x11, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          asn1inputstream.readObject()
@@ -76,7 +76,7 @@ public class asn_Asn1InputStream01{
          try{
         
          var buffer: Array<Byte> = [0x10, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readtag=asn1inputstream.readTag().getTag()
@@ -93,7 +93,7 @@ public class asn_Asn1InputStream01{
 
     
          var buffer: Array<Byte> = [0x06, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readtag=asn1inputstream.readTag().getTag()
@@ -107,7 +107,7 @@ public class asn_Asn1InputStream01{
 
      
          var buffer: Array<Byte> = [0x05, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readtag=asn1inputstream.readTag().getTag()
@@ -122,7 +122,7 @@ public class asn_Asn1InputStream01{
          try{
         
          var buffer: Array<Byte> = [0x15, 0x01, 0x0]
-         var byteArrayStream: ByteArrayStream = ByteArrayStream()
+         var byteArrayStream: ByteBuffer = ByteBuffer()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readtag=asn1inputstream.readTag().getTag()

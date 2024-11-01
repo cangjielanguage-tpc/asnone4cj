@@ -8,7 +8,7 @@ main() {
     BERDecoder()
     let decs: DEREncoder = DEREncoder()
 
-    let wrapped: ByteArrayStream = ByteArrayStream()
+    let wrapped: ByteBuffer = ByteBuffer()
     let asn = ASN1OutputStream(decs,wrapped)
     let arr =Array<Bool>(1004, repeat: true)
     let str = ASN1BitString(arr)

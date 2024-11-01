@@ -16,7 +16,7 @@ main() {
     let ssc = bitss.parse(tags,Buf)
 
     let decodetd: DEREncoder = DEREncoder()
-    let wrapped: ByteArrayStream = ByteArrayStream()
+    let wrapped: ByteBuffer = ByteBuffer()
     let asn9 = ASN1OutputStream(decodetd,wrapped)
 
     let tags1 = SEQUENCE
