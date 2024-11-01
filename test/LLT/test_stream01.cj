@@ -6,7 +6,7 @@ import std.io.*
 
 main() {
     let decodetd: BERDecoder = BERDecoder()
-    let wrapped: ByteArrayStream = ByteArrayStream()
+    let wrapped: ByteBuffer = ByteBuffer()
     let asn = ASN1InputStream(decodetd,wrapped)
     let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     let asn1 = ASN1InputStream(decodetd,bytesBuf)

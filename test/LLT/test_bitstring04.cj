@@ -20,7 +20,7 @@ main() {
         println("pass")
     }
     let decodetd: DEREncoder = DEREncoder()
-    let wrapped: ByteArrayStream = ByteArrayStream()
+    let wrapped: ByteBuffer = ByteBuffer()
     let asn = ASN1OutputStream(decodetd,wrapped)
     try {
         enu.serialize(ssc,asn)

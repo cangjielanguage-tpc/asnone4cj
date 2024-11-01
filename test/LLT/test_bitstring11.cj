@@ -13,7 +13,7 @@ main() {
 
     let sc = EnumeratedSerializer(dec)
     let sc1 = sc.serializedLength(str)
-    let wrapped: ByteArrayStream = ByteArrayStream()
+    let wrapped: ByteBuffer = ByteBuffer()
     let asn = ASN1OutputStream(dec,wrapped)
     sc.serialize(str,asn)
     println(sc1)

@@ -93,7 +93,7 @@ public class BitStringParser <: ASN1Parser {
         if (asn1Tag.isConstructed()) {
             try {
                 var stream: ASN1InputStream = ASN1InputStream(decoder, value)
-                var baos: ByteArrayStream = ByteArrayStream()
+                var baos: ByteBuffer = ByteBuffer()
                 var unusedBits: Int64 = 0
                 while (stream.lengthData() > 0) {
                     var subTag: ASN1Tag = stream.readTag()

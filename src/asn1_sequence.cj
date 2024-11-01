@@ -80,7 +80,7 @@ class SeqSerializer <: ASN1Serializer {
     }
 
     private func calculateBytes(asn1Object: ASN1Sequence): Unit {
-        var out: ByteArrayStream = ByteArrayStream()
+        var out: ByteBuffer = ByteBuffer()
         var asn1OutputStream: ASN1OutputStream = ASN1OutputStream(encoder, out)
         for (object in asn1Object) {
             asn1OutputStream.writeObject(object)

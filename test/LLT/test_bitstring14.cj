@@ -16,7 +16,7 @@ main() {
     arr.append(ASN1Boolean(false))
     let sc = ASN1Sequence(arr)
     let resu = str.serializedLength(sc) 
-    let wrapped: ByteArrayStream = ByteArrayStream()
+    let wrapped: ByteBuffer = ByteBuffer()
     let asn = ASN1OutputStream(decs,wrapped)
     str.serialize(sc,asn) 
     

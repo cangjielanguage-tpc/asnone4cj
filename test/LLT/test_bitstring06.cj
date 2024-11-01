@@ -26,7 +26,7 @@ main() {
     }
 
     let decodetd: DEREncoder = DEREncoder()
-    let wrapped: ByteArrayStream = ByteArrayStream()
+    let wrapped: ByteBuffer = ByteBuffer()
     let asn9 = ASN1OutputStream(decodetd,wrapped)
     
     try {
