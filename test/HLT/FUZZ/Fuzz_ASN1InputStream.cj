@@ -17,7 +17,7 @@ func call_fuzz(int64: Int64) {
         return
     }
     var buffer: Array<Byte> = [0x01, 0x01, 0x1]
-    var byteArrayStream: ByteBuffer = ByteBuffer()
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
     byteArrayStream.write(buffer)
     var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
     var readvalue=asn1inputstream.readValue(int64)

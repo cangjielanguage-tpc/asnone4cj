@@ -34,7 +34,7 @@ main() {
     }
     
     let decodetd: DEREncoder = DEREncoder()
-    let wrapped: ByteBuffer = ByteBuffer()
+    let wrapped: ByteArrayStream = ByteArrayStream()
     let asn9 = ASN1OutputStream(decodetd,wrapped)
     try {
         src2.serialize(ssc,asn9)

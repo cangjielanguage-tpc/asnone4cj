@@ -9,7 +9,7 @@ public class asn_ASN1BitString02{
     @TestCase
     func asn_ASN1BitString_01(): Unit {
 
-         let arr: Array<Bool> = Array<Bool>(5, repeat: true)
+         let arr: Array<Bool> = Array<Bool>(5, item: true)
          var asn1itstring:ASN1BitString=ASN1BitString(arr)
          var ssss:Array<Bool> = (asn1itstring.getValue() as Array<Bool>).getOrThrow()
          println(ssss)

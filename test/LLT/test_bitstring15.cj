@@ -7,8 +7,8 @@ import std.collection.*
 
 main() {
     let dec: BERDecoder = BERDecoder()
-    let wrapped: ByteBuffer = ByteBuffer()
-    var buf = Array<Byte>(10, repeat: 63)
+    let wrapped: ByteArrayStream = ByteArrayStream()
+    var buf = Array<Byte>(10, item: 63)
     wrapped.write(buf)
 
     let tag = SET

@@ -37,7 +37,7 @@ main() {
     } catch(e: Exception){
         println("pass")
     }
-    let buf: Array<ToString> =Array<ToString>(100, repeat: unsafe {zeroValue<ToString>()})
+    let buf: Array<ToString> =Array<ToString>(100, item: unsafe {zeroValue<ToString>()})
     
     try {
         Checks.checkState(false, "abcd", buf)

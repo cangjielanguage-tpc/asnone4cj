@@ -141,7 +141,7 @@ class TaggedObjectSerializer <: ASN1Serializer {
 
     private func calculateBytes(asn1Object: ASN1TaggedObject): Unit {
         var object: ASN1Object = asn1Object.object.getOrThrow()
-        var out: ByteBuffer = ByteBuffer()
+        var out: ByteArrayStream = ByteArrayStream()
         var asn1OutputStream: ASN1OutputStream = ASN1OutputStream(encoder, out)
         if (asn1Object.explicit) {
             asn1OutputStream.writeObject(object)

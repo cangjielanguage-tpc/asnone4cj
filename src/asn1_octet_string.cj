@@ -14,7 +14,7 @@ public class ASN1OctetString <: ASN1String {
     }
 
     public override func getValue(): Any {
-        var copyList: Array<Byte> = Array<Byte>(valueBytes.size, repeat: 0)
+        var copyList: Array<Byte> = Array<Byte>(valueBytes.size, item: 0)
         valueBytes.copyTo(copyList, 0, 0, this.valueBytes.size)
         return copyList
     }

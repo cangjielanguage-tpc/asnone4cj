@@ -37,13 +37,13 @@ public class ObjectIdentifierParser <: ASN1Parser {
             "An ASN.1 OBJECT IDENTIFIER should have at least a one byte value",
             Array<ToString>()
         )
-        var byteArrayStream: ByteBuffer = ByteBuffer()
+        var byteArrayStream: ByteArrayStream = ByteArrayStream()
 
         // 将 buffer 中的数据写入到输出流中，当数据全部成功写入则函数返回
         byteArrayStream.write(value)
 
         // 返回当前缓冲区总容量
-        var dataArr: Array<Byte> = Array<Byte>(1, repeat: 0)
+        var dataArr: Array<Byte> = Array<Byte>(1, item: 0)
         byteArrayStream.read(dataArr)
         var firstTwo: Byte = dataArr[0]
         var stringBuilder: StringBuilder = StringBuilder()
@@ -98,7 +98,7 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
 
     private func calculateBytes(asn1Object: ASN1ObjectIdentifier): Unit {
         var oid: String = asn1Object.oid
-        var baos: ByteBuffer = ByteBuffer()
+        var baos: ByteArrayStream = ByteArrayStream()
         var stringArr: Array<String> = oid.split(".")
         var first: Int64 = Int64.parse(stringArr[0])
         var second: Int64 = Int64.parse(stringArr[1])

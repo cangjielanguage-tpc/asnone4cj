@@ -14,7 +14,7 @@ import std.convert.*
 func call_fuzz(int64: Int64) {
 
     let decodetd: DEREncoder = DEREncoder()
-    var output=ByteBuffer()
+    var output=ByteArrayStream()
     var asn1OutputStream:ASN1OutputStream=ASN1OutputStream(decodetd,output)
     asn1OutputStream.write(int64)
     return

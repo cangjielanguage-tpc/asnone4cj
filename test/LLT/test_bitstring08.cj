@@ -50,7 +50,7 @@ main() {
     bitss.parse(tags,Buf)
 
     let decodetd: DEREncoder = DEREncoder()
-    let wrapped: ByteBuffer = ByteBuffer()
+    let wrapped: ByteArrayStream = ByteArrayStream()
     ASN1OutputStream(decodetd,wrapped)
     println(srcp1)
     println(srcp2)

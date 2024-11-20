@@ -21,7 +21,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
     }
 
     public init(decoder: ASN1Decoder, value: Array<Byte>) {
-        var byteStream = ByteBuffer()
+        var byteStream = ByteArrayStream()
         byteStream.write(value)
         this.input = byteStream
         this.lengths = byteStream.length

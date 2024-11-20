@@ -5,7 +5,7 @@ import asn1.*
 import std.io.*
 
 main() {
-    Array<Byte>(10, repeat: 0)
+    Array<Byte>(10, item: 0)
     let str = ASN1Enumerated(8)
     let sss6 = str.equals(str)
     println(sss6)
@@ -13,7 +13,7 @@ main() {
 
     let sc = EnumeratedSerializer(dec)
     let sc1 = sc.serializedLength(str)
-    let wrapped: ByteBuffer = ByteBuffer()
+    let wrapped: ByteArrayStream = ByteArrayStream()
     let asn = ASN1OutputStream(dec,wrapped)
     sc.serialize(str,asn)
     println(sc1)

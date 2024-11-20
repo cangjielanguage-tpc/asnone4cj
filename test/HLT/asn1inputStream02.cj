@@ -10,7 +10,7 @@ public class asn_Asn1InputStream01{
     func asn_Asn1InputStream01(): Unit {
 
          var buffer: Array<Byte> = [0x01, 0x01, 0x1]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(2)
@@ -29,7 +29,7 @@ public class asn_Asn1InputStream01{
     func asn_Asn1InputStream02(): Unit {
 
          var buffer: Array<Byte> = [0x01, 0x01, 0x1]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var buffer1: Array<Byte> = [0x01, 0x08, 0x04, 0x06, 0x10, 0x01, 0x03, 0x05, 0x07, 0x11]
@@ -44,7 +44,7 @@ public class asn_Asn1InputStream01{
 
 
          var buffer: Array<Byte> = [0x01, 0x08]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(10)
@@ -62,7 +62,7 @@ public class asn_Asn1InputStream01{
 
          
          var buffer: Array<Byte> = [0x09, 0x08,0x03, 0x06, 0x10, 0x01]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(0)
@@ -84,7 +84,7 @@ public class asn_Asn1InputStream01{
 
       
          var buffer: Array<Byte> = []
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(10)
@@ -107,7 +107,7 @@ public class asn_Asn1InputStream01{
         try{
      
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(-8)
@@ -135,7 +135,7 @@ public class asn_Asn1InputStream01{
 
    
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(0)
@@ -157,7 +157,7 @@ public class asn_Asn1InputStream01{
 
  
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(0)
@@ -179,7 +179,7 @@ public class asn_Asn1InputStream01{
     func asn_Asn1InputStream09(): Unit {                             
          try{
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(0)
@@ -200,7 +200,7 @@ public class asn_Asn1InputStream01{
 
       
          var buffer: Array<Byte> = [0x01, 0x01, 0x0]
-         var byteArrayStream: ByteBuffer = ByteBuffer()
+         var byteArrayStream: ByteArrayStream = ByteArrayStream()
          byteArrayStream.write(buffer)
          var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
          var readvalue=asn1inputstream.readValue(0)

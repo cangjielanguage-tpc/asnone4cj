@@ -8,7 +8,7 @@ import std.io.*
 // 数组第二位0x00代表数组长度为0
 main(): Int64 {
     var value: Array<Byte> = [0x05, 0x00]
-    var byteArrayStream: ByteBuffer = ByteBuffer()
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
     byteArrayStream.write(value)
     var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
     var asn1Object: ASN1Object = asn1InputStream.readObject()
@@ -22,7 +22,7 @@ main(): Int64 {
     }
 
     var value1: Array<Byte> = [0x05, 0x00]
-    var byteArrayStream1: ByteBuffer = ByteBuffer()
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream1: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream1)
     asn1OutputStream1.writeObject(ASN1Null())
     if (byteArrayStream1.bytes() != value1) {

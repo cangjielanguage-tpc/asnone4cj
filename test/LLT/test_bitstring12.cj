@@ -13,11 +13,11 @@ main() {
 
     let sq = sc.serializedLength(str)
 
-    let wrapped: ByteBuffer = ByteBuffer()
+    let wrapped: ByteArrayStream = ByteArrayStream()
     let asn = ASN1OutputStream(decs, wrapped)
     sc.serialize(str, asn)
 
-    let wrapped1: ByteBuffer = ByteBuffer()
+    let wrapped1: ByteArrayStream = ByteArrayStream()
     let asn1 = ASN1OutputStream(decs, wrapped1)
     asn1.write(6)
     sc.serialize(str, asn1)

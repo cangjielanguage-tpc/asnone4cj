@@ -6,7 +6,7 @@ import std.io.*
 
 main(): Int64 {
     var value: Array<Byte> = [0x03, 0x04, 0x02, 0xF0, 0xF0, 0xF4]
-    var byteArrayStream: ByteBuffer = ByteBuffer()
+    var byteArrayStream: ByteArrayStream = ByteArrayStream()
     byteArrayStream.write(value)
     var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
     var asn1Object: ASN1Object = asn1InputStream.readObject()
@@ -27,7 +27,7 @@ main(): Int64 {
     }
 
     var value1: Array<Byte> = [0x03, 0x04, 0x06, 0x6E, 0x5D, 0xC0]
-    var byteArrayStream1: ByteBuffer = ByteBuffer()
+    var byteArrayStream1: ByteArrayStream = ByteArrayStream()
     byteArrayStream1.write(value1)
     var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
     var asn1Object1: ASN1Object = asn1InputStream1.readObject()
@@ -48,7 +48,7 @@ main(): Int64 {
     }
 
     var value2: Array<Byte> = [0x03, 0x04, 0x02, 0xF0, 0xF0, 0xF4]
-    var byteArrayStream2: ByteBuffer = ByteBuffer()
+    var byteArrayStream2: ByteArrayStream = ByteArrayStream()
     byteArrayStream2.write(value2)
     var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
     var asn1Object2: ASN1Object = asn1InputStream2.readObject()
@@ -75,7 +75,7 @@ main(): Int64 {
     }
 
     var value3: Array<Byte> = [0x03, 0x04, 0x06, 0x6E, 0x5D, 0xC0]
-    var byteArrayStream3: ByteBuffer = ByteBuffer()
+    var byteArrayStream3: ByteArrayStream = ByteArrayStream()
     byteArrayStream3.write(value3)
     var asn1InputStream3: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream3)
     var asn1Object3: ASN1Object = asn1InputStream3.readObject()
@@ -122,7 +122,7 @@ main(): Int64 {
     }
 
     var value6: Array<Byte> = [0x03, 0x04, 0x02, 0xF0, 0xF0, 0xF4]
-    var byteArrayStream6: ByteBuffer = ByteBuffer()
+    var byteArrayStream6: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
     var valueBool6: Array<Bool> = [true, true, true, true, false, false, false, false, true, true, true, true, false,
     false, false, false, true, true, true, true, false, true]
@@ -133,7 +133,7 @@ main(): Int64 {
     }
 
     var value7: Array<Byte> = [0x03, 0x04, 0x06, 0x6e, 0x5d, 0xc0]
-    var byteArrayStream7: ByteBuffer = ByteBuffer()
+    var byteArrayStream7: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream7: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream7)
     var valueBool7: Array<Bool> = [false, true, true, false, true, true, true, false, false, true, false, true, true,
     true, false, true, true, true]

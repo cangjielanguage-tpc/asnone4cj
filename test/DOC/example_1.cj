@@ -6,7 +6,7 @@ import std.io.*
 
 main(): Int64 {
     var value3: Array<Byte> = [0x01, 0x01, 0x00]
-    var byteArrayStream3: ByteBuffer = ByteBuffer()
+    var byteArrayStream3: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
     asn1OutputStream3.writeObject(ASN1Boolean(false))
     if (byteArrayStream3.bytes() == value3) {
@@ -14,7 +14,7 @@ main(): Int64 {
     }
 
     var value4: Array<Byte> = [0x01, 0x01, 0x01]
-    var byteArrayStream4: ByteBuffer = ByteBuffer()
+    var byteArrayStream4: ByteArrayStream = ByteArrayStream()
     var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
     asn1OutputStream4.writeObject(ASN1Boolean(true))
     if (byteArrayStream4.bytes() == value4) {

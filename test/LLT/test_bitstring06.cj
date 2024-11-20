@@ -26,7 +26,7 @@ main() {
     }
 
     let decodetd: DEREncoder = DEREncoder()
-    let wrapped: ByteBuffer = ByteBuffer()
+    let wrapped: ByteArrayStream = ByteArrayStream()
     let asn9 = ASN1OutputStream(decodetd,wrapped)
     
     try {
@@ -34,7 +34,7 @@ main() {
     }catch(e: Exception) {
         println("pass")
     }
-    let ssq = Array<ToString>(100, repeat: unsafe {zeroValue<ToString>()})
+    let ssq = Array<ToString>(100, item: unsafe {zeroValue<ToString>()})
     ASN1ParseException(Exception(), "asdda", ssq)
 
     let srp: ASN1PrimitiveValue  = ASN1Enumerated(6)
