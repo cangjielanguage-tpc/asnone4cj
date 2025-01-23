@@ -46,7 +46,7 @@ class SeqParser <: ASN1Parser {
         try {
             var stream: ASN1InputStream = ASN1InputStream(decoder, value)
             for (asn1Object in stream) {
-                list.append(asn1Object)
+                list.add(asn1Object)
             }
         } catch (ioe: IOException) {
             throw ASN1ParseException(ioe, "Unable to parse the ASN.1 SEQUENCE contents.", Array<ToString>())

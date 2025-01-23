@@ -38,7 +38,7 @@ class SetParser <: ASN1Parser {
         try {
             var stream: ASN1InputStream = ASN1InputStream(decoder, value)
             for (asn1Object in stream) {
-                asn1Objects.put(asn1Object)
+                asn1Objects.add(asn1Object)
             }
         } catch (ioe: IOException) {
             throw ASN1ParseException(ioe, "Could not parse ASN.1 SET contents.", Array<ToString>())

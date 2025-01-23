@@ -189,7 +189,7 @@ public class asn_Asn1InputStream01{
          var buffer1: Array<Byte> = []                  
          asn1inputstream.read(buffer1)
          } catch (e: Exception) {
-        @Assert(e.toString(),"IllegalArgumentException: The buffer is Empty.")
+        @Assert(e.toString(),"IllegalArgumentException: The buffer is empty.")
     } 
          
     }

@@ -40,7 +40,7 @@ main() {
     let srp: ASN1PrimitiveValue  = ASN1Enumerated(6)
     srp.valueHash()
     let objs =ArrayList<ASN1Object>()
-    objs.append(ssc)
+    objs.add(ssc)
     let buu: Array<Byte> = [1,6] 
     ASN1Sequence(objs,buu)
     

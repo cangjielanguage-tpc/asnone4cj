@@ -12,8 +12,8 @@ main() {
 
     let str = tag.newSerializer(decs)
     let arr:ArrayList<ASN1Object> = ArrayList<ASN1Object>()
-    arr.append(ASN1Boolean(true))
-    arr.append(ASN1Boolean(false))
+    arr.add(ASN1Boolean(true))
+    arr.add(ASN1Boolean(false))
     let sc = ASN1Sequence(arr)
     let resu = str.serializedLength(sc) 
     let wrapped: ByteBuffer = ByteBuffer()
@@ -23,9 +23,9 @@ main() {
     let tags = SET
     let str1 = tags.newSerializer(decs)
     let buf = HashSet<ASN1Object>()
-    buf.put(ASN1Boolean(false))
-    buf.put(ASN1Boolean(true))
-    buf.put(ASN1Boolean(true))
+    buf.add(ASN1Boolean(false))
+    buf.add(ASN1Boolean(true))
+    buf.add(ASN1Boolean(true))
 
     let sc1 = ASN1Set(buf)
     let resu1 = str1.serializedLength(sc1)
