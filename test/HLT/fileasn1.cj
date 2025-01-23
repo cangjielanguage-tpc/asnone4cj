@@ -26,7 +26,7 @@ public class asn_Asn1OutputStream01{
     func AsnOne1(): Unit {
             let pathname1: String = "file/encoded_tc2.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             DEREncoder()
             var byteArrayStream: ByteBuffer = ByteBuffer()
@@ -41,7 +41,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc3.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             DEREncoder()
             var byteArrayStream: ByteBuffer = ByteBuffer()
@@ -57,7 +57,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc3.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -71,7 +71,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc4.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -86,7 +86,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc6.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -100,7 +100,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc7.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -114,7 +114,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc8.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -130,7 +130,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc9.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -147,7 +147,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc11.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -163,7 +163,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc12.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -179,7 +179,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc19.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -195,7 +195,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc21.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -211,7 +211,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc23.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -227,7 +227,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc25.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -242,7 +242,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc26.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -258,7 +258,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc27.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -274,7 +274,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc29.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -290,7 +290,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc30.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -306,7 +306,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc31.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -322,7 +322,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc32.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -338,7 +338,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc33.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -354,7 +354,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc34.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -370,7 +370,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc37.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -386,7 +386,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc39.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -401,7 +401,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc40.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -417,7 +417,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc43.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -432,7 +432,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc44.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -447,7 +447,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc45.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -463,7 +463,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc46.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -479,7 +479,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/encoded_tc47.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -495,7 +495,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc6.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -511,7 +511,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc7.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -527,7 +527,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc8.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -542,7 +542,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc8.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -558,7 +558,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc11.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -574,7 +574,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc12.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -590,7 +590,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc19.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -606,7 +606,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc25.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -622,7 +622,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc26.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -638,7 +638,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc27.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -654,7 +654,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc29.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -670,7 +670,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc30.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -686,7 +686,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc31.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -702,7 +702,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc32.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -718,7 +718,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc33.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -734,7 +734,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc34.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -750,7 +750,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc37.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -767,7 +767,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc39.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -783,7 +783,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc40.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -799,7 +799,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc43.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -815,7 +815,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc44.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -831,7 +831,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc45.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -847,7 +847,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc47.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
@@ -863,7 +863,7 @@ public class asn_Asn1OutputStream01{
 
             let pathname1: String = "file/tc48.ber"
             println(pathname1)
-            var fs1: File = File(pathname1, Open(true, true))
+            var fs1: File = File(pathname1, OpenMode.ReadWrite)
             var res1: Array<Byte> = File.readFrom(pathname1)
             var byteArrayStream: ByteBuffer = ByteBuffer()
             byteArrayStream.write(res1)
