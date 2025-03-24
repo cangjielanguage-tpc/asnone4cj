@@ -68,7 +68,7 @@ public class ObjectIdentifierParser <: ASN1Parser {
                     v = c
                 } while (x > 127)
                 stringBuilder.append('.')
-                stringBuilder.append(v.toInt64(overflowHandling: wrapping))
+                stringBuilder.append(v.toInt64(overflowHandling: OverflowStrategy.Wrapping))
             }
         }
         return ASN1ObjectIdentifier(stringBuilder.toString(), value)
@@ -106,20 +106,20 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
         baos.write(BigInt(number).toBytes())
         for (i in 2..stringArr.size) {
             var valueBigNum: BigInt = BigInt(stringArr[i])
-            var bigNum: Int64 = valueBigNum.toInt64(overflowHandling: wrapping)
+            var bigNum: Int64 = valueBigNum.toInt64(overflowHandling: OverflowStrategy.Wrapping)
             if (bigNum > 0 && bigNum < 127) {
                 baos.write(valueBigNum.toBytes())
             } else {
                 var neededBytes: Int64
-                if (valueBigNum.toString(2).size % 7 > 0) {
-                    neededBytes = Int64(valueBigNum.toString(2).size) / 7 + 1
+                if (valueBigNum.toString(radix: 2).size % 7 > 0) {
+                    neededBytes = Int64(valueBigNum.toString(radix: 2).size) / 7 + 1
                 } else {
-                    neededBytes = Int64(valueBigNum.toString(2).size) / 7 + 0
+                    neededBytes = Int64(valueBigNum.toString(radix: 2).size) / 7 + 0
                 }
                 var intI: Int64 = neededBytes - 1
                 while (intI >= 0) {
                     var r: BigInt = valueBigNum >> intI * 7
-                    var a: Int64 = r.toInt64(overflowHandling: wrapping)
+                    var a: Int64 = r.toInt64(overflowHandling: OverflowStrategy.Wrapping)
                     var b: Byte = UInt8(a & 255)
                     b &= 0x7f
                     if (intI > 0) {

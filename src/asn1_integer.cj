@@ -29,7 +29,7 @@ public class ASN1Integer <: ASN1PrimitiveValue {
     }
 
     public func valueHash(): Int64 {
-        return value.toInt64(overflowHandling: wrapping).hashCode()
+        return value.toInt64(overflowHandling: OverflowStrategy.Wrapping).hashCode()
     }
 }
 
