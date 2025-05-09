@@ -10,4 +10,4 @@ internal import std.overflow.*
 internal import std.convert.*
 internal import std.math.*
 internal import std.math.numeric.*
-internal import encoding.hex.*
+internal import stdx.encoding.hex.*

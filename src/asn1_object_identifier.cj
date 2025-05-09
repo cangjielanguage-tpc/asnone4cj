@@ -105,7 +105,7 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
         var number: Int64 = first * 40 + second
         baos.write(BigInt(number).toBytes())
         for (i in 2..stringArr.size) {
-            var valueBigNum: BigInt = BigInt(stringArr[i])
+            var valueBigNum: BigInt = BigInt.parse(stringArr[i])
             var bigNum: Int64 = valueBigNum.toInt64(overflowHandling: OverflowStrategy.Wrapping)
             if (bigNum > 0 && bigNum < 127) {
                 baos.write(valueBigNum.toBytes())
