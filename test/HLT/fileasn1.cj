@@ -15,7 +15,7 @@ import asn1.*
 import std.collection.*
 import std.posix.*
 import std.fs.*
-import encoding.json.*
+import stdx.encoding.json.*
 import std.unittest.*
 import std.unittest.testmacro.*
 @Test

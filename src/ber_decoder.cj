@@ -19,7 +19,7 @@ public open class BERDecoder <: ASN1Decoder {
                 return ASN1Tag.forTag(asn1TagClass, tag).asEncoded(asn1Encoding)
             } else {
                 var iTag: Int64 = 0
-                var readLength: Int64 = inputStream.read(dataArr)
+                inputStream.read(dataArr)
                 var read: Byte = dataArr[0]
                 if ((read & 0x7f) == 0) {
                     throw ASN1ParseException("corrupted stream - invalid high tag number found")
@@ -27,7 +27,7 @@ public open class BERDecoder <: ASN1Decoder {
                 while ((read >= 0) && ((read & 0x80) != 0)) {
                     iTag |= (Int64(read) & 0x7f)
                     iTag <<= 7
-                    readLength = inputStream.read(dataArr)
+                    inputStream.read(dataArr)
                     read = dataArr[0]
                 }
                 if (read < 0) {
@@ -45,7 +45,7 @@ public open class BERDecoder <: ASN1Decoder {
     public override func readLength(inputStream: InputStream): Int64 {
         try {
             dataArr[0] = 0
-            var firstByteLength: Int64 = inputStream.read(dataArr)
+            inputStream.read(dataArr)
             var firstByte: Byte = dataArr[0]
             if (firstByte <= 0x7f) {
                 return Int64(firstByte)
@@ -54,7 +54,7 @@ public open class BERDecoder <: ASN1Decoder {
             var longLength: Int64 = 0
             for (_ in 0..nrBytes) {
                 longLength = longLength << 8
-                firstByteLength = inputStream.read(dataArr)
+                inputStream.read(dataArr)
                 firstByte = dataArr[0]
                 longLength += Int64(firstByte)
             }

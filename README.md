@@ -5,7 +5,7 @@
 <p align="center">
 <img alt="" src="https://img.shields.io/badge/release-v1.0.0-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/build-pass-brightgreen" style="display: inline-block;" />
-<img alt="" src="https://img.shields.io/badge/cjc-v0.59.6-brightgreen" style="display: inline-block;" />
+<img alt="" src="https://img.shields.io/badge/cjc-v0.60.5-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/cjcov-91.8%25-brightgreen" style="display: inline-block;" />
 <img alt="" src="https://img.shields.io/badge/project-open-brightgreen" style="display: inline-block;" />
 </p>
@@ -58,6 +58,12 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 ## 使用说明
 
 ### 编译
+
+#### stdx环境变量配置
+
+1. 配置本地电脑stdx环境变量,命名是CANGJIE_STDX_PATH
+2. stdx使用指导和路径配置：https://gitcode.com/Cangjie/Cangjie-STDX#%E4%BD%BF%E7%94%A8%E6%8C%87%E5%AF%BC
+3. 如果变量命名不是CANGJIE_STDX_PATH，修改当前项目cjpm.toml里面的CANGJIE_STDX_PATH修改成自己本地命名参数
 
 #### linux环境编译
 
