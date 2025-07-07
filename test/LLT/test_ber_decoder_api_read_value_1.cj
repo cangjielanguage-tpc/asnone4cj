@@ -15,25 +15,25 @@ main() {
 
     var buffer0: Array<Byte> = berDecoder.readValue(5, inputStream)
     if (buffer0.size != 5) {
-        return 1
+        return 2
     }
     if (buffer0[0] != 0x00 || buffer0[1] != 0x02 || buffer0[2] != 0x04 || buffer0[3] != 0x06 || buffer0[4] != 0x10) {
-        return 1
+        return 3
     }
 
     var buffer1: Array<Byte> = berDecoder.readValue(10, inputStream)
     if (buffer1.size != 10) {
-        return 1
+        return 4
     }
 
     var buffer2: Array<Byte> = berDecoder.readValue(30, inputStream)
     if (buffer2.size != 30) {
-        return 1
+        return 5
     }
 
     var buffer3: Array<Byte> = berDecoder.readValue(50, inputStream)
     if (buffer3.size != 50) {
-        return 1
+        return 6
     }
     return 0
 }
