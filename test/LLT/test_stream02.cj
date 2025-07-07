@@ -18,11 +18,9 @@ main() {
     let bitss = BooleanParser(dec)
     let Buf: Array<Byte> = [1]
     let ssc = bitss.parse(tags,Buf)
-    var es: String = ""
     try {
         asn.writeObject(ssc)
-    } catch (e: Exception) {
-        es = e.toString()
+    } catch (_: Exception) {
     }
     return 0
 }

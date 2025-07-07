@@ -18,7 +18,7 @@ main() {
     var inputStream1: ASN1InputStream = ASN1InputStream(berDecoder1, array1)
     var buffer1: ASN1Tag = berDecoder1.readTag(inputStream1)
     if (buffer1.getTag() != 0) {
-        return 1
+        return 2
     }
 
     var array2: Array<Byte> = [0x40]
@@ -26,7 +26,7 @@ main() {
     var inputStream2: ASN1InputStream = ASN1InputStream(berDecoder2, array2)
     var buffer2: ASN1Tag = berDecoder2.readTag(inputStream2)
     if (buffer2.getTag() != 0) {
-        return 1
+        return 3
     }
     
     return 0

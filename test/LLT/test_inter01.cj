@@ -8,7 +8,6 @@ import std.math.numeric.*
 main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     ASN1Integer(65)
-    BigInt(1)
     var d: BigInt = BigInt(2)
     let sc1 = ASN1Integer(d)
     ASN1Integer(d,bytesBuf)

@@ -10,11 +10,9 @@ main() {
  
     var src = ASN1BitString(tag,bud,1)
     src.length()
-    var es: String = ""
     try {
         src.getValueBytes()
-    } catch (e: Exception){
-       es = e.toString()
+    } catch (_: Exception){
     }
     
     return 0

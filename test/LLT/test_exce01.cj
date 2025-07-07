@@ -8,7 +8,6 @@ main() {
     ASN1ParseException()
     ASN1ParseException("value in null")
     let src1: Array<ToString> = Array<ToString>()
-    Array<ToString>(100, repeat: unsafe {zeroValue<ToString>()})
 
     ASN1ParseException("value in null",src1 )
     ASN1ParseException(Exception(),"value in null", src1)

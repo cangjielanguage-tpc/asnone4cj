@@ -22,12 +22,12 @@ main() {
     try {
         sp1.serializedLength(ssc)
     }catch(e: Exception) {
-        println("pass")
+        println("pass1")
     }
     try {
         sp1.serialize(ssc,asn9)
     }catch(e: Exception) {
-        println("pass")
+        println("pass2")
     }
 
     let sle = ASN1TaggedObject(tags,Array<Byte>(),decz)
@@ -35,7 +35,7 @@ main() {
     try {
         sle.iterator()
     }catch(e: Exception) {
-        println("pass")
+        println("pass3")
     }
 
     let tagg1 = ASN1TaggedObjectTag(ASN1TagClass.UNIVERSAL(0),0x03,HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)]))
@@ -46,12 +46,12 @@ main() {
     try {
         op2.serializedLength(ssc)
     }catch(e: Exception) {
-        println("pass")
+        println("pass4")
     }
      try {
         op2.serialize(ssc,asn9)
     }catch(e: Exception) {
-        println("pass11")
+        println("pass5")
     }
     return 0
 }
