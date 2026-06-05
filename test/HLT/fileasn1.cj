@@ -18,858 +18,756 @@ import std.fs.*
 import stdx.encoding.json.*
 import std.unittest.*
 import std.unittest.testmacro.*
+
 @Test
-public class asn_Asn1OutputStream01{    
-
-
+public class asn_Asn1OutputStream01 {
     @TestCase
     func AsnOne1(): Unit {
-            let pathname1: String = "file/encoded_tc2.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            DEREncoder()
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            println(asn1inputstream.readLength())
-            @Assert(asn1inputstream.readLength(),0)
+        let pathname1: String = "file/encoded_tc2.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        DEREncoder()
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        println(asn1inputstream.readLength())
+        @Assert(asn1inputstream.readLength(),0)
     }
 
     @TestCase
     func AsnOne2(): Unit {
-
-            let pathname1: String = "file/encoded_tc3.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            DEREncoder()
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            println(asn1inputstream.readLength())
-            @Assert(asn1inputstream.readLength(),0)
+        let pathname1: String = "file/encoded_tc3.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        DEREncoder()
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        println(asn1inputstream.readLength())
+        @Assert(asn1inputstream.readLength(),0)
     }
-
 
     @TestCase
     func AsnOne3(): Unit {
-
-            let pathname1: String = "file/encoded_tc3.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            println(asn1inputstream.readLength())
-            @Assert(asn1inputstream.readLength(),0)
+        let pathname1: String = "file/encoded_tc3.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        println(asn1inputstream.readLength())
+        @Assert(asn1inputstream.readLength(),0)
     }
 
     @TestCase
     func AsnOne4(): Unit {
-
-            let pathname1: String = "file/encoded_tc4.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            println(asn1inputstream.readLength())
-            @Assert(asn1inputstream.readLength(),0)
+        let pathname1: String = "file/encoded_tc4.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        println(asn1inputstream.readLength())
+        @Assert(asn1inputstream.readLength(),0)
     }
-
 
     @TestCase
     func AsnOne5(): Unit {
-
-            let pathname1: String = "file/encoded_tc6.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            @Assert(asn1inputstream.readLength(),9)
+        let pathname1: String = "file/encoded_tc6.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        @Assert(asn1inputstream.readLength(),9)
     }
- 
 
     @TestCase
     func AsnOne6(): Unit {
-
-            let pathname1: String = "file/encoded_tc7.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            @Assert(asn1inputstream.readLength(),9)
+        let pathname1: String = "file/encoded_tc7.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        @Assert(asn1inputstream.readLength(),9)
     }
-
 
     @TestCase
     func AsnOne7(): Unit {
-
-            let pathname1: String = "file/encoded_tc8.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/encoded_tc8.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne8(): Unit {
-
-            let pathname1: String = "file/encoded_tc9.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/encoded_tc9.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
-
 
     @TestCase
     func AsnOne9(): Unit {
-
-            let pathname1: String = "file/encoded_tc11.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/encoded_tc11.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne10(): Unit {
-
-            let pathname1: String = "file/encoded_tc12.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/encoded_tc12.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne11(): Unit {
-
-            let pathname1: String = "file/encoded_tc19.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,2)
+        let pathname1: String = "file/encoded_tc19.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,2)
     }
-
 
     @TestCase
     func AsnOne12(): Unit {
-
-            let pathname1: String = "file/encoded_tc21.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,6)
+        let pathname1: String = "file/encoded_tc21.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,6)
     }
-
 
     @TestCase
     func AsnOne13(): Unit {
-
-            let pathname1: String = "file/encoded_tc23.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,6)
+        let pathname1: String = "file/encoded_tc23.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,6)
     }
-
 
     @TestCase
     func AsnOne14(): Unit {
-
-            let pathname1: String = "file/encoded_tc25.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/encoded_tc25.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
 
     @TestCase
     func AsnOne15(): Unit {
-
-            let pathname1: String = "file/encoded_tc26.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/encoded_tc26.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
-
 
     @TestCase
     func AsnOne16(): Unit {
-
-            let pathname1: String = "file/encoded_tc27.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/encoded_tc27.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
-
 
     @TestCase
     func AsnOne17(): Unit {
-
-            let pathname1: String = "file/encoded_tc29.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/encoded_tc29.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
-
 
     @TestCase
     func AsnOne18(): Unit {
-
-            let pathname1: String = "file/encoded_tc30.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,5)
+        let pathname1: String = "file/encoded_tc30.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,5)
     }
-
 
     @TestCase
     func AsnOne19(): Unit {
-
-            let pathname1: String = "file/encoded_tc31.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,5)
+        let pathname1: String = "file/encoded_tc31.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,5)
     }
-
 
     @TestCase
     func AsnOne20(): Unit {
-
-            let pathname1: String = "file/encoded_tc32.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,5)
+        let pathname1: String = "file/encoded_tc32.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,5)
     }
-
 
     @TestCase
     func AsnOne21(): Unit {
-
-            let pathname1: String = "file/encoded_tc33.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,3)
+        let pathname1: String = "file/encoded_tc33.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,3)
     }
-
 
     @TestCase
     func AsnOne22(): Unit {
-
-            let pathname1: String = "file/encoded_tc34.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,3)
+        let pathname1: String = "file/encoded_tc34.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,3)
     }
-
 
     @TestCase
     func AsnOne23(): Unit {
-
-            let pathname1: String = "file/encoded_tc37.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,35)
+        let pathname1: String = "file/encoded_tc37.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,35)
     }
-
 
     @TestCase
     func AsnOne24(): Unit {
-
-            let pathname1: String = "file/encoded_tc39.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,35)
+        let pathname1: String = "file/encoded_tc39.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,35)
     }
 
     @TestCase
     func AsnOne25(): Unit {
-
-            let pathname1: String = "file/encoded_tc40.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,3)
+        let pathname1: String = "file/encoded_tc40.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,3)
     }
-
 
     @TestCase
     func AsnOne26(): Unit {
-
-            let pathname1: String = "file/encoded_tc43.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,36)
+        let pathname1: String = "file/encoded_tc43.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,36)
     }
 
     @TestCase
     func AsnOne27(): Unit {
-
-            let pathname1: String = "file/encoded_tc44.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,4)
+        let pathname1: String = "file/encoded_tc44.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,4)
     }
 
     @TestCase
     func AsnOne28(): Unit {
-
-            let pathname1: String = "file/encoded_tc45.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,36)
+        let pathname1: String = "file/encoded_tc45.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,36)
     }
-
 
     @TestCase
     func AsnOne29(): Unit {
-
-            let pathname1: String = "file/encoded_tc46.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,0)
+        let pathname1: String = "file/encoded_tc46.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,0)
     }
-
 
     @TestCase
     func AsnOne30(): Unit {
-
-            let pathname1: String = "file/encoded_tc47.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,35)
+        let pathname1: String = "file/encoded_tc47.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,35)
     }
-
 
     @TestCase
     func AsnOne31(): Unit {
-
-            let pathname1: String = "file/tc6.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/tc6.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne32(): Unit {
-
-            let pathname1: String = "file/tc7.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/tc7.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne33(): Unit {
-
-            let pathname1: String = "file/tc8.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/tc8.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
 
     @TestCase
     func AsnOne34(): Unit {
-
-            let pathname1: String = "file/tc8.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/tc8.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne35(): Unit {
-
-            let pathname1: String = "file/tc11.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/tc11.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne36(): Unit {
-
-            let pathname1: String = "file/tc12.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,9)
+        let pathname1: String = "file/tc12.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,9)
     }
-
 
     @TestCase
     func AsnOne37(): Unit {
-
-            let pathname1: String = "file/tc19.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,2)
+        let pathname1: String = "file/tc19.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,2)
     }
-
 
     @TestCase
     func AsnOne38(): Unit {
-
-            let pathname1: String = "file/tc25.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/tc25.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
-
 
     @TestCase
     func AsnOne39(): Unit {
-
-            let pathname1: String = "file/tc26.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/tc26.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
-
 
     @TestCase
     func AsnOne40(): Unit {
-
-            let pathname1: String = "file/tc27.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/tc27.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
-
 
     @TestCase
     func AsnOne41(): Unit {
-
-            let pathname1: String = "file/tc29.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,1)
+        let pathname1: String = "file/tc29.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,1)
     }
-
 
     @TestCase
     func AsnOne42(): Unit {
-
-            let pathname1: String = "file/tc30.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,5)
+        let pathname1: String = "file/tc30.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,5)
     }
-
 
     @TestCase
     func AsnOne43(): Unit {
-
-            let pathname1: String = "file/tc31.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,5)
+        let pathname1: String = "file/tc31.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,5)
     }
-
 
     @TestCase
     func AsnOne44(): Unit {
-
-            let pathname1: String = "file/tc32.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,5)
+        let pathname1: String = "file/tc32.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,5)
     }
-
 
     @TestCase
     func AsnOne45(): Unit {
-
-            let pathname1: String = "file/tc33.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,3)
+        let pathname1: String = "file/tc33.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,3)
     }
-
 
     @TestCase
     func AsnOne46(): Unit {
-
-            let pathname1: String = "file/tc34.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,3)
+        let pathname1: String = "file/tc34.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,3)
     }
-
 
     @TestCase
     func AsnOne47(): Unit {
-
-            let pathname1: String = "file/tc37.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,35)
+        let pathname1: String = "file/tc37.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,35)
     }
-
-
 
     @TestCase
     func AsnOne48(): Unit {
-
-            let pathname1: String = "file/tc39.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,35)
+        let pathname1: String = "file/tc39.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,35)
     }
-
 
     @TestCase
     func AsnOne49(): Unit {
-
-            let pathname1: String = "file/tc40.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,3)
+        let pathname1: String = "file/tc40.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,3)
     }
-
 
     @TestCase
     func AsnOne50(): Unit {
-
-            let pathname1: String = "file/tc43.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,36)
+        let pathname1: String = "file/tc43.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,36)
     }
-
 
     @TestCase
     func AsnOne51(): Unit {
-
-            let pathname1: String = "file/tc44.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,4)
+        let pathname1: String = "file/tc44.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,4)
     }
-
 
     @TestCase
     func AsnOne52(): Unit {
-
-            let pathname1: String = "file/tc45.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,36)
+        let pathname1: String = "file/tc45.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,36)
     }
-
 
     @TestCase
     func AsnOne53(): Unit {
-
-            let pathname1: String = "file/tc47.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,35)
+        let pathname1: String = "file/tc47.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,35)
     }
-
 
     @TestCase
     func AsnOne54(): Unit {
-
-            let pathname1: String = "file/tc48.ber"
-            println(pathname1)
-            var fs1: File = File(pathname1, OpenMode.ReadWrite)
-            var res1: Array<Byte> = File.readFrom(pathname1)
-            var byteArrayStream: ByteBuffer = ByteBuffer()
-            byteArrayStream.write(res1)
-            var asn1inputstream:ASN1InputStream=ASN1InputStream(BERDecoder(),byteArrayStream)
-            var leng=asn1inputstream.readLength()
-            println(leng)
-            @Assert(leng,35)
+        let pathname1: String = "file/tc48.ber"
+        println(pathname1)
+        var fs1: File = File(pathname1, OpenMode.ReadWrite)
+        var res1: Array<Byte> = File.readFrom(pathname1)
+        var byteArrayStream: ByteBuffer = ByteBuffer()
+        byteArrayStream.write(res1)
+        var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
+        var leng = asn1inputstream.readLength()
+        println(leng)
+        @Assert(leng,35)
     }
 }
