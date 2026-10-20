@@ -1,40 +1,34 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-import std.io.*
 import asn1.*
+import std.io.*
 import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-    BERDecoder()
-    let tag = SEQUENCE
-    let decs: DEREncoder = DEREncoder()
-
-    let str = tag.newSerializer(decs)
-    let arr:ArrayList<ASN1Object> = ArrayList<ASN1Object>()
-    arr.add(ASN1Boolean(true))
-    arr.add(ASN1Boolean(false))
-    let sc = ASN1Sequence(arr)
-    let resu = str.serializedLength(sc) 
+main(): Int64 {
+    let dec: BERDecoder = BERDecoder()
     let wrapped: ByteBuffer = ByteBuffer()
-    let asn = ASN1OutputStream(decs,wrapped)
-    str.serialize(sc,asn) 
-    
-    let tags = SET
-    let str1 = tags.newSerializer(decs)
-    let buf = HashSet<ASN1Object>()
-    buf.add(ASN1Boolean(false))
-    buf.add(ASN1Boolean(true))
-    buf.add(ASN1Boolean(true))
+    var buf = Array<Byte>(10, repeat: 63)
+    wrapped.write(buf)
 
-    let sc1 = ASN1Set(buf)
-    let resu1 = str1.serializedLength(sc1)
-    str1.serialize(sc1,asn)
-    if ( resu != 6){
-        return 1
+    let tag = SET
+    let str = ASN1TaggedObject(tag,ASN1Boolean(true))
+    let decs: DEREncoder = DEREncoder()
+    let arr = HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
+    let tagss = ASN1TaggedObjectTag(ASN1TagClass.UNIVERSAL(0),0x0A,arr)
+    let sc = tagss.newSerializer(decs)
+    let result = sc.serializedLength(str)
+    println(result)
+
+    // 空流上 readTag 应抛异常
+    var caught: Bool = false
+    try {
+        dec.readTag(wrapped)
+    } catch (e: Exception) {
+        caught = true
     }
-    if ( resu1 != 9){
-        return 2
-    }
-    return 0  
+    @Assert(caught, true)
+    return 0
 }

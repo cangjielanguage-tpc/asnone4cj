@@ -3,17 +3,21 @@
 
 import asn1.*
 import std.io.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
 main(): Int64 {
     var value: Array<Byte> = [0x23, 0x80, 0x03, 0x02, 0xF0, 0xF0, 0x03, 0x02, 0x02, 0xF4, 0x0, 0x0]
     var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), value)
+    // 不定长编码应抛异常
+    var caught: Bool = false
     try {
         asn1InputStream.readObject()
     } catch (e: ASN1ParseException) {
-        if (e.message!="The indefinite length form is not (yet) supported!") {
-            return 1
-        }
+        caught = true
+        @Assert(e.message, "The indefinite length form is not (yet) supported!")
     }
+    @Assert(caught, true)
 
     var value1: Array<Byte> = [0x02, 0x7f, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d,
     0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f, 0x20,
@@ -25,18 +29,9 @@ main(): Int64 {
     var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), value1)
     var tag: ASN1Tag = asn1InputStream1.readTag()
     var readLength: Int64 = asn1InputStream1.readLength()
-    if (tag.getTag() != INTEGER.getTag()) {
-        return 2
-    }
-    if (tag.getAsn1TagClass().getValue() != INTEGER.getAsn1TagClass().getValue()) {
-        return 3
-    }
-    if (tag.getAsn1Encoding().getValue() != INTEGER.getAsn1Encoding().getValue()) {
-        return 4
-    }
-    if (readLength != 127) {
-        return 5
-    }
-
+    @Assert(tag.getTag(), INTEGER.getTag())
+    @Assert(tag.getAsn1TagClass().getValue(), INTEGER.getAsn1TagClass().getValue())
+    @Assert(tag.getAsn1Encoding().getValue(), INTEGER.getAsn1Encoding().getValue())
+    @Assert(readLength, 127)
     return 0
 }

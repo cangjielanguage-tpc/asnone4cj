@@ -3,8 +3,10 @@
 
 import std.io.*
 import asn1.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
+main(): Int64 {
     let tags = INTEGER
     let dec: BERDecoder = BERDecoder()
     let bitss = BooleanParser(dec)
@@ -13,14 +15,9 @@ main() {
     let ssc = bitss.parse(tags,Buf)
     let ssc2 = bitss.parse(tags,Buf2)
     let scc3 = ssc.equals(ssc2)
-    if (scc3) {
-        return 1
-    }
-    if (ssc == ssc2) {
-        return 2
-    }
-    if (ssc != ssc2) {
-        return 0
-    }
-    return 3
+
+    @Assert(scc3, false)
+    @Assert(ssc == ssc2, false)
+    @Assert(ssc != ssc2, true)
+    return 0
 }

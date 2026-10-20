@@ -35,9 +35,11 @@ public class ASN1OutputStream <: OutputStream {
     public func write(b: Array<Byte>): Unit
 
     /*
-     * 写入数据长度
+     * 写入单个字节
      *
-     * 参数 b - 数据长度
+     * 参数 b - 要写入的字节（仅低 8 位有效）
+     *
+     * 注意：内部使用复用缓冲向底层流传递字节，自定义 OutputStream 实现须当场消费传入数组，不得保留数组引用；ASN1OutputStream 单实例不可跨线程并发使用
      */
     public func write(b: Int64): Unit
 }
@@ -106,6 +108,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
      * 获取 ASN1 对象
      *
      * 返回值 ASN1Object - 获取到的 ASN1Object
+     * 异常 ASN1ParseException - 数据流已到末尾或内容不合法时抛出
      */
     public func readObject(): ASN1Object 
 
@@ -114,6 +117,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
      *
      * 参数 length - 数据长度
      * 参数 Array<Byte>  - 读取到的数组数据
+     * 异常 ASN1ParseException - 数据流剩余数据不足 length 时抛出
      */
     public func readValue(length: Int64): Array<Byte> 
 
@@ -128,13 +132,15 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
      * 获取当前数据的 ASN1Tag
      *
      * 返回值 ASN1Tag - 获取到的 ASN1Tag
+     * 异常 ASN1ParseException - 数据流已到末尾时抛出
      */
     public func readTag(): ASN1Tag
 
     /*
      * 获取 ASN1 数据长度
      *
-     * 参数 Int64 - 数据数据
+     * 返回值 Int64 - 读取到的长度
+     * 异常 ASN1ParseException - 数据流已到末尾时抛出
      */
     public func readLength(): Int64
 
@@ -2767,7 +2773,7 @@ public enum ASN1Encoding <: Hashable & Equatable<ASN1Encoding> {
 ```cangjie
 public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString{
     /*
-     * 对象是否相等 -- 内部接口
+     * 判断对象是否相等：tag 相同且值相等时返回 true
      *
      * 参数 o - 对象
      * 返回值 Bool - 是否相等
@@ -2987,6 +2993,7 @@ public open class BERDecoder <: ASN1Decoder {
      *
      * 参数 inputStream - 数据流
      * 返回值 ASN1Tag - ASN1Tag 数据
+     * 异常 ASN1ParseException - 数据流已到末尾或 tag 编码不合法时抛出
      */
     public override func readTag(inputStream: InputStream): ASN1Tag
 
@@ -2995,6 +3002,7 @@ public open class BERDecoder <: ASN1Decoder {
      *
      * 参数 inputStream - 数据流
      * 参数 Int64 - 长度数据
+     * 异常 ASN1ParseException - 数据流已到末尾时抛出
      */
     public override func readLength(inputStream: InputStream): Int64
 
@@ -3004,6 +3012,7 @@ public open class BERDecoder <: ASN1Decoder {
      * 参数 length - 长度
      * 参数 inputStream - 数据流
      * 参数 Array<Byte> - 数据
+     * 异常 ASN1ParseException - 数据流剩余数据不足 length 时抛出
      */
     public override func readValue(length: Int64, inputStream: InputStream): Array<Byte>
 }

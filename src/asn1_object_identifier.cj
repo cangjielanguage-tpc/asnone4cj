@@ -21,6 +21,13 @@ public class ASN1ObjectIdentifier <: ASN1PrimitiveValue {
         return oid
     }
 
+    protected override func valueEquals(other: ASN1Object): Bool {
+        match (other as ASN1ObjectIdentifier) {
+            case Some(that) => return oid == that.oid
+            case None => return false
+        }
+    }
+
     public func valueHash(): Int64 {
         return oid.hashCode()
     }
@@ -53,7 +60,7 @@ public class ObjectIdentifierParser <: ASN1Parser {
         while (byteArrayStream.remainLength > 0) {
             byteArrayStream.read(dataArr)
             var x: Byte = dataArr[0]
-            if (x < 127) {
+            if (x < 128) {
                 stringBuilder.append('.')
                 stringBuilder.append(x)
             } else {
@@ -68,7 +75,8 @@ public class ObjectIdentifierParser <: ASN1Parser {
                     v = c
                 } while (x > 127)
                 stringBuilder.append('.')
-                stringBuilder.append(v.toInt64(overflowHandling: OverflowStrategy.Wrapping))
+                // 直接以 BigInt 追加，避免超过 Int64 的分量被静默截断
+                stringBuilder.append(v)
             }
         }
         return ASN1ObjectIdentifier(stringBuilder.toString(), value)
@@ -106,20 +114,22 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
         baos.write(BigInt(number).toBytes())
         for (i in 2..stringArr.size) {
             var valueBigNum: BigInt = BigInt.parse(stringArr[i])
-            var bigNum: Int64 = valueBigNum.toInt64(overflowHandling: OverflowStrategy.Wrapping)
-            if (bigNum > 0 && bigNum < 127) {
+            if (valueBigNum > BigInt(0) && valueBigNum < BigInt(128)) {
                 baos.write(valueBigNum.toBytes())
             } else {
+                // 二进制位宽只算一次，避免每个字节重复转换字符串
+                var bitLength: Int64 = Int64(valueBigNum.toString(radix: 2).size)
                 var neededBytes: Int64
-                if (valueBigNum.toString(radix: 2).size % 7 > 0) {
-                    neededBytes = Int64(valueBigNum.toString(radix: 2).size) / 7 + 1
+                if (bitLength % 7 > 0) {
+                    neededBytes = bitLength / 7 + 1
                 } else {
-                    neededBytes = Int64(valueBigNum.toString(radix: 2).size) / 7 + 0
+                    neededBytes = bitLength / 7
                 }
                 var intI: Int64 = neededBytes - 1
                 while (intI >= 0) {
+                    // 以模 128 取低 7 位，避免超过 Int64 的大数右移后被截断破坏
                     var r: BigInt = valueBigNum >> intI * 7
-                    var a: Int64 = r.toInt64(overflowHandling: OverflowStrategy.Wrapping)
+                    var a: Int64 = (r % BigInt(128)).toInt64(overflowHandling: OverflowStrategy.Wrapping)
                     var b: Byte = UInt8(a & 255)
                     b &= 0x7f
                     if (intI > 0) {

@@ -3,26 +3,26 @@
 
 import asn1.*
 import std.io.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-    let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
-    let asn = ASN1BitString(bytesBuf,6)
-    let arr: Array<Bool> = Array<Bool>(5, repeat: true)
-    ASN1BitString(arr)
-    asn.getValue()
-    let indd =asn.isSet(2)
-    let src =asn.length()
-
-    let tags = INTEGER
-    let dec: BERDecoder = BERDecoder()
-    let bitss = BitStringParser(dec)
-    bitss.parse(tags,bytesBuf)
-
-    if (indd != false) {
-        return 1
-    }
-    if (src != 74) {
-        return 2
-    }
+main(): Int64 {
+    let arr: Array<Bool> = [true, true, false, true, false, false].toArray()
+    var asn1itstring: ASN1BitString = ASN1BitString(arr)
+    @Assert(asn1itstring.isSet(-7), true)
+    @Assert(asn1itstring.isSet(-6), true)
+    @Assert(asn1itstring.isSet(-5), true)
+    @Assert(asn1itstring.isSet(-4), true)
+    @Assert(asn1itstring.isSet(-3), true)
+    @Assert(asn1itstring.isSet(-2), true)
+    @Assert(asn1itstring.isSet(-1), true)
+    @Assert(asn1itstring.isSet(0), true)
+    @Assert(asn1itstring.isSet(1), true)
+    @Assert(asn1itstring.isSet(2), false)
+    @Assert(asn1itstring.isSet(3), true)
+    @Assert(asn1itstring.isSet(4), false)
+    @Assert(asn1itstring.isSet(5), false)
+    @Assert(asn1itstring.isSet(6), false)
+    @Assert(asn1itstring.isSet(7), false)
     return 0
 }

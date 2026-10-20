@@ -30,8 +30,21 @@ public class asn_Asn1OutputStream01 {
         var byteArrayStream: ByteBuffer = ByteBuffer()
         byteArrayStream.write(res1)
         var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
-        println(asn1inputstream.readLength())
-        @Assert(asn1inputstream.readLength(),0)
+        // 空数据文件上读取长度应抛异常，而不是静默返回 0
+        var caught1: Bool = false
+        var caught2: Bool = false
+        try {
+            println(asn1inputstream.readLength())
+        } catch (e: Exception) {
+            caught1 = true
+        }
+        try {
+            asn1inputstream.readLength()
+        } catch (e: Exception) {
+            caught2 = true
+        }
+        @Assert(caught1,true)
+        @Assert(caught2,true)
     }
 
     @TestCase
@@ -44,8 +57,21 @@ public class asn_Asn1OutputStream01 {
         var byteArrayStream: ByteBuffer = ByteBuffer()
         byteArrayStream.write(res1)
         var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
-        println(asn1inputstream.readLength())
-        @Assert(asn1inputstream.readLength(),0)
+        // 空数据文件上读取长度应抛异常，而不是静默返回 0
+        var caught1: Bool = false
+        var caught2: Bool = false
+        try {
+            println(asn1inputstream.readLength())
+        } catch (e: Exception) {
+            caught1 = true
+        }
+        try {
+            asn1inputstream.readLength()
+        } catch (e: Exception) {
+            caught2 = true
+        }
+        @Assert(caught1,true)
+        @Assert(caught2,true)
     }
 
     @TestCase
@@ -57,8 +83,21 @@ public class asn_Asn1OutputStream01 {
         var byteArrayStream: ByteBuffer = ByteBuffer()
         byteArrayStream.write(res1)
         var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
-        println(asn1inputstream.readLength())
-        @Assert(asn1inputstream.readLength(),0)
+        // 空数据文件上读取长度应抛异常，而不是静默返回 0
+        var caught1: Bool = false
+        var caught2: Bool = false
+        try {
+            println(asn1inputstream.readLength())
+        } catch (e: Exception) {
+            caught1 = true
+        }
+        try {
+            asn1inputstream.readLength()
+        } catch (e: Exception) {
+            caught2 = true
+        }
+        @Assert(caught1,true)
+        @Assert(caught2,true)
     }
 
     @TestCase
@@ -70,8 +109,21 @@ public class asn_Asn1OutputStream01 {
         var byteArrayStream: ByteBuffer = ByteBuffer()
         byteArrayStream.write(res1)
         var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
-        println(asn1inputstream.readLength())
-        @Assert(asn1inputstream.readLength(),0)
+        // 空数据文件上读取长度应抛异常，而不是静默返回 0
+        var caught1: Bool = false
+        var caught2: Bool = false
+        try {
+            println(asn1inputstream.readLength())
+        } catch (e: Exception) {
+            caught1 = true
+        }
+        try {
+            asn1inputstream.readLength()
+        } catch (e: Exception) {
+            caught2 = true
+        }
+        @Assert(caught1,true)
+        @Assert(caught2,true)
     }
 
     @TestCase
@@ -415,9 +467,15 @@ public class asn_Asn1OutputStream01 {
         var byteArrayStream: ByteBuffer = ByteBuffer()
         byteArrayStream.write(res1)
         var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
-        var leng = asn1inputstream.readLength()
-        println(leng)
-        @Assert(leng,0)
+        // 空数据文件上读取长度应抛异常，而不是静默返回 0
+        var caught: Bool = false
+        try {
+            var leng = asn1inputstream.readLength()
+            println(leng)
+        } catch (e: Exception) {
+            caught = true
+        }
+        @Assert(caught,true)
     }
 
     @TestCase

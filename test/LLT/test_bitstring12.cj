@@ -1,29 +1,28 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-import std.io.*
 import asn1.*
+import std.io.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-    [127, 127, 127]
-    let str = ASN1ObjectIdentifier("2.3.1")
+main(): Int64 {
     BERDecoder()
     let decs: DEREncoder = DEREncoder()
-    let sc = ObjectIdentifierSerializer(decs)
-
-    let sq = sc.serializedLength(str)
 
     let wrapped: ByteBuffer = ByteBuffer()
-    let asn = ASN1OutputStream(decs, wrapped)
-    sc.serialize(str, asn)
+    let asn = ASN1OutputStream(decs,wrapped)
+    let arr = Array<Bool>(1004, repeat: true)
+    let str = ASN1BitString(arr)
+    asn.writeObject(str)
+    println(0x7f)
 
-    let wrapped1: ByteBuffer = ByteBuffer()
-    let asn1 = ASN1OutputStream(decs, wrapped1)
-    asn1.write(6)
-    sc.serialize(str, asn1)
-    println(sq)
-    if (sq != 2) {
-        return 1
-    }
+    let buf = Array<Byte>(10, repeat: 1)
+    let strc: ASN1PrimitiveValue = ASN1ObjectIdentifier("3.4.5",buf)
+
+    let result = strc.valueHash()
+    println(result)
+
+    @Assert(result, 6445174239661554901)
     return 0
 }

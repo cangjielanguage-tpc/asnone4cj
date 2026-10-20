@@ -1,23 +1,30 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-import asn1.*
 import std.io.*
+import asn1.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-    let str = ASN1Enumerated(8)
-    let sss6 = str.equals(str)
-    println(sss6)
-    let dec: DEREncoder = DEREncoder()
+main(): Int64 {
+    [127, 127, 127]
+    let str = ASN1ObjectIdentifier("2.3.1")
+    BERDecoder()
+    let decs: DEREncoder = DEREncoder()
+    let sc = ObjectIdentifierSerializer(decs)
 
-    let sc = EnumeratedSerializer(dec)
-    let sc1 = sc.serializedLength(str)
+    let sq = sc.serializedLength(str)
+
     let wrapped: ByteBuffer = ByteBuffer()
-    let asn = ASN1OutputStream(dec,wrapped)
-    sc.serialize(str,asn)
-    println(sc1)
-    if (sc1 != 1) {
-        return 1
-    }
+    let asn = ASN1OutputStream(decs, wrapped)
+    sc.serialize(str, asn)
+
+    let wrapped1: ByteBuffer = ByteBuffer()
+    let asn1 = ASN1OutputStream(decs, wrapped1)
+    asn1.write(6)
+    sc.serialize(str, asn1)
+    println(sq)
+
+    @Assert(sq, 2)
     return 0
 }

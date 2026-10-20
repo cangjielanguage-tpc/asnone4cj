@@ -1,50 +1,72 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-import std.io.*
 import asn1.*
+import std.io.*
+import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-
+main(): Int64 {
     let dec: DEREncoder = DEREncoder()
-
     let tags = INTEGER
     let decz: BERDecoder = BERDecoder()
+
     let bitss = BooleanParser(decz)
     let Buf: Array<Byte> = [1]
     let ssc = bitss.parse(tags,Buf)
-    let ssc2 = bitss.parse(tags,Buf)
-    ssc.equals(ssc2)
-    let ssc1 = ssc.hashCode()
 
-    let src = ASN1ObjectIdentifier("a")
-    src.valueHash()
-    let src1 = ObjectIdentifierParser(decz)
-    try {
-        let arr: Array<Byte> = [1,2,3,5,6]
-        src1.parse(tags, arr)
-    }catch(e : Exception){
-        println("pass")
-    }
-    let src2 = ObjectIdentifierSerializer(dec)
-    try {
-        src2.serializedLength(ssc)
-    }catch(e : Exception){
-        println("pass")
-    }
-    
     let decodetd: DEREncoder = DEREncoder()
     let wrapped: ByteBuffer = ByteBuffer()
     let asn9 = ASN1OutputStream(decodetd,wrapped)
+
+    let tags1 = SEQUENCE
+    let src = tags1.newParser(decz)
+    let src1 = tags1.newSerializer(dec)
+    // 空数组 parse 不抛异常，仅冒烟
+    src.parse(tags, Array<Byte>())
+    // Boolean 对象传入 Sequence 序列化器应抛异常
+    var caught2: Bool = false
     try {
-        src2.serialize(ssc,asn9)
-    }catch(e : Exception){
-        println("pass7")
+        src1.serializedLength(ssc)
+    } catch (e: Exception) {
+        caught2 = true
     }
-    let oc = ASN1OctetString(Array<Byte>())
-    oc.getValue()
-    if (ssc1 != 1) {
-        return 1
+    @Assert(caught2, true)
+
+    var caught3: Bool = false
+    try {
+        src1.serialize(ssc,asn9)
+    } catch (e: Exception) {
+        caught3 = true
     }
+    @Assert(caught3, true)
+
+    let resu = tags1.getTag()
+    println(resu)
+
+    let tags2 = SET
+    let rel = tags2.newParser(decz)
+    let rel1 = tags2.newSerializer(dec)
+    // 空数组 parse 不抛异常，仅冒烟
+    rel.parse(tags, Array<Byte>())
+    // Boolean 对象传入 Set 序列化器应抛异常
+    var caught5: Bool = false
+    try {
+        rel1.serializedLength(ssc)
+    } catch (e: Exception) {
+        caught5 = true
+    }
+    @Assert(caught5, true)
+
+    var caught6: Bool = false
+    try {
+        rel1.serialize(ssc,asn9)
+    } catch (e: Exception) {
+        caught6 = true
+    }
+    @Assert(caught6, true)
+
+    @Assert(resu, 16)
     return 0
 }

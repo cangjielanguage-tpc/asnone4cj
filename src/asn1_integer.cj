@@ -28,6 +28,13 @@ public class ASN1Integer <: ASN1PrimitiveValue {
         return value
     }
 
+    protected override func valueEquals(other: ASN1Object): Bool {
+        match (other as ASN1Integer) {
+            case Some(that) => return value == that.value
+            case None => return false
+        }
+    }
+
     public func valueHash(): Int64 {
         return value.toInt64(overflowHandling: OverflowStrategy.Wrapping).hashCode()
     }

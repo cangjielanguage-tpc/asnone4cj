@@ -1,57 +1,31 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
+import std.io.*
 import asn1.*
-import std.io.* 
-import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-
-    let dec: DEREncoder = DEREncoder()
+main(): Int64 {
     let decz: BERDecoder = BERDecoder()
-    let tags = ASN1_BOOLEAN
-
-    let bitss = BooleanParser(decz)
-    let Buf: Array<Byte> = [1]
-    let ssc = bitss.parse(tags,Buf)
-
-    let decodetd: DEREncoder = DEREncoder()
-    let wrapped: ByteBuffer = ByteBuffer()
-    let asn9 = ASN1OutputStream(decodetd,wrapped)
-    let sp1 = BitStringSerializer(dec)
+    DEREncoder()
+    let arr: Array<Bool> = Array<Bool>(80, repeat: true)
+    ASN1BitString(arr)
+    let srt = BitStringParser(decz)
+    let tag = SEQUENCE
+    tag.isConstructed()
+    let buf = Array<Byte>(80, repeat: 1)
+    // Boolean tag 传入 BitString 解析器应抛异常
+    var caught1: Bool = false
     try {
-        sp1.serializedLength(ssc)
-    }catch(e: Exception) {
-        println("pass1")
+        srt.parse(tag,buf)
+    } catch (e: Exception) {
+        caught1 = true
     }
-    try {
-        sp1.serialize(ssc,asn9)
-    }catch(e: Exception) {
-        println("pass2")
-    }
+    @Assert(caught1, true)
 
-    let sle = ASN1TaggedObject(tags,Array<Byte>(),decz)
-    
-    try {
-        sle.iterator()
-    }catch(e: Exception) {
-        println("pass3")
-    }
+    ASN1InputStream(decz, buf)
 
-    let tagg1 = ASN1TaggedObjectTag(ASN1TagClass.UNIVERSAL(0),0x03,HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)]))
-    
-    let op1 =tagg1.newParser(decz)
-    op1.parse(tags,Array<Byte>())
-    let op2 =tagg1.newSerializer(dec)
-    try {
-        op2.serializedLength(ssc)
-    }catch(e: Exception) {
-        println("pass4")
-    }
-     try {
-        op2.serialize(ssc,asn9)
-    }catch(e: Exception) {
-        println("pass5")
-    }
+    @Assert(tag.isConstructed(), true)
     return 0
 }

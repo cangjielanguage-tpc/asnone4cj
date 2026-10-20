@@ -25,6 +25,13 @@ public class ASN1Enumerated <: ASN1PrimitiveValue {
     public override func getValue(): Any {
         return value
     }
+
+    protected override func valueEquals(other: ASN1Object): Bool {
+        match (other as ASN1Enumerated) {
+            case Some(that) => return value == that.value
+            case None => return false
+        }
+    }
 }
 
 public class EnumeratedParser <: ASN1Parser {

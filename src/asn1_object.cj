@@ -17,11 +17,21 @@ public abstract class ASN1Object <: Hashable & Equatable<ASN1Object> & ToString 
         if (refEq(this, o)) {
             return true
         }
-        var that: ASN1Object = (o as ASN1Object).getOrThrow()
-        if (refEq(this.tag, that)) {
-            return true
+        match (o as ASN1Object) {
+            case Some(that) =>
+                // tag 按值语义比较（ASN1Tag.equals 内部有引用快路径），
+                // 不能用 refEq：contextSpecific/application 的 tag 每次构造返回新实例
+                if (!this.tag.equals(that.tag)) {
+                    return false
+                }
+                return this.valueEquals(that)
+            case None => return false
         }
-        return false
+    }
+
+    // 值相等比较：默认按值字符串比较，子类可覆写为类型化比较
+    protected open func valueEquals(other: ASN1Object): Bool {
+        return this.valueString() == other.valueString()
     }
 
     public func hashCode(): Int64 {

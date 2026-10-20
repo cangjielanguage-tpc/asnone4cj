@@ -21,7 +21,8 @@ public class ASN1BitString <: ASN1String {
     public init(bits: Array<Bool>) {
         super(BIT_STRING, constructBytes(bits))
         this.bits = bits
-        this.unusedBits = 8 - (bits.size % 8)
+        // unusedBits 合法域为 [0,7]，字节对齐时为 0
+        this.unusedBits = (8 - (bits.size % 8)) % 8
     }
 
     @OverflowWrapping
@@ -104,6 +105,11 @@ public class BitStringParser <: ASN1Parser {
                     )
                     var i: Int64 = stream.readLength()
                     var subValue: Array<Byte> = stream.readValue(i)
+                    Checks.checkState(
+                        subValue.size > 0,
+                        "Constructed ASN.1 BIT STRING fragment should have at least a one byte value",
+                        Array<ToString>()
+                    )
                     var subValueNew: Array<Byte> = subValue.slice(1, subValue.size - 1)
                     baos.write(subValueNew)
                     if (stream.lengthData() <= 0) {
@@ -116,6 +122,11 @@ public class BitStringParser <: ASN1Parser {
                 throw ASN1ParseException("Unable to parse Constructed ASN.1 BIT STRING")
             }
         } else {
+            Checks.checkState(
+                value.size > 0,
+                "An ASN.1 BIT STRING should have at least a one byte value",
+                Array<ToString>()
+            )
             var unusedBits: Byte = value[0]
             var bits: Array<Byte> = Array<Byte>(value.size - 1, repeat: 0)
             value.copyTo(bits, 1, 0, value.size - 1)

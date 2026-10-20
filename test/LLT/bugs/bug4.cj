@@ -5,8 +5,10 @@ import asn1.*
 import std.io.*
 import std.collection.*
 import std.time.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
+main(): Int64 {
     let tag = ASN1_NULL_TAG
     let sc = ASN1TaggedObject(tag, ASN1Null(), false)
     let src = sc.toString()
@@ -22,11 +24,7 @@ main() {
     let tag3 = ENUMERATED
     ASN1TaggedObject(tag3, ASN1Enumerated(20), false)
 
-    if (src != "ASN1TaggedObject[ASN1Tag[UNIVERSAL,PRIMITIVE,5],ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,5]]]") {
-        return 1
-    }
-    if (sc1.toString().size != 91) {
-        return 2
-    }
+    @Assert(src, "ASN1TaggedObject[ASN1Tag[UNIVERSAL,PRIMITIVE,5],ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,5]]]")
+    @Assert(sc1.toString().size, 91)
     return 0
 }
