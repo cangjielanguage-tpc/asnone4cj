@@ -3,8 +3,10 @@
 
 import asn1.*
 import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
+main(): Int64 {
     var tag = BIT_STRING
     tag.constructed()
     tag.primitive()
@@ -12,9 +14,6 @@ main() {
     ASN1Tag.contextSpecific(1)
     let src = tag.hashCode()
 
-    if (src == 0) {
-        return 1
-    }
-
+    @Assert(src != 0, true)
     return 0
 }

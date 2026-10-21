@@ -3,22 +3,20 @@
 
 import std.io.*
 import asn1.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
+main(): Int64 {
     let Buf: Array<Byte> = [1]
     let decs: ASN1OctetString = ASN1OctetString(Buf)
     let tags = INTEGER
 
     ASN1OctetString(tags,Buf)
-    //let src = decs.getValue()
     let src2 = decs.valueString()
     let src3 = decs.length()
-    //let src1 = (src as Array<Byte>).getOrThrow()
-    //println(src1.size)
     println(src2)
     println(src3)
-    if (src3 != 1) {
-        return 1
-    }
+
+    @Assert(src3, 1)
     return 0
 }

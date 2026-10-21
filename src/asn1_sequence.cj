@@ -6,7 +6,8 @@ package asn1
 
 public class ASN1Sequence <: ASN1Object & ASN1Constructed {
     private var objects: ArrayList<ASN1Object>
-    protected var bytes: Array<Byte> = Array<Byte>()
+    // None 表示尚未编码；Some(空数组) 表示已编码且内容为空，两者语义不同
+    protected var bytes: Option<Array<Byte>> = None
 
     public init(objects: ArrayList<ASN1Object>, bytes: Array<Byte>) {
         super(SEQUENCE)
@@ -20,7 +21,8 @@ public class ASN1Sequence <: ASN1Object & ASN1Constructed {
     }
 
     public func getValue(): ArrayList<ASN1Object> {
-        return objects
+        // 返回拷贝，避免外部修改内部状态
+        return ArrayList<ASN1Object>(objects)
     }
 
     public func iterator(): Iterator<ASN1Object> {
@@ -33,6 +35,22 @@ public class ASN1Sequence <: ASN1Object & ASN1Constructed {
 
     public func get(i: Int64): ASN1Object {
         return objects[i]
+    }
+
+    protected override func valueEquals(other: ASN1Object): Bool {
+        match (other as ASN1Sequence) {
+            case Some(that) =>
+                if (objects.size != that.size()) {
+                    return false
+                }
+                for (i in 0..objects.size) {
+                    if (objects[i] != that.get(i)) {
+                        return false
+                    }
+                }
+                return true
+            case None => return false
+        }
     }
 }
 
@@ -62,20 +80,22 @@ class SeqSerializer <: ASN1Serializer {
 
     public func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1Sequence = (asn1Object as ASN1Sequence).getOrThrow()
-        if (object.bytes.isEmpty()) {
-            calculateBytes(object)
+        match (object.bytes) {
+            case Some(b) => return b.size
+            case None =>
+                calculateBytes(object)
+                return (object.bytes.getOrThrow()).size
         }
-        return object.bytes.size
     }
 
     public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1Sequence = (asn1Object as ASN1Sequence).getOrThrow()
-        if (!object.bytes.isEmpty()) {
-            stream.write(object.bytes)
-        } else {
-            for (v in object) {
-                stream.writeObject(v)
-            }
+        match (object.bytes) {
+            case Some(b) => stream.write(b)
+            case None =>
+                for (v in object) {
+                    stream.writeObject(v)
+                }
         }
     }
 
@@ -85,6 +105,6 @@ class SeqSerializer <: ASN1Serializer {
         for (object in asn1Object) {
             asn1OutputStream.writeObject(object)
         }
-        asn1Object.bytes = out.bytes()
+        asn1Object.bytes = Some(out.bytes())
     }
 }

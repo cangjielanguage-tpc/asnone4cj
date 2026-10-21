@@ -4,15 +4,15 @@
 import asn1.*
 import std.io.*
 import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
 main(): Int64 {
     var objects: HashSet<ASN1Object> = HashSet<ASN1Object>([ASN1Boolean(true)])
     var set: ASN1Set = ASN1Set(objects)
     var any: Any = set.getValue()
     var anySet: HashSet<ASN1Object> = (any as HashSet<ASN1Object>).getOrThrow()
-    if (anySet.size != 1) {
-        return 1
-    }
+    @Assert(anySet.size, 1)
     var iteratorSet: Iterator<ASN1Object> = anySet.iterator()
     while (true) {
         match (iteratorSet.next()) {
@@ -25,9 +25,7 @@ main(): Int64 {
     var set1: ASN1Set = ASN1Set(objects1)
     var any1: Any = set1.getValue()
     var anySet1: HashSet<ASN1Object> = (any1 as HashSet<ASN1Object>).getOrThrow()
-    if (anySet1.size != 2) {
-        return 2
-    }
+    @Assert(anySet1.size, 2)
     var iteratorSet1: Iterator<ASN1Object> = anySet1.iterator()
     while (true) {
         match (iteratorSet1.next()) {
@@ -41,9 +39,7 @@ main(): Int64 {
     var set2: ASN1Set = ASN1Set(objects2)
     var any2: Any = set2.getValue()
     var anySet2: HashSet<ASN1Object> = (any2 as HashSet<ASN1Object>).getOrThrow()
-    if (anySet2.size != 4) {
-        return 3
-    }
+    @Assert(anySet2.size, 4)
     var iteratorSet2: Iterator<ASN1Object> = anySet2.iterator()
     while (true) {
         match (iteratorSet2.next()) {
@@ -51,6 +47,5 @@ main(): Int64 {
             case None => break
         }
     }
-
     return 0
 }

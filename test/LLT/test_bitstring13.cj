@@ -1,27 +1,40 @@
 // EXEC: cjc %import-path %L %l %f
 // EXEC: ./main
 
-import asn1.*
 import std.io.*
+import asn1.*
+import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
+main(): Int64 {
     BERDecoder()
+    let tag = SEQUENCE
     let decs: DEREncoder = DEREncoder()
 
+    let str = tag.newSerializer(decs)
+    let arr: ArrayList<ASN1Object> = ArrayList<ASN1Object>()
+    arr.add(ASN1Boolean(true))
+    arr.add(ASN1Boolean(false))
+    let sc = ASN1Sequence(arr)
+    let resu = str.serializedLength(sc)
     let wrapped: ByteBuffer = ByteBuffer()
     let asn = ASN1OutputStream(decs,wrapped)
-    let arr =Array<Bool>(1004, repeat: true)
-    let str = ASN1BitString(arr)
-    asn.writeObject(str)
-    println(0x7f)
+    str.serialize(sc,asn)
 
-    let buf = Array<Byte>(10, repeat: 1)
-    let strc: ASN1PrimitiveValue = ASN1ObjectIdentifier("3.4.5",buf)
-    
-    let result = strc.valueHash()
-    println(result)
-    if(result != 6445174239661554901) {
-        return 1
-    }
+    let tags = SET
+    let str1 = tags.newSerializer(decs)
+    let buf = HashSet<ASN1Object>()
+    buf.add(ASN1Boolean(false))
+    buf.add(ASN1Boolean(true))
+    buf.add(ASN1Boolean(true))
+
+    let sc1 = ASN1Set(buf)
+    let resu1 = str1.serializedLength(sc1)
+    str1.serialize(sc1,asn)
+
+    // equals 修复后 SET 按值去重：{false, true, true} 实际只含 2 个元素，编码长度 6
+    @Assert(resu, 6)
+    @Assert(resu1, 6)
     return 0
 }

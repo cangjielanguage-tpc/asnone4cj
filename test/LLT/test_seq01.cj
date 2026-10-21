@@ -3,23 +3,21 @@
 
 import asn1.*
 import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
+main(): Int64 {
     var arr = ArrayList<ASN1Object>()
     var seq = ASN1Sequence(arr)
     let src = seq.size()
     var es: String = ""
     try {
         seq.get(1)
-    } catch (e: Exception){
-       es = e.toString()
+    } catch (e: Exception) {
+        es = e.toString()
     }
-    
-    if (src != 0){
-        return 1
-    }
-    if(es != "IndexOutOfBoundsException: index: 1, size: 0") {
-        return 2
-    }
+
+    @Assert(src, 0)
+    @Assert(es, "IndexOutOfBoundsException: index: 1, size: 0")
     return 0
 }

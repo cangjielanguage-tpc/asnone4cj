@@ -52,7 +52,8 @@ public class asn_Asn1InputStream01 {
             println(readtag)
             @Assert(readtag,10)
         } catch (e: Exception) {
-            @Assert(e.toString(),"Exception: Cannot parse ASN.1 object from stream")
+            // 修复后异常保留根因信息，message 以原始 cause 前缀开头
+            @Assert(e.toString().contains("Cannot parse ASN.1 object from stream"), true)
         }
     }
 

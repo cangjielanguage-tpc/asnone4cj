@@ -21,6 +21,13 @@ public class ASN1Boolean <: ASN1PrimitiveValue {
         return value
     }
 
+    protected override func valueEquals(other: ASN1Object): Bool {
+        match (other as ASN1Boolean) {
+            case Some(that) => return value == that.value
+            case None => return false
+        }
+    }
+
     public func valueHash(): Int64 {
         if (value) {
             return 1231
@@ -37,7 +44,7 @@ public class BooleanParser <: ASN1Parser {
 
     public override func parse(_: ASN1Tag, value: Array<Byte>): ASN1Object {
         let list: Array<ToString> = [value.size]
-        Checks.checkState(value.size == 1, "ASN.1 NULL can not have a value", list)
+        Checks.checkState(value.size == 1, "Value of ASN.1 BOOLEAN should have length 1", list)
         return ASN1Boolean(value[0] != 0x0, value)
     }
 }

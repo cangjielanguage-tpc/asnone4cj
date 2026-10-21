@@ -172,7 +172,8 @@ public class asn_Asn1TaggedObject {
             println(sle.getObject(tagss))
             println(sle.toString())
         } catch (e: Exception) {
-            @Assert(e.toString(),"Exception: Cannot parse ASN.1 object from streamUnable to parse the explicit Tagged Object with %s, it might be implicit")
+            // 修复后异常保留根因信息，message 以原始 cause 前缀开头
+            @Assert(e.toString().contains("Cannot parse ASN.1 object from stream"), true)
         }
     }
 

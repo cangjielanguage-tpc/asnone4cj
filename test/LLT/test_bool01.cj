@@ -3,8 +3,10 @@
 
 import asn1.*
 import std.io.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
+main(): Int64 {
     let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     let sc = ASN1Boolean(true)
     ASN1Boolean(true,bytesBuf)
@@ -13,9 +15,7 @@ main() {
     println(asn1test)
     let dec: BERDecoder = BERDecoder()
     BooleanParser(dec)
-    //sc2.parse(sc,bytesBuf)
-    if(asn1test) {
-        return 0
-    }
-    return 1
+
+    @Assert(asn1test, true)
+    return 0
 }

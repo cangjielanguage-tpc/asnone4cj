@@ -4,9 +4,10 @@
 import std.io.*
 import asn1.*
 import std.collection.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-
+main(): Int64 {
     let dec: DEREncoder = DEREncoder()
     let decz: BERDecoder = BERDecoder()
     let tags = ASN1_BOOLEAN
@@ -37,7 +38,6 @@ main() {
     tags8.newParser(decz)
     tags8.newSerializer(dec)
 
-    
     let tags9 = ASN1Tag.application(6)
     let srcp1 = tags9.hashCode()
     tags9.toString()
@@ -54,12 +54,8 @@ main() {
     ASN1OutputStream(decodetd,wrapped)
     println(srcp1)
     println(srcp2)
-    if (srcp1 == 0) {
-        return 1
-    }
-    if (srcp2 == 0) {
-        return 1
-    }
 
+    @Assert(srcp1 != 0, true)
+    @Assert(srcp2 != 0, true)
     return 0
 }

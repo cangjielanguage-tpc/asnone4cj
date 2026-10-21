@@ -3,18 +3,19 @@
 
 import asn1.*
 import std.io.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-
+main(): Int64 {
     let arr: Array<Bool> = Array<Bool>(5, repeat: true)
     let asn1 = ASN1BitString(arr)
     let str = asn1.valueString()
     let asse = DEREncoder()
     BitStringSerializer(asse)
-    
+
     let tag = BIT_STRING
     let dec: BERDecoder = BERDecoder()
-    let buf:  Array<Byte> = [1,1]
+    let buf: Array<Byte> = [1,1]
     let bitss = BitStringParser(dec)
     bitss.parse(tag,buf)
 
@@ -22,10 +23,7 @@ main() {
     let bols1 = ASN1Boolean(false)
     bols.valueHash()
     bols1.valueHash()
-    if (str.size != 30) {
-        return 1
-    }
+
+    @Assert(str.size, 30)
     return 0
 }
-
-

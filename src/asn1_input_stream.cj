@@ -43,7 +43,8 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
         } catch (pe: NoneValueException) {
             throw pe
         } catch (e: Exception) {
-            throw ASN1ParseException("Cannot parse ASN.1 object from stream")
+            // 保留原始异常作为 cause，避免丢失根因
+            throw ASN1ParseException(e, "Cannot parse ASN.1 object from stream", Array<ToString>())
         }
     }
 

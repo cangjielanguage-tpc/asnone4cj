@@ -3,12 +3,11 @@
 
 import asn1.*
 import std.io.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
-main() {
-
+main(): Int64 {
     let decodetd: DEREncoder = DEREncoder()
-
-
     let wrapped: ByteBuffer = ByteBuffer()
     ASN1OutputStream(decodetd,wrapped)
 
@@ -17,8 +16,6 @@ main() {
     let bytesBuf: Array<Byte> = Array<Byte>(10, repeat: 0)
     ASN1BitString(bytesBuf,6)
 
-    if (bytesBuf.size != 0) {
-        return 0
-    }
-    return 1
+    @Assert(bytesBuf.size != 0, true)
+    return 0
 }

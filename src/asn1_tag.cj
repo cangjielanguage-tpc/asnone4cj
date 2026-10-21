@@ -71,22 +71,40 @@ let tags: HashMap<Int64, ASN1Tag> = HashMap<Int64, ASN1Tag>(
 public abstract class ASN1Tag {
     private var tag: Int64 = 0
     private var asn1TagClass: ASN1TagClass
-    private var supportedEncodings: HashSet<ASN1Encoding> = HashSet<ASN1Encoding>()
+    // 支持的编码用位掩码存储：bit0=PRIMITIVE，bit1=CONSTRUCTED，避免热路径上的 HashSet 哈希开销
+    private var supportedMask: UInt8
     private var asn1Encoding: ASN1Encoding
 
-    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>) {
+    private static func toMask(supportedEncodings: HashSet<ASN1Encoding>): UInt8 {
+        var mask: UInt8 = 0
         if (supportedEncodings.contains(ASN1Encoding.PRIMITIVE(0x0))) {
+            mask |= 0x01
+        }
+        if (supportedEncodings.contains(ASN1Encoding.CONSTRUCTED(0x20))) {
+            mask |= 0x02
+        }
+        return mask
+    }
+
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, supportedEncodings: HashSet<ASN1Encoding>) {
+        // 默认编码：支持 PRIMITIVE 取 PRIMITIVE，否则 CONSTRUCTED
+        this(asn1TagClass, tag, ASN1Tag.toMask(supportedEncodings))
+    }
+
+    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
+        // 单一编码支持：PRIMITIVE 对应 bit0，CONSTRUCTED 对应 bit1
+        this(asn1TagClass, tag, asn1Encoding, if (asn1Encoding == ASN1Encoding.PRIMITIVE(0x0)) { 0x01 } else { 0x02 })
+    }
+
+    internal init(asn1TagClass: ASN1TagClass, tag: Int64, supportedMask: UInt8) {
+        if ((supportedMask & 0x01) != 0) {
             this.asn1Encoding = ASN1Encoding.PRIMITIVE(0x0)
         } else {
             this.asn1Encoding = ASN1Encoding.CONSTRUCTED(0x20)
         }
         this.asn1TagClass = asn1TagClass
         this.tag = tag
-        this.supportedEncodings = supportedEncodings
-    }
-
-    public init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding) {
-        this(asn1TagClass, tag, asn1Encoding, HashSet<ASN1Encoding>([asn1Encoding]))
+        this.supportedMask = supportedMask
     }
 
     public init(
@@ -97,7 +115,14 @@ public abstract class ASN1Tag {
     ) {
         this.asn1TagClass = asn1TagClass
         this.tag = tag
-        this.supportedEncodings = supportedEncodings
+        this.supportedMask = ASN1Tag.toMask(supportedEncodings)
+        this.asn1Encoding = asn1Encoding
+    }
+
+    internal init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, supportedMask: UInt8) {
+        this.asn1TagClass = asn1TagClass
+        this.tag = tag
+        this.supportedMask = supportedMask
         this.asn1Encoding = asn1Encoding
     }
 
@@ -113,10 +138,11 @@ public abstract class ASN1Tag {
         if (this.asn1Encoding == asn1Encoding) {
             return this
         }
-        if (!supportedEncodings.contains(asn1Encoding)) {
+        let bit: UInt8 = if (asn1Encoding == ASN1Encoding.PRIMITIVE(0x0)) { 0x01 } else { 0x02 }
+        if ((supportedMask & bit) == 0) {
             throw IllegalArgumentException("The ASN.1 tag does not support encoding")
         }
-        return ASN1AllTag(this.asn1TagClass, this.tag, asn1Encoding, this.supportedEncodings, this)
+        return ASN1AllTag(this.asn1TagClass, this.tag, asn1Encoding, supportedMask, this)
     }
 
     public static func application(tag: Int64): ASN1Tag {
@@ -130,18 +156,29 @@ public abstract class ASN1Tag {
     public static func forTag(asn1TagClass: ASN1TagClass, tag: Int64): ASN1Tag {
         match (asn1TagClass) {
             case UNIVERSAL(0) =>
-                for (asn1Tag in tags.values()) {
-                    if (asn1Tag.tag == tag && asn1TagClass.getValue() == asn1Tag.asn1TagClass.getValue()) {
-                        return asn1Tag
-                    }
+                // tags 以 tag 编号为键，直接查表替代线性扫描
+                match (tags.get(tag)) {
+                    case Some(asn1Tag) => return asn1Tag
+                    case None => throw ASN1ParseException("Unknown ASN.1 tag")
                 }
-                throw ASN1ParseException("Unknown ASN.1 tag")
             case APPLICATION(0x40) | CONTEXT_SPECIFIC(0x80) | PRIVATE(0xc0) =>
-                return ASN1TaggedObjectTag(
-                    asn1TagClass,
-                    tag,
-                    HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)])
-                )
+                // 两种编码均支持，掩码构造避免每次调用分配 HashSet
+                return ASN1TaggedObjectTag(asn1TagClass, tag, ASN1Encoding.PRIMITIVE(0x0), 0x03)
+            case _ => throw ASN1ParseException("Unknown ASN.1 tag")
+        }
+    }
+
+    // readTag 组合路径：等价于 forTag(...).asEncoded(...)，消除中间 HashSet 分配与二次包装
+    internal static func resolve(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding): ASN1Tag {
+        match (asn1TagClass) {
+            case UNIVERSAL(0) =>
+                match (tags.get(tag)) {
+                    case Some(asn1Tag) => return asn1Tag.asEncoded(asn1Encoding)
+                    case None => throw ASN1ParseException("Unknown ASN.1 tag")
+                }
+            case APPLICATION(0x40) | CONTEXT_SPECIFIC(0x80) | PRIVATE(0xc0) =>
+                // 显式/隐式 tagged object 均支持两种编码，直接按请求编码构造
+                return ASN1TaggedObjectTag(asn1TagClass, tag, asn1Encoding, 0x03)
             case _ => throw ASN1ParseException("Unknown ASN.1 tag")
         }
     }
@@ -171,7 +208,11 @@ public abstract class ASN1Tag {
             return true
         }
         var that: ASN1Tag = (o as ASN1Tag).getOrThrow()
-        return (getTag() == that.getTag() && asn1Encoding == that.asn1Encoding)
+        // tag class 参与相等判断，避免不同 class 的同号 tag 误判相等
+        let sameTag: Bool = getTag() == that.getTag()
+        let sameClass: Bool = asn1TagClass.getValue() == that.asn1TagClass.getValue()
+        let sameEncoding: Bool = asn1Encoding == that.asn1Encoding
+        return sameTag && sameClass && sameEncoding
     }
 
     public func hashCode(): Int32 {
@@ -364,6 +405,10 @@ public class ASN1TaggedObjectTag <: ASN1Tag {
         super(asn1TagClass, tag, supportedEncodings)
     }
 
+    internal init(asn1TagClass: ASN1TagClass, tag: Int64, asn1Encoding: ASN1Encoding, supportedMask: UInt8) {
+        super(asn1TagClass, tag, asn1Encoding, supportedMask)
+    }
+
     public func newParser(decoder: ASN1Decoder): ASN1Parser {
         return TaggedObjectParser(decoder)
     }
@@ -383,6 +428,17 @@ public class ASN1AllTag <: ASN1Tag {
         asn1Tag: ASN1Tag
     ) {
         super(asn1TagClass, tag, asn1Encoding, supportedEncodings)
+        this.asn1Tag = asn1Tag
+    }
+
+    internal init(
+        asn1TagClass: ASN1TagClass,
+        tag: Int64,
+        asn1Encoding: ASN1Encoding,
+        supportedMask: UInt8,
+        asn1Tag: ASN1Tag
+    ) {
+        super(asn1TagClass, tag, asn1Encoding, supportedMask)
         this.asn1Tag = asn1Tag
     }
 

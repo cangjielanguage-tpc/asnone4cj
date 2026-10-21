@@ -6,7 +6,8 @@ package asn1
 
 public class ASN1Set <: ASN1Object & ASN1Constructed {
     private var objects: HashSet<ASN1Object>
-    protected var bytes: Array<Byte> = Array<Byte>()
+    // None 表示尚未编码；Some(空数组) 表示已编码且内容为空，两者语义不同
+    protected var bytes: Option<Array<Byte>> = None
 
     public init(objects: HashSet<ASN1Object>, bytes: Array<Byte>) {
         super(SET)
@@ -20,11 +21,30 @@ public class ASN1Set <: ASN1Object & ASN1Constructed {
     }
 
     public func getValue(): HashSet<ASN1Object> {
-        return objects
+        // 返回拷贝，避免外部修改内部状态
+        return HashSet<ASN1Object>(objects)
     }
 
     public func iterator(): Iterator<ASN1Object> {
         return HashSet<ASN1Object>(objects).iterator()
+    }
+
+    protected override func valueEquals(other: ASN1Object): Bool {
+        match (other as ASN1Set) {
+            case Some(that) =>
+                if (objects.size != that.getValue().size) {
+                    return false
+                }
+                // SET 无序：逐元素在对方集合中查找
+                var thatObjects: HashSet<ASN1Object> = that.getValue()
+                for (v in objects) {
+                    if (!thatObjects.contains(v)) {
+                        return false
+                    }
+                }
+                return true
+            case None => return false
+        }
     }
 }
 
@@ -54,20 +74,22 @@ class SetSerializer <: ASN1Serializer {
 
     public func serializedLength(asn1Object: ASN1Object): Int64 {
         var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
-        if (objects.bytes.isEmpty()) {
-            calculateBytes(objects)
+        match (objects.bytes) {
+            case Some(b) => return b.size
+            case None =>
+                calculateBytes(objects)
+                return (objects.bytes.getOrThrow()).size
         }
-        return objects.bytes.size
     }
 
     public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var objects: ASN1Set = (asn1Object as ASN1Set).getOrThrow()
-        if (!objects.bytes.isEmpty()) {
-            stream.write(objects.bytes)
-        } else {
-            for (v in objects) {
-                stream.writeObject(v)
-            }
+        match (objects.bytes) {
+            case Some(b) => stream.write(b)
+            case None =>
+                for (v in objects) {
+                    stream.writeObject(v)
+                }
         }
     }
 
@@ -77,6 +99,6 @@ class SetSerializer <: ASN1Serializer {
         for (object in asn1Object) {
             asn1OutputStream.writeObject(object)
         }
-        asn1Object.bytes = outs.bytes()
+        asn1Object.bytes = Some(outs.bytes())
     }
 }

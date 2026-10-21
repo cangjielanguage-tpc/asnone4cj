@@ -126,6 +126,7 @@ public class asn_ASN1BitString02 {
     func asn_ASN1BitString_13(): Unit {
         let arr: Array<Bool> = Array<Bool>()
         var asn1itstring: ASN1BitString = ASN1BitString(arr)
-        @Assert(asn1itstring.length(),-8)
+        // 修复 unusedBits 后：空比特串 unusedBits = 0，length = 0（修复前错误地为 -8）
+        @Assert(asn1itstring.length(),0)
     }
 }

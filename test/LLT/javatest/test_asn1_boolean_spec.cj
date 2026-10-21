@@ -3,6 +3,8 @@
 
 import asn1.*
 import std.io.*
+import std.unittest.*
+import std.unittest.testmacro.*
 
 // 数组第一位0x01代表ASN1Boolean类型
 // 数组第二位0x01代表数组长度为1
@@ -14,18 +16,12 @@ main(): Int64 {
     byteArrayStream.write(value)
     var asn1InputStream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
     var asn1Object: ASN1Object = asn1InputStream.readObject()
-    if (!(asn1Object is ASN1Boolean)) {
-        return 1
-    }
+    @Assert(asn1Object is ASN1Boolean, true)
     var object: ASN1Boolean = (asn1Object as ASN1Boolean).getOrThrow()
     var anyValue: Any = object.getValue()
     var boolValue: Bool = (anyValue as Bool).getOrThrow()
-    if (boolValue) {
-        return 2
-    }
-    if (object.valueHash() != 1237) {
-        return 3
-    }
+    @Assert(boolValue, false)
+    @Assert(object.valueHash(), 1237)
 
     // true
     var value1: Array<Byte> = [0x01, 0x01, 0x01]
@@ -33,18 +29,12 @@ main(): Int64 {
     byteArrayStream1.write(value1)
     var asn1InputStream1: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream1)
     var asn1Object1: ASN1Object = asn1InputStream1.readObject()
-    if (!(asn1Object1 is ASN1Boolean)) {
-        return 4
-    }
+    @Assert(asn1Object1 is ASN1Boolean, true)
     var object1: ASN1Boolean = (asn1Object1 as ASN1Boolean).getOrThrow()
     var anyValue1: Any = object1.getValue()
     var boolValue1: Bool = (anyValue1 as Bool).getOrThrow()
-    if (!boolValue1) {
-        return 5
-    }
-    if (object1.valueHash() != 1231) {
-        return 6
-    }
+    @Assert(boolValue1, true)
+    @Assert(object1.valueHash(), 1231)
 
     // true
     var value2: Array<Byte> = [0x01, 0x01, 0xFF]
@@ -52,50 +42,35 @@ main(): Int64 {
     byteArrayStream2.write(value2)
     var asn1InputStream2: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream2)
     var asn1Object2: ASN1Object = asn1InputStream2.readObject()
-    if (!(asn1Object2 is ASN1Boolean)) {
-        return 7
-    }
+    @Assert(asn1Object2 is ASN1Boolean, true)
     var object2: ASN1Boolean = (asn1Object2 as ASN1Boolean).getOrThrow()
     var anyValue2: Any = object2.getValue()
     var boolValue2: Bool = (anyValue2 as Bool).getOrThrow()
-    if (!boolValue2) {
-        return 8
-    }
-    if (object2.valueHash() != 1231) {
-        return 9
-    }
+    @Assert(boolValue2, true)
+    @Assert(object2.valueHash(), 1231)
 
     var value3: Array<Byte> = [0x01, 0x01, 0x00]
     var byteArrayStream3: ByteBuffer = ByteBuffer()
     var asn1OutputStream3: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream3)
     asn1OutputStream3.writeObject(ASN1Boolean(false))
-    if (byteArrayStream3.bytes() != value3) {
-        return 10
-    }
+    @Assert(byteArrayStream3.bytes(), value3)
 
     var value4: Array<Byte> = [0x01, 0x01, 0x01]
     var byteArrayStream4: ByteBuffer = ByteBuffer()
     var asn1OutputStream4: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream4)
     asn1OutputStream4.writeObject(ASN1Boolean(true))
-    if (byteArrayStream4.bytes() != value4) {
-        return 11
-    }
+    @Assert(byteArrayStream4.bytes(), value4)
 
     var value5: Array<Byte> = [0x01, 0x01, 0x00]
     var byteArrayStream5: ByteBuffer = ByteBuffer()
     var asn1OutputStream5: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream5)
     asn1OutputStream5.writeObject(ASN1Boolean(false, Array<Byte>()))
-    if (byteArrayStream5.bytes() != value5) {
-        return 12
-    }
+    @Assert(byteArrayStream5.bytes(), value5)
 
     var value6: Array<Byte> = [0x01, 0x01, 0x01]
     var byteArrayStream6: ByteBuffer = ByteBuffer()
     var asn1OutputStream6: ASN1OutputStream = ASN1OutputStream(DEREncoder(), byteArrayStream6)
     asn1OutputStream6.writeObject(ASN1Boolean(true, Array<Byte>()))
-    if (byteArrayStream6.bytes() != value6) {
-        return 13
-    }
-
+    @Assert(byteArrayStream6.bytes(), value6)
     return 0
 }

@@ -5,10 +5,12 @@
 package asn1
 
 public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
-    public var object: ?ASN1Object
-    protected var bytes: Array<Byte>
+    // object 与 explicit 不对外暴露可变引用，避免编码过程中被外部并发改写
+    protected var object: ?ASN1Object
+    // None 表示尚未编码；Some(空数组) 表示已编码且内容为空，两者语义不同
+    protected var bytes: Option<Array<Byte>>
     private var decoder: ASN1Decoder = BERDecoder()
-    public var explicit: Bool = true
+    protected var explicit: Bool = true
     private var tags: ASN1Tag
 
     public init(tag: ASN1Tag, object: ?ASN1Object, explicit: Bool) {
@@ -16,7 +18,7 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
         this.object = object
         this.tags = tag
         this.explicit = explicit
-        this.bytes = Array<Byte>()
+        this.bytes = None
     }
 
     public init(tag: ASN1Tag, object: ?ASN1Object) {
@@ -25,7 +27,7 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
 
     public init(tag: ASN1Tag, bytes: Array<Byte>, decoder: ASN1Decoder) {
         super(tag)
-        this.bytes = bytes
+        this.bytes = Some(bytes)
         this.tags = tag
         this.decoder = decoder
         object = Option<ASN1Object>.None
@@ -51,36 +53,56 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
     public func getObject(): ASN1Object {
         match (object) {
             case None =>
-                try {
-                    var inputStream: ASN1InputStream = ASN1InputStream(decoder, bytes)
-                    return inputStream.readObject()
-                } catch (asn1ParseException: ASN1ParseException) {
-                    let list: Array<ToString> = []
-                    throw ASN1ParseException(
-                        asn1ParseException,
-                        "Unable to parse the explicit Tagged Object with %s, it might be implicit",
-                        list
-                    )
-                } catch (ioe: IOException) {
-                    throw ASN1ParseException(ioe, "Could not parse the inputstream", Array<ToString>())
+                match (bytes) {
+                    case Some(b) =>
+                        try {
+                            var inputStream: ASN1InputStream = ASN1InputStream(decoder, b)
+                            return inputStream.readObject()
+                        } catch (asn1ParseException: ASN1ParseException) {
+                            let list: Array<ToString> = []
+                            throw ASN1ParseException(
+                                asn1ParseException,
+                                "Unable to parse the explicit Tagged Object with %s, it might be implicit",
+                                list
+                            )
+                        } catch (ioe: IOException) {
+                            throw ASN1ParseException(ioe, "Could not parse the inputstream", Array<ToString>())
+                        }
+                    case None =>
+                        throw ASN1ParseException("Tagged object has no content to parse.")
                 }
             case Some(v) =>
-                v
-                return object.getOrThrow()
+                return v
         }
     }
 
     public func getObject(tag: ASN1Tag): ASN1Object {
-        if (object != None) {
-            if (object.getOrThrow().getTag().equals(tag)) {
-                return object.getOrThrow()
-            }
-        } else if (object == None) {
-            if (!bytes.isEmpty()) {
-                return tag.newParser(decoder).parse(tag, bytes)
-            }
+        match (object) {
+            case Some(v) =>
+                if (v.getTag().equals(tag)) {
+                    return v
+                }
+            case None =>
+                match (bytes) {
+                    case Some(b) =>
+                        if (!b.isEmpty()) {
+                            return tag.newParser(decoder).parse(tag, b)
+                        }
+                    case None => ()
+                }
         }
         throw ASN1ParseException("Unable to parse the implicit Tagged Object with %s, it is explicit")
+    }
+
+    protected override func valueString(): String {
+        match (object) {
+            case Some(v) => return v.toString()
+            case None =>
+                match (bytes) {
+                    case Some(b) => return b.toString()
+                    case None => return "<unencoded>"
+                }
+        }
     }
 
     public func toString(): String {
@@ -90,9 +112,8 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
         b.append(tag.toString())
         match (object) {
             case Some(v) =>
-                (v)
                 b.append(",")
-                b.append(object.getOrThrow())
+                b.append(v)
             case None => b.append(",<unknown>")
         }
         b.append("]")
@@ -125,18 +146,20 @@ class TaggedObjectSerializer <: ASN1Serializer {
 
     public func serializedLength(asn1Object: ASN1Object): Int64 {
         var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()
-        if (object.bytes.isEmpty()) {
-            calculateBytes(object)
+        match (object.bytes) {
+            case Some(b) => return b.size
+            case None =>
+                calculateBytes(object)
+                return (object.bytes.getOrThrow()).size
         }
-        return object.bytes.size
     }
 
     public func serialize(asn1Object: ASN1Object, stream: ASN1OutputStream): Unit {
         var object: ASN1TaggedObject = (asn1Object as ASN1TaggedObject).getOrThrow()
-        if (object.bytes.isEmpty()) {
-            calculateBytes(object)
+        match (object.bytes) {
+            case Some(b) => stream.write(b)
+            case None => calculateBytes(object)
         }
-        stream.write(object.bytes)
     }
 
     private func calculateBytes(asn1Object: ASN1TaggedObject): Unit {
@@ -148,6 +171,6 @@ class TaggedObjectSerializer <: ASN1Serializer {
         } else {
             object.getTag().newSerializer(encoder).serialize(object, asn1OutputStream)
         }
-        asn1Object.bytes = out.bytes()
+        asn1Object.bytes = Some(out.bytes())
     }
 }

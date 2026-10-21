@@ -39,13 +39,21 @@ public class asn_Asn1InputStream01 {
         var byteArrayStream: ByteBuffer = ByteBuffer()
         byteArrayStream.write(buffer)
         var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
-        var readvalue = asn1inputstream.readValue(10)
-        println(readvalue)
-        var readlength = asn1inputstream.readLength()
-        println(readlength)
-        var buffer2: Array<Byte> = [1, 8, 0, 0, 0, 0, 0, 0, 0, 0]
-        @Assert(readvalue,buffer2)
-        @Assert(readlength,0)
+        // 数据不足以满足请求长度时应抛异常，而不是静默返回补零数据
+        var caughtValue: Bool = false
+        var caughtLength: Bool = false
+        try {
+            asn1inputstream.readValue(10)
+        } catch (e: Exception) {
+            caughtValue = true
+        }
+        try {
+            asn1inputstream.readLength()
+        } catch (e: Exception) {
+            caughtLength = true
+        }
+        @Assert(caughtValue,true)
+        @Assert(caughtLength,true)
     }
 
     @TestCase
@@ -73,16 +81,24 @@ public class asn_Asn1InputStream01 {
         var byteArrayStream: ByteBuffer = ByteBuffer()
         byteArrayStream.write(buffer)
         var asn1inputstream: ASN1InputStream = ASN1InputStream(BERDecoder(), byteArrayStream)
-        var readvalue = asn1inputstream.readValue(10)
-        println(readvalue)
-        var readlength = asn1inputstream.readLength()
-        println(readlength)
+        // 空流上读取应抛异常，而不是静默返回补零数据
+        var caughtValue: Bool = false
+        var caughtLength: Bool = false
+        try {
+            asn1inputstream.readValue(10)
+        } catch (e: Exception) {
+            caughtValue = true
+        }
+        try {
+            asn1inputstream.readLength()
+        } catch (e: Exception) {
+            caughtLength = true
+        }
         var buffer1: Array<Byte> = [0x01, 0x08, 0x04, 0x06, 0x10, 0x01, 0x03, 0x05, 0x07, 0x11]
         var read = asn1inputstream.read(buffer1)
         println(read)
-        var buffer2: Array<Byte> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        @Assert(readvalue,buffer2)
-        @Assert(readlength,0)
+        @Assert(caughtValue,true)
+        @Assert(caughtLength,true)
         @Assert(read,0)
     }
 
