@@ -39,13 +39,13 @@ main(): Int64 {
     @Assert(caught2, true)
 
     let sle = ASN1TaggedObject(tags,Array<Byte>(),decz)
-    var caught3: Bool = false
-    try {
-        sle.iterator()
-    } catch (e: Exception) {
-        caught3 = true
+    // 空 bytes 的隐式 TaggedObject 按 getObject(SEQUENCE) 交给解析器处理（对齐上游），
+    // 解析为空 SEQUENCE，迭代无元素且不抛异常
+    var count3: Int64 = 0
+    for (o in sle.iterator()) {
+        count3++
     }
-    @Assert(caught3, true)
+    @Assert(count3, 0)
 
     let tagg1 = ASN1TaggedObjectTag(ASN1TagClass.UNIVERSAL(0),0x03,HashSet<ASN1Encoding>([ASN1Encoding.PRIMITIVE(0x0), ASN1Encoding.CONSTRUCTED(0x20)]))
 

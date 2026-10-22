@@ -93,7 +93,8 @@ main(): Int64 {
         object8.getObject()
     } catch (e: ASN1ParseException) {
         caught = true
-        @Assert(e.message, "Unknown ASN.1 tagUnable to parse the explicit Tagged Object with %s, it might be implicit")
+        // %s 占位符由 tag 信息替换，根因 "Unknown ASN.1 tag" 保留在最前
+        @Assert(e.message, "Unknown ASN.1 tagUnable to parse the explicit Tagged Object with ASN1Tag[CONTEXT_SPECIFIC,PRIMITIVE,1], it might be implicit")
     }
     @Assert(caught, true)
     return 0

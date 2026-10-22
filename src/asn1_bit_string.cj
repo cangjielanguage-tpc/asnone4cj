@@ -115,9 +115,15 @@ public class BitStringParser <: ASN1Parser {
                     if (stream.lengthData() <= 0) {
                         // Last ASN.1 BitString
                         unusedBits = Int64(subValue[0])
+                        if (unusedBits > 7) {
+                            throw ASN1ParseException("Constructed ASN.1 BIT STRING has invalid unused bits")
+                        }
                     }
                 }
                 return ASN1BitString(asn1Tag, baos.bytes(), unusedBits)
+            } catch (exception: ASN1ParseException) {
+                // 保留校验异常的原始消息，不再统一包装
+                throw exception
             } catch (exception: Exception) {
                 throw ASN1ParseException("Unable to parse Constructed ASN.1 BIT STRING")
             }
@@ -128,6 +134,12 @@ public class BitStringParser <: ASN1Parser {
                 Array<ToString>()
             )
             var unusedBits: Byte = value[0]
+            // unusedBits 合法域为 [0,7]，超出即为非法编码
+            Checks.checkArgument(
+                unusedBits <= 7,
+                "An ASN.1 BIT STRING has invalid unused bits",
+                Array<ToString>()
+            )
             var bits: Array<Byte> = Array<Byte>(value.size - 1, repeat: 0)
             value.copyTo(bits, 1, 0, value.size - 1)
             return ASN1BitString(asn1Tag, bits, Int64(unusedBits))

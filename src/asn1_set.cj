@@ -11,13 +11,15 @@ public class ASN1Set <: ASN1Object & ASN1Constructed {
 
     public init(objects: HashSet<ASN1Object>, bytes: Array<Byte>) {
         super(SET)
-        this.objects = objects
+        // 拷贝入参集合，避免外部后续修改影响内部状态
+        this.objects = HashSet<ASN1Object>(objects)
         this.bytes = bytes
     }
 
     public init(objects: HashSet<ASN1Object>) {
         super(SET)
-        this.objects = objects
+        // 拷贝入参集合，避免外部后续修改影响内部状态
+        this.objects = HashSet<ASN1Object>(objects)
     }
 
     public func getValue(): HashSet<ASN1Object> {

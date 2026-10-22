@@ -30,7 +30,9 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
 
     public func readObject(): ASN1Object {
         try {
-            if(lengthData() <= 0){
+            // 仅当可 Seekable 流的剩余长度恰为 0 时表示正常 EOF；
+            // 非 Seekable 流返回 -1，须继续读取并由 readTag 在 EOF 处抛错
+            if(lengthData() == 0){
                 throw NoneValueException()
             }
             var tag: ASN1Tag = decoder.readTag(this)
@@ -43,7 +45,7 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
         } catch (pe: NoneValueException) {
             throw pe
         } catch (e: Exception) {
-            // 保留原始异常作为 cause，避免丢失根因
+            // 将根因信息拼入异常消息，避免丢失根因
             throw ASN1ParseException(e, "Cannot parse ASN.1 object from stream", Array<ToString>())
         }
     }
@@ -87,9 +89,15 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
         try {
             return stream.readObject()
         } catch (e: NoneValueException) {
+            // 可 Seekable 流已耗尽，迭代正常结束
             return None
-        } catch (e: Exception) {
-            throw Exception(e.message)
+        } catch (e: ASN1ParseException) {
+            // 非 Seekable 流读到 EOF 时抛出带 "EOF found" 前缀的解析异常，视为迭代正常结束；
+            // 其余解析异常保留原始类型直接抛出，不再重新包装丢失类型信息
+            if (e.message.contains("EOF found")) {
+                return None
+            }
+            throw e
         }
     }
 }

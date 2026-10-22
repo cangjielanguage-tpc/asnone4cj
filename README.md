@@ -19,7 +19,7 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 - 支持 Ber,Der 编码规则
 - 支持 Sequence，Set，Tagged 构造类型
 - 支持 Boolean，Enumerated，Integer，Null，ObjectIdentifier，PrimitiveValue 原始类型数据
-- 支持 BitString，Octet String，String 字符串类型
+- 支持 BitString，Octet String 等基于抽象基类 ASN1String 的字符串类型
 
 ### 路线
 
@@ -40,7 +40,9 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 │   ├── design.md
 │   └── feature_api.md
 ├── src
-│   └── asn1
+│   ├── asn1_bit_string.cj
+│   ├── asn1_input_stream.cj
+│   └── ...（asn1 包源码平铺于 src 目录）
 └── test
     ├── HLT
     ├── LLT
@@ -70,7 +72,7 @@ asn1-cj 是 ASN.1 编码器和解码器的实现。它支持字节流的 BER 和
 编译描述和具体shell命令
 
 ${path}修改成用户自己项目本地路径
-示例文件在 test/DOC/examples_1.cj 和 test/DOC/examples_2.cj
+示例文件在 test/DOC/example_1.cj 和 test/DOC/example_2.cj
 
 ```shell
 git clone https://gitcode.com/Cangjie-TPC/asnone4cj.git;

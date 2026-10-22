@@ -40,14 +40,19 @@ public open class BERDecoder <: ASN1Decoder {
                 return ASN1Tag.resolve(asn1TagClass, iTag, asn1Encoding)
             }
         } catch (ioe: IOException) {
+            // 以 %s 占位符携带底层 IO 根因，保留原始异常信息
             let list: Array<ToString> = [ioe.toString()]
-            throw ASN1ParseException("Unable to parse ASN.1 tag", list)
+            throw ASN1ParseException("Unable to parse ASN.1 tag: %s", list)
         }
     }
 
     public override func readLength(inputStream: InputStream): Int64 {
         try {
             let firstByte: Byte = readByte(inputStream)
+            if (firstByte == 0xFF) {
+                // 0xFF 是 DER/BER 规范中的保留值，禁止作为长度首字节
+                throw ASN1ParseException("corrupted stream - invalid length first byte 0xFF found")
+            }
             if (firstByte <= 0x7f) {
                 return Int64(firstByte)
             }
@@ -62,8 +67,9 @@ public open class BERDecoder <: ASN1Decoder {
             }
             return longLength
         } catch (ioe: IOException) {
+            // 以 %s 占位符携带底层 IO 根因，保留原始异常信息
             let list: Array<ToString> = [ioe.toString()]
-            throw ASN1ParseException("Unable to read the length of the ASN.1 object.", list)
+            throw ASN1ParseException("Unable to read the length of the ASN.1 object: %s", list)
         }
     }
 
@@ -81,8 +87,9 @@ public open class BERDecoder <: ASN1Decoder {
             }
             return value
         } catch (ioe: IOException) {
+            // 以 %s 占位符携带底层 IO 根因，保留原始异常信息
             let list: Array<ToString> = [ioe.toString()]
-            throw ASN1ParseException("Unable to read the value of the ASN.1 object", list)
+            throw ASN1ParseException("Unable to read the value of the ASN.1 object: %s", list)
         }
     }
 }
