@@ -48,5 +48,10 @@ main(): Int64 {
     @Assert(src, true)
     @Assert(src1, 3)
     @Assert(src2, "ASN1TaggedObject[ASN1Tag[UNIVERSAL,CONSTRUCTED,3],ASN1Object[ASN1Tag[UNIVERSAL,PRIMITIVE,1]]]")
+
+    // 空 bytes 也应交给解析器处理（对齐上游语义），不再直接抛异常
+    let taggedEmpty: ASN1TaggedObject = ASN1TaggedObject(OCTET_STRING, Array<Byte>(), BERDecoder())
+    let gotEmpty: ASN1Object = taggedEmpty.getObject(OCTET_STRING)
+    @Assert(gotEmpty is ASN1OctetString, true)
     return 0
 }

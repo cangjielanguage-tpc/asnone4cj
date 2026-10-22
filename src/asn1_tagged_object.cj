@@ -59,7 +59,8 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
                             var inputStream: ASN1InputStream = ASN1InputStream(decoder, b)
                             return inputStream.readObject()
                         } catch (asn1ParseException: ASN1ParseException) {
-                            let list: Array<ToString> = []
+                            // 对齐上游：将 tag 信息作为 %s 参数携带进异常消息
+                            let list: Array<ToString> = [tags.toString()]
                             throw ASN1ParseException(
                                 asn1ParseException,
                                 "Unable to parse the explicit Tagged Object with %s, it might be implicit",
@@ -85,13 +86,13 @@ public class ASN1TaggedObject <: ASN1Object & ASN1Constructed {
             case None =>
                 match (bytes) {
                     case Some(b) =>
-                        if (!b.isEmpty()) {
-                            return tag.newParser(decoder).parse(tag, b)
-                        }
+                        // 空 bytes 同样交给解析器处理（对齐上游语义），由解析器决定合法性
+                        return tag.newParser(decoder).parse(tag, b)
                     case None => ()
                 }
         }
-        throw ASN1ParseException("Unable to parse the implicit Tagged Object with %s, it is explicit")
+        // 对齐上游：将 tag 信息作为 %s 参数携带进异常消息
+        throw ASN1ParseException("Unable to parse the implicit Tagged Object with %s, it is explicit", [tags.toString()])
     }
 
     protected override func valueString(): String {

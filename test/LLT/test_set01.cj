@@ -17,5 +17,12 @@ main(): Int64 {
 
     println(src.size)
     @Assert(src.size, 0)
+
+    // 入参集合拷贝隔离：构造后修改外部集合不影响内部状态
+    var arr2 = HashSet<ASN1Object>()
+    arr2.add(ASN1Boolean(true))
+    var sets2 = ASN1Set(arr2)
+    arr2.add(ASN1Boolean(false))
+    @Assert(sets2.getValue().size, 1)
     return 0
 }

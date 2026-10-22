@@ -4,6 +4,8 @@
  
 package asn1
 
+import std.reflect.*
+
 public let ASN1_BOOLEAN: ASN1Tag = ASN1BooleanTag(
     ASN1TagClass.UNIVERSAL(0),
     0x01,
@@ -206,6 +208,11 @@ public abstract class ASN1Tag {
     public func equals(o: Object): Bool {
         if (refEq(this, o)) {
             return true
+        }
+        // 具体类型不同则不等（对齐上游 getClass() 判断）：
+        // 既拦截非 ASN1Tag 对象，也避免不同子类的同号 tag 误判相等
+        if (ClassTypeInfo.of(this).qualifiedName != ClassTypeInfo.of(o).qualifiedName) {
+            return false
         }
         var that: ASN1Tag = (o as ASN1Tag).getOrThrow()
         // tag class 参与相等判断，避免不同 class 的同号 tag 误判相等

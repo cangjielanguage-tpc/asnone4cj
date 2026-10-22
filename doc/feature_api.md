@@ -49,10 +49,6 @@ public class ASN1OutputStream <: OutputStream {
 
 ```cangjie
 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
 import std.io.*
 
 main(): Int64 {
@@ -108,7 +104,8 @@ public class ASN1InputStream <: InputStream & Iterable<ASN1Object> {
      * 获取 ASN1 对象
      *
      * 返回值 ASN1Object - 获取到的 ASN1Object
-     * 异常 ASN1ParseException - 数据流已到末尾或内容不合法时抛出
+     * 异常 NoneValueException - 可 Seekable 数据流已到末尾时抛出
+     * 异常 ASN1ParseException - 非 Seekable 数据流已到末尾或内容不合法时抛出
      */
     public func readObject(): ASN1Object 
 
@@ -178,10 +175,6 @@ class IteratorASN1Object <: Iterator<ASN1Object> {
 
 ```cangjie
 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
 import std.io.*
 
 main(): Int64 {
@@ -346,10 +339,6 @@ public class BitStringSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.ASN1BitString
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.BitStringParser
-from asn1 import asn1.ASN1Tag
 import asn1.*
 import std.io.*
 
@@ -475,11 +464,7 @@ class SetSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.ASN1Object
-from asn1 import asn1.ASN1Set 
-from asn1 import asn1.BitStringParser
-from asn1 import asn1.ASN1Tag
-
+import asn1.*
 import std.collection.*
 
 main() {
@@ -598,10 +583,6 @@ public class BooleanSerializer <: ASN1Serializer {
 
 ```cangjie
 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
 import std.io.*
 
 // 数组第一位0x01代表ASN1Boolean类型
@@ -807,10 +788,6 @@ public class IntegerSerializer <: ASN1Serializer {
 ```cangjie
 from numeric import bigint.*
 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
 import std.io.*
 
 // 数组第一位0x02代表ASN1Integer类型
@@ -1211,10 +1188,6 @@ public class NullSerializer <: ASN1Serializer {
 
 ```cangjie
 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
 import std.io.*
 
 // 数组第一位0x05代表ASN1Null类型
@@ -1344,10 +1317,6 @@ public class ObjectIdentifierSerializer <: ASN1Serializer {
 
 ```cangjie
 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
 import std.io.*
 
 // 数组第一位0x06代表ASN1ObjectIdentifier类型
@@ -1587,11 +1556,7 @@ class SeqSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.ASN1Object
-from asn1 import asn1.ASN1Sequence
-from asn1 import asn1.BitStringParser
-from asn1 import asn1.ASN1Tag
-
+import asn1.*
 import std.collection.*
 
 main() {
@@ -1761,10 +1726,6 @@ class TaggedObjectSerializer <: ASN1Serializer {
 
 ```cangjie
 import asn1.*
-from asn1 import asn1.types.*
-from asn1 import asn1.util.*
-from asn1 import asn1.encodingrules.*
-from asn1 import asn1.encodingrules.der.*
 import std.io.*
 import std.collection.*
 
@@ -1908,10 +1869,6 @@ public class EnumeratedSerializer <: ASN1Serializer {
 
 ```cangjie
 from numeric import bigint.*
-from asn1 import asn1.ASN1Enumerated
-from asn1 import asn1.EnumeratedParser
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.ASN1Tag
 import asn1.*
 import std.io.*
 
@@ -2037,18 +1994,6 @@ public class OctetStringSerializer <: ASN1Serializer {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.BERDecoder
-from asn1 import asn1.ASN1Tag
-from asn1 import asn1.OctetStringParser
-from asn1 import asn1.OctetStringSerializer
-from asn1 import asn1.BooleanParser
-from asn1 import asn1.ASN1OutputStream
-from asn1 import asn1.ASN1ParseException
-from asn1 import asn1.ASN1PrimitiveValue
-from asn1 import asn1.ASN1Enumerated
-from asn1 import asn1.ASN1Sequence  
-from asn1 import asn1.ASN1Object 
-from asn1 import asn1.encodingrules.der.DEREncoder
 import asn1.*
 import std.io.*
 import std.collection.*
@@ -2624,9 +2569,6 @@ public class ASN1AllTag <: ASN1Tag {
 ### 示例
 
 ```cangjie
-from asn1 import asn1.ASN1BitString
-from asn1 import asn1.ASN1String
-from asn1 import asn1.ASN1Tag
 import asn1.*
 import std.collection.*
 

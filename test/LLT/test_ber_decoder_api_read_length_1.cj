@@ -28,5 +28,17 @@ main(): Int64 {
     var inputStream2: ASN1InputStream = ASN1InputStream(berDecoder, array2)
     var buffer2: Int64 = berDecoder.readLength(inputStream2)
     @Assert(buffer2, 2)
+
+    // 长度首字节 0xFF 为规范保留值，应拒绝
+    var array3: Array<Byte> = [0xFF, 0x02, 0x04, 0x06]
+    var inputStream3: ASN1InputStream = ASN1InputStream(berDecoder, array3)
+    var caught: Bool = false
+    try {
+        berDecoder.readLength(inputStream3)
+    } catch (e: ASN1ParseException) {
+        caught = true
+        @Assert(e.message.contains("0xFF"), true)
+    }
+    @Assert(caught, true)
     return 0
 }
